@@ -6,3 +6,4 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem "asciidoctor"
 gem "asciidoctor-diagram"
 gem "coderay"
+gem 'asciidoctor-i18n'
