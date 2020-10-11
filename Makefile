@@ -10,3 +10,6 @@ docs/UsersGuide.html: docs/*.adoc
 
 locales/ja.po: docs/*.adoc
 	bundle exec asciidoctor -r asciidoctor-i18n -a language=ja -a po-directory=locales docs/UsersGuide.adoc
+
+book-ja: locales/ja.po
+	bundle exec asciidoctor -o docs/UsersGuide-ja.html -b html5 -r asciidoctor-diagram -r asciidoctor-i18n -a language=ja -a po-directory=locales docs/UsersGuide.adoc
