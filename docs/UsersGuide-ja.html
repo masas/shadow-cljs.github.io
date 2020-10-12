@@ -555,7 +555,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_installation">2. Installation</a>
 <ul class="sectlevel2">
-<li><a href="#_standalone_via_code_npm_code">2.1. Standalone via &lt;code&gt;npm&lt;/code&gt;</a></li>
+<li><a href="#_standalone_via_code_npm_code">2.1. <code>npm</code> 経由のスタンドアローン</a></li>
 <li><a href="#_library">2.2. Library</a></li>
 </ul>
 </li>
@@ -1016,25 +1016,26 @@ project.clj
 <h2 id="_installation"><a class="anchor" href="#_installation"></a><a class="link" href="#_installation">2. Installation</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_standalone_via_code_npm_code"><a class="anchor" href="#_standalone_via_code_npm_code"></a><a class="link" href="#_standalone_via_code_npm_code">2.1. Standalone via &lt;code&gt;npm&lt;/code&gt;</a></h3>
+<h3 id="_standalone_via_code_npm_code"><a class="anchor" href="#_standalone_via_code_npm_code"></a><a class="link" href="#_standalone_via_code_npm_code">2.1. <code>npm</code> 経由のスタンドアローン</a></h3>
 <div class="paragraph">
-<p>You will need:</p>
+<p>下記を必要とします:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://nodejs.org"><code>node.js</code></a> (v6.0.0+, most recent version preferred)</p>
+<p><a href="https://nodejs.org"><code>node.js</code></a> (v6.0.0.0+, 最新バージョンを推奨)</p>
 </li>
 <li>
-<p><a href="https://www.npmjs.com"><code>npm</code></a> or <a href="https://www.yarnpkg.com"><code>yarn</code></a></p>
+<p><a href="https://www.npmjs.com"><code>npm</code></a> または <a href="https://www.yarnpkg.com"><code>yarn</code></a></p>
 </li>
 <li>
-<p>Any Java SDK (Version 8 or higher). <a href="http://openjdk.java.net/install/">OpenJDK</a> or <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle</a></p>
+<p>Java SDK (バージョン8以上) <a href="http://openjdk.java.net/install/">OpenJDK</a>または <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle</a>のいずれか。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>In your project directory you&#8217;ll need a <code>package.json</code>. If you do not have one yet you can create one by running <code>npm init -y</code>. If you don&#8217;t have a project directory yet consider creating it by running</p>
+<p>プロジェクトディレクトリに`package.json`が必要です。もしまだない場合は、npm init -yを実行することで作成できます。
+またプロジェクトディレクトリがない場合は</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1042,10 +1043,10 @@ project.clj
 </div>
 </div>
 <div class="paragraph">
-<p>This will create all the necessary basic files and you can skip the following commands.</p>
+<p>これで必要な基本ファイルがすべて作成されるので、以下のコマンドをスキップすることができます。</p>
 </div>
 <div class="paragraph">
-<p>If you have a <code>package.json</code> already and just want to add <code>shadow-cljs</code> run</p>
+<p>既に <code>package.json</code> があり、<code>shadow-cljs</code> を追加したい場合は、以下のように実行してください。</p>
 </div>
 <div class="listingblock">
 <div class="title">NPM</div>
@@ -1060,16 +1061,16 @@ project.clj
 </div>
 </div>
 <div class="paragraph">
-<p>For convenience you can run <code>npm install -g shadow-cljs</code> or <code>yarn global add shadow-cljs</code>. This will let you run the <code>shadow-cljs</code> command directly later. There should always be a shadow-cljs version installed in your project, the global install is optional.</p>
+<p>便利なように <code>npm install -g shadow-cljs</code> や <code>yarn global add shadow-cljs</code> を実行することができます。これにより、後で <code>shadow-cljs</code> コマンドを直接実行できるようになります。プロジェクトには常にshadow-cljsのバージョンがインストールされているはずです。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_library"><a class="anchor" href="#_library"></a><a class="link" href="#_library">2.2. Library</a></h3>
 <div class="paragraph">
-<p>Although it is recommended to run the standalone version via <code>npm</code> you can also embed <code>shadow-cljs</code> into any other Clojure JVM tool (eg. <code>lein</code>, <code>boot</code>, &#8230;&#8203;).</p>
+<p>スタンドアロン版を <code>npm</code> 経由で実行することを推奨しますが、<code>shadow-cljs</code> を他の Clojure JVM ツール (例えば <code>lein</code>, <code>boot</code>, &#8230;&#8203;. など) に埋め込むこともできます。</p>
 </div>
 <div class="paragraph">
-<p>The artifact can be found at:</p>
+<p>アーティファクトは以下の場所にあります。</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1088,18 +1089,18 @@ project.clj
 <h2 id="_usage"><a class="anchor" href="#_usage"></a><a class="link" href="#_usage">3. Usage</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>shadow-cljs</code> can be used in many different ways but the general workflow stays the same.</p>
+<p>`shadow-cljs`は様々な方法で使うことができますが、一般的なワークフローは同じです。</p>
 </div>
 <div class="paragraph">
-<p>During development you have the option to <code>compile</code> a build once or run a <code>watch</code> worker which watches your source files for changes and re-compiles them automatically. When <a href="#devtools">enabled</a> the <code>watch</code> will also hot-reload your code and provide a REPL. During development the focus is on developer experience with fast feedback cycles. Development code should never be shipped to the public.</p>
+<p>開発中には、ビルドを一度コンパイルするか、<code>watch</code> ワーカーを実行してソースファイルの変更を監視し、自動的に再コンパイルするかを選択することができます。<a href="#devtools">enabled</a>の場合、<code>watch</code> ワーカーはコードをホットリロードして REPL を提供します。開発中は、開発者の経験と高速なフィードバックサイクルに焦点を当てています。開発コードは決して公開されるべきではありません。</p>
 </div>
 <div class="paragraph">
-<p>When it is time to get serious you create a <a href="#release"><code>release</code></a> build which creates an optimized build suitable for production. For this the <a href="https://developers.google.com/closure/compiler/">Closure Compiler</a> is used which applies some seriously <code>:advanced</code> optimizations to your code to create the most optimal output available. This may require some <a href="#externs">tuning</a> to work properly when using lots of interop with native JavaScript but works flawlessly for ClojureScript (and the code from the <a href="https://developers.google.com/closure/library/">Closure Library</a>).</p>
+<p>いよいよ本気を出す時が来た時には、<a href="#release"><code>release</code></a>ビルドを作成し、本番に適した最適化されたビルドを作成します。このために <a href="https://developers.google.com/closure/compiler/">Closure Compiler</a> を使用します。これは、あなたのコードに <code>:advanced</code> 最適化を適用して、最適な出力を作成します。これは、ネイティブのJavaScriptで多くのinteropを使用しているときに適切に動作するために、いくつかの<a href="#externs">tuning</a>を必要とするかもしれませんが、ClojureScript(とhttps://developers.google.com/closure/library/[Closure Library]からのコード)では完璧に動作します。</p>
 </div>
 <div class="sect2">
 <h3 id="_command_line"><a class="anchor" href="#_command_line"></a><a class="link" href="#_command_line">3.1. Command Line</a></h3>
 <div class="paragraph">
-<p>If <a href="#_installation">installed</a> globally, you can use the <code>shadow-cljs</code> command directly.</p>
+<p>グローバルに<a href="#_installation">インストール</a>する場合は、<code>shadow-cljs</code> コマンドを直接使うことができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1107,7 +1108,7 @@ project.clj
 </div>
 </div>
 <div class="paragraph">
-<p>If you prefer to only use the local <code>npm</code> install you can invoke it via <code>npx</code> or <code>yarn</code>.</p>
+<p>ローカルの <code>npm</code> インストールのみを使いたい場合は、<code>npx</code> や <code>yarn</code> を使って起動することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1122,32 +1123,32 @@ $ ./node_modules/.bin/shadow-cljs help</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The guide will assume there is a global install to keep examples short but this is not required.</p>
+<p>このガイドでは、例を短くするためにグローバルインストールを想定していますが、これは必須ではありません。</p>
 </div>
 <div class="listingblock">
-<div class="title">Commonly used shadow-cljs commands during development</div>
+<div class="title">開発中によく使われる shadow-cljs コマンド</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"># compile a build once and exit
+<pre class="CodeRay highlight"><code data-lang="bash"># 一度ビルドをコンパイルして終了する
 $ shadow-cljs compile app
 
-# compile and watch
+# コンパイルして見張る
 $ shadow-cljs watch app
 
-# connect to REPL for the build (available while watch is running)
+# ビルド用の REPL に接続します (ウォッチの実行中に利用可能)
 $ shadow-cljs cljs-repl app
 
-# connect to standalone node repl
+# スタンドアロン node repl に接続
 $ shadow-cljs node-repl</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Running a release build optimized for production use.</div>
+<div class="title">本番用に最適化されたリリースビルドの実行</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">$ shadow-cljs release app</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Sometimes you may run into some release issues due to <code>:advanced</code> compilation. These commands can help track down the causes.</p>
+<p>時々、<code>:advanced</code> のコンパイルに起因するリリース上の問題が発生することがあります。これらのコマンドは原因を突き止めるのに役立ちます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Release debugging commands.</div>
@@ -1159,24 +1160,24 @@ $ shadow-cljs release app --debug</code></pre>
 <div class="sect3">
 <h4 id="server-mode"><a class="anchor" href="#server-mode"></a><a class="link" href="#server-mode">3.1.1. Server Mode</a></h4>
 <div class="paragraph">
-<p>A <code>shadow-cljs</code> command can be fairly slow to start. To improve this <code>shadow-cljs</code> can run in "server mode" which means that a dedicated process is started which all other commands can use to execute a lot faster since they won&#8217;t have to start a new JVM/Clojure instance.</p>
+<p><code>shadow-cljs</code> コマンドの起動はかなり遅くなります。これを改善するために、<code>shadow-cljs</code> は、"server mode"で実行することができます。専用のプロセスで開始され、毎回新しい JVM/Clojure インスタンスを起動する必要がないので、他のすべてのコマンドがより速く実行できます。</p>
 </div>
 <div class="paragraph">
-<p>Commands that do long-running things implicitly start a server instance (eg. <code>watch</code>) but it is often advisable to have a dedicated server process running.</p>
+<p>長時間実行するようなコマンドは、暗黙のうちにサーバインスタンスを起動しますが(例: <code>watch</code>)、多くの場合専用のサーバプロセスを実行しておくことを推奨します。</p>
 </div>
 <div class="paragraph">
-<p>You can run the process in the foreground in a dedicated terminal. Use <code>CTRL+C</code> to terminate the server.</p>
+<p>専用のターミナルでフォアグラウンドでプロセスを実行することができます。サーバを終了させるには <code>CTRL+C</code> を使います。</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ shadow-cljs server
 
-# or (if you'd like REPL to control the server process)
+# または (サーバプロセスを制御するためにREPLを使用したい場合は)
 $ shadow-cljs clj-repl</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also run the server in the background controlled via the common <code>start|stop|restart</code> functions.</p>
+<p>また、共通の <code>start|stop|restart</code> 関数で制御されたバックグラウンドでサーバを実行することもできます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1186,7 +1187,7 @@ $ shadow-cljs restart</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once any server is running every other command will use that and run much faster.</p>
+<p>どのサーバーでも一旦実行されると、他のすべてのコマンドはそれを使用して、はるかに高速に実行されます。</p>
 </div>
 </div>
 </div>

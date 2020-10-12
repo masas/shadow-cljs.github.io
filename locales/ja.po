@@ -173,31 +173,33 @@ msgid "Installation"
 msgstr ""
 
 msgid "Standalone via <code>npm</code>"
-msgstr ""
+msgstr "`npm` 経由のスタンドアローン"
 
 msgid "You will need:"
-msgstr ""
+msgstr "下記を必要とします:"
 
 msgid "https://nodejs.org[`node.js`] (v6.0.0+, most recent version preferred)"
-msgstr ""
+msgstr "https://nodejs.org[`node.js`] (v6.0.0.0+, 最新バージョンを推奨)"
 
 msgid "https://www.npmjs.com[`npm`] or https://www.yarnpkg.com[`yarn`]"
-msgstr ""
+msgstr "https://www.npmjs.com[`npm`] または https://www.yarnpkg.com[`yarn`]"
 
 msgid "Any Java SDK (Version 8 or higher). http://openjdk.java.net/install/[OpenJDK] or http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle]"
-msgstr ""
+msgstr "Java SDK (バージョン8以上) http://openjdk.java.net/install/[OpenJDK]または http://www.oracle.com/technetwork/java/javase/downloads/index.html[Oracle]のいずれか。"
 
 msgid "In your project directory you'll need a `package.json`. If you do not have one yet you can create one by running `npm init -y`. If you don't have a project directory yet consider creating it by running"
 msgstr ""
+"プロジェクトディレクトリに`package.json`が必要です。もしまだない場合は、npm init -yを実行することで作成できます。\n"
+"またプロジェクトディレクトリがない場合は"
 
 msgid "$ npx create-cljs-project my-project"
 msgstr ""
 
 msgid "This will create all the necessary basic files and you can skip the following commands."
-msgstr ""
+msgstr "これで必要な基本ファイルがすべて作成されるので、以下のコマンドをスキップすることができます。"
 
 msgid "If you have a `package.json` already and just want to add `shadow-cljs` run"
-msgstr ""
+msgstr "既に `package.json` があり、`shadow-cljs` を追加したい場合は、以下のように実行してください。"
 
 msgid "NPM"
 msgstr ""
@@ -212,40 +214,40 @@ msgid "$ yarn add --dev shadow-cljs"
 msgstr ""
 
 msgid "For convenience you can run `npm install -g shadow-cljs` or `yarn global add shadow-cljs`. This will let you run the `shadow-cljs` command directly later. There should always be a shadow-cljs version installed in your project, the global install is optional."
-msgstr ""
+msgstr "便利なように `npm install -g shadow-cljs` や `yarn global add shadow-cljs` を実行することができます。これにより、後で `shadow-cljs` コマンドを直接実行できるようになります。プロジェクトには常にshadow-cljsのバージョンがインストールされているはずです。"
 
 msgid "Library"
 msgstr ""
 
 msgid "Although it is recommended to run the standalone version via `npm` you can also embed `shadow-cljs` into any other Clojure JVM tool (eg. `lein`, `boot`, ...)."
-msgstr ""
+msgstr "スタンドアロン版を `npm` 経由で実行することを推奨しますが、`shadow-cljs` を他の Clojure JVM ツール (例えば `lein`, `boot`, .... など) に埋め込むこともできます。"
 
 msgid "The artifact can be found at:"
-msgstr ""
+msgstr "アーティファクトは以下の場所にあります。"
 
 msgid "Usage"
 msgstr ""
 
 msgid "`shadow-cljs` can be used in many different ways but the general workflow stays the same."
-msgstr ""
+msgstr "`shadow-cljs`は様々な方法で使うことができますが、一般的なワークフローは同じです。"
 
 msgid "During development you have the option to `compile` a build once or run a `watch` worker which watches your source files for changes and re-compiles them automatically. When <<devtools, enabled>> the `watch` will also hot-reload your code and provide a REPL. During development the focus is on developer experience with fast feedback cycles. Development code should never be shipped to the public."
-msgstr ""
+msgstr "開発中には、ビルドを一度コンパイルするか、`watch` ワーカーを実行してソースファイルの変更を監視し、自動的に再コンパイルするかを選択することができます。<<devtools, enabled>>の場合、`watch` ワーカーはコードをホットリロードして REPL を提供します。開発中は、開発者の経験と高速なフィードバックサイクルに焦点を当てています。開発コードは決して公開されるべきではありません。"
 
 msgid "When it is time to get serious you create a <<release, `release`>> build which creates an optimized build suitable for production. For this the https://developers.google.com/closure/compiler/[Closure Compiler] is used which applies some seriously `:advanced` optimizations to your code to create the most optimal output available. This may require some <<externs, tuning>> to work properly when using lots of interop with native JavaScript but works flawlessly for ClojureScript (and the code from the https://developers.google.com/closure/library/[Closure Library])."
-msgstr ""
+msgstr "いよいよ本気を出す時が来た時には、<<release,`release`>>ビルドを作成し、本番に適した最適化されたビルドを作成します。このために https://developers.google.com/closure/compiler/[Closure Compiler] を使用します。これは、あなたのコードに `:advanced` 最適化を適用して、最適な出力を作成します。これは、ネイティブのJavaScriptで多くのinteropを使用しているときに適切に動作するために、いくつかの<<externs, tuning>>を必要とするかもしれませんが、ClojureScript(とhttps://developers.google.com/closure/library/[Closure Library]からのコード)では完璧に動作します。"
 
 msgid "Command Line"
 msgstr ""
 
 msgid "If <<Installation, installed>> globally, you can use the `shadow-cljs` command directly."
-msgstr ""
+msgstr "グローバルに<<Installation,インストール>>する場合は、`shadow-cljs` コマンドを直接使うことができます。"
 
 msgid "$ shadow-cljs help"
 msgstr ""
 
 msgid "If you prefer to only use the local `npm` install you can invoke it via `npx` or `yarn`."
-msgstr ""
+msgstr "ローカルの `npm` インストールのみを使いたい場合は、`npx` や `yarn` を使って起動することができます。"
 
 msgid ""
 "# npm\n"
@@ -259,10 +261,10 @@ msgid ""
 msgstr ""
 
 msgid "The guide will assume there is a global install to keep examples short but this is not required."
-msgstr ""
+msgstr "このガイドでは、例を短くするためにグローバルインストールを想定していますが、これは必須ではありません。"
 
 msgid "Commonly used shadow-cljs commands during development"
-msgstr ""
+msgstr "開発中によく使われる shadow-cljs コマンド"
 
 msgid ""
 "# compile a build once and exit\n"
@@ -277,15 +279,26 @@ msgid ""
 "# connect to standalone node repl\n"
 "$ shadow-cljs node-repl"
 msgstr ""
+"# 一度ビルドをコンパイルして終了する\n"
+"$ shadow-cljs compile app\n"
+"\n"
+"# コンパイルして見張る\n"
+"$ shadow-cljs watch app\n"
+"\n"
+"# ビルド用の REPL に接続します (ウォッチの実行中に利用可能)\n"
+"$ shadow-cljs cljs-repl app\n"
+"\n"
+"# スタンドアロン node repl に接続\n"
+"$ shadow-cljs node-repl"
 
 msgid "Running a release build optimized for production use."
-msgstr ""
+msgstr "本番用に最適化されたリリースビルドの実行"
 
 msgid "$ shadow-cljs release app"
 msgstr ""
 
 msgid "Sometimes you may run into some release issues due to `:advanced` compilation. These commands can help track down the causes."
-msgstr ""
+msgstr "時々、`:advanced` のコンパイルに起因するリリース上の問題が発生することがあります。これらのコマンドは原因を突き止めるのに役立ちます。"
 
 msgid "Release debugging commands."
 msgstr ""
@@ -296,13 +309,13 @@ msgid ""
 msgstr ""
 
 msgid "A `shadow-cljs` command can be fairly slow to start. To improve this `shadow-cljs` can run in \"server mode\" which means that a dedicated process is started which all other commands can use to execute a lot faster since they won't have to start a new JVM/Clojure instance."
-msgstr ""
+msgstr "`shadow-cljs` コマンドの起動はかなり遅くなります。これを改善するために、`shadow-cljs` は、\"server mode\"で実行することができます。専用のプロセスで開始され、毎回新しい JVM/Clojure インスタンスを起動する必要がないので、他のすべてのコマンドがより速く実行できます。"
 
 msgid "Commands that do long-running things implicitly start a server instance (eg. `watch`) but it is often advisable to have a dedicated server process running."
-msgstr ""
+msgstr "長時間実行するようなコマンドは、暗黙のうちにサーバインスタンスを起動しますが(例: `watch`)、多くの場合専用のサーバプロセスを実行しておくことを推奨します。"
 
 msgid "You can run the process in the foreground in a dedicated terminal. Use `CTRL+C` to terminate the server."
-msgstr ""
+msgstr "専用のターミナルでフォアグラウンドでプロセスを実行することができます。サーバを終了させるには `CTRL+C` を使います。"
 
 msgid ""
 "$ shadow-cljs server\n"
@@ -310,9 +323,13 @@ msgid ""
 "# or (if you'd like REPL to control the server process)\n"
 "$ shadow-cljs clj-repl"
 msgstr ""
+"$ shadow-cljs server\n"
+"\n"
+"# または (サーバプロセスを制御するためにREPLを使用したい場合は)\n"
+"$ shadow-cljs clj-repl"
 
 msgid "You can also run the server in the background controlled via the common `start|stop|restart` functions."
-msgstr ""
+msgstr "また、共通の `start|stop|restart` 関数で制御されたバックグラウンドでサーバを実行することもできます。"
 
 msgid ""
 "$ shadow-cljs start\n"
@@ -321,7 +338,7 @@ msgid ""
 msgstr ""
 
 msgid "Once any server is running every other command will use that and run much faster."
-msgstr ""
+msgstr "どのサーバーでも一旦実行されると、他のすべてのコマンドはそれを使用して、はるかに高速に実行されます。"
 
 msgid "Build Tool Integration"
 msgstr ""
