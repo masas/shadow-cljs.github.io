@@ -3,106 +3,106 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
 msgid "This is a convenient way to test out fixes (even to `shadow-cljs` itself!) without having to clone that project and understand its setup, build, etc."
-msgstr ""
+msgstr "これは、プロジェクトをクローンしてそのセットアップやビルドなどを理解しなくても、(たとえ `shadow-cljs` 自体であっても！)修正をテストアウトするのに便利な方法です。"
 
 msgid "Introduction"
 msgstr ""
 
 msgid "`shadow-cljs` provides everything you need to compile your ClojureScript projects with a focus on simplicity and ease of use. The provided build targets abstract away most of the manual configuration so that you only have to configure the essentials for your build. Each target provides optimal defaults for each environment and get an optimized experience during development and in release builds."
-msgstr ""
+msgstr "`shadow-cljs` は、シンプルさと使いやすさに焦点を当てて ClojureScript プロジェクトをコンパイルするために必要なものをすべて提供します。提供されているビルドターゲットは、手動設定のほとんどを抽象化しているので、ビルドに必要な要素だけを設定する必要があります。各ターゲットはそれぞれの環境に最適なデフォルトを提供し、開発中やリリースビルドで最適化されたエクスペリエンスを得ることができます。"
 
 msgid "High-Level Overview"
 msgstr ""
 
 msgid "`shadow-cljs` is composed of 2 parts:"
-msgstr ""
+msgstr "`shadow-cljs` は2つの部分から構成されています。"
 
 msgid "The https://clojars.org/thheller/shadow-cljs[shadow-cljs] Clojure library which handles all the actual work."
-msgstr ""
+msgstr "https://clojars.org/thheller/shadow-cljs[shadow-cljs] 実際の作業をすべて処理するClojureライブラリ。"
 
 msgid "The https://www.npmjs.com/package/shadow-cljs[shadow-cljs] `npm` package which provides a convenient interface for running most of the build functionality directly from command line."
-msgstr ""
+msgstr "https://www.npmjs.com/package/shadow-cljs[shadow-cljs] `npm` パッケージは、ほとんどのビルド機能をコマンドラインから直接実行するための便利なインターフェイスを提供します。"
 
 msgid "If desired you can easily integrate the `shadow-cljs` Clojure library into any other Clojure/JVM build tool (eg. https://leiningen.org/[leiningen] or the https://clojure.org/guides/deps_and_cli[Clojure CLI] tools)."
-msgstr ""
+msgstr "必要であれば、`shadow-cljs` Clojureライブラリを他のClojure/JVMビルドツール(例: https://leiningen.org/[leiningen]やhttps://clojure.org/guides/deps_and_cli[Clojure CLI]ツール)に簡単に統合することができます。"
 
 msgid "It is recommended to use the `npm` package as that provides a more optimized development experience tailored towards CLJS development."
-msgstr ""
+msgstr "CLJS開発に合わせて最適化された開発体験を提供するため、`npm`パッケージを使用することをお勧めします。"
 
 msgid "Basic Workflow"
 msgstr ""
 
 msgid "When working with `shadow-cljs` you will be defining one or more builds in the `shadow-cljs.edn` configuration file. Each build will have a `:target` property which represents a configuration preset optimized for the target environment (eg. the Browser, a `node.js` application or a Chrome Extension)."
-msgstr ""
+msgstr "shadow-cljs` を使うときは、`shadow-cljs.edn` 設定ファイルに 1 つ以上のビルドを定義することになります。各ビルドは `:target` プロパティを持ち、ターゲット環境(ブラウザ、`node.js` アプリケーション、Chrome 拡張機能など)に最適化された設定プリセットを表します。"
 
 msgid "Each build can either produce development or release output depending on the command used to trigger the compilation. The standard build commands are: `compile`, `watch` and `release`."
-msgstr ""
+msgstr "各ビルドは、コンパイルのトリガーに使用されるコマンドに応じて、開発またはリリースの出力を生成することができます。標準的なビルドコマンドは以下の通りです。`compile`、`watch`、`release`です。"
 
 msgid "Development Mode"
 msgstr ""
 
 msgid "You can either `compile` a development build once or run a `watch` process which will monitor your source files and re-compile them automatically (and live-reload the code if desired)."
-msgstr ""
+msgstr "開発ビルドを一度 `compile` するか、`watch` プロセスを実行してソースファイルを監視し、自動的に再コンパイルすることができます (必要に応じてコードをライブリロードすることもできます)。"
 
 msgid "All development builds are optimized for the developer experience with fast feedback cycles and other features like a REPL to directly interact with your running code."
-msgstr ""
+msgstr "すべての開発ビルドは、高速なフィードバックサイクルと、実行中のコードと直接対話するための REPL のような他の機能を備え、開発者の経験に合わせて最適化されています。"
 
 msgid "A development build should never be shipped publicly since they can become quite large and may only work on the machine they were compiled on depending on the `:target`."
-msgstr ""
+msgstr "開発ビルドは非常に大きくなり、`:target`によってはコンパイルされたマシン上でしか動作しない可能性があるため、決して公開してはいけません。"
 
 msgid "Release Mode"
 msgstr ""
 
 msgid "Creating a `release` build will strip out all the development related code and finally run the code through the Closure Compiler. This is an optimizing Compiler for JavaScript which will significantly reduce the overall size of the code."
-msgstr ""
+msgstr "`release`ビルドを作成すると、開発に関連するすべてのコードが削除され、最終的にClosure Compilerでコードが変換されます。これはJavaScript用の最適化コンパイラで、コード全体のサイズを大幅に削減します。"
 
 msgid "Important Concepts"
 msgstr ""
 
 msgid "There are several important concepts that you should familiarize yourself with when using `shadow-cljs`. They are integral to understanding how everything fits together and how the tool works with your code."
-msgstr ""
+msgstr "`shadow-cljs`を使うときには、いくつかの重要な概念を理解しておく必要があります。これらの概念は、すべてのものがどのように組み合わされ、ツールがあなたのコードでどのように動作するかを理解するために不可欠なものです。"
 
 msgid "The Classpath"
 msgstr ""
 
 msgid "`shadow-cljs` uses the Java Virtual Machine (JVM) and its \"classpath\" when working with files. This is a virtual filesystem composed of many classpath entries. Each entry is either"
-msgstr ""
+msgstr "`shadow-cljs` は、ファイルを扱う際に Java Virtual Machine (JVM) とその ”classpath\" を使用します。これは、多くのクラスパスエントリで構成された仮想ファイルシステムです。各エントリは"
 
 msgid "A local filesystem directory, managed by `:source-paths` entry in the configuration."
-msgstr ""
+msgstr "設定の`:source-paths`エントリで管理されるローカルファイルシステムディレクトリ。"
 
 msgid "Or a `.jar` file, representing Clojure(Script) or JVM libraries. These are compressed archives containing many files (basically just a `.zip` file). These are added by your `:dependencies`."
-msgstr ""
+msgstr "または、Clojure(Script)やJVMライブラリを表す `.jar` ファイル。これらは多くのファイルを含む圧縮されたアーカイブです(基本的にはただの `.zip` ファイル)。これらは `:dependencies` によって追加されます。"
 
 msgid "In the Clojure(Script) everything is namespaced and each name is expected to resolve to a file. If you have a `(ns demo.app)` namespace the compiler expects to find a `demo/app.cljs` (or `.cljc`) on the classpath. The classpath will be searched in order until it is found. Suppose you configured the `:source-paths [\"src/main\" \"src/test\"]` the compiler will first look for a `src/main/demo/app.cljs` and then `src/test/demo/app.cljs`. When the file is not found on any source path the JVM will begin looking into the `.jar` files on the classpath. When it finds a `demo/app.cljs` at the root of any of the libraries that file it will be used."
-msgstr ""
+msgstr "Clojure(Script)では、すべてのものが名前空間になっており、それぞれの名前はファイルに解決されることが期待されています。名前空間が `(ns demo.app)` の場合、コンパイラはクラスパス上に `demo/app.cljs` (または `.cljc`) を見つけることを期待しています。クラスパスは見つかるまで順番に検索されます。例えば、`:source-paths [\"src/main/\" \"src/test/test\"]`を設定したとすると、コンパイラは最初に `src/main/demo/app.cljs` を探し、次に `src/test/demo/app.cljs` を探すことになります。ソースパス上にファイルが見つからない場合、JVMはクラスパス上の `.jar` ファイルを探し始めます。ライブラリのルートに `demo/app.cljs` を見つけると、そのファイルが使用されます。"
 
 msgid "When a filename exists multiple times on the classpath then only the first one is used. Everything on the JVM and Clojure(Script) is namespaced to avoid such conflicts. Very similar to `npm` where each package must have a unique name."
-msgstr ""
+msgstr "ファイル名がクラスパス上に複数回存在する場合、最初のものだけが使用されます。JVMとClojure(Script)上のすべてのものは、そのような衝突を避けるために名前空間が設定されています。各パッケージが一意の名前を持たなければならない `npm` と非常に似ています。"
 
 msgid "It is therefore recommended to be very disciplined about the names you choose and properly namespacing everything. It may seem repetitive to always use `(ns your-company.components.foo)` over `(ns components.foo)` but it will save you from lot of headaches later on."
-msgstr ""
+msgstr "そのため、名前の選択や名前の間隔はきちんと決めておくことをお勧めします。常に `(ns your-company.components.foo)` の上に `(ns components.foo)` を使うことは、繰り返しのように思えるかもしれませんが、後になって多くの頭痛の種を避けることができます。"
 
 msgid "This is unlike `npm` where the package name itself is never used inside the package itself and only relative paths are used."
-msgstr ""
+msgstr "これは `npm` とは異なり、パッケージ名自体がパッケージ内部で使われることはなく、相対パスのみが使われます。"
 
 msgid "Server Mode"
 msgstr ""
 
 msgid "`shadow-cljs` can be started in \"server\" mode which is required for long-running tasks such as `watch`. A `watch` will implicitly start the server instance if it is not already running. The server will provide the Websocket endpoint that builds will connect to as well as all the other endpoints for nREPL, Socket REPL and the development HTTP servers."
-msgstr ""
+msgstr "`shadow-cljs`は、`watch`のような長時間のタスクを実行する場合に必要な、\\”server\\” モードで起動することができます。watch`は、まだ起動していなければ暗黙のうちにサーバインスタンスを起動します。サーバは、ビルドが接続するWebsocketエンドポイントを提供し、他のすべてのエンドポイントと同様に、nREPL、Socket REPL、開発用HTTPサーバを提供します。"
 
 msgid "When using the `shadow-cljs` CLI interface all commands will re-use a running server instance JVM instead of starting a new JVM. This is substantially faster since start-up time can be quite slow."
-msgstr ""
+msgstr "`shadow-cljs` CLIインターフェースを使用する場合、すべてのコマンドは新しいJVMを起動する代わりに、実行中のサーバインスタンスJVMを再利用します。これにより、JVM起動時間が非常に遅くなる可能性を排除するので、実質的に速くなります。"
 
 msgid "Once the server is running however you only have to restart it whenever your `:dependencies` change and everything else can be done via the REPL."
-msgstr ""
+msgstr "いったんサーバが起動してしまえば、`:dependencies` が変更されたときだけ再起動すればよく、それ以外のことはすべて REPL を使って行うことができます。"
 
 msgid "REPL"
 msgstr ""
 
 msgid "The REPL is at the heart of all Clojure(Script) development and every CLI command can also be used directly from the REPL as well. It is absolutely worth getting comfortable with the REPL even if the command line may seem more familiar."
-msgstr ""
+msgstr "REPLはすべてのClojure(Script)開発の中心であり、すべてのCLIコマンドはREPLから直接使用することもできます。たとえコマンドラインがより身近に感じられるかもしれませんが、REPLに慣れることは絶対に価値があります。"
 
 msgid "About this Book"
 msgstr ""
@@ -111,22 +111,22 @@ msgid "Work in Progress"
 msgstr ""
 
 msgid "This is a work in progress. If you find an error, please submit a PR to fix it, or an issue with details of the problem."
-msgstr ""
+msgstr "これは作業中のものです。エラーを発見した場合は、修正のためのPR(訳注：pull request?)、または問題の詳細を記載した問題を投稿してください。"
 
 msgid "Contributing"
 msgstr ""
 
 msgid "This source for this book is hosted on https://github.com/shadow-cljs/shadow-cljs.github.io[Github]."
-msgstr ""
+msgstr "この本のソースは https://github.com/shadow-cljs/shadow-cljs.github.io[Github] でホストされています。"
 
 msgid "Conventions Used"
 msgstr ""
 
 msgid "There are many examples in this book. Most things used in these should be obvious from their context, but to prevent misunderstanding it is important to know the author's intentions."
-msgstr ""
+msgstr "本書には多くの例が掲載されています。これらの中で使われているものの多くは、文脈から明らかなはずですが、誤解を防ぐためには、著者の意図を知ることが大切です。"
 
 msgid "When command-line examples are given we may include BASH comments (starting with `#`), and will usually include the standard user UNIX prompt of `$` to indicate separation of the command from its output."
-msgstr ""
+msgstr "コマンドラインの例を示す際には、BASH のコメント (`#` で始まる) を含めることがあり、通常は、コマンドとその出力を分離することを示すために、標準的なユーザ UNIX プロンプト `$` を含めます。"
 
 msgid ""
 "# A comment. This command lists files:\n"
@@ -137,16 +137,16 @@ msgid ""
 msgstr ""
 
 msgid "Many of the examples are of the configuration file for the compiler. This file contains an EDN map. Where we have already discussed required options we will often elide them for clarity. In this case we'll usually include an ellipsis to indicate \"content that is required but isn't in our current focus\":"
-msgstr ""
+msgstr "例の多くは、コンパイラの設定ファイルです。このファイルには EDN マップが含まれています。すでに必須オプションについて説明している場合は、わかりやすくするために省略します。この場合、\"必要だが現在の焦点には入っていない内容 \"を示すために、通常は省略記号(\"...\")を入れます。"
 
 msgid "Example 1. Specify dependencies"
-msgstr ""
+msgstr "Example 1. 依存関係の指定"
 
 msgid "{:dependencies [[lib \"1.0\"]]}"
 msgstr ""
 
 msgid "Example 2. Add source paths"
-msgstr ""
+msgstr "Example 2. ソースパスの追加"
 
 msgid ""
 "{...\n"
@@ -155,10 +155,10 @@ msgid ""
 msgstr ""
 
 msgid "This allows us to concisely include enough context to understand the nesting of the configuration of interest:"
-msgstr ""
+msgstr "これにより、関心のある構成の入れ子を理解するのに十分なコンテキストを簡潔に含めることができます:"
 
 msgid "Example 3. Nested option"
-msgstr ""
+msgstr "Example 3. 入れ子になったオプション"
 
 msgid ""
 "{...\n"
@@ -167,7 +167,7 @@ msgid ""
 msgstr ""
 
 msgid "Code examples may be similarly shortened."
-msgstr ""
+msgstr "コード例も同様に短縮しています。"
 
 msgid "Installation"
 msgstr ""
