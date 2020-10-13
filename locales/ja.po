@@ -344,16 +344,16 @@ msgid "Build Tool Integration"
 msgstr ""
 
 msgid "`shadow-cljs` can integrate with other Clojure tools since the primary distribution is just a `.jar` file available via https://clojars.org/thheller/shadow-cljs[Clojars]. By default your `:dependencies` are managed via `shadow-cljs.edn` but you can use other builds tools to manage your dependencies as well."
-msgstr ""
+msgstr "主なディストリビューションは https://clojars.org/thheller/shadow-cljs[Clojars] から入手できる `.jar` ファイルだけなので、`shadow-cljs` は他の Clojure ツールと統合することができます。デフォルトでは `:dependencies` は `shadow-cljs.edn` で管理されていますが、他のビルドツールを使って依存関係を管理することもできます。"
 
 msgid "It is strongly recommended to use the standalone `shadow-cljs` version. The command does a lot of things to optimize the user experience (e.g. faster startup) which are not done by other tools. You'll also save yourself a lot of headaches dealing with dependency conflicts and other related errors."
-msgstr ""
+msgstr "スタンドアロンの `shadow-cljs` バージョンを使用することを強くお勧めします。このコマンドは、他のツールではできないユーザーエクスペリエンスを最適化するために多くのことを行います (例えば、起動の高速化など)。また、依存関係の競合やその他の関連するエラーを処理する手間も省けます。"
 
 msgid "Leiningen"
 msgstr ""
 
 msgid "If you'd like to use https://leiningen.org/[Leiningen] to manage your dependencies, you can do so by adding a `:lein` entry to your `shadow-cljs.edn` config. With this setting, the `shadow-cljs` command will use `lein` to launch the JVM, ignoring any `:source-paths` and `:dependencies` in `shadow-cljs.edn`; relying instead on `lein` to set them from `project.clj`."
-msgstr ""
+msgstr "https://leiningen.org/[Leiningen]を使って依存関係を管理したい場合は、`shadow-cljs.edn` の設定に `:lein` エントリを追加してください。この設定では、`shadow-cljs` コマンドは `lein` を使って JVM を起動し、`shadow-cljs.edn` の `:source-paths` や `:dependencies` は無視します。"
 
 msgid ""
 "{:lein true\n"
@@ -361,9 +361,13 @@ msgid ""
 " ; configure them via project.clj\n"
 " :builds { ... }"
 msgstr ""
+"{:lein true\n"
+" ; :source-paths と :dependencies はこのファイルでは無視され\n"
+" ; project.clj を通して設定されます\n"
+" :builds { ... }"
 
 msgid "Using a dedicated <code>lein</code> profile"
-msgstr ""
+msgstr "専用の `lein` プロファイルを使う"
 
 msgid ""
 "{:lein {:profile \"+cljs\"}\n"
@@ -384,28 +388,28 @@ msgid ""
 msgstr ""
 
 msgid "When using `project.clj` to manage your `:dependencies` you must manually include the https://clojars.org/thheller/shadow-cljs[thheller/shadow-cljs] artifact in your `:dependencies` (directly or in a profile)."
-msgstr ""
+msgstr "`project.clj` を使って `:dependencies` を管理する場合、手動で https://clojars.org/thheller/shadow-cljs[thheller/shadow-cljs] アーティファクトを `:dependencies` (直接またはプロファイル) に含めなければなりません。"
 
 msgid "When you are running into weird Java Stackstraces when starting `shadow-cljs` or trying compile builds you may have a dependency conflict. It is very important that `shadow-cljs` is used with proper matching `org.clojure/clojurescript` and `closure-compiler` versions. You can check via `lein deps :tree` and the required versions are listed on https://clojars.org/thheller/shadow-cljs[clojars] (on the right side)."
-msgstr ""
+msgstr "`shadow-cljs` を起動したり、ビルドをコンパイルしようとしたときに、奇妙な Java Stackstraces が発生する場合、依存関係の競合があるかもしれません。shadow-cljs` が `org.clojure/clojurescript` と `closure-compiler` のバージョンにマッチした状態で使われていることが非常に重要です。必要なバージョンは `lein deps :tree` で確認でき、https://clojars.org/thheller/shadow-cljs[clojars] (右側) にリストアップされています。"
 
 msgid "Running Tasks Directly From Leiningen"
-msgstr ""
+msgstr "Leiningenから直接タスクを実行する"
 
 msgid "You may also directly execute `shadow-cljs` commands via `lein` if you prefer to not use the `shadow-cljs` command itself."
-msgstr ""
+msgstr "また、`shadow-cljs` コマンド自体を使いたくない場合は、`lein` を使って `shadow-cljs` コマンドを直接実行することもできます。"
 
 msgid "It is recommended to still use the `shadow-cljs` command to run commands since that will take full advantage of a running server mode instance. This will run commands substantially faster than launching additional JVMs when using `lein` directly."
-msgstr ""
+msgstr "コマンドを実行するには `shadow-cljs` コマンドを使用することをお勧めします。これは `lein` を直接使用する場合に追加の JVM を起動するよりも、コマンドの実行速度を大幅に向上させることができます。"
 
 msgid "Just compile :dev mode once, no REPL or live-reload:"
-msgstr ""
+msgstr "REPLやライブリロードをせずに、一度だけ :devモードでコンパイルする。"
 
 msgid "$ lein run -m shadow.cljs.devtools.cli compile build-id"
 msgstr ""
 
 msgid "Create a :release mode optimized build:"
-msgstr ""
+msgstr ":release モードに最適化されたビルドを作成する。"
 
 msgid "$ lein run -m shadow.cljs.devtools.cli release build-id"
 msgstr ""
@@ -414,19 +418,19 @@ msgid "tools.deps / deps.edn"
 msgstr ""
 
 msgid "The new https://clojure.org/guides/deps_and_cli[deps.edn] can also be used to manage your `:dependencies` and `:source-paths` instead of using the built-in methods or `lein`. All `shadow-cljs` commands will then be launched via the new `clojure` utility instead."
-msgstr ""
+msgstr "新しい https://clojure.org/guides/deps_and_cli[deps.edn] は、組み込みのメソッドや `lein` を使う代わりに `:dependencies` や `:source-paths` を管理するために使うこともできます。すべての `shadow-cljs` コマンドは、代わりに新しい `clojure` ユーティリティを使って起動されます。"
 
 msgid "`tools.deps` is still changing quite frequently. Make sure you are using the latest version."
-msgstr ""
+msgstr "`tools.deps` はまだかなりの頻度で変更されています。最新のバージョンを使用していることを確認してください。"
 
 msgid "To use this set the `:deps true` property in your config. It is also possible to configure which `deps.edn` aliases should be used."
-msgstr ""
+msgstr "これを使用するには、設定で `:deps true` プロパティを設定します。どの `deps.edn` エイリアスを使用するかを設定することもできます。"
 
 msgid "You must add the `thheller/shadow-cljs` artifact to your `deps.edn` manually."
-msgstr ""
+msgstr "手動で `deps.edn` に `thheller/shadow-cljs` アーティファクトを追加する必要があります。"
 
 msgid "Simple <code>shadow-cljs.edn</code> example"
-msgstr ""
+msgstr "Simple `shadow-cljs.edn` example"
 
 msgid ""
 "{:deps true\n"
@@ -434,7 +438,7 @@ msgid ""
 msgstr ""
 
 msgid "Simple <code>deps.edn</code> example"
-msgstr ""
+msgstr "Simple `deps.edn` example"
 
 msgid ""
 "{:paths [...]\n"
@@ -442,7 +446,7 @@ msgid ""
 msgstr ""
 
 msgid "Example <code>shadow-cljs.edn</code> with :cljs alias"
-msgstr ""
+msgstr "Example `shadow-cljs.edn` with :cljs alias"
 
 msgid ""
 "{:deps {:aliases [:cljs]}\n"
@@ -450,7 +454,7 @@ msgid ""
 msgstr ""
 
 msgid "Example <code>deps.edn</code>"
-msgstr ""
+msgstr "Example `deps.edn`"
 
 msgid ""
 "{:paths [...]\n"
@@ -461,7 +465,7 @@ msgid ""
 msgstr ""
 
 msgid "Running with `clj` directly."
-msgstr ""
+msgstr "直接 `clj` で実行するなら"
 
 msgid ""
 "{:paths [...]\n"
@@ -476,28 +480,28 @@ msgid "clj -A:shadow-cljs watch app"
 msgstr ""
 
 msgid "You may also specify additional aliases via the command line using `-A`, eg. `shadow-cljs -A:foo:bar ...`."
-msgstr ""
+msgstr "コマンドラインで `-A` を使って追加のエイリアスを指定することもできます。 例. `shadow-cljs -A:foo:bar ...`.など。"
 
 msgid "Aliases are only applied when a new instance/server is started. They do not apply when connecting to a running server using the `shadow-cljs` command. Running via `clj` will always start a new JVM and does not support server-mode."
-msgstr ""
+msgstr "エイリアスが適用されるのは新しいインスタンス/サーバが起動したときだけです。これらは `shadow-cljs` コマンドを使って実行中のサーバに接続しているときには適用されません。`clj` を使って実行すると、常に新しい JVM が起動され、サーバモードはサポートされません。"
 
 msgid "Boot"
 msgstr ""
 
 msgid "The authors have little Boot experience, so this chapter is in need of contributions. We understand that Boot allows you to build your tool chain out of functions. Since `shadow-cljs` is a normal JVM library, you can call functions within it to invoke tasks."
-msgstr ""
+msgstr "著者は Boot の経験がほとんどないため、この章では貢献を必要としています。Bootでは、関数からツールチェーンを構築できることを理解しています。`shadow-cljs` は通常の JVM ライブラリなので、その中の関数を呼び出してタスクを呼び出すことができます。"
 
 msgid "Some boot tasks are available here: https://github.com/jgdavey/boot-shadow-cljs"
-msgstr ""
+msgstr "いくつかのbootタスクはここにあります: https://github.com/jgdavey/boot-shadow-cljs"
 
 msgid "Running Clojure Code"
 msgstr ""
 
 msgid "You can use the `shadow-cljs` CLI to call specific Clojure functions from the command line. This is useful when you want run some code before/after certain tasks. Suppose you wanted to `rsync` the output of your `release` build to a remote server."
-msgstr ""
+msgstr "コマンドラインから特定のClojure関数を呼び出すために`shadow-cljs` CLIを使うことができます。これは、特定のタスクの前後にコードを実行したい場合に便利です。例えば、`release` ビルドの出力をリモートサーバに `rsync` したいとします。"
 
 msgid "Example Clojure Namespace in <code>src/my/build.clj</code>"
-msgstr ""
+msgstr "Example Clojure Namespace in `src/my/build.clj`"
 
 msgid ""
 "(ns my.build\n"
@@ -511,7 +515,7 @@ msgid ""
 msgstr ""
 
 msgid "Running the <code>release</code> function"
-msgstr ""
+msgstr "Running the `release` function"
 
 msgid ""
 "$ shadow-cljs clj-run my.build/release\n"
@@ -520,10 +524,10 @@ msgid ""
 msgstr ""
 
 msgid "You can pass arguments to the invoked functions via the command line."
-msgstr ""
+msgstr "呼び出された関数には、コマンドラインを介して引数を渡すことができます。"
 
 msgid "Using arguments via normal Clojure fn args"
-msgstr ""
+msgstr "通常の Clojure fn args で引数を使用する"
 
 msgid ""
 "...\n"
@@ -533,28 +537,28 @@ msgid ""
 msgstr ""
 
 msgid "Passing the server from the command line"
-msgstr ""
+msgstr "コマンドラインからサーバーへの受け渡し"
 
 msgid "$ shadow-cljs clj-run my.build/release my@server.com:some/path"
 msgstr ""
 
 msgid "The usual `(defn release [& args])` structure also works if you want to parse the args with something like https://github.com/clojure/tools.cli[tools.cli]."
-msgstr ""
+msgstr "通常の `(defn release [& args])` 構造体は、 https://github.com/clojure/tools.cli[tools.cli] のように引数を解析したい場合にも動作します。"
 
 msgid "You have access to the full power of Clojure here. You can build entire tools on top of this if you like. As a bonus everything you write this way is also directly available via the Clojure REPL."
-msgstr ""
+msgstr "あなたはここでClojureのフルパワーにアクセスすることができます。お望みならば、この上にツール全体を構築することができます。ボーナスとして、この方法で書いたものはすべてClojure REPL経由で直接利用可能です。"
 
 msgid "When the <<server-mode, server>> is running the namespace will not be reloaded automatically, it will only be loaded once. It is recommended to do the development using a REPL and reload the file as usual (eg. `(require 'my.build :reload)`). You may also run `shadow-cljs clj-eval \"(require 'my.build :reload)\"` to reload manually from the command line."
-msgstr ""
+msgstr "<<server-mode, server>>を実行している場合、名前空間は自動的にリロードされず、一度だけロードされます。REPLを使って開発を行い、通常通りリロードすることをお勧めします(例: `(require 'my.build :reload)`)。また、`shadow-cljs clj-eval \"(require 'my.build :reload)\"` を実行して、コマンドラインから手動でリロードすることもできます。"
 
 msgid "Calling watch via clj-run"
 msgstr ""
 
 msgid "By default the functions called by `clj-run` only have access to a minimal `shadow-cljs` runtime which is enough to run `compile`, `release` and any other Clojure functionality. The JVM will terminate when your function completes."
-msgstr ""
+msgstr "デフォルトでは、`clj-run`によって呼び出された関数は、`compile`, `release`や他のClojure機能を実行するのに十分な最小限の`shadow-cljs`ランタイムにしかアクセスできません。JVMは、関数が完了すると終了します。"
 
 msgid "If you want to start a `watch` for a given build you need to declare that the function you are calling requires a full server. This will cause the process to stay alive until you explicitly call `(shadow.cljs.devtools.server/stop!)` or `CTRL+C` the process."
-msgstr ""
+msgstr "あるビルドに対して `watch` を起動したい場合、呼び出した関数がフルサーバを必要とすることを宣言する必要があります。これにより、明示的に `(shadow.cljs.devtools.server/stop!)` を呼び出すか `CTRL+C` でプロセスを起動するまでプロセスは生きたままになります。"
 
 msgid ""
 "(ns demo.run\n"
@@ -571,6 +575,19 @@ msgid ""
 "  [& args]\n"
 "  (shadow/watch :my-build))"
 msgstr ""
+"(ns demo.run\n"
+"  (:require [shadow.cljs.devtools.api :as shadow]))\n"
+"\n"
+";; これは、完全なサーバインスタンスがないために失敗します。\n"
+"(defn foo\n"
+"  [& args]\n"
+"  (shadow/watch :my-build))\n"
+"\n"
+";; このメタデータはサーバが起動されていることを確認します。\n"
+"(defn foo\n"
+"  {:shadow/requires-server true}\n"
+"  [& args]\n"
+"  (shadow/watch :my-build))"
 
 msgid "The REPL is a very powerful tool to have when working with Clojure(Script) code. `shadow-cljs` provides several built-in variants that let you get started quickly as well as variants that are integrated into your standard builds."
 msgstr ""
