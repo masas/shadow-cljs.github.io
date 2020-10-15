@@ -590,16 +590,16 @@ msgstr ""
 "  (shadow/watch :my-build))"
 
 msgid "The REPL is a very powerful tool to have when working with Clojure(Script) code. `shadow-cljs` provides several built-in variants that let you get started quickly as well as variants that are integrated into your standard builds."
-msgstr ""
+msgstr "REPLはClojure(Script)コードを扱うときに持っていると非常に強力なツールです。`shadow-cljs` は、標準ビルドに統合されたバリアントだけでなく、すぐに始められるようにいくつかの組み込みバリアントを提供しています。"
 
 msgid "When you quickly want to test out some code the built-in REPLs should be enough. If you need more complex setups that also do stuff on their own it is best to use an actual build."
-msgstr ""
+msgstr "すぐにいくつかのコードをテストしたい場合は、組み込みの REPL で十分です。より複雑なセットアップを必要とする場合は、実際のビルドを使用するのがベストです。"
 
 msgid "ClojureScript REPL"
 msgstr ""
 
 msgid "By default you can choose between a `node-repl` and a `browser-repl`. They both work similarly and the differentiating factor is that one runs in a managed `node.js` process while the others opens a Browser Window that will be used to eval the actual code."
-msgstr ""
+msgstr "デフォルトでは `node-repl` と `browser-repl` のどちらかを選ぶことができます。どちらも似たような動作をしますが、一方は管理された `node.js` プロセスで動作し、他方は実際のコードを評価するために使用されるブラウザウィンドウを開くという点が違います。"
 
 msgid "Node REPL"
 msgstr ""
@@ -608,13 +608,13 @@ msgid "$ shadow-cljs node-repl"
 msgstr ""
 
 msgid "This starts a blank CLJS REPL with an already connected `node` process."
-msgstr ""
+msgstr "これは、すでに接続されている `node` プロセスで空のCLJS REPLを起動します。"
 
 msgid "If you exit the Node REPL the `node` process is also killed!"
-msgstr ""
+msgstr "ノードREPLを終了した場合、`node`プロセスも終了します。"
 
 msgid "`node-repl` lets you get started without any additional configuration. It has access to all your code via the usual means, ie. `(require '[your.core :as x])`. Since it is not connected to any build it does not do any automatic rebuilding of code when your files change and does not provide hot-reload."
-msgstr ""
+msgstr "`node-repl` を使うと、追加の設定なしに始めることができます。これは通常の方法、すなわち `(require '[your.core :as x])` ですべてのコードにアクセスすることができます。ビルドに接続されていないので、ファイルが変更されてもコードの自動再構築は行われず、ホットリロードも行いません。"
 
 msgid "Browser REPL"
 msgstr ""
@@ -623,28 +623,28 @@ msgid "$ shadow-cljs browser-repl"
 msgstr ""
 
 msgid "This starts a blank CLJS REPL and will open an associated Browser window where the code will execute. Besides running in the Browser this has all the same functionality as the above `node-repl`."
-msgstr ""
+msgstr "これは空のCLJS REPLを起動し、コードが実行される関連するブラウザウィンドウを開きます。ブラウザで実行するだけでなく、これは上記の `node-repl` と同じ機能をすべて持っています。"
 
 msgid "If you close the Browser window the REPL will stop working."
-msgstr ""
+msgstr "ブラウザのウィンドウを閉じると、REPLは動作を停止します。"
 
 msgid "Build-specific REPL"
 msgstr ""
 
 msgid "`node-repl` and `browser-repl` work without any specific build configuration. That means they'll only do whatever you tell them to do but nothing on their own."
-msgstr ""
+msgstr "`node-repl` と `browser-repl` は特定のビルド設定をしなくても動作します。つまり、あなたが指示したことは何でもできるだけで、それ自体は何もしません。"
 
 msgid "If you want to build a specific thing you should configure a build using one of the provided build-targets. Most of them automatically inject the necessary code for a ClojureScript REPL. It should not require any additional configuration. For the build CLJS REPL to work you need 2 things"
-msgstr ""
+msgstr "特定のものをビルドしたい場合は、提供されている build-targets の一つを使ってビルドを設定する必要があります。それらのほとんどは、ClojureScript REPLのために必要なコードを自動的に注入します。追加の設定は必要ありません。ビルドCLJS REPLが動作するためには、2つのものが必要です。"
 
 msgid "a running `watch` for your build"
-msgstr ""
+msgstr "ビルド用に実行中の `watch`"
 
 msgid "connect the JS runtime of the `:target`. Meaning if you are using the `:browser` target you need to open a Browser that has the generated JS loaded. For node.js builds that means running the `node` process."
-msgstr ""
+msgstr "`:target` の JS ランタイムに接続します。つまり、`:browser` ターゲットを使用している場合は、生成された JS が読み込まれたブラウザを開く必要があります。node.jsのビルドでは `node` プロセスを実行することを意味します。"
 
 msgid "Once you have both you can connect to the CLJS REPL via the command line or from the Clojure REPL."
-msgstr ""
+msgstr "両方が揃ったら、コマンドラインまたはClojure REPLからCLJS REPLに接続することができます。"
 
 msgid "CLI"
 msgstr ""
@@ -658,6 +658,12 @@ msgid ""
 "shadow-cljs - connected to server\n"
 "[3:1]~cljs.user=>"
 msgstr ""
+"$ shadow-cljs watch build-id\n"
+"...\n"
+"\n"
+"# 別のターミナルウィンドウ$ shadow-cljs cljs-repl build-id\n"
+"shadow-cljs - connected to server\n"
+"[3:1]~cljs.user=>"
 
 msgid ""
 "$ shadow-cljs clj-repl\n"
@@ -672,13 +678,13 @@ msgid ""
 msgstr ""
 
 msgid "Type `:repl/quit` to exit the REPL. This will only exit the REPL, the `watch` will remain running."
-msgstr ""
+msgstr "REPLを終了するには、`:repl/quit`とタイプします。これはREPLを終了するだけで、`watch`は実行されたままです。"
 
 msgid "You may run multiple `watch` \"workers\" in parallel and connect/disconnect to their REPLs at any given time."
-msgstr ""
+msgstr "複数の `watch` \"worker\" を並行して実行し、それらの REPL に接続/切断することができます。"
 
 msgid "No connected runtime error."
-msgstr ""
+msgstr "接続不能ランタイムエラー"
 
 msgid ""
 "[3:1]~cljs.user=> (js/alert \"foo\")\n"
@@ -686,13 +692,13 @@ msgid ""
 msgstr ""
 
 msgid "If you see this you need to open your App in the Browser or start the `node` process."
-msgstr ""
+msgstr "これが表示された場合は、ブラウザでアプリを開くか、`node`プロセスを開始する必要があります。"
 
 msgid "Clojure REPL"
 msgstr ""
 
 msgid "A Clojure REPL is also provided in addition to the provided ClojureScript REPLs. This is can be used to control the `shadow-cljs` process and run all other build commands through it. You can start with a Clojure REPL and then upgrade it to a CLJS REPL at any point (and switch back)."
-msgstr ""
+msgstr "提供されているClojureScript REPLに加えて、Clojure REPLも提供されています。これは `shadow-cljs` プロセスを制御し、それを通して他のすべてのビルドコマンドを実行するために使用することができます。Clojure REPLから始めて、いつでもCLJS REPLにアップグレードすることができます。"
 
 msgid "Running from the CLI"
 msgstr ""
@@ -705,7 +711,7 @@ msgid ""
 msgstr ""
 
 msgid "The `shadow.cljs.devtools.api` namespace has functions that map more or less 1:1 to the CLI counterparts. It is aliased as `shadow` by default."
-msgstr ""
+msgstr "名前空間 `shadow.cljs.devtools.api` は、多かれ少なかれCLIに対応する関数を持っています。デフォルトでは `shadow` という名前でエイリアスされています。"
 
 msgid "Example commands"
 msgstr ""
@@ -740,10 +746,10 @@ msgid "Embedded"
 msgstr ""
 
 msgid "It is also possible to use `shadow-cljs` entirely from within any other CLJ process. As long as the `thheller/shadow-cljs` artifact was loaded on the classpath you are good to go."
-msgstr ""
+msgstr "また、他のCLJプロセス内から `shadow-cljs` を完全に使用することも可能です。クラスパスに `thheller/shadow-cljs` アーティファクトがロードされていれば問題ありません。"
 
 msgid "Example using <code>lein repl</code>"
-msgstr ""
+msgstr "Example using `lein repl`"
 
 msgid ""
 "$ lein repl\n"
@@ -764,16 +770,16 @@ msgid ""
 msgstr ""
 
 msgid "You can stop the embedded server by running `(shadow.cljs.devtools.server/stop!)`. This will also stop all running build processes."
-msgstr ""
+msgstr "`(shadow.cljs.devtools.server/stop!)` これは実行中のビルドプロセスもすべて停止します。"
 
 msgid "If you want to switch to a CLJS REPL this may require additional setup in the tool you used to start the server in. Since `lein` will default to using nREPL it will require configuring additional nREPL `:middleware`. When using `clj` you are good to go since it doesn't use nREPL."
-msgstr ""
+msgstr "CLJS REPLに切り替えたい場合は、サーバを起動する際に使用したツールで追加の設定が必要になるかもしれません。 `lein` はデフォルトでnREPLを使うようになっているので、追加のnREPL `:middleware` を設定する必要があります。 `clj` を使う場合は、nREPLを使わないので問題ありません。"
 
 msgid "Configuration"
 msgstr ""
 
 msgid "`shadow-cljs` is configured by a `shadow-cljs.edn` file in your project root directory. You can create a default one by running `shadow-cljs init`. It should contain a map with some global configuration and a `:builds` entry for all your builds."
-msgstr ""
+msgstr "`shadow-cljs` はプロジェクトのルートディレクトリにある `shadow-cljs.edn` ファイルによって設定されます。デフォルトのファイルは `shadow-cljs init` を実行することで作成できます。このファイルには、グローバルな設定を含むマップと、すべてのビルド用の `:builds` エントリが含まれているはずです。"
 
 msgid ""
 "{:source-paths [...]\n"
@@ -782,7 +788,7 @@ msgid ""
 msgstr ""
 
 msgid "An example config could look like this:"
-msgstr ""
+msgstr "設定例は以下のようになります。"
 
 msgid ""
 "{:dependencies\n"
@@ -799,7 +805,7 @@ msgid ""
 msgstr ""
 
 msgid "The file structure for this example should look like this:"
-msgstr ""
+msgstr "この例のファイル構成は次のようになります。"
 
 msgid ""
 ".\n"
@@ -814,13 +820,13 @@ msgid "Source Paths"
 msgstr ""
 
 msgid "`:source-paths` configures your JVM classpath. The compiler will use this config to find Clojure(Script) source files (eg. `.cljs`)."
-msgstr ""
+msgstr "`:source-paths` は JVM のクラスパスを設定します。コンパイラはこの設定を使ってClojure(Script)のソースファイル(例: `.cljs` )を見つけます。"
 
 msgid "It is fine to put everything into one source path but you can use multiple if you want to \"group\" source files in certain ways. It is useful if you want to keep your tests separate for example."
-msgstr ""
+msgstr "全てを一つのソースパスに入れるのは良いのですが、ソースファイルを特定の方法で\"グループ\"化したい場合は、複数のソースパスを使うことができます。例えば、テストを別々にしておきたい場合などに便利です。"
 
 msgid "Using multiple source paths"
-msgstr ""
+msgstr "複数のソースパスの使用"
 
 msgid ""
 "{:source-paths [\"src/main\" \"src/test\"]\n"
@@ -828,7 +834,7 @@ msgid ""
 msgstr ""
 
 msgid "File Structure"
-msgstr ""
+msgstr "ファイル構成"
 
 msgid ""
 ".\n"
@@ -844,22 +850,22 @@ msgid ""
 msgstr ""
 
 msgid "It is not recommended to separate source files by extension (eg. `src/clj`, `src/cljs`, `src/cljc`). For some reason this is widely used in CLJS project templates but it just makes things harder to use."
-msgstr ""
+msgstr "ソースファイルを拡張子(例: `src/clj`, `src/cljs`, `src/cljc`)で分けることは推奨されていません。なぜかこれは CLJS プロジェクトのテンプレートで広く使われていますが、使いにくくなるだけです。"
 
 msgid "Dependencies"
-msgstr ""
+msgstr "依存関係"
 
 msgid "Clojure(Script)"
 msgstr ""
 
 msgid "Your dependencies are managed via the `:dependencies` key at the root of the `shadow-cljs.edn` config file. They are declared in the same notation that other Clojure tools like `lein` or `boot` use."
-msgstr ""
+msgstr "依存関係は `shadow-cljs.edn` 設定ファイルのルートにある `:dependencies` キーで管理されます。依存関係は `lein` や `boot` のような他の Clojure ツールと同じ記法で宣言されます。"
 
 msgid "Each dependency is written as a vector using `[library-name \"version-string\"]` nested in one outer vector."
-msgstr ""
+msgstr "各依存関係は、外側のベクトルに入れ子にした `[library-name \"version-string\"]` を用いてベクトルとして記述しています。"
 
 msgid "Example :dependencies"
-msgstr ""
+msgstr ":dependencies の例"
 
 msgid ""
 "{:source-paths [\"src\"]\n"
@@ -868,16 +874,16 @@ msgid ""
 msgstr ""
 
 msgid "Notice that the source path is *only* specified once in the entire configuration. The system will use namespace dependency graphs to determine what code is needed in the final output of any given build."
-msgstr ""
+msgstr "ソースパスが指定されるのは、設定全体の中で *一度* だけであることに注意してください。システムは名前空間依存性グラフを使用して、任意のビルドの最終出力に必要なコードを決定します。"
 
 msgid "JavaScript"
 msgstr ""
 
 msgid "`shadow-cljs` integrates fully with the https://www.npmjs.com/[`npm`] ecosystem to manage JavaScript dependencies."
-msgstr ""
+msgstr "`shadow-cljs` は、https://www.npmjs.com/[`npm`] エコシステムと完全に統合して JavaScript の依存関係を管理します。"
 
 msgid "You can use `npm` or `yarn` to manage your dependencies, please refer to their respective documentation."
-msgstr ""
+msgstr "依存関係の管理には `npm` や `yarn` を使うことができます。"
 
 msgid "npm"
 msgstr ""
@@ -892,7 +898,7 @@ msgid "https://yarnpkg.com/en/docs"
 msgstr ""
 
 msgid "Both manage your dependencies via a `package.json` file in your project directory.  Almost every package available via `npm` will explain how to install it. Those instructions now apply to `shadow-cljs` as well."
-msgstr ""
+msgstr "どちらもプロジェクトディレクトリの `package.json` ファイルを使って依存関係を管理します。 ほとんどのパッケージは `npm` で利用できるので、インストール方法を説明してくれます。これらの説明は `shadow-cljs` にも適用されます。"
 
 msgid "Installing a JavaScript package"
 msgstr ""
@@ -906,37 +912,37 @@ msgid ""
 msgstr ""
 
 msgid "Nothing more is required. Dependencies will be added to the `package.json` file and this will be used to manage them."
-msgstr ""
+msgstr "これ以上は必要ありません。依存関係は `package.json` ファイルに追加され、これが管理に使われます。"
 
 msgid "If you don’t have a `package.json` yet run `npm init` from a command line."
-msgstr ""
+msgstr "まだ `package.json` を持っていない場合は、コマンドラインから `npm init` を実行します。"
 
 msgid "Missing JS Dependency?"
 msgstr ""
 
 msgid "You might run into errors related to missing JS dependencies. Most ClojureScript libraries do not yet declare the `npm` packages they use since they still expect to use <<cljsjs, CLJSJS>>. We want to use `npm` directly which means you must manually install the `npm` packages until libraries properly declare the `:npm-deps` themselves."
-msgstr ""
+msgstr "JS の依存関係の欠落に関連したエラーに遭遇するかもしれません。ほとんどの ClojureScript ライブラリはまだ `npm` パッケージを宣言していません。私たちは `npm` を直接使いたいので、ライブラリが `:npm-deps` を適切に宣言するまでは `npm` パッケージを手動でインストールしなければなりません。"
 
 msgid "The required JS dependency \"react\" is not available, it was required by ..."
-msgstr ""
+msgstr "必要なJSの依存関係 \"react\" が利用できません、これは..."
 
 msgid "This means that you should `npm install react`."
-msgstr ""
+msgstr "ということは、`npm install react` をするべきだということです。"
 
 msgid "In the case of `react` you probably need these 3 packages: `npm install react react-dom create-react-class`."
-msgstr ""
+msgstr "`react` の場合、次の3つのパッケージが必要になるでしょう。 `npm install react react-dom create-react-class` "
 
 msgid "User Configuration"
 msgstr ""
 
 msgid "Most configuration will be done in the projects themselves via `shadow-cljs.edn` but some config may be user-dependent. Tools like https://docs.cider.mx[CIDER] may require the additional `cider-nrepl` dependency which would be useless for a different team member using Cursive when adding that dependency via `shadow-cljs.edn`."
-msgstr ""
+msgstr "ほとんどの設定はプロジェクト自身で `shadow-cljs.edn` を使って行いますが、いくつかの設定はユーザに依存することがあります。https://docs.cider.mx[CIDER] のようなツールは、`shadow-cljs.edn` で依存関係を追加しても Cursive を使っている別のチームメンバーには意味がないので、追加の `cider-nrepl` 依存関係を必要とするかもしれません。"
 
 msgid "A restricted set of config options can be added to `~/.shadow-cljs/config.edn` which will then apply to all projects built on this users machine."
-msgstr ""
+msgstr "制限された設定オプションのセットを `~/.shadow-cljs/config.edn` に追加することができ、このユーザのマシンでビルドされたすべてのプロジェクトに適用されます。"
 
 msgid "Adding dependencies is allowed via the usual `:dependencies` key. Note that dependencies added here will apply to ALL projects. Keep them to a minimum and only put tool related dependencies here. Everything that is relevant to a build should remain in `shadow-cljs.edn` as otherwise things may not compile for other users. These dependencies will automatically be added when using `deps.edn` or `lein` as well."
-msgstr ""
+msgstr "依存関係を追加するには、通常の `:dependencies` キーを使用します。ここで追加された依存関係はすべてのプロジェクトに適用されることに注意してください。依存関係は最小限に抑え、ツール関連の依存関係だけをここに入れてください。ビルドに関連するものはすべて `shadow-cljs.edn` のままにしておくべきです。これらの依存関係は `deps.edn` や `lein` を使うときにも自動的に追加されます。"
 
 msgid "Example ~/.shadow-cljs/config.edn"
 msgstr ""
@@ -946,9 +952,12 @@ msgid ""
 " [[cider/cider-nrepl \"0.21.1\"]]}\n"
 ";; this version may be out of date, check whichever is available"
 msgstr ""
+"{:dependencies\n"
+" [[cider/cider-nrepl \"0.21.1\"]]}\n"
+";; このバージョンは古いかもしれません、利用可能なものをチェックしましょう。"
 
 msgid "When using `deps.edn` to resolve dependencies you may sometimes want to activate additional aliases. This can be done via `:deps-aliases`."
-msgstr ""
+msgstr "依存関係を解決するために `deps.edn` を使う場合、追加のエイリアスを有効にしたいことがあるかもしれません。これは `:deps-aliases` で行うことができます。"
 
 msgid ""
 ";; shadow-cljs.edn in project\n"
@@ -959,25 +968,25 @@ msgid ""
 msgstr ""
 
 msgid "This will make the `shadow-cljs` command use the `[:cider :cljs]` aliases in projects using `deps.edn`. This might be useful if you have an additional `:cider` alias in your `~/.clojure/deps.edn`."
-msgstr ""
+msgstr "これにより、`deps.edn` を使っているプロジェクトで `shadow-cljs` コマンドが `[:cider :cljs]` エイリアスを使うようになります。これは、`~/.clojure/deps.edn` に追加の `:cider` エイリアスがある場合に便利です。"
 
 msgid "By default the `shadow-cljs` server-mode will launch an embedded nREPL server which you might not need. You can disable this by setting `:nrepl false` in user config."
-msgstr ""
+msgstr "デフォルトでは `shadow-cljs` サーバモードは必要ないかもしれない組み込みの nREPL サーバを起動します。これを無効にするには、ユーザ設定で `:nrepl false` を設定します。"
 
 msgid "The only other currently accepted value in the user config is the <<open-file-command, :open-file-command>>. No other options are currently have any effect."
-msgstr ""
+msgstr "ユーザー設定で現在認められている他の値は、 <<open-file-command, :open-file-command>> だけです。他のオプションは現在のところ何の影響もありません。"
 
 msgid "Server Options"
 msgstr ""
 
 msgid "This section is for other options that configure the `shadow-cljs` server instance. They are optional."
-msgstr ""
+msgstr "このセクションでは、`shadow-cljs` サーバインスタンスを設定する他のオプションについて説明します。これらはオプションです。"
 
 msgid "nREPL"
 msgstr ""
 
 msgid "The `shadow-cljs` <<server-mode, server>> provides a https://nrepl.org[nREPL] server via TCP. If you look at the startup message you'll see the port of nREPL, and the port will also be stored in `target/shadow-cljs/nrepl.port`:"
-msgstr ""
+msgstr "`shadow-cljs` <<server-mode, server>> は https://nrepl.org[nREPL] サーバを TCP 経由で提供します。起動メッセージを見るとnREPLのポート番号が表示されており、その数値は `target/shadow-cljs/nrepl.port` に格納されています。"
 
 msgid ""
 "$ shadow-cljs watch app\n"
@@ -990,7 +999,7 @@ msgid ""
 msgstr ""
 
 msgid "You can configure the port and additional middleware with `shadow-cljs.edn`:"
-msgstr ""
+msgstr "ポート番号や追加のミドルウェアは `shadow-cljs.edn` で設定することができます。"
 
 msgid ""
 "{...\n"
@@ -1000,13 +1009,13 @@ msgid ""
 msgstr ""
 
 msgid "The default global config file in `~/.nrepl/nrepl.edn` or the local `.nrepl.edn` will also be loaded on startup and can be used to configure `:middleware`."
-msgstr ""
+msgstr "デフォルトのグローバル設定ファイルは `~/.nrepl/nrepl.edn` またはローカルの `.nrepl.edn` にあり、起動時に読み込まれ、 `:middleware` を設定するのに使われます。"
 
 msgid "If the popular middleware https://github.com/clojure-emacs/cider-nrepl[cider-nrepl] is found on the classpath (e.g. it's included in `:dependencies`), it will be used automatically. No additional configuration required. This can be disabled by setting `:nrepl {:cider false}`."
-msgstr ""
+msgstr "人気のあるミドルウェア https://github.com/clojure-emacs/cider-nrepl[cider-nrepl] がクラスパス上にあれば(例えば `:dependencies` に含まれているなど)、自動的に使用されます。追加の設定は必要ありません。これは `:nrepl {:cider false}` を設定することで無効にできます。"
 
 msgid "You may configure the namespace you start in when connecting by setting `:init-ns` in the `:nrepl` options. It defaults to `shadow.user`."
-msgstr ""
+msgstr "接続時に開始する名前空間は、`:nrepl` オプションで `:init-ns` を設定することで設定できます。デフォルトは `shadow.user` です。"
 
 msgid ""
 "{...\n"
@@ -1015,13 +1024,13 @@ msgid ""
 msgstr ""
 
 msgid "The nREPL server can be disabled by setting `:nrepl false`."
-msgstr ""
+msgstr "nREPLサーバは `:nrepl false` を設定することで無効にすることができます。"
 
 msgid "nREPL Usage"
 msgstr ""
 
 msgid "When connecting to the nREPL server the connection always starts out as a Clojure REPL. Switching to a CLJS REPL works similarly to the <<cljs-repl, non-nREPL version>>. First the `watch` for the given build needs to be started and then we need to select this build to switch the current nREPL session to that build. After selecting the build everything will be eval'd in ClojureScript instead of Clojure."
-msgstr ""
+msgstr "nREPLサーバに接続するとき、接続は常にClojure REPLとして始まります。CLJS REPLへの切り替えは<<cljs-repl, non-nREPL version>>と同様に動作します。まず、与えられたビルドのための `watch` を開始する必要があり、次に、現在のnREPLセッションをそのビルドに切り替えるために、このビルドを選択する必要があります。ビルドを選択した後は、ClojureではなくClojureScriptで全てが評価されます。"
 
 msgid ""
 "(shadow/watch :the-build)\n"
@@ -1035,10 +1044,10 @@ msgid "Embedded nREPL Server"
 msgstr ""
 
 msgid "When you use `shadow-cljs` embedded in other tools that provide their own nREPL server (eg. `lein`) you need to configure the `shadow-cljs` middleware. Otherwise you won't be able to switch between CLJ and CLJS REPLs."
-msgstr ""
+msgstr "独自のnREPLサーバを提供する他のツール(例: `lein`)に埋め込まれた `shadow-cljs` を使う場合、`shadow-cljs` ミドルウェアを設定する必要があります。そうしないと、CLJとCLJSのREPLを切り替えることができません。"
 
 msgid "Example Leiningen <code>project.clj</code>"
-msgstr ""
+msgstr "Example Leiningen `project.clj`"
 
 msgid ""
 "(defproject my-amazing-project \"1.0.0\"\n"
@@ -1051,16 +1060,16 @@ msgid ""
 msgstr ""
 
 msgid "You still need to start the <<embedded, embedded server>> manually before using the CLJS REPL."
-msgstr ""
+msgstr "CLJS REPLを使用する前に、<<embedded, embedded server>>を手動で起動する必要があります。"
 
 msgid "Socket REPL"
 msgstr ""
 
 msgid "A Clojure Socket REPL is started automatically in server-mode and uses a random port by default. Tools can find the port it was started under by checking `.shadow-cljs/socket-repl.port` which will contain the port number."
-msgstr ""
+msgstr "Clojure Socket REPLはサーバモードで自動的に起動され、デフォルトではランダムなポートを使用します。ツールは、ポート番号を含む `.shadow-cljs/socket-repl.port` をチェックすることで、それが起動されたポートを見つけることができます。"
 
 msgid "You can also set a fixed port by via `shadow-cljs.edn`."
-msgstr ""
+msgstr "また、 `shadow-cljs.edn` を使って固定ポートを設定することもできます。"
 
 msgid ""
 "{...\n"
@@ -1070,16 +1079,16 @@ msgid ""
 msgstr ""
 
 msgid "The Socket REPL can be disabled by setting `:socket-repl false`."
-msgstr ""
+msgstr "ソケットREPLを無効にするには、`:socket-repl false`を設定します。"
 
 msgid "SSL"
 msgstr ""
 
 msgid "The `shadow-cljs` HTTP servers support SSL. It requires a Java Keystore that provides a matching private key and certificate."
-msgstr ""
+msgstr "`shadow-cljs` HTTPサーバはSSLをサポートしています。一致する秘密鍵と証明書を提供するJavaキーストアが必要です。"
 
 msgid "<code>shadow-cljs.edn</code> with SSL configured"
-msgstr ""
+msgstr "SSL設定をした `shadow-cljs.edn`"
 
 msgid ""
 "{...\n"
@@ -1089,49 +1098,49 @@ msgid ""
 msgstr ""
 
 msgid "The above are the defaults so if you want to use those it is fine to just set `:ssl {}`."
-msgstr ""
+msgstr "上記はデフォルトなので、これらを使いたい場合は `:ssl {}` を設定するだけで大丈夫です。"
 
 msgid "You can create a Keystore using the java `keytool` command. Creating a trusted self-signed certificate is also possible but somewhat complicated."
-msgstr ""
+msgstr "javaの `keytool` コマンドを使用してキーストアを作成することができます。信頼できる自己署名証明書を作成することも可能ですが、少々複雑です。"
 
 msgid "https://gist.github.com/jchandra74/36d5f8d0e11960dd8f80260801109ab0[OpenSSL] instructions for Linux and Windows (via WSL)"
-msgstr ""
+msgstr "https://gist.github.com/jchandra74/36d5f8d0e11960dd8f80260801109ab0[OpenSSL]のLinuxとWindowsの説明書 (WSL経由)"
 
 msgid "https://certsimple.com/blog/localhost-ssl-fix[macOS] instructions"
-msgstr ""
+msgstr "https://certsimple.com/blog/localhost-ssl-fix[macOS]の説明書"
 
 msgid "The created `Certificates.p12` (macOS) or `localhost.pfx` (Linux, Windows) file can be turned into the required `keystore.jks` via the `keytool` utility."
-msgstr ""
+msgstr "作成した `Certificates.p12` (macOS) または `localhost.pfx` (Linux, Windows) ファイルは、`keytool` ユーティリティを使って必要な `keystore.jks` に変換することができます。"
 
 msgid "$ keytool -importkeystore -destkeystore keystore.jks -srcstoretype PKCS12 -srckeystore localhost.pfx"
 msgstr ""
 
 msgid "You must generate the Certificate with a SAN (Subject Alternative Name) for \"localhost\" (or whichever host you want to use). SAN is required to get Chrome to trust the Certificate and not show warnings. The password used when exporting must match the password assigned to the Keystore."
-msgstr ""
+msgstr "証明書は、\"localhost\"（または使用したいホスト）のSAN（Subject Alternative Name）で生成する必要があります。SAN は、Chrome が証明書を信頼して警告を表示しないようにするために必要です。エクスポート時に使用するパスワードは、キーストアに割り当てられたパスワードと一致している必要があります。"
 
 msgid "Primary HTTP(S)"
 msgstr ""
 
 msgid "The `shadow-cljs` server starts one primary HTTP server. It is used to serve the UI and websockets used for Hot Reload and REPL clients. By default it listens on Port 9630. If that Port is in use it will increment by one and attempt again until an open Port is found."
-msgstr ""
+msgstr "shadow-cljs` サーバはプライマリ HTTP サーバを一つ起動します。これはホットリロードとREPLクライアントに使われるUIとウェブソケットを提供するために使われます。デフォルトではポート9630を listen します。もしそのポートが使用中であれば、1つずつインクリメントして、開いているポートが見つかるまで再試行します。"
 
 msgid "Startup message indicating the Port used"
-msgstr ""
+msgstr "使用ポートを示す起動メッセージ"
 
 msgid "shadow-cljs - server running at http://0.0.0.0:9630"
 msgstr ""
 
 msgid "When `:ssl` is configured the server will be available via `https://` instead."
-msgstr ""
+msgstr "`ssl` が設定されている場合は、代わりに `https://` を用いてサーバを利用できるようになります。"
 
 msgid "The server automatically supports HTTP/2 when using `:ssl`."
-msgstr ""
+msgstr "サーバは `:ssl` を使うと自動的に HTTP/2 をサポートします。"
 
 msgid "If you prefer to set your own port instead you can do this via the `:http` config."
-msgstr ""
+msgstr "代わりに自分のポートを設定したい場合は、`:http` 設定で設定することができます。"
 
 msgid "<code>shadow-cljs.edn</code> with <code>:http</code> config"
-msgstr ""
+msgstr "`:http` を設定した `shadow-cljs.edn`"
 
 msgid ""
 "{...\n"
@@ -1141,7 +1150,7 @@ msgid ""
 msgstr ""
 
 msgid "`:ssl` switches the server to server `https://` only. If you want to keep the `http://` version you can configure a separate `:ssl-port` as well."
-msgstr ""
+msgstr "`:ssl` はサーバを `https://` のみに切り替えます。もし `http://` バージョンを維持したい場合は、`:ssl-port` を別途設定することもできます。"
 
 msgid ""
 "{...\n"
@@ -1155,19 +1164,19 @@ msgid "Development HTTP(S)"
 msgstr ""
 
 msgid "`shadow-cljs` can provide additional basic HTTP servers via the `:dev-http` config entry. By default these will serve all static files from the configured paths, and fall back to `index.html` when a resource is not found (this is what you typically want when developing an application which uses browser push state)."
-msgstr ""
+msgstr "`shadow-cljs` は `:dev-http` 設定項目で追加の基本的な HTTP サーバを提供することができます。デフォルトでは、これらは設定されたパスからすべての静的ファイルを提供し、リソースが見つからない場合は `index.html` にフォールバックします (これはブラウザのプッシュ状態を利用するアプリケーションを開発する際に典型的に必要とされるものです)。"
 
 msgid "These servers are started automatically when `shadow-cljs` is running in server mode. They are not specific to any build and can be used to serve files for multiple builds as long as a unique `:output-dir` is used for each."
-msgstr ""
+msgstr "これらのサーバは `shadow-cljs` がサーバモードで動作しているときに自動的に起動します。これらのサーバはどのビルドにも依存せず、それぞれに固有の `:output-dir` が使われている限り、複数のビルドに対応するファイルを提供するために使うことができます。"
 
 msgid "IMPORTANT"
 msgstr ""
 
 msgid "These are just generic web servers that server static files. They are not required for any live-reload or REPL logic. Any webserver will do, these are just provided for convenience."
-msgstr ""
+msgstr "これらは静的ファイルを提供する汎用的なウェブサーバです。ライブリロードや REPL ロジックには必要ありません。どのウェブサーバでも可能ですが、これらは利便性のために提供されているだけです。"
 
 msgid "Basic example serving the <code>public</code> directory via <code><a href=\"http://localhost:8000\" class=\"bare\">http://localhost:8000</a></code>"
-msgstr ""
+msgstr "基本的な例として、`public` ディレクトリを経由して `http://localhost:8000` を提供する例。"
 
 msgid ""
 "{...\n"
@@ -1176,7 +1185,7 @@ msgid ""
 msgstr ""
 
 msgid "`:dev-http` expects a map of `port-number` to `config`. The `config` supports several shortcuts for the most common scenarios."
-msgstr ""
+msgstr "`:dev-http` は `port-number` から `config` へのマップを期待しています。config`は最も一般的なシナリオのためのいくつかのショートカットをサポートしています。"
 
 msgid "Serve directory from filesystem root"
 msgstr ""
@@ -1191,7 +1200,7 @@ msgid ":dev-http {8000 \"classpath:public\"}"
 msgstr ""
 
 msgid "This would attempt to find a request to `/index.html` via `public/index.html` on the classpath. Which may include files in `.jar` files."
-msgstr ""
+msgstr "これはクラスパス上の `public/index.html` を経由して `/index.html` へのリクエストを見つけようとします。これは `.jar` ファイル内のファイルを含むかもしれません。"
 
 msgid "Serve from multiple roots"
 msgstr ""
@@ -1200,28 +1209,28 @@ msgid ":dev-http {8000 [\"a\" \"b\" \"classpath:c\"]}"
 msgstr ""
 
 msgid "This would first attempt to find `<project-root>/a/index.html` then `<project-root>/b/index.html` then `c/index.html` on the classpath. If nothing is found the default handler will be called."
-msgstr ""
+msgstr "これは、まず `<project-root>/a/index.html`、次に `<project-root>/b/index.html`、次に `c/index.html` をクラスパス上で見つけようとします。何も見つからなければ、デフォルトのハンドラが呼ばれます。"
 
 msgid "The longer config version expects a map and the supported options are:"
-msgstr ""
+msgstr "長い設定バージョンではマップを想定しており、サポートされているオプションは以下の通りです。"
 
 msgid "`:root`"
 msgstr ""
 
 msgid "(String) The path from which to serve requests. Paths starting with `classpath:` will serve from the classpath instead of the filesystem. All filesystem paths are relative to the project root."
-msgstr ""
+msgstr "(String) リクエストに応答するパス。 `classpath:` で始まるパスは、ファイルシステムではなくクラスパスから提供します。ファイルシステムのパスはすべてプロジェクトのルートからの相対パスです。"
 
 msgid "`:roots`"
 msgstr ""
 
 msgid "(Vector of Strings) If you need multiple root paths, use instead of `:root`."
-msgstr ""
+msgstr "(Vector of Strings) 複数のルートパスが必要な場合は、`:roots` を使う。"
 
 msgid "`:ssl-port`"
 msgstr ""
 
 msgid "When `:ssl` is configured use this port for ssl connections and server normal HTTP on the regular port. If `:ssl-port` is not set but `:ssl` is configured the default port will only server SSL requests."
-msgstr ""
+msgstr "`ssl` が設定されている場合、このポートを使ってssl接続を行い、通常のポートで通常のHTTPをサーバする。もし `:ssl-port` が設定されておらず `:ssl` が設定されている場合、デフォルトのポートは SSL リクエストのみをサーバするようになります。"
 
 msgid "`:host`"
 msgstr ""
