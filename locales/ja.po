@@ -1230,34 +1230,34 @@ msgid "`:ssl-port`"
 msgstr ""
 
 msgid "When `:ssl` is configured use this port for ssl connections and server normal HTTP on the regular port. If `:ssl-port` is not set but `:ssl` is configured the default port will only server SSL requests."
-msgstr "`ssl` が設定されている場合、このポートを使ってssl接続を行い、通常のポートで通常のHTTPをサーバする。もし `:ssl-port` が設定されておらず `:ssl` が設定されている場合、デフォルトのポートは SSL リクエストのみをサーバするようになります。"
+msgstr "`ssl` が設定されている場合、このポートを使ってssl接続を行い、通常のポートで通常のHTTPをサーバする。もし `:ssl-port` が設定されておらず `:ssl` が設定されている場合、デフォルトのポートは SSL リクエストのみを提供するようになります。"
 
 msgid "`:host`"
 msgstr ""
 
 msgid "Optional. The hostname to listen on. Defaults to localhost."
-msgstr ""
+msgstr "省略可能です。listenするホスト名。デフォルトは localhost です。"
 
 msgid "`:handler`"
 msgstr ""
 
 msgid "Optional. A fully qualified symbol. A `(defn handler [req] resp)` that is used if a resource is not found for the given request. Defaults to `shadow.http.push-state/handle`."
-msgstr ""
+msgstr "オプションです。完全修飾シンボル。与えられたリクエストに対してリソースが見つからなかった場合に使われる `(defn handler [req] resp)` です。デフォルトは `shadow.http.push-state/handle` です。"
 
 msgid "The following two options only apply when using the default, built-in handler and typically do not need to be changed:"
-msgstr ""
+msgstr "以下の2つのオプションは、デフォルトのビルトインハンドラを使用している場合にのみ適用され、通常は変更する必要はありません。"
 
 msgid "`:push-state/headers`"
 msgstr ""
 
 msgid "(optional) A map of HTTP headers to respond with. Defaults to `text/html` standard headers."
-msgstr ""
+msgstr "(オプション)  HTTP ヘッダのマップを返します。デフォルトは `text/html` 標準ヘッダ。"
 
 msgid "`:push-state/index`"
 msgstr ""
 
 msgid "(optional) The file to serve. Defaults to `index.html`."
-msgstr ""
+msgstr "(オプション) ファイルを提供、デフォルトは `index.html`  。"
 
 msgid ""
 "{...\n"
@@ -1270,7 +1270,7 @@ msgid "Reverse Proxy Support"
 msgstr ""
 
 msgid "By default the dev server will attempt to serve requests locally but sometimes you may want to use an external web server to serve requests (eg. API request). This can be configured via `:proxy-url`."
-msgstr ""
+msgstr "デフォルトでは、開発サーバはローカルでリクエストを送ろうとしますが、時には外部のウェブサーバを使ってリクエストを送ろうとすることもあるでしょう (例: APIリクエスト)。これは `:proxy-url` で設定できます。"
 
 msgid ""
 "{...\n"
@@ -1281,46 +1281,46 @@ msgid ""
 msgstr ""
 
 msgid "A request going to `http://localhost:8000/api/foo` will serve the content returned by `https://some.host/api/foo` instead. All request that do not have a local file will be served by the proxied server."
-msgstr ""
+msgstr "`http://localhost:8000/api/foo` へのリクエストは、代わりに `https://some.host/api/foo` が返すコンテンツを返します。ローカルファイルを持たないリクエストはすべてプロキシされたサーバによって処理されます。"
 
 msgid "Additional optional Options to configure the connection handling are:"
-msgstr ""
+msgstr "接続処理を設定するための追加オプションは次のとおりです。"
 
 msgid "`:proxy-rewrite-host-header`"
 msgstr ""
 
 msgid "boolean, defaults to true. Determines whether the original Host header will be used or the one from the `:proxy-url`. `localhost` vs `some.host` using the example above."
-msgstr ""
+msgstr "boolean, デフォルトは true です。オリジナルのHostヘッダを使うか、 `:proxy-url` のものを使うかを決定します。上の例で `localhost` と `some.host` を比較してみましょう。"
 
 msgid "`:proxy-reuse-x-forwarded`"
 msgstr ""
 
 msgid "boolean, defaults to false. Configures if the proxy should add itself to `X-Forwarded-For` list or start a new one."
-msgstr ""
+msgstr "boolean, デフォルトはfalseです。プロキシが `X-Forwarded-For` リストに自分自身を追加するか、新しいプロキシを開始するかを設定します。"
 
 msgid "`:proxy-max-connection-retries`"
 msgstr ""
 
 msgid "int, defaults to 1."
-msgstr ""
+msgstr "int, デフォルトは1"
 
 msgid "`:proxy-max-request-time`"
 msgstr ""
 
 msgid "ms as int, defaults to 30000. 30sec request timeout."
-msgstr ""
+msgstr "ミリ秒をintで指定します、デフォルトは 30000 です。30秒のリクエストタイムアウト。"
 
 msgid "JVM Configuration"
 msgstr ""
 
 msgid "When `shadow-cljs.edn` is used in charge of starting the JVM you can configure additional command line arguments to be passed directly to the JVM. For example you may want to decrease or increase the amount of RAM used by shadow-cljs."
-msgstr ""
+msgstr "`shadow-cljs.edn` がJVMの起動を担当している場合、JVMに直接渡す追加のコマンドライン引数を設定することができます。例えば、shadow-cljsが使用するメモリの量を減らしたり増やしたりすることができます。"
 
 msgid "This is done by configuring `:jvm-opts` at the root of `shadow-cljs.edn` expecting a vector of strings."
-msgstr ""
+msgstr "これは `shadow-cljs.edn` のルートで `:jvm-opts` を設定することで行われます。"
 
 msgid "Example limited RAM use to 1GB"
-msgstr ""
+msgstr "例：メモリ消費を1GBへ設定"
 
 msgid ""
 "{:source-paths [...]\n"
@@ -1330,16 +1330,16 @@ msgid ""
 msgstr ""
 
 msgid "The arguments that can be passed to the JVM vary depending on the version but you can find an example list https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html[here]. Please note that assigning too little or too much RAM can degrade performance. The defaults are usually good enough."
-msgstr ""
+msgstr "JVMに渡すことができる引数はバージョンによって異なりますが、 https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html[こちら] に例示的なリストがあります。RAMの割り当てが少なすぎたり多すぎたりすると、パフォーマンスが低下する可能性があることに注意してください。通常はデフォルトで十分です。"
 
 msgid "When using `deps.edn` or `project.clj` the `:jvm-opts` need to be configured there."
-msgstr ""
+msgstr "`deps.edn` や `project.clj` を使う場合は、それらのファイルで `:jvm-opts` を設定する必要があります。"
 
 msgid "Build Configuration"
 msgstr ""
 
 msgid "`shadow-cljs.edn` will also need a `:builds` section. Builds should be a map of builds *keyed* by build ID:"
-msgstr ""
+msgstr "`shadow-cljs.edn` は `:builds` セクションも必要です。ビルドはビルドIDをキーにしたビルドのマップでなければなりません。"
 
 msgid "A configuration file with a build map."
 msgstr ""
@@ -1355,79 +1355,79 @@ msgid ""
 msgstr ""
 
 msgid "Each build describes artifacts that the compiler will build. The build target is an extensible feature of `shadow-cljs`, and the compiler comes with quite a few of them already."
-msgstr ""
+msgstr "各ビルドはコンパイラがビルドする成果物を記述します。ビルドターゲットは `shadow-cljs` の拡張可能な機能であり、コンパイラにはすでにかなりの数のビルドターゲットが用意されています。"
 
 msgid "Build Target"
 msgstr ""
 
 msgid "Each build in `shadow-cljs` must define a `:target` which defines where you intend your code to be executed. There are default built-ins for the <<target-browser,browser>> and <<target-node,`node.js`>>. They all share the basic concept of having `:dev` and `:release` modes. `:dev` mode provides all the usual development goodies like fast compilation, live code reloading and a REPL. `:release` mode will produce optimized output intended for production."
-msgstr ""
+msgstr "`shadow-cljs` の各ビルドは `:target` を定義しなければなりません。デフォルトのビルドインは <<target-browser,browser>> と <<target-node, `node.js`>> です。これらはすべて `:dev` モードと `:release` モードを持つという基本的なコンセプトを共有しています。 `:dev` モードは、高速なコンパイル、ライブコードのリロード、REPLのような通常の開発上の利点をすべて提供します。リリースモードでは、プロダクション向けに最適化された出力を生成します。"
 
 msgid "Targets are covered in separate chapters."
-msgstr ""
+msgstr "ターゲットは別の章でカバーされています。"
 
 msgid "Here are some of them:"
-msgstr ""
+msgstr "その一部をご紹介します。"
 
 msgid "<<target-browser, `:browser`>>"
 msgstr ""
 
 msgid "Output code suitable for running in a web browser."
-msgstr ""
+msgstr "Webブラウザでの実行に適した出力コード。"
 
 msgid "<<target-bootstrap, `:bootstrap`>>"
 msgstr ""
 
 msgid "Output code suitable for running in bootstrapped cljs environment."
-msgstr ""
+msgstr "bootstrap cljs環境に適した出力コード。"
 
 msgid "<<target-browser-test, `:browser-test`>>"
 msgstr ""
 
 msgid "Scan for tests to determine required files, and output tests suitable for running in the browser."
-msgstr ""
+msgstr "必要なファイルを決定するためのテストをスキャンし、ブラウザでの実行に適したテストを出力します。"
 
 msgid "<<target-karma, `:karma`>>"
 msgstr ""
 
 msgid "Scan for tests to determine required files, and output karma-runner compatible tests. See http://karma-runner.github.io/2.0/index.html[Karma]."
-msgstr ""
+msgstr "テストをスキャンして必要なファイルを判断し、カルマランナーに対応したテストを出力します。 http://karma-runner.github.io/2.0/index.html[Karma]を参照。"
 
 msgid "<<target-node-library, `:node-library`>>"
 msgstr ""
 
 msgid "Output code suitable for use as a node library."
-msgstr ""
+msgstr "nodeライブラリとして使用するのに適した出力コード。"
 
 msgid "<<target-node-script, `:node-script`>>"
 msgstr ""
 
 msgid "Output code suitable for use as a node script."
-msgstr ""
+msgstr "nodeスクリプトとして使用するのに適した出力コード。"
 
 msgid "<<target-npm-module, `:npm-module`>>"
 msgstr ""
 
 msgid "Output code suitable for use as an NPM module."
-msgstr ""
+msgstr "NPM モジュールとして使用するのに適した出力コード。"
 
 msgid "Each target is covered in more detail in its own chapter since the remaining build options vary on the target you select."
-msgstr ""
+msgstr "各ターゲットは、選択したターゲットによって残りのビルドオプションが異なるため、それぞれの章で詳しく説明します。"
 
 msgid "Development Options"
 msgstr ""
 
 msgid "Each build `:target` typically provides some development support. They are grouped under the `:devtools` key for each `:build`."
-msgstr ""
+msgstr "各ビルド `:target` は通常、何らかの開発サポートを提供します。これらは各 `:build` の `:devtools` キーの下にグループ化されています。"
 
 msgid "When running `watch` code for the REPL is injected automatically and usually does not require additional configuration. Additional options are available to control REPL behavior:"
-msgstr ""
+msgstr "REPL のための `watch` コードは自動的に注入され、通常は追加の設定を必要としません。REPLの動作を制御するための追加オプションがあります:"
 
 msgid "`:repl-init-ns` allows configuring which namespace the REPL will start in. It defaults to `cljs.user`."
-msgstr ""
+msgstr "`:repl-init-ns` は REPL をどの名前空間で開始するかを設定することができます。デフォルトは `cljs.user` です。"
 
 msgid "`:repl-pprint` makes the REPL use `cljs.pprint` instead of the regular `pr-str` when printing eval results. Defaults to false."
-msgstr ""
+msgstr "`:repl-pprint` は、evalの結果を印刷する際に通常の `pr-str` の代わりに `cljs.pprint` を使用するようにします。デフォルトはfalseです。"
 
 msgid ""
 "{...\n"
@@ -1442,10 +1442,10 @@ msgid "Preloads"
 msgstr ""
 
 msgid "As a developer most of your time is spent in development mode. You're probably familiar with tools like `figwheel`, `boot-reload`, and `devtools`. It's almost certain that you want one or more of these in your builds."
-msgstr ""
+msgstr "開発者として、あなたの時間のほとんどは開発モードに費やされています。おそらく、`figwheel`, `boot-reload`, `devtools` などのツールをよく知っているでしょう。これらのうちの 1 つ以上がビルドに必要であることはほぼ間違いありません。"
 
 msgid "Preloads are used to force certain namespaces into the front of your generated Javascript. This is generally used to inject tools and instrumentation before the application actually loads and runs. The preloads option is simply a list of namespaces in the `:devtools`/`:preloads` section of `shadow-cljs-edn`:"
-msgstr ""
+msgstr "プリロードは、生成された Javascript の前に特定の名前空間を強制的に挿入するために使用されます。これは一般的に、アプリケーションが実際にロードされて実行される前にツールやインストルメンテーションを注入するために使用されます。preloads オプションは `shadow-cljs-edn` の `:devtools`/`:preloads` セクションにある名前空間のリストです。"
 
 msgid ""
 "{...\n"
@@ -1456,16 +1456,16 @@ msgid ""
 msgstr ""
 
 msgid "Since version 2.0.130 shadow-cljs automatically adds `cljs-devtools` to the preloads in `watch` and `compile` if they are on the classpath. All you need to do is make sure `binaryage/devtools` is in your `dependencies` list. (Note, *not* binaryage/**cljs-**devtools.) If you don't want to have `cljs-devtools` in specific targets, you can suppress this by adding `:console-support false` to the `:devtools` section of those targets."
-msgstr ""
+msgstr "バージョン 2.0.130 以降、shadow-cljs は `watch` と `compile` のプリロードに `cljs-devtools` を自動的に追加します。必要なのは `binaryage/devtools` が `dependencies` リストにあることを確認するだけです。(注意: binaryage/**cljs-**devtools  *ではありません。*) 特定のターゲットに `cljs-devtools` を入れたくない場合は、`:devtools` セクションに `:console-support false` を追加することで、これを抑制することができます。"
 
 msgid "Hot Code Reload"
 msgstr ""
 
 msgid "The React and ClojureScript ecosystems combine to make this kind of thing super useful. The `shadow-cljs` system includes everything you need to do your hot code reload, without needing to resort to external tools."
-msgstr ""
+msgstr "React と ClojureScript のエコシステムは、この種のことを非常に便利にしてくれます。 `shadow-cljs` システムには、外部ツールに頼らずにホットコードのリロードを行うために必要なものがすべて含まれています。"
 
 msgid "In order to use it you simply run:"
-msgstr ""
+msgstr "使用するには、単に実行するだけです。"
 
 msgid "shadow-cljs watch build-id"
 msgstr ""
@@ -1474,16 +1474,16 @@ msgid "Lifecycle Hooks"
 msgstr ""
 
 msgid "You can configure the compiler to run functions just before hot code reload brings in updated code, and just after. These are useful for stopping/starting things that would otherwise close over old code."
-msgstr ""
+msgstr "ホットコードのリロードが更新されたコードを取り込む直前と直後に関数を実行するようにコンパイラを設定することができます。これらは、古いコードの上で閉じてしまうようなものを止めたり起動したりするのに便利です。"
 
 msgid "These can be configured via the `:devtools` section in your build config or directly in your code via metadata tags."
-msgstr ""
+msgstr "これらは、ビルド設定の `:devtools` セクションで設定することができますし、コードの中で直接メタデータタグを使って設定することもできます。"
 
 msgid "Metadata"
 msgstr ""
 
 msgid "You can set certain metadata on normal CLJS `defn` vars to inform the compiler that these functions should be called at a certain time when live reloading."
-msgstr ""
+msgstr "通常のCLJSの `defn` varsに特定のメタデータを設定することで、ライブリロード時にこれらの関数が特定のタイミングで呼び出されるようにコンパイラに通知することができます。"
 
 msgid "hook config via metadata"
 msgstr ""
@@ -1499,10 +1499,10 @@ msgid ""
 msgstr ""
 
 msgid "This would call `my.app/stop` before loading any new code and `my.app/start` when all new code was loaded. You can tag multiple functions like this and they will be called in dependency order of their namespaces."
-msgstr ""
+msgstr "これは新しいコードを読み込む前に `my.app/stop` を呼び出し、すべての新しいコードが読み込まれたときに `my.app/start` を呼び出すことになります。このように複数の関数にタグを付けることができ、それらの関数は名前空間の依存関係の順に呼び出されます。"
 
 msgid "There are also async variants of these in case you need to do some async work that should complete before proceeding with the reload process."
-msgstr ""
+msgstr "リロード処理を進める前に完了すべきいくつかの非同期作業を行う必要がある場合に備えて、これらの非同期バリアントもあります。"
 
 msgid "async hooks example"
 msgstr ""
@@ -1526,10 +1526,10 @@ msgid ""
 msgstr ""
 
 msgid "The functions will receive one callback function that must be called when their work is completed. If the callback function is not called the reload process will not proceed."
-msgstr ""
+msgstr "関数は、その作業が完了したときに呼び出されなければならないコールバック関数を1つ受け取ります。コールバック関数が呼び出されなかった場合、リロード処理は進みません。"
 
 msgid "It is possible to tag namespaces with metadata so they will never be reloaded even if they are recompiled."
-msgstr ""
+msgstr "名前空間にメタデータでタグを付けることができるので、再コンパイルしてもリロードされることはありません。"
 
 msgid "A non-reloadable ns"
 msgstr ""
@@ -1541,7 +1541,7 @@ msgid ""
 msgstr ""
 
 msgid "Namespaces can also be tagged to always reload."
-msgstr ""
+msgstr "名前空間は常にリロードするようにタグ付けすることもできます。"
 
 msgid "An always-reloadable ns"
 msgstr ""
@@ -1556,43 +1556,43 @@ msgid "Config"
 msgstr ""
 
 msgid "In addition to the metadata you can configure the lifecycle hooks via `shadow-cljs.edn`."
-msgstr ""
+msgstr "メタデータに加えて、`shadow-cljs.edn`でライフサイクルフックを設定することができます。"
 
 msgid "`:before-load`"
 msgstr ""
 
 msgid "A symbol (with namespace) of a function to run just before refreshing files that have been recompiled.  This function *must* by synchronous in nature."
-msgstr ""
+msgstr "再コンパイルされたファイルをリフレッシュする直前に実行する関数のシンボル(名前空間付き)。 この関数は本質的に同期的でなければなりません。"
 
 msgid "`:before-load-async`"
 msgstr ""
 
 msgid "A symbol (with namespace) of a function `(fn [done])` to run just before refreshing. This function can do async processing, but *must* call `(done)` to indicate it is complete."
-msgstr ""
+msgstr "リフレッシュの直前に実行する関数 `(fn [done])` のシンボル (名前空間付き)。この関数は非同期処理を行うことができますが、完了したことを示すために `(done)` を呼び出す必要があります。"
 
 msgid "`:after-load`"
 msgstr ""
 
 msgid "A symbol (with namespace) of a function to run after hot code reload is complete."
-msgstr ""
+msgstr "ホットコードのリロードが完了した後に実行される関数のシンボル（名前空間付き）。"
 
 msgid "`:after-load-async`"
 msgstr ""
 
 msgid "A symbol (with namespace) of a function `(fn [done])` to run after hot code reload is complete. This function can do async processing, but *must* call `(done)` to indicate it is complete."
-msgstr ""
+msgstr "ホットコードのリロードが完了した後に実行される関数 `(fn [done])` のシンボル (名前空間付き)。この関数は非同期処理を行うことができますが、完了したことを示すために `(done)` を呼び出す必要があります。"
 
 msgid "`:autoload`"
 msgstr ""
 
 msgid "A boolean controlling whether code should be hot loaded. Implicitly set to `true` if either of the callbacks is set. Always enabled for the `:browser` target by default, set to `false` to disable."
-msgstr ""
+msgstr "コードをホットロードするかどうかを制御するブール値。コールバックのいずれかが設定されている場合、暗黙的に `true` に設定されます。デフォルトでは `:browser` ターゲットに対して常に有効で、無効にするには `false` をセットします。"
 
 msgid "`:ignore-warnings`"
 msgstr ""
 
 msgid "A boolean controlling whether code with warnings should be reloaded. Defaults to `false`."
-msgstr ""
+msgstr "警告を含むコードをリロードするかどうかを制御するブール値。デフォルトは `false` です。"
 
 msgid "A sample of lifecycle hooks."
 msgstr ""
@@ -1607,19 +1607,19 @@ msgid ""
 msgstr ""
 
 msgid "Hooks cannot be declared in the `cljs.user` namespace. Hooks are only used if the namespace containing them is actually included in the build. If you use an extra namespace make sure to include it via `:preloads`."
-msgstr ""
+msgstr "フックは `cljs.user` 名前空間では宣言できません。フックは、フックを含む名前空間が実際にビルドに含まれている場合にのみ使用されます。追加の名前空間を使う場合は、必ず `:preloads` でインクルードしてください。"
 
 msgid "If neither `:after-load` nor `:before-load` are set the compiler will only attempt to hot reload the code in the `:browser` target. If you still want hot reloading but don't need any of the callbacks you can set `:autoload true` instead."
-msgstr ""
+msgstr "`:after-load` や `:before-load` が設定されていない場合、コンパイラは `:browser` ターゲットのコードのみをホットリロードします。それでもホットリロードしたいがコールバックが必要ない場合は、代わりに `:autoload true` を設定することができます。"
 
 msgid "Build Hooks"
 msgstr ""
 
 msgid "It is sometimes desirable to execute some custom code at a specific stage in the compilation pipeline. `:build-hooks` let you declare which functions should be called and they have full access to the build state at that time. This is quite powerful and opens up many possible tool options."
-msgstr ""
+msgstr "コンパイルパイプラインの特定の段階でカスタムコードを実行することが望ましい場合があります。`:build-hooks` は、どの関数を呼び出すかを宣言し、その時点でのビルド状態に完全にアクセスできるようにします。これは非常に強力であり、多くの可能なツールオプションを開くことができます。"
 
 msgid "They are configured per build under the `:build-hooks` key"
-msgstr ""
+msgstr "これらはビルドごとに `:build-hooks` キーの下で設定されます。"
 
 msgid "Exampe :build-hooks"
 msgstr ""
@@ -1647,19 +1647,19 @@ msgid ""
 msgstr ""
 
 msgid "This example would call `(my.util/hook build-state 1 2 3)` after the build completed the `:flush` <<compilation-stages, stage>> (ie. written to disk). The example would print `[:hello-world (1 2 3)]` but please do something more useful in actual hooks."
-msgstr ""
+msgstr "この例では、ビルドが完了した後に `:flush` <<compile-stages, stage>> (すなわち、ディスクに書き込まれる) を呼び出します。この例では `[:hello-world (1 2 3)]` と表示されますが、実際のフックではもっと便利なものをお願いします。"
 
 msgid "The hook is a just a normal *Clojure* function with some additional metadata. The `{:shadow.build/stage :flush}` metadata informs the compiler to call this hook for `:flush` only. You may instead configure `{:shadow.build/stages #{:configure :flush}}` if the hook should be called after multiple stages. At least one configured stage is required since the hook otherwise would never do anything."
-msgstr ""
+msgstr "フックは通常の *Clojure* 関数にメタデータを追加したものです。メタデータ `{:shadow.build/stage :flush}` は、このフックを `:flush` のためだけに呼び出すようにコンパイラに指示します。複数のステージの後にフックを呼び出す場合は、代わりに `{:shadow.build/stage #{:configure :flush}}` を設定することができます。そうしないとフックは何もしないので、少なくとも一つのステージを設定する必要があります。"
 
 msgid "All build hooks will be called after the `:target` work is done. They will receive the `build-state` (a clojure map with all the current build data) as their first argument and *must* return this `build-state` modified or unmodified. When using multiple stages you can add additional data to the `build-state` that later stages can see. It is strongly advised to use namespaced keys only to ensure not accidentally breaking the entire build."
-msgstr ""
+msgstr "すべてのビルドフックは `:target` の作業が完了した後に呼び出されます。これらのフックは `build-state` (現在のすべてのビルドデータを含む clojure マップ) を第一引数として受け取り、この `build-state` を変更したかどうかに関わらず返さなければ *なりません。* 複数のステージを使用する場合、後のステージが参照できるように `build-state` に追加のデータを追加することができます。誤ってビルド全体を壊してしまわないように、名前空間キーのみを使用することを強くお勧めします。"
 
 msgid "The `build-state` has some important entries which might be useful for your hooks:"
-msgstr ""
+msgstr "`build-state` には、フックに役立つかもしれない重要なエントリがいくつかあります。"
 
 msgid "`:shadow.build/build-id` - the id of the current build (eg. `:app`)"
-msgstr ""
+msgstr "`:shadow.build/build-id` - 現在のビルドのID (例えば `:app`)"
 
 msgid "`:shadow.build/mode` - `:dev` or `:release`"
 msgstr ""
@@ -1668,10 +1668,10 @@ msgid "`:shadow.build/stage` - the current stage"
 msgstr ""
 
 msgid "`:shadow.build/config` - the build config. You can either store config data for the hook in the build config directly or pass it as arguments in the hook itself"
-msgstr ""
+msgstr "`:shadow.build/config` - ビルドコンフィグ。フックの設定データを直接ビルドコンフィグに保存するか、フック自体の引数として渡すことができます。"
 
 msgid "With a running `watch` all hooks will be called repeatedly for each build. Avoid doing too much work as they can considerably impact your build performance."
-msgstr ""
+msgstr "`watch` を実行していると、すべてのフックはビルドごとに繰り返し呼び出されます。ビルドのパフォーマンスにかなりの影響を与えるので、あまり多くの作業をしないようにしてください。"
 
 msgid "Compilation Stages"
 msgstr ""

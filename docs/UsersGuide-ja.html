@@ -2237,30 +2237,30 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </dd>
 <dt class="hdlist1"><code>:ssl-port</code></dt>
 <dd>
-<p><code>ssl</code> が設定されている場合、このポートを使ってssl接続を行い、通常のポートで通常のHTTPをサーバする。もし <code>:ssl-port</code> が設定されておらず <code>:ssl</code> が設定されている場合、デフォルトのポートは SSL リクエストのみをサーバするようになります。</p>
+<p><code>ssl</code> が設定されている場合、このポートを使ってssl接続を行い、通常のポートで通常のHTTPをサーバする。もし <code>:ssl-port</code> が設定されておらず <code>:ssl</code> が設定されている場合、デフォルトのポートは SSL リクエストのみを提供するようになります。</p>
 </dd>
 <dt class="hdlist1"><code>:host</code></dt>
 <dd>
-<p>Optional. The hostname to listen on. Defaults to localhost.</p>
+<p>省略可能です。listenするホスト名。デフォルトは localhost です。</p>
 </dd>
 <dt class="hdlist1"><code>:handler</code></dt>
 <dd>
-<p>Optional. A fully qualified symbol. A <code>(defn handler [req] resp)</code> that is used if a resource is not found for the given request. Defaults to <code>shadow.http.push-state/handle</code>.</p>
+<p>オプションです。完全修飾シンボル。与えられたリクエストに対してリソースが見つからなかった場合に使われる <code>(defn handler [req] resp)</code> です。デフォルトは <code>shadow.http.push-state/handle</code> です。</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>The following two options only apply when using the default, built-in handler and typically do not need to be changed:</p>
+<p>以下の2つのオプションは、デフォルトのビルトインハンドラを使用している場合にのみ適用され、通常は変更する必要はありません。</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>:push-state/headers</code></dt>
 <dd>
-<p>(optional) A map of HTTP headers to respond with. Defaults to <code>text/html</code> standard headers.</p>
+<p>(オプション)  HTTP ヘッダのマップを返します。デフォルトは <code>text/html</code> 標準ヘッダ。</p>
 </dd>
 <dt class="hdlist1"><code>:push-state/index</code></dt>
 <dd>
-<p>(optional) The file to serve. Defaults to <code>index.html</code>.</p>
+<p>(オプション) ファイルを提供、デフォルトは <code>index.html</code>  。</p>
 </dd>
 </dl>
 </div>
@@ -2275,7 +2275,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect4">
 <h5 id="dev-http-proxy"><a class="anchor" href="#dev-http-proxy"></a><a class="link" href="#dev-http-proxy">Reverse Proxy Support</a></h5>
 <div class="paragraph">
-<p>By default the dev server will attempt to serve requests locally but sometimes you may want to use an external web server to serve requests (eg. API request). This can be configured via <code>:proxy-url</code>.</p>
+<p>デフォルトでは、開発サーバはローカルでリクエストを送ろうとしますが、時には外部のウェブサーバを使ってリクエストを送ろうとすることもあるでしょう (例: APIリクエスト)。これは <code>:proxy-url</code> で設定できます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2287,28 +2287,28 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>A request going to <code><a href="http://localhost:8000/api/foo" class="bare">http://localhost:8000/api/foo</a></code> will serve the content returned by <code><a href="https://some.host/api/foo" class="bare">https://some.host/api/foo</a></code> instead. All request that do not have a local file will be served by the proxied server.</p>
+<p><code><a href="http://localhost:8000/api/foo" class="bare">http://localhost:8000/api/foo</a></code> へのリクエストは、代わりに <code><a href="https://some.host/api/foo" class="bare">https://some.host/api/foo</a></code> が返すコンテンツを返します。ローカルファイルを持たないリクエストはすべてプロキシされたサーバによって処理されます。</p>
 </div>
 <div class="paragraph">
-<p>Additional optional Options to configure the connection handling are:</p>
+<p>接続処理を設定するための追加オプションは次のとおりです。</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
 <dt><code>:proxy-rewrite-host-header</code></dt>
 <dd>
-<p>boolean, defaults to true. Determines whether the original Host header will be used or the one from the <code>:proxy-url</code>. <code>localhost</code> vs <code>some.host</code> using the example above.</p>
+<p>boolean, デフォルトは true です。オリジナルのHostヘッダを使うか、 <code>:proxy-url</code> のものを使うかを決定します。上の例で <code>localhost</code> と <code>some.host</code> を比較してみましょう。</p>
 </dd>
 <dt><code>:proxy-reuse-x-forwarded</code></dt>
 <dd>
-<p>boolean, defaults to false. Configures if the proxy should add itself to <code>X-Forwarded-For</code> list or start a new one.</p>
+<p>boolean, デフォルトはfalseです。プロキシが <code>X-Forwarded-For</code> リストに自分自身を追加するか、新しいプロキシを開始するかを設定します。</p>
 </dd>
 <dt><code>:proxy-max-connection-retries</code></dt>
 <dd>
-<p>int, defaults to 1.</p>
+<p>int, デフォルトは1</p>
 </dd>
 <dt><code>:proxy-max-request-time</code></dt>
 <dd>
-<p>ms as int, defaults to 30000. 30sec request timeout.</p>
+<p>ミリ秒をintで指定します、デフォルトは 30000 です。30秒のリクエストタイムアウト。</p>
 </dd>
 </dl>
 </div>
@@ -2318,13 +2318,13 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect2">
 <h3 id="jvm-opts"><a class="anchor" href="#jvm-opts"></a><a class="link" href="#jvm-opts">5.5. JVM Configuration</a></h3>
 <div class="paragraph">
-<p>When <code>shadow-cljs.edn</code> is used in charge of starting the JVM you can configure additional command line arguments to be passed directly to the JVM. For example you may want to decrease or increase the amount of RAM used by shadow-cljs.</p>
+<p><code>shadow-cljs.edn</code> がJVMの起動を担当している場合、JVMに直接渡す追加のコマンドライン引数を設定することができます。例えば、shadow-cljsが使用するメモリの量を減らしたり増やしたりすることができます。</p>
 </div>
 <div class="paragraph">
-<p>This is done by configuring <code>:jvm-opts</code> at the root of <code>shadow-cljs.edn</code> expecting a vector of strings.</p>
+<p>これは <code>shadow-cljs.edn</code> のルートで <code>:jvm-opts</code> を設定することで行われます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example limited RAM use to 1GB</div>
+<div class="title">例：メモリ消費を1GBへ設定</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="symbol">:source-paths</span> [<span class="keyword">..</span><span class="keyword">.</span>]
  <span class="symbol">:dependencies</span> [<span class="keyword">..</span><span class="keyword">.</span>]
@@ -2333,7 +2333,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>The arguments that can be passed to the JVM vary depending on the version but you can find an example list <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html">here</a>. Please note that assigning too little or too much RAM can degrade performance. The defaults are usually good enough.</p>
+<p>JVMに渡すことができる引数はバージョンによって異なりますが、 <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html">こちら</a> に例示的なリストがあります。RAMの割り当てが少なすぎたり多すぎたりすると、パフォーマンスが低下する可能性があることに注意してください。通常はデフォルトで十分です。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -2342,7 +2342,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="title">Important</div>
 </td>
 <td class="content">
-When using <code>deps.edn</code> or <code>project.clj</code> the <code>:jvm-opts</code> need to be configured there.
+<code>deps.edn</code> や <code>project.clj</code> を使う場合は、それらのファイルで <code>:jvm-opts</code> を設定する必要があります。
 </td>
 </tr>
 </table>
@@ -2354,7 +2354,7 @@ When using <code>deps.edn</code> or <code>project.clj</code> the <code>:jvm-opts
 <h2 id="_build_configuration"><a class="anchor" href="#_build_configuration"></a><a class="link" href="#_build_configuration">6. Build Configuration</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>shadow-cljs.edn</code> will also need a <code>:builds</code> section. Builds should be a map of builds <strong>keyed</strong> by build ID:</p>
+<p><code>shadow-cljs.edn</code> は <code>:builds</code> セクションも必要です。ビルドはビルドIDをキーにしたビルドのマップでなければなりません。</p>
 </div>
 <div class="listingblock">
 <div class="title">A configuration file with a build map.</div>
@@ -2369,72 +2369,72 @@ When using <code>deps.edn</code> or <code>project.clj</code> the <code>:jvm-opts
 </div>
 </div>
 <div class="paragraph">
-<p>Each build describes artifacts that the compiler will build. The build target is an extensible feature of <code>shadow-cljs</code>, and the compiler comes with quite a few of them already.</p>
+<p>各ビルドはコンパイラがビルドする成果物を記述します。ビルドターゲットは <code>shadow-cljs</code> の拡張可能な機能であり、コンパイラにはすでにかなりの数のビルドターゲットが用意されています。</p>
 </div>
 <div class="sect2">
 <h3 id="_build_target"><a class="anchor" href="#_build_target"></a><a class="link" href="#_build_target">6.1. Build Target</a></h3>
 <div class="paragraph">
-<p>Each build in <code>shadow-cljs</code> must define a <code>:target</code> which defines where you intend your code to be executed. There are default built-ins for the <a href="#target-browser">browser</a> and <a href="#target-node"><code>node.js</code></a>. They all share the basic concept of having <code>:dev</code> and <code>:release</code> modes. <code>:dev</code> mode provides all the usual development goodies like fast compilation, live code reloading and a REPL. <code>:release</code> mode will produce optimized output intended for production.</p>
+<p><code>shadow-cljs</code> の各ビルドは <code>:target</code> を定義しなければなりません。デフォルトのビルドインは <a href="#target-browser">browser</a> と <a href="#target-node"><code>node.js</code></a> です。これらはすべて <code>:dev</code> モードと <code>:release</code> モードを持つという基本的なコンセプトを共有しています。 <code>:dev</code> モードは、高速なコンパイル、ライブコードのリロード、REPLのような通常の開発上の利点をすべて提供します。リリースモードでは、プロダクション向けに最適化された出力を生成します。</p>
 </div>
 <div class="paragraph">
-<p>Targets are covered in separate chapters.</p>
+<p>ターゲットは別の章でカバーされています。</p>
 </div>
 <div class="paragraph">
-<p>Here are some of them:</p>
+<p>その一部をご紹介します。</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
 <dt><a href="#target-browser"><code>:browser</code></a></dt>
 <dd>
-<p>Output code suitable for running in a web browser.</p>
+<p>Webブラウザでの実行に適した出力コード。</p>
 </dd>
 <dt><a href="#target-bootstrap"><code>:bootstrap</code></a></dt>
 <dd>
-<p>Output code suitable for running in bootstrapped cljs environment.</p>
+<p>bootstrap cljs環境に適した出力コード。</p>
 </dd>
 <dt><a href="#target-browser-test"><code>:browser-test</code></a></dt>
 <dd>
-<p>Scan for tests to determine required files, and output tests suitable for running in the browser.</p>
+<p>必要なファイルを決定するためのテストをスキャンし、ブラウザでの実行に適したテストを出力します。</p>
 </dd>
 <dt><a href="#target-karma"><code>:karma</code></a></dt>
 <dd>
-<p>Scan for tests to determine required files, and output karma-runner compatible tests. See <a href="http://karma-runner.github.io/2.0/index.html">Karma</a>.</p>
+<p>テストをスキャンして必要なファイルを判断し、カルマランナーに対応したテストを出力します。 <a href="http://karma-runner.github.io/2.0/index.html">Karma</a>を参照。</p>
 </dd>
 <dt><a href="#target-node-library"><code>:node-library</code></a></dt>
 <dd>
-<p>Output code suitable for use as a node library.</p>
+<p>nodeライブラリとして使用するのに適した出力コード。</p>
 </dd>
 <dt><a href="#target-node-script"><code>:node-script</code></a></dt>
 <dd>
-<p>Output code suitable for use as a node script.</p>
+<p>nodeスクリプトとして使用するのに適した出力コード。</p>
 </dd>
 <dt><a href="#target-npm-module"><code>:npm-module</code></a></dt>
 <dd>
-<p>Output code suitable for use as an NPM module.</p>
+<p>NPM モジュールとして使用するのに適した出力コード。</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Each target is covered in more detail in its own chapter since the remaining build options vary on the target you select.</p>
+<p>各ターゲットは、選択したターゲットによって残りのビルドオプションが異なるため、それぞれの章で詳しく説明します。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="devtools"><a class="anchor" href="#devtools"></a><a class="link" href="#devtools">6.2. Development Options</a></h3>
 <div class="paragraph">
-<p>Each build <code>:target</code> typically provides some development support. They are grouped under the <code>:devtools</code> key for each <code>:build</code>.</p>
+<p>各ビルド <code>:target</code> は通常、何らかの開発サポートを提供します。これらは各 <code>:build</code> の <code>:devtools</code> キーの下にグループ化されています。</p>
 </div>
 <div class="sect3">
 <h4 id="_repl_3"><a class="anchor" href="#_repl_3"></a><a class="link" href="#_repl_3">6.2.1. REPL</a></h4>
 <div class="paragraph">
-<p>When running <code>watch</code> code for the REPL is injected automatically and usually does not require additional configuration. Additional options are available to control REPL behavior:</p>
+<p>REPL のための <code>watch</code> コードは自動的に注入され、通常は追加の設定を必要としません。REPLの動作を制御するための追加オプションがあります:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>:repl-init-ns</code> allows configuring which namespace the REPL will start in. It defaults to <code>cljs.user</code>.</p>
+<p><code>:repl-init-ns</code> は REPL をどの名前空間で開始するかを設定することができます。デフォルトは <code>cljs.user</code> です。</p>
 </li>
 <li>
-<p><code>:repl-pprint</code> makes the REPL use <code>cljs.pprint</code> instead of the regular <code>pr-str</code> when printing eval results. Defaults to false.</p>
+<p><code>:repl-pprint</code> は、evalの結果を印刷する際に通常の <code>pr-str</code> の代わりに <code>cljs.pprint</code> を使用するようにします。デフォルトはfalseです。</p>
 </li>
 </ul>
 </div>
@@ -2452,10 +2452,10 @@ When using <code>deps.edn</code> or <code>project.clj</code> the <code>:jvm-opts
 <div class="sect3">
 <h4 id="_preloads"><a class="anchor" href="#_preloads"></a><a class="link" href="#_preloads">6.2.2. Preloads</a></h4>
 <div class="paragraph">
-<p>As a developer most of your time is spent in development mode. You&#8217;re probably familiar with tools like <code>figwheel</code>, <code>boot-reload</code>, and <code>devtools</code>. It&#8217;s almost certain that you want one or more of these in your builds.</p>
+<p>開発者として、あなたの時間のほとんどは開発モードに費やされています。おそらく、<code>figwheel</code>, <code>boot-reload</code>, <code>devtools</code> などのツールをよく知っているでしょう。これらのうちの 1 つ以上がビルドに必要であることはほぼ間違いありません。</p>
 </div>
 <div class="paragraph">
-<p>Preloads are used to force certain namespaces into the front of your generated Javascript. This is generally used to inject tools and instrumentation before the application actually loads and runs. The preloads option is simply a list of namespaces in the <code>:devtools</code>/<code>:preloads</code> section of <code>shadow-cljs-edn</code>:</p>
+<p>プリロードは、生成された Javascript の前に特定の名前空間を強制的に挿入するために使用されます。これは一般的に、アプリケーションが実際にロードされて実行される前にツールやインストルメンテーションを注入するために使用されます。preloads オプションは <code>shadow-cljs-edn</code> の <code>:devtools</code>/<code>:preloads</code> セクションにある名前空間のリストです。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2473,7 +2473,7 @@ When using <code>deps.edn</code> or <code>project.clj</code> the <code>:jvm-opts
 <div class="title">Note</div>
 </td>
 <td class="content">
-Since version 2.0.130 shadow-cljs automatically adds <code>cljs-devtools</code> to the preloads in <code>watch</code> and <code>compile</code> if they are on the classpath. All you need to do is make sure <code>binaryage/devtools</code> is in your <code>dependencies</code> list. (Note, <strong>not</strong> binaryage/<strong>cljs-</strong>devtools.) If you don&#8217;t want to have <code>cljs-devtools</code> in specific targets, you can suppress this by adding <code>:console-support false</code> to the <code>:devtools</code> section of those targets.
+バージョン 2.0.130 以降、shadow-cljs は <code>watch</code> と <code>compile</code> のプリロードに <code>cljs-devtools</code> を自動的に追加します。必要なのは <code>binaryage/devtools</code> が <code>dependencies</code> リストにあることを確認するだけです。(注意: binaryage/<strong>cljs-</strong>devtools  <strong>ではありません。</strong>) 特定のターゲットに <code>cljs-devtools</code> を入れたくない場合は、<code>:devtools</code> セクションに <code>:console-support false</code> を追加することで、これを抑制することができます。
 </td>
 </tr>
 </table>
@@ -2482,10 +2482,10 @@ Since version 2.0.130 shadow-cljs automatically adds <code>cljs-devtools</code> 
 <div class="sect3">
 <h4 id="_hot_code_reload"><a class="anchor" href="#_hot_code_reload"></a><a class="link" href="#_hot_code_reload">6.2.3. Hot Code Reload</a></h4>
 <div class="paragraph">
-<p>The React and ClojureScript ecosystems combine to make this kind of thing super useful. The <code>shadow-cljs</code> system includes everything you need to do your hot code reload, without needing to resort to external tools.</p>
+<p>React と ClojureScript のエコシステムは、この種のことを非常に便利にしてくれます。 <code>shadow-cljs</code> システムには、外部ツールに頼らずにホットコードのリロードを行うために必要なものがすべて含まれています。</p>
 </div>
 <div class="paragraph">
-<p>In order to use it you simply run:</p>
+<p>使用するには、単に実行するだけです。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2496,15 +2496,15 @@ Since version 2.0.130 shadow-cljs automatically adds <code>cljs-devtools</code> 
 <div class="sect3">
 <h4 id="_lifecycle_hooks"><a class="anchor" href="#_lifecycle_hooks"></a><a class="link" href="#_lifecycle_hooks">6.2.4. Lifecycle Hooks</a></h4>
 <div class="paragraph">
-<p>You can configure the compiler to run functions just before hot code reload brings in updated code, and just after. These are useful for stopping/starting things that would otherwise close over old code.</p>
+<p>ホットコードのリロードが更新されたコードを取り込む直前と直後に関数を実行するようにコンパイラを設定することができます。これらは、古いコードの上で閉じてしまうようなものを止めたり起動したりするのに便利です。</p>
 </div>
 <div class="paragraph">
-<p>These can be configured via the <code>:devtools</code> section in your build config or directly in your code via metadata tags.</p>
+<p>これらは、ビルド設定の <code>:devtools</code> セクションで設定することができますし、コードの中で直接メタデータタグを使って設定することもできます。</p>
 </div>
 <div class="sect4">
 <h5 id="_metadata"><a class="anchor" href="#_metadata"></a><a class="link" href="#_metadata">Metadata</a></h5>
 <div class="paragraph">
-<p>You can set certain metadata on normal CLJS <code>defn</code> vars to inform the compiler that these functions should be called at a certain time when live reloading.</p>
+<p>通常のCLJSの <code>defn</code> varsに特定のメタデータを設定することで、ライブリロード時にこれらの関数が特定のタイミングで呼び出されるようにコンパイラに通知することができます。</p>
 </div>
 <div class="listingblock">
 <div class="title">hook config via metadata</div>
@@ -2519,10 +2519,10 @@ Since version 2.0.130 shadow-cljs automatically adds <code>cljs-devtools</code> 
 </div>
 </div>
 <div class="paragraph">
-<p>This would call <code>my.app/stop</code> before loading any new code and <code>my.app/start</code> when all new code was loaded. You can tag multiple functions like this and they will be called in dependency order of their namespaces.</p>
+<p>これは新しいコードを読み込む前に <code>my.app/stop</code> を呼び出し、すべての新しいコードが読み込まれたときに <code>my.app/start</code> を呼び出すことになります。このように複数の関数にタグを付けることができ、それらの関数は名前空間の依存関係の順に呼び出されます。</p>
 </div>
 <div class="paragraph">
-<p>There are also async variants of these in case you need to do some async work that should complete before proceeding with the reload process.</p>
+<p>リロード処理を進める前に完了すべきいくつかの非同期作業を行う必要がある場合に備えて、これらの非同期バリアントもあります。</p>
 </div>
 <div class="listingblock">
 <div class="title">async hooks example</div>
@@ -2551,13 +2551,13 @@ Since version 2.0.130 shadow-cljs automatically adds <code>cljs-devtools</code> 
 <div class="title">Important</div>
 </td>
 <td class="content">
-The functions will receive one callback function that must be called when their work is completed. If the callback function is not called the reload process will not proceed.
+関数は、その作業が完了したときに呼び出されなければならないコールバック関数を1つ受け取ります。コールバック関数が呼び出されなかった場合、リロード処理は進みません。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>It is possible to tag namespaces with metadata so they will never be reloaded even if they are recompiled.</p>
+<p>名前空間にメタデータでタグを付けることができるので、再コンパイルしてもリロードされることはありません。</p>
 </div>
 <div class="listingblock">
 <div class="title">A non-reloadable ns</div>
@@ -2568,7 +2568,7 @@ The functions will receive one callback function that must be called when their 
 </div>
 </div>
 <div class="paragraph">
-<p>Namespaces can also be tagged to always reload.</p>
+<p>名前空間は常にリロードするようにタグ付けすることもできます。</p>
 </div>
 <div class="listingblock">
 <div class="title">An always-reloadable ns</div>
@@ -2582,33 +2582,33 @@ The functions will receive one callback function that must be called when their 
 <div class="sect4">
 <h5 id="_config"><a class="anchor" href="#_config"></a><a class="link" href="#_config">Config</a></h5>
 <div class="paragraph">
-<p>In addition to the metadata you can configure the lifecycle hooks via <code>shadow-cljs.edn</code>.</p>
+<p>メタデータに加えて、`shadow-cljs.edn`でライフサイクルフックを設定することができます。</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
 <dt><code>:before-load</code></dt>
 <dd>
-<p>A symbol (with namespace) of a function to run just before refreshing files that have been recompiled.  This function <strong>must</strong> by synchronous in nature.</p>
+<p>再コンパイルされたファイルをリフレッシュする直前に実行する関数のシンボル(名前空間付き)。 この関数は本質的に同期的でなければなりません。</p>
 </dd>
 <dt><code>:before-load-async</code></dt>
 <dd>
-<p>A symbol (with namespace) of a function <code>(fn [done])</code> to run just before refreshing. This function can do async processing, but <strong>must</strong> call <code>(done)</code> to indicate it is complete.</p>
+<p>リフレッシュの直前に実行する関数 <code>(fn [done])</code> のシンボル (名前空間付き)。この関数は非同期処理を行うことができますが、完了したことを示すために <code>(done)</code> を呼び出す必要があります。</p>
 </dd>
 <dt><code>:after-load</code></dt>
 <dd>
-<p>A symbol (with namespace) of a function to run after hot code reload is complete.</p>
+<p>ホットコードのリロードが完了した後に実行される関数のシンボル（名前空間付き）。</p>
 </dd>
 <dt><code>:after-load-async</code></dt>
 <dd>
-<p>A symbol (with namespace) of a function <code>(fn [done])</code> to run after hot code reload is complete. This function can do async processing, but <strong>must</strong> call <code>(done)</code> to indicate it is complete.</p>
+<p>ホットコードのリロードが完了した後に実行される関数 <code>(fn [done])</code> のシンボル (名前空間付き)。この関数は非同期処理を行うことができますが、完了したことを示すために <code>(done)</code> を呼び出す必要があります。</p>
 </dd>
 <dt><code>:autoload</code></dt>
 <dd>
-<p>A boolean controlling whether code should be hot loaded. Implicitly set to <code>true</code> if either of the callbacks is set. Always enabled for the <code>:browser</code> target by default, set to <code>false</code> to disable.</p>
+<p>コードをホットロードするかどうかを制御するブール値。コールバックのいずれかが設定されている場合、暗黙的に <code>true</code> に設定されます。デフォルトでは <code>:browser</code> ターゲットに対して常に有効で、無効にするには <code>false</code> をセットします。</p>
 </dd>
 <dt><code>:ignore-warnings</code></dt>
 <dd>
-<p>A boolean controlling whether code with warnings should be reloaded. Defaults to <code>false</code>.</p>
+<p>警告を含むコードをリロードするかどうかを制御するブール値。デフォルトは <code>false</code> です。</p>
 </dd>
 </dl>
 </div>
@@ -2630,7 +2630,7 @@ The functions will receive one callback function that must be called when their 
 <div class="title">Important</div>
 </td>
 <td class="content">
-Hooks cannot be declared in the <code>cljs.user</code> namespace. Hooks are only used if the namespace containing them is actually included in the build. If you use an extra namespace make sure to include it via <code>:preloads</code>.
+フックは <code>cljs.user</code> 名前空間では宣言できません。フックは、フックを含む名前空間が実際にビルドに含まれている場合にのみ使用されます。追加の名前空間を使う場合は、必ず <code>:preloads</code> でインクルードしてください。
 </td>
 </tr>
 </table>
@@ -2642,7 +2642,7 @@ Hooks cannot be declared in the <code>cljs.user</code> namespace. Hooks are only
 <div class="title">Tip</div>
 </td>
 <td class="content">
-If neither <code>:after-load</code> nor <code>:before-load</code> are set the compiler will only attempt to hot reload the code in the <code>:browser</code> target. If you still want hot reloading but don&#8217;t need any of the callbacks you can set <code>:autoload true</code> instead.
+<code>:after-load</code> や <code>:before-load</code> が設定されていない場合、コンパイラは <code>:browser</code> ターゲットのコードのみをホットリロードします。それでもホットリロードしたいがコールバックが必要ない場合は、代わりに <code>:autoload true</code> を設定することができます。
 </td>
 </tr>
 </table>
@@ -2653,10 +2653,10 @@ If neither <code>:after-load</code> nor <code>:before-load</code> are set the co
 <div class="sect2">
 <h3 id="build-hooks"><a class="anchor" href="#build-hooks"></a><a class="link" href="#build-hooks">6.3. Build Hooks</a></h3>
 <div class="paragraph">
-<p>It is sometimes desirable to execute some custom code at a specific stage in the compilation pipeline. <code>:build-hooks</code> let you declare which functions should be called and they have full access to the build state at that time. This is quite powerful and opens up many possible tool options.</p>
+<p>コンパイルパイプラインの特定の段階でカスタムコードを実行することが望ましい場合があります。<code>:build-hooks</code> は、どの関数を呼び出すかを宣言し、その時点でのビルド状態に完全にアクセスできるようにします。これは非常に強力であり、多くの可能なツールオプションを開くことができます。</p>
 </div>
 <div class="paragraph">
-<p>They are configured per build under the <code>:build-hooks</code> key</p>
+<p>これらはビルドごとに <code>:build-hooks</code> キーの下で設定されます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Exampe :build-hooks</div>
@@ -2682,21 +2682,21 @@ If neither <code>:after-load</code> nor <code>:before-load</code> are set the co
 </div>
 </div>
 <div class="paragraph">
-<p>This example would call <code>(my.util/hook build-state 1 2 3)</code> after the build completed the <code>:flush</code> <a href="#compilation-stages">stage</a> (ie. written to disk). The example would print <code>[:hello-world (1 2 3)]</code> but please do something more useful in actual hooks.</p>
+<p>この例では、ビルドが完了した後に <code>:flush</code> <a href="#compile-stages">stage</a> (すなわち、ディスクに書き込まれる) を呼び出します。この例では <code>[:hello-world (1 2 3)]</code> と表示されますが、実際のフックではもっと便利なものをお願いします。</p>
 </div>
 <div class="paragraph">
-<p>The hook is a just a normal <strong>Clojure</strong> function with some additional metadata. The <code>{:shadow.build/stage :flush}</code> metadata informs the compiler to call this hook for <code>:flush</code> only. You may instead configure <code>{:shadow.build/stages #{:configure :flush}}</code> if the hook should be called after multiple stages. At least one configured stage is required since the hook otherwise would never do anything.</p>
+<p>フックは通常の <strong>Clojure</strong> 関数にメタデータを追加したものです。メタデータ <code>{:shadow.build/stage :flush}</code> は、このフックを <code>:flush</code> のためだけに呼び出すようにコンパイラに指示します。複数のステージの後にフックを呼び出す場合は、代わりに <code>{:shadow.build/stage #{:configure :flush}}</code> を設定することができます。そうしないとフックは何もしないので、少なくとも一つのステージを設定する必要があります。</p>
 </div>
 <div class="paragraph">
-<p>All build hooks will be called after the <code>:target</code> work is done. They will receive the <code>build-state</code> (a clojure map with all the current build data) as their first argument and <strong>must</strong> return this <code>build-state</code> modified or unmodified. When using multiple stages you can add additional data to the <code>build-state</code> that later stages can see. It is strongly advised to use namespaced keys only to ensure not accidentally breaking the entire build.</p>
+<p>すべてのビルドフックは <code>:target</code> の作業が完了した後に呼び出されます。これらのフックは <code>build-state</code> (現在のすべてのビルドデータを含む clojure マップ) を第一引数として受け取り、この <code>build-state</code> を変更したかどうかに関わらず返さなければ <strong>なりません。</strong> 複数のステージを使用する場合、後のステージが参照できるように <code>build-state</code> に追加のデータを追加することができます。誤ってビルド全体を壊してしまわないように、名前空間キーのみを使用することを強くお勧めします。</p>
 </div>
 <div class="paragraph">
-<p>The <code>build-state</code> has some important entries which might be useful for your hooks:</p>
+<p><code>build-state</code> には、フックに役立つかもしれない重要なエントリがいくつかあります。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>:shadow.build/build-id</code> - the id of the current build (eg. <code>:app</code>)</p>
+<p><code>:shadow.build/build-id</code> - 現在のビルドのID (例えば <code>:app</code>)</p>
 </li>
 <li>
 <p><code>:shadow.build/mode</code> - <code>:dev</code> or <code>:release</code></p>
@@ -2705,7 +2705,7 @@ If neither <code>:after-load</code> nor <code>:before-load</code> are set the co
 <p><code>:shadow.build/stage</code> - the current stage</p>
 </li>
 <li>
-<p><code>:shadow.build/config</code> - the build config. You can either store config data for the hook in the build config directly or pass it as arguments in the hook itself</p>
+<p><code>:shadow.build/config</code> - ビルドコンフィグ。フックの設定データを直接ビルドコンフィグに保存するか、フック自体の引数として渡すことができます。</p>
 </li>
 </ul>
 </div>
@@ -2716,7 +2716,7 @@ If neither <code>:after-load</code> nor <code>:before-load</code> are set the co
 <div class="title">Important</div>
 </td>
 <td class="content">
-With a running <code>watch</code> all hooks will be called repeatedly for each build. Avoid doing too much work as they can considerably impact your build performance.
+<code>watch</code> を実行していると、すべてのフックはビルドごとに繰り返し呼び出されます。ビルドのパフォーマンスにかなりの影響を与えるので、あまり多くの作業をしないようにしてください。
 </td>
 </tr>
 </table>
