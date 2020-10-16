@@ -1677,43 +1677,43 @@ msgid "Compilation Stages"
 msgstr ""
 
 msgid "The possible stages the `:build-hooks` can use are:"
-msgstr ""
+msgstr "`:build-hooks``が使用できるステージは下記の通りです。"
 
 msgid "`:configure` - initial `:target` specific configuration"
-msgstr ""
+msgstr "`:configure` - 初期の `:target` 固有の設定"
 
 msgid "`:compile-prepare` - called before any compilation is done"
-msgstr ""
+msgstr "`:compile-prepare` - コンパイル開始前に呼び出されます。"
 
 msgid "`:compile-finish` - called after all compilation finishes"
-msgstr ""
+msgstr "`:compile-finish` - すべてのコンパイルが終了した後に呼び出されます。"
 
 msgid "`:optimize-prepare` - called before running the Closure Compiler optimization phase (`:release` only)"
-msgstr ""
+msgstr "`:optimize-prepare` - Closure Compilerの最適化フェーズを実行する前に呼び出されます (`:release` のみ)"
 
 msgid "`:optimize-finish` - called after Closure is done (`:release` only)"
-msgstr ""
+msgstr "`:optimize-finish` - Closureコンパイルの終了時に呼び出されます。 (`:release` のみ)"
 
 msgid "`:flush` - called after everything was flushed to disk"
-msgstr ""
+msgstr "`:flush` - ディスクにすべてを書き込んだ後に呼び出されます"
 
 msgid "With a running `watch` the `:configure` is only called once. Any of the others may be called again (in order) for each re-compile. The `build-state` will be re-used until the build config changes at which point it will be thrown away and a fresh one will be created."
-msgstr ""
+msgstr "実行中の `watch` では `:configure` が呼ばれるのは一度だけです。他のどれかは再コンパイルのたびに (順番に) 再度呼ばれるかもしれません。ビルド状態 `build-state` は、ビルド設定が変更されるまで再利用され、その時点で破棄されて新しいものが作成されます。"
 
 msgid "Compiler Cache"
 msgstr ""
 
 msgid "`shadow-cljs` will cache all compilation results by default. The cache is invalidated whenever anything relevant to the individual source files changes (eg. changed compiler setting, changed dependencies, etc.). This greatly improves the developer experience since incremental compilation will be **much** faster than starting from scratch."
-msgstr ""
+msgstr "`shadow-cljs` はデフォルトですべてのコンパイル結果をキャッシュします。個々のソースファイルに関連する何かが変更されると、キャッシュは無効になります (例: コンパイラの設定の変更、依存関係の変更など)。これは開発者の体験を *大幅* に向上させます。"
 
 msgid "Invalidating the cache however can not always be done reliably if you are using a lot of macros with side-effects (reading files, storing things outside the compiler state, etc.). In those cases you might need to disable caching entirely."
-msgstr ""
+msgstr "しかし、副作用のあるマクロを多く使用している場合 (ファイルを読んだり、コンパイラの状態の外に保存したり)、キャッシュを無効にすることは必ずしも確実にできるわけではありません。そのような場合は、キャッシュを完全に無効にする必要があるかもしれません。"
 
 msgid "Namespaces that are known to include side-effecting macros can be blocked from caching. They won't be cached themselves and namespaces requiring them will not be cached as well. The https://github.com/cerner/clara-rules[clara-rules] library has side-effecting macros and is blocked by default. You can specify which namespaces to block globally via the `:cache-blockers` configuration. It expects a set of namespace symbols."
-msgstr ""
+msgstr "副作用のあるマクロを含むことが知られている名前空間は、キャッシュをブロックすることができます。これらはそれ自体はキャッシュされず、それらを必要とする名前空間もキャッシュされません。 https://github.com/cerner/clara-rules[clara-rules] ライブラリには副作用のあるマクロがあり、デフォルトでブロックされています。どの名前空間をグローバルにブロックするかは `:cache-blockers` 設定で指定できます。これは名前空間シンボルのセットを期待しています。"
 
 msgid "clara.rules cache blocking example (this is done by default)"
-msgstr ""
+msgstr "clara.rules キャッシュブロックの例 (デフォルトで行われています)"
 
 msgid ""
 "{...\n"
@@ -1722,25 +1722,25 @@ msgid ""
 msgstr ""
 
 msgid "In addition you can control how much caching is done more broadly via the `:build-options` `:cache-level` entry. The supported options are:"
-msgstr ""
+msgstr "さらに、`:build-options` `:cache-level` エントリを使用することで、キャッシュの量をより広範囲に制御することができます。サポートされているオプションは以下の通りです:"
 
 msgid "`:all`"
 msgstr ""
 
 msgid "The default, all CLJS files are cached"
-msgstr ""
+msgstr "デフォルトでは、すべての CLJS ファイルがキャッシュされます。"
 
 msgid "`:jars`"
 msgstr ""
 
 msgid "Only caches files from libraries, ie. source files in `.jar` files"
-msgstr ""
+msgstr "ライブラリからのファイルのみをキャッシュします。 つまり、`.jar` ファイル内のソースファイル。"
 
 msgid "`:off`"
 msgstr ""
 
 msgid "Does not cache any CLJS compilation results (by far the slowest option)"
-msgstr ""
+msgstr "CLJSのコンパイル結果をキャッシュしない(最も遅いオプション)"
 
 msgid "Compiling without Cache"
 msgstr ""
@@ -1756,16 +1756,16 @@ msgid ""
 msgstr ""
 
 msgid "The cache files are stored in a dedicated directory for each build so the cache is never shared between builds. A build with the id `:app` will have the `:dev` cache in the directory:"
-msgstr ""
+msgstr "キャッシュファイルはビルドごとに専用のディレクトリに保存されるので、ビルド間でキャッシュが共有されることはありません。id が `:app` のビルドは `:dev` キャッシュをディレクトリに格納します。"
 
 msgid "Cache location for <code>cljs/core.cljs</code>"
-msgstr ""
+msgstr "`cljs/core.cljs` のキャッシュ場所"
 
 msgid "target/shadow-cljs/builds/app/dev/ana/cljs/core.cljs.cache.transit.json"
 msgstr ""
 
 msgid "The `:cache-root` setting defaults to `target/shadow-cljs` and controls where ALL cache files will be written. It can only be configured globally, not per build."
-msgstr ""
+msgstr "デフォルトの `:cache-root` 設定は `target/shadow-cljs` で、すべてのキャッシュファイルをどこに書き込むかを制御します。これは全体に設定され、ビルドごとに設定できるわけではありません。"
 
 msgid ""
 "{:source-paths [...]\n"
@@ -1778,16 +1778,16 @@ msgid ""
 msgstr ""
 
 msgid "The `:cache-root` is always resolved relative to the project directory. You can also specify absolute paths (eg. `/tmp/shadow-cljs`)."
-msgstr ""
+msgstr "キャッシュルート `:cache-root` は常にプロジェクトディレクトリからの相対パスですが、絶対パスを指定することもできます (例: `/tmp/shadow-cljs`)。"
 
 msgid "Closure Defines"
 msgstr ""
 
 msgid "The Closure Library & Compiler allow you to define variables that are essentially compile time constants. You can use these to configure certain features of your build. Since the Closure compiler treats these as constants when running `:advanced` optimizations they are fully supported in the Dead-Code-Elimination passes and can be used to remove certain parts of the code that should not be included in `release` builds."
-msgstr ""
+msgstr "Closure ライブラリとコンパイラでは、基本的にコンパイル時の定数である変数を定義することができます。これらを使用してビルドの特定の機能を設定することができます。Closureコンパイラは `:advanced` 最適化を実行する際に定数として扱いますので、デッドコード除去パスでは完全にサポートされています。"
 
 msgid "You can define them in your code"
-msgstr ""
+msgstr "コード内で定義することができます。"
 
 msgid ""
 "(ns your.app)\n"
@@ -1799,7 +1799,7 @@ msgid ""
 msgstr ""
 
 msgid "This defines the `your.app/VERBOSE` variable as `false` by default. This will cause the `println` to be removed in `:advanced` compilation. You can toggle this to `true` via the `:closure-defines` options which will enable the `println`. This can either be done for development only or always."
-msgstr ""
+msgstr "これはデフォルトで `your.app/VERBOSE` 変数を `false` に定義します。これにより、 `:advanced` のコンパイル時に `println` が削除されます。これを `:closure-defines` オプションで `true` に切り替えると `println` が有効になります。これは開発用にのみ行うことも、常に行うこともできます。"
 
 msgid ""
 "{...\n"
@@ -1818,25 +1818,25 @@ msgid ""
 msgstr ""
 
 msgid "It is generally safer to use the \"disabled\" variant as the default since it makes things less likely to be included in a `release` build when they shouldn't be. Forgetting to set a `:closure-defines` variable should almost always result in less code being used not more."
-msgstr ""
+msgstr "\"disabled\" バリアントをデフォルトとして使用する方が一般的に安全です。変数 `:closure-defines` を設定するのを忘れた場合、ほとんどの場合、使用されるコードは少なくなりますが、多くはなりません。"
 
 msgid "*Closure Defines from the Closure Library*"
 msgstr ""
 
 msgid "`goog.DEBUG`: The Closure Library uses this for many development features. `shadow-cljs` automatically sets this to `false` for `release` builds."
-msgstr ""
+msgstr "`goog.DEBUG`: クロージャーライブラリはこれを多くの開発機能に利用します。 `shadow-cljs` は、 `release` ビルドでは自動的に `false` に設定します。"
 
 msgid "`goog.LOCALE` can be used to configure certain localization features like `goog.i18n.DateTimeFormat`. It accepts a standard locale string and defaults to `en`. Pretty much all locales are supported, see https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbols.js[here] and https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbolsext.js[here]."
-msgstr ""
+msgstr "`goog.LOCALE` は、`goog.i18n.DateTimeFormat` のような特定のローカライゼーション機能を設定するために使用します。標準のロケール文字列を受け付け、デフォルトは `en` です。ほとんどすべてのロケールに対応しています。 https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbols.js[こちら] および https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbolsext.js[こちら] を参照ください。"
 
 msgid "Compiler Options"
 msgstr ""
 
 msgid "The CLJS compiler supports several options to influence how some code is generated. For the most part `shadow-cljs` will pick some good defaults for each `:target` but you might occasionally want to change some of them."
-msgstr ""
+msgstr "CLJSコンパイラはコードの生成方法に影響を与えるいくつかのオプションをサポートしています。ほとんどの場合、 `shadow-cljs` は `:target` ごとにいくつかの良いデフォルト値を選択しますが、時々それらのいくつかを変更したくなるかもしれません。"
 
 msgid "These are all grouped under the `:compiler-options` key in your build config."
-msgstr ""
+msgstr "これらはすべてビルド設定の `:compiler-options` キーの下にグループ化されています。"
 
 msgid ""
 "{:dependencies [...]\n"
@@ -1848,43 +1848,43 @@ msgid ""
 msgstr ""
 
 msgid "Most of the standard ClojureScript https://clojurescript.org/reference/compiler-options[Compiler Options] are either enabled by default or do not apply. So very few of them actually have an effect. A lot of them are also specific to certain `:target` types and do not apply universally (e.g. `:compiler-options {:output-wrapper true}` is only relevant for `:target :browser`)."
-msgstr ""
+msgstr "標準のClojureScript https://clojurescript.org/reference/compiler-options[コンパイラオプション] のほとんどは、デフォルトで有効になっているか、適用されていません。そのため、実際に効果があるものはほとんどありません。それらの多くは特定の `:target` タイプに固有のものであり、普遍的には適用されません (例えば、 `:compiler-options {:output-wrapper true}` は `:target :browser` にのみ関連しています)。"
 
 msgid "Currently supported options include"
-msgstr ""
+msgstr "現在サポートされているオプションには以下のものがあります。"
 
 msgid "`:optimizations` supports `:advanced`, `:simple` or `:whitespace`, defaults to `:advanced`. `:none` is the default for development and cannot be set manually. `release` with `:none` won't work."
-msgstr ""
+msgstr "`:optimizations` は `:advanced`, `:simple`, `:whitespace` をサポートしており、デフォルトは `:advanced` です。 `:none` は開発時のデフォルトであり、手動で設定することはできません。 `release` に `:none` を指定しても動作しません。"
 
 msgid "`:infer-externs` `:all`, `:auto`, `true` or `false`, defaults to `true`"
-msgstr ""
+msgstr "`:infer-externs` `:all`, `:auto`, `true` または `false`, デフォルトは `true` です。"
 
 msgid "`:static-fns` (Boolean) defaults to `true`"
-msgstr ""
+msgstr "`:static-fns` (ブール値) デフォルトは `true` です。"
 
 msgid "`:fn-invoke-direct` (Boolean) defaults to `false`"
-msgstr ""
+msgstr "`:fn-invoke-direct` (ブール値) デフォルトは `false` です。"
 
 msgid "`:elide-asserts` (Boolean) default to `false` in development and `true` in `release` builds"
-msgstr ""
+msgstr "`:elide-asserts` (ブール値) デフォルトは開発版では `false`, `release` ビルド版では `true` です。"
 
 msgid "`:pretty-print` and `:pseudo-names` default to `false`. You can use `shadow-cljs release app --debug` to enable both temporarily without touching your config. This is very useful when running into problem with `release` builds"
-msgstr ""
+msgstr "`:pretty-print` と `:pseudo-name` のデフォルトは `false` です。 `shadow-cljs release app --debug` を使うと、設定に触れずに一時的に両方を有効にすることができます。これは `release` ビルドで問題が発生したときに非常に便利です。"
 
 msgid "`:source-map` (Boolean) defaults to `true` during development, `false` for `release`."
-msgstr ""
+msgstr "`:source-map` (ブール値) デフォルトは開発中は `true` で、`release` では `false` です。"
 
 msgid "`:source-map-include-sources-content` (Boolean) defaults to `true` and decides whether source maps should contains their sources in the `.map` files directly."
-msgstr ""
+msgstr "`:source-map-includes-sources-content` (ブール値) デフォルトは `true` で、ソースマップが `.map` ファイルに直接ソースを含めるかどうかを決定します。"
 
 msgid "`:source-map-detail-level` `:all` or `:symbols` (`:symbols` reduces overall size a bit but also a bit less accurate)"
-msgstr ""
+msgstr "`:source-map-detail-level` `:all` または `:synmbols` (`:synmbols` は全体のサイズを少し小さくしますが、精度は少し落ちます)"
 
 msgid "`:externs` vector of paths, defaults to `[]`"
-msgstr ""
+msgstr "`:externs` pathのベクタです、デフォルトは `[]`"
 
 msgid "`:checked-arrays` (Boolean), defaults to `false`"
-msgstr ""
+msgstr "`:checked-arrays` (ブール値), デフォルトは `false`"
 
 msgid "`:anon-fn-naming-policy`"
 msgstr ""
@@ -1893,22 +1893,22 @@ msgid "`:rename-prefix` and `:rename-prefix-namespace`"
 msgstr ""
 
 msgid "`:warnings` as a map of `{warning-type true|false}`, eg. `:warnings {:undeclared-var false}` to turn off specific warnings."
-msgstr ""
+msgstr "`:warnings` は `{warning-type true|false}` のマップとして使用します。 例えば 特定の警告をオフにするには `:warnings {:undeclared-var false}` とします。"
 
 msgid "*Unsupported or non-applicable Options*"
-msgstr ""
+msgstr "*サポートされていない、または適用されないオプション*"
 
 msgid "Options that don't have any effect at all include"
-msgstr ""
+msgstr "全く効果がないオプションには以下のようなものがあります。"
 
 msgid "`:verbose` is controlled by running `shadow-cljs compile app --verbose` not in the build config."
-msgstr ""
+msgstr "`:verbose` はビルド設定ではなく `shadow-cljs compile app --verbose` を実行することで制御されます。"
 
 msgid "`:foreign-libs` and `:libs`"
 msgstr ""
 
 msgid "`:stable-names` always enabled, cannot be disabled"
-msgstr ""
+msgstr "`:stable-names` は常に有効で、無効にすることはできません。"
 
 msgid "`:install-deps`"
 msgstr ""
@@ -1917,7 +1917,7 @@ msgid "`:source-map-path`, `:source-asset-path` and `:source-map-timestamp`"
 msgstr ""
 
 msgid "`:cache-analysis` always enabled, cannot be disabled."
-msgstr ""
+msgstr "`:cache-analysis` は常に有効で、無効にすることはできません。"
 
 msgid "`:recompile-dependents`"
 msgstr ""
@@ -1926,22 +1926,22 @@ msgid "`:preamble`"
 msgstr ""
 
 msgid "`:hashbang` (the `:node-script` target supports this, others don't)"
-msgstr ""
+msgstr "`:hashbang` (`:node-script` ターゲットはこれをサポートしていますが、他のターゲットはこれをサポートしていません)"
 
 msgid "`:compiler-stats` use `--verbose` to get detailed information instead"
-msgstr ""
+msgstr "`:compiler-stats` は詳細な情報を得るために `--verbose` を使用します。"
 
 msgid "`:optimize-constants` always done for `release` builds, cannot be disabled"
-msgstr ""
+msgstr "`:optimize-constants` は `release` ビルドに対して常に行われ、無効にすることはできません。"
 
 msgid "`:parallel-build` always enabled"
-msgstr ""
+msgstr "`:parallel-build` は常に有効です"
 
 msgid "`:aot-cache`"
 msgstr ""
 
 msgid "`:package-json-resolution` see <<js-resolve, :js-options :resolve>> instead"
-msgstr ""
+msgstr "`:package-json-resolution` 代わりに <<js-resolve, :js-options :resolve>> を参照してください。"
 
 msgid "`:watch-fn`"
 msgstr ""
@@ -1953,10 +1953,10 @@ msgid "Warnings as Errors"
 msgstr ""
 
 msgid "It is sometimes desireable to fail a build with warnings rather than continuing with the build (eg. in CI envs). You can use the `:warnings-as-errors` compiler options to customize how that is handled."
-msgstr ""
+msgstr "ビルドを継続するのではなく、警告を表示してビルドを失敗させたいと思うことがあります (CI環境など)。コンパイラのオプション `:warnings-as-errors` を使って、この処理方法をカスタマイズすることができます。"
 
 msgid "Treat all warnings as errors"
-msgstr ""
+msgstr "すべての警告をエラーとして扱う"
 
 msgid ""
 "{...\n"
@@ -1967,7 +1967,7 @@ msgid ""
 msgstr ""
 
 msgid "Only throw certain warnings"
-msgstr ""
+msgstr "特定の警告のみを投げる"
 
 msgid ""
 "{...\n"
@@ -1978,10 +1978,10 @@ msgid ""
 msgstr ""
 
 msgid "A set of possible warning-type keywords can be found https://github.com/clojure/clojurescript/blob/5ad96a8b3ae2e3616a19715ba9ba2471a36933a2/src/main/clojure/cljs/analyzer.cljc#L124-L163[here]."
-msgstr ""
+msgstr "可能性のある警告型キーワードのセットは、 https://github.com/clojure/clojurescript/blob/5ad96a8b3ae2e3616a19715ba9ba2471a36933a2/src/main/clojure/cljs/analyzer.cljc#L124-L163[こちら] を参照してください。"
 
 msgid "Only throw for certain namespaces"
-msgstr ""
+msgstr "特定の名前空間に対してのみ投げる"
 
 msgid ""
 "{...\n"
@@ -1993,22 +1993,22 @@ msgid ""
 msgstr ""
 
 msgid "`:ignore` takes a set of symbols refering to namespaces. Either direct matches or `.*` wildcards are allowed. `:warning-types` has the same functionality as above, not specifying it means all warnings will throw except the ignored namespaces."
-msgstr ""
+msgstr "`:ignore` は名前空間を参照するシンボルのセットを取ります。直接一致か `.*` ワイルドカードのいずれかを使用することができます。`:warning-types` は上記と同じ機能を持ちますが、指定しない場合は無視された名前空間を除いてすべての警告を投げることになります。"
 
 msgid "Output Language Options"
 msgstr ""
 
 msgid "By default the generated JS output will be compatible with ES5 and all \"newer\" features will be transpiled to compatible code using polyfills. This is currently the safest default and supports most browsers in active use (including IE10+)."
-msgstr ""
+msgstr "デフォルトでは、生成された JS 出力は ES5 と互換性があり、すべての\"新機能\"は polyfills を使用して互換性のあるコードにトランスパイルされます。これは現在のところ最も安全なデフォルトであり、アクティブに使用されているほとんどのブラウザ (IE10+ を含む) をサポートしています。"
 
 msgid "You can select other output options if you only care about more modern environments and want to keep the original code without replacements (eg. `node`, Chrome Extensions, ...)"
-msgstr ""
+msgstr "よりモダンな環境にのみ配慮し、置換せずにオリジナルのコードを保持したい場合は、他の出力オプションを選択することができます (例: `node`, Chrome Extensions, ....など)。"
 
 msgid "Note that this mostly affects imported JS code from <<npm, npm>> or `.js` files from the <<classpath-js, classpath>>. CLJS will currently only generate ES5 output and is not affected by setting higher options."
-msgstr ""
+msgstr "これは主に <<npm, npm>> や `.js` ファイルを <<classpath-js, classpath>> からインポートした JS コードに影響を与えることに注意してください。CLJSは現在のところES5の出力のみを生成し、より高いオプションを設定しても影響を受けません。"
 
 msgid "You can configure this via the `:output-feature-set` in `:compiler-options`. The older `:language-out` option should not be used as `:output-feature-set` replaced it."
-msgstr ""
+msgstr "これは `:compiler-options` の `:output-feature-set` で設定できます。古い `:language-out` オプションは `:output-feature-set` に取って代わられたものなので、使用すべきではありません。"
 
 msgid "Supported options are:"
 msgstr ""
@@ -2045,19 +2045,19 @@ msgid ""
 msgstr ""
 
 msgid "Documentation on these options is a bit sparse and is mostly documented in the code https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java[here]."
-msgstr ""
+msgstr "これらのオプションに関するドキュメントは少しまばらで、ほとんどが https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java[こちら] のコードに書かれています。"
 
 msgid "Conditional Reading"
 msgstr ""
 
 msgid "This feature only works in `shadow-cljs`. It was officially https://dev.clojure.org/jira/browse/CLJS-2396[rejected] by the ClojureScript project. It will still compile fine in CLJS but only the official branches work (e.g. `:cljs`). It might still be https://groups.google.com/d/msg/clojure-dev/8YJJM8lJuQs/hR5_vUZPCQAJ[supported] one day but as of now it is not."
-msgstr ""
+msgstr "この機能は `shadow-cljs` でのみ動作します。ClojureScriptプロジェクトによって公式に https://dev.clojure.org/jira/browse/CLJS-2396[rejected] されました。CLJSではまだ問題なくコンパイルできますが、公式ブランチ(`:cljs`など)でしか動作しません。いつかは https://groups.google.com/d/msg/clojure-dev/8YJJM8lJuQs/hR5_vUZPCQAJ[supported] になるかもしれませんが、今のところはそうではありません。"
 
 msgid "`shadow-cljs` lets you configure additional reader features in `.cljc` files. By default you can only use reader conditionals to generate separate code for `:clj`, `:cljs` or `:cljr`. In many CLJS builds however it is also desirable to select which code is generated based on your `:target`."
-msgstr ""
+msgstr "`shadow-cljs` は `.cljc` ファイルに追加のリーダ機能を設定することができます。デフォルトでは、`:clj`, `:cljs`, `:cljr` のために別々のコードを生成するためにリーダ条件式を使うことしかできません。しかし、多くの CLJS ビルドでは、`:target` に基づいてどのコードを生成するかを選択することが望ましいです。"
 
 msgid "Example: Some `npm` packages only work when targeting the `:browser`, but you may have a `ns` that you also want to use in a `:node-script` build. This might happen frequently when trying to use Server-Side Rendering (SSR) with your React App. `codemirror` is one such package."
-msgstr ""
+msgstr "例: `npm` パッケージの中には `:browser` をターゲットにしたときにのみ動作するものもありますが、`:node-script` ビルドでも使用したい `ns` があるかもしれません。これはReactアプリでサーバーサイドレンダリング(SSR)を使おうとしているときに頻繁に起こるかもしれません。 `codemirror` はそのようなパッケージの一つです。"
 
 msgid ""
 "(ns my.awesome.component\n"
@@ -2074,10 +2074,10 @@ msgid ""
 msgstr ""
 
 msgid "This namespace will compile fine for both builds (`:node-script` and `:browser`) but when trying to run the `:node-script` it will fail since the `codemirror` package tries to access the DOM. Since `react-dom/server` does not use refs the `init-cm` function will never be called anyways."
-msgstr ""
+msgstr "この名前空間は両方のビルド(`:node-script` と `:browser`)で正常にコンパイルされますが `:node-script` を実行しようとすると `codemirror` パッケージが DOM にアクセスしようとするので失敗します。 `react-dom/server` は refs を使わないので `init-cm` 関数は決して呼ばれません。"
 
 msgid "While you can use <<closure-defines, :closure-defines>> to conditionally compile away the `init-cm` fn you can not use it to get rid of the extra `:require`. Reader conditionals let you do this easily."
-msgstr ""
+msgstr "<<closure-defines, :closure-defines>> を使って `init-cm` 関数を条件付きでコンパイルすることができますが、余分な `:require` を取り除くためには使えません。リーダー条件式を使えば、これを簡単に行うことができます。"
 
 msgid ""
 "(ns my.awesome.component\n"
@@ -2098,9 +2098,26 @@ msgid ""
 "\n"
 "..."
 msgstr ""
+"(ns my.awesome.component\n"
+" (:require\n"
+"   [\"react\" :as react]\n"
+"   ;; 注意：ここでは順番が重要です。\n"
+"   ;; 最初の該当するブランチが使われます。\n"
+"   ;; もし :cljs が先に使われた場合は、 :server ビルドで取得されます\n"
+"   #?@(:node [[]]\n"
+"       :cljs [[\"codemirror\" :as CodeMirror]])))\n"
+"\n"
+"#?(:node ;; node platform override\n"
+"   (defn init-cm [dom-node]\n"
+"    :no-op)\n"
+"   :cljs ;; default impl\n"
+"   (defn init-cm [dom-node]\n"
+"     ... actual impl ...))\n"
+"\n"
+"..."
 
 msgid "<code>:reader-features</code> config examples"
-msgstr ""
+msgstr "`:reader-feature` config examples"
 
 msgid ""
 "{...\n"
@@ -2116,9 +2133,21 @@ msgid ""
 "   :compiler-options\n"
 "   {:reader-features #{:node}}}}}"
 msgstr ""
+"{...\n"
+" :builds\n"
+" ;; アプリのビルドは正常に設定されており、調整は必要ありません\n"
+" {:app\n"
+"  {:target :browser\n"
+"   ...}\n"
+"  ;; サーバに :node reader機能を追加すると\n"
+"  ;; デフォルトの :cljs の代わりに使用されます\n"
+"  :server\n"
+"  {:target :node-script\n"
+"   :compiler-options\n"
+"   {:reader-features #{:node}}}}}"
 
 msgid "The `:server` build will then no longer have the `codemirror` require and the `init-cm` function is removed. Becoming only"
-msgstr ""
+msgstr "これで `:server` ビルドでは `codemirror` が不要になり、`init-cm` 関数が削除されます。ただの"
 
 msgid ""
 "(ns my.awesome.component\n"
@@ -2131,21 +2160,30 @@ msgid ""
 "(defn init-cm [dom-node] :no-op)\n"
 "..."
 msgstr ""
+"(ns my.awesome.component\n"
+"  (:require\n"
+"    [\"react\" :as react]))\n"
+"\n"
+";; これは、実際にはどこにも呼ばれなかった場合\n"
+";; デッドコードとして削除される可能性が高いでしょう\n"
+"\n"
+"(defn init-cm [dom-node] :no-op)\n"
+"..."
 
 msgid "This feature is only available in `.cljc` files and will fail in `.cljs` files."
-msgstr ""
+msgstr "この機能は `.cljc` ファイルでのみ利用可能で、`.cljs` ファイルでは失敗します。"
 
 msgid "Overriding from the CLI"
 msgstr ""
 
 msgid "It is sometimes desirable to make small adjustments to the build configuration from the command line with values that can't be added statically to the `shadow-cljs.edn` config or may change depending on the environment you are in."
-msgstr ""
+msgstr "`shadow-cljs.edn` の設定に静的に追加できない値や、環境によっては変更される可能性のある値をコマンドラインからビルド設定に小さな調整を加えることが望ましい場合があります。"
 
 msgid "You can pass additional config data via the `--config-merge {:some \"data\"}` command line option which will be merged into the build config. Data added from the CLI will override data from the `shadow-cljs.edn` file."
-msgstr ""
+msgstr "追加の設定データを `--config-merge {:some \"data\"}` コマンドラインオプションで渡すことができます。CLIから追加されたデータは `shadow-cljs.edn` ファイルからのデータを上書きします。"
 
 msgid "Example <code>shadow-cljs.edn</code> config"
-msgstr ""
+msgstr "Example shadow-cljs.edn` config"
 
 msgid ""
 "{...\n"
@@ -2157,28 +2195,28 @@ msgid ""
 msgstr ""
 
 msgid "Overriding the <code>:output-dir</code> from the CLI"
-msgstr ""
+msgstr "CLIから `:output-dir` を上書きする"
 
 msgid "$ shadow-cljs release app --config-merge '{:output-dir \"somewhere/else\"}'"
 msgstr ""
 
 msgid "Overriding the <code>:closure-defines</code> from the CLI"
-msgstr ""
+msgstr "CLIから `:closure-defines` を上書きする"
 
 msgid "$ shadow-cljs release app --config-merge '{:closure-defines {your.app/DEBUG true}}'"
 msgstr ""
 
 msgid "`--config-merge` expects one EDN map and can be used multiple times, they will be merged left to right. The data added is also visible to build-hooks."
-msgstr ""
+msgstr "`config-merge` は1つのEDNマップを想定しており、複数回使用することができるので、左から右にマージされます。追加されたデータはbuild-hooksからも見えます。"
 
 msgid "If you specify multiple build ids the data will be merged into all specified builds. `shadow-cljs release frontend backend --config-merge '{:hello \"world\"}'` will be applied to both."
-msgstr ""
+msgstr "複数のビルドIDを指定すると、指定した全てのビルドにマージされます。 `shadow-cljs release frontend backend --config-merge '{:hello \"world\"}'` は両方に適用されます。"
 
 msgid "Using Environment Variables"
 msgstr ""
 
 msgid "It is possible to use environment variables to set configuration values in `shadow-cljs.edn` but you should consider using `--config-merge` instead. If you really must use an environment variable you can do so via the `#shadow/env \"FOO\"` reader tag. You can also use the shorter `#env`."
-msgstr ""
+msgstr "環境変数を使って `shadow-cljs.edn` の設定値を設定することは可能ですが、代わりに `--config-merge` を使うことを検討してください。どうしても環境変数を使わなければならない場合は `#shadow/env \"FOO\"` リーダータグで設定することができます。もっと短い `#env` を使うこともできます。"
 
 msgid ""
 "{...\n"
@@ -2191,7 +2229,7 @@ msgid ""
 msgstr ""
 
 msgid "The are also a few more supported forms that you can use `#shadow/env` with."
-msgstr ""
+msgstr "また、`#shadow/env` で使用できるフォームもいくつかサポートされています。"
 
 msgid ""
 "#shadow/env \"APP_URL\"\n"
@@ -2202,21 +2240,28 @@ msgid ""
 ";; turn PORT env into an integer, with default\n"
 "#shadow/env [\"PORT\" :as :int :default 8080]"
 msgstr ""
+"#shadow/env \"APP_URL\"\n"
+"#shadow/env [\"APP_URL\"]\n"
+";; 環境変数が設定されていない場合にデフォルト値として使用されます\n"
+"#shadow/env [\"APP_URL\" \"default-value\"]\n"
+"#shadow/env [\"APP_URL\" :default \"default-value\"]\n"
+";; PORT 環境変数を整数に変換します\n"
+"#shadow/env [\"PORT\" :as :int :default 8080]"
 
 msgid "Supported `:as` coercions are `:int`, `:bool`, `:keyword`, `:symbol`. Supplied `:default` values will not be converted and are expected to be in the correct type already."
-msgstr ""
+msgstr "サポートされる `:as` の強制力は `:int`, `:bool`, `:keyword`, `:symbol` です。与えられた `:default` の値は変換されず、すでに正しい型になっているものとみなされます。"
 
 msgid "The environment variables used when the `shadow-cljs` process was started are used. If a server process is used its environment variables will be used over those potentially set by other commands. This is mostly relevant during development but may be confusing. `--config-merge` does not have this limitation."
-msgstr ""
+msgstr "`shadow-cljs` プロセスが起動したときに使用された環境変数が使用されます。サーバプロセスが使用されている場合、その環境変数は他のコマンドで設定される可能性のある環境変数よりも優先して使用されます。これはほとんどの場合、開発中に関連していますが、混乱を招くかもしれません。 `config-merge` にはこの制限はありません。"
 
 msgid "Build and Target defaults"
 msgstr ""
 
 msgid "It is possible to use set defaults that will be used for all builds, or for all targets of a certain type."
-msgstr ""
+msgstr "すべてのビルド、または特定のタイプのすべてのターゲットに使用されるデフォルト設定を使用することができます。"
 
 msgid "Configuration merge order is as follows `:build-defaults` -> `:target-defaults` -> actual build config -> extra config overrides."
-msgstr ""
+msgstr "コンフィギュレーションのマージ順序は、`:build-defaults` -> `:target-defaults` -> 実際のビルドコンフィグ -> 追加コンフィグの順で上書きされます。"
 
 msgid ""
 "{...\n"
@@ -2237,16 +2282,16 @@ msgid ""
 msgstr ""
 
 msgid "In this example the `:app` target will inherit both `:build-defaults` and the `:target-defaults` for `:browser`."
-msgstr ""
+msgstr "この例では、`:app` ターゲットは `:build-defaults` と `:browser` の `:target-defaults` の両方を継承します。"
 
 msgid "Configs later in the merge order can override, but not remove previous configuration items. Once a default is set, the only way to remove it is by overriding it."
-msgstr ""
+msgstr "マージ順の後の設定は、以前の設定項目を上書きすることはできますが、削除することはできません。デフォルトが設定されている場合、それを削除するには、それを上書きするしかありません。"
 
 msgid "Targeting the Browser"
 msgstr ""
 
 msgid "The `:browser` target produces output intended to run in a Browser environment. During development it supports live code reloading, REPL, CSS reloading. The `release` output will be minified by the Closure Compiler with `:advanced` optimizations."
-msgstr ""
+msgstr "`browser` ターゲットはブラウザ環境で実行することを意図した出力を生成します。開発中はライブコードのリロード、REPL、CSSのリロードをサポートしています。 `release` の出力はClosureコンパイラによって `:advanced` の最適化が施されて最小化されます。"
 
 msgid "A basic browser configuration looks like this:"
 msgstr ""
@@ -2266,94 +2311,94 @@ msgid "Output Settings"
 msgstr ""
 
 msgid "The browser target outputs a lot of files, and a directory is needed for them all. You'll need to serve these assets with some kind of server, and the Javascript loading code needs to know the server-centric path to these assets. The options you need to specify are:"
-msgstr ""
+msgstr "ブラウザ ターゲットは多くのファイルを出力し、それらすべてのためのディレクトリが必要です。これらのアセットを何らかのサーバーで提供する必要があり、Javascript の読み込みコードは、これらのアセットへのサーバー中心のパスを知る必要があります。指定する必要があるオプションは以下の通りです。"
 
 msgid "`:output-dir`"
 msgstr ""
 
 msgid "The directory to use for all compiler output."
-msgstr ""
+msgstr "すべてのコンパイラの出力に使用するディレクトリです。"
 
 msgid "`:asset-path`"
 msgstr ""
 
 msgid "The relative path from *web server's root* to the resources in `:output-dir`."
-msgstr ""
+msgstr "*webサーバのルート* から `:output-dir` にあるリソースまでの相対パス。"
 
 msgid "Your entry point javascript file and all related JS files will appear in `:output-dir`."
-msgstr ""
+msgstr "エントリーポイントのjavascriptファイルと関連するすべてのJSファイルは `:output-dir` に現れます。"
 
 msgid "Each build requires its own :output-dir, you may not put multiple builds into the same directory. This directory should also be exclusively owned by the build. There should be no other files in there. While `shadow-cljs` won't delete anything it is safer to leave it alone. Compilation creates many more files than just the main entry point javascript file during development: source maps, original sources, and generated sources."
-msgstr ""
+msgstr "各ビルドはそれ自身の :output-dir を必要とし、複数のビルドを同じディレクトリに置くことはできません。また、このディレクトリはそのビルドが独占的に所有していなければなりません。他のファイルを入れてはいけません。 `shadow-cljs` は何も削除しませんが、放っておいた方が安全です。コンパイルは開発中にメインのエントリーポイントjavascriptファイル以外にも多くのファイルを作成します: ソースマップ、オリジナルのソース、生成されたソースなどです。"
 
 msgid "The `:asset-path` is a prefix that gets added to the paths of module loading code inside of the generated javascript. It allows you to output your javascript module to a particular subdirectory of your web server's root. The dynamic loading during development (hot code reload) and production (code splitting) need this to correctly locate files."
-msgstr ""
+msgstr "`asset-path` は生成された javascript の中のモジュールの読み込みコードのパスに追加される接頭辞です。これにより、javascriptモジュールをWebサーバーのルートの特定のサブディレクトリに出力することができます。開発中の動的な読み込み (ホットコードの再読み込み) や本番環境 (コードの分割) では、ファイルを正しく見つけるためにこれが必要になります。"
 
 msgid "Locating your generated files in a directory and asset path like this make it so that other assets (images, css, etc.) can easily co-exist on the same server without accidental collisions."
-msgstr ""
+msgstr "生成されたファイルをこのようにディレクトリとアセットパスに配置することで、他のアセット（画像やCSSなど）が偶然に衝突することなく、同じサーバー上に簡単に共存できるようになります。"
 
 msgid "For example: if your web server will serve the folder `public/x` when asked for the URI `/x`, and your `output-dir` for a module is `public/assets/app/js` then your asset-path should be `/assets/app/js`. You are not required to use an absolute asset path, but it is highly recommended."
-msgstr ""
+msgstr "例えば、URI `/x` を要求されたときにウェブサーバが `public/x` というフォルダを提供し、モジュールの `output-dir` が `public/assets/app/js` である場合、アセットパスは `/assets/app/js` でなければなりません。絶対的なアセットパスを使う必要はありませんが、それを強く推奨します。"
 
 msgid "Modules"
 msgstr ""
 
 msgid "Modules configure how the compiled sources are bundled together and how the final `.js` are generated. Each Module declares a list of Entry Namespace and from that dependency graph is built. When using multiple Modules the code is split so that the maximum amount of code is moved to the outer edges of the graph. The goal is to minimize the amount of code the browser has to load initially and loading the rest on-demand."
-msgstr ""
+msgstr "モジュールはコンパイルされたソースがどのようにバンドルされ、最終的な `.js` がどのように生成されるかを設定します。各モジュールは Entry Namespace のリストを宣言し、その依存関係グラフを構築します。複数のモジュールを使用する場合は、最大量のコードがグラフの外側に移動するようにコードが分割されます。目標は、ブラウザが最初にロードしなければならないコードの量を最小限に抑え、残りのコードをオンデマンドでロードすることです。"
 
 msgid "Don't worry too much about :modules in the beginning. Start with one and split them later."
-msgstr ""
+msgstr "最初のうちは :modules をあまり気にしないでください。最初は1つのモジュールから始めて、後で分割してください。"
 
 msgid "The `:modules` section of the config is always a map keyed by module ID. The module ID is also used to generate the Javascript filename. Module `:main` will generate `main.js` in `:output-dir`."
-msgstr ""
+msgstr "設定の `:modules` セクションは常にモジュールIDがキーとなるマップです。モジュールIDはJavascriptのファイル名を生成するためにも使われます。モジュール `:main` は `:output-dir` に `main.js` を生成します。"
 
 msgid "The available options in a module are:"
-msgstr ""
+msgstr "モジュールで利用可能なオプションは以下の通りです:"
 
 msgid "`:entries`"
 msgstr ""
 
 msgid "The namespaces that serve as the root nodes of the dependency graph for the output code of this module."
-msgstr ""
+msgstr "このモジュールの出力コードの依存関係グラフのルートノードとして機能する名前空間。"
 
 msgid "`:init-fn`"
 msgstr ""
 
 msgid "Fully qualified symbol pointing to a function that should be called when the module is loaded initially."
-msgstr ""
+msgstr "モジュールが最初にロードされたときに呼び出されるべき関数を指す完全修飾シンボル。"
 
 msgid "`:depends-on`"
 msgstr ""
 
 msgid "The names of other modules that must be loaded in order for this one to have everything it needs."
-msgstr ""
+msgstr "このモジュールに必要なものをすべて搭載するためにロードしなければならない他のモジュールの名前です。"
 
 msgid "`:prepend`"
 msgstr ""
 
 msgid "String content that will be prepended to the js output. Useful for comments, copyright notice, etc."
-msgstr ""
+msgstr "jsの出力の前に付加される文字列の内容。コメントや著作権表示などに便利です。"
 
 msgid "`:append`"
 msgstr ""
 
 msgid "String content that will be appended to the js output. Useful for comments, copyright notice, etc."
-msgstr ""
+msgstr "jsの出力に追加される文字列コンテンツ。コメントや著作権表示などに便利です。"
 
 msgid "`:prepend-js`"
 msgstr ""
 
 msgid "A string to prepend to the module output containing valid javascript that will be run through Closure optimizer."
-msgstr ""
+msgstr "Closureオプティマイザーで実行される有効なjavascriptを含むモジュールの出力に付加する文字列。"
 
 msgid "`:append-js`"
 msgstr ""
 
 msgid "A string to append to the module output containing valid javascript that will be run through Closure optimizer."
-msgstr ""
+msgstr "モジュールの出力に追加する文字列で、Closureオプティマイザーで実行される有効なjavascriptを含みます。"
 
 msgid "The following example shows a minimum module configuration:"
-msgstr ""
+msgstr "The following example shows a minimum module configuration:"
 
 msgid "Example :browser config"
 msgstr ""
@@ -2380,37 +2425,37 @@ msgid ""
 msgstr ""
 
 msgid "`shadow-cljs` will follow the dependency graph from the root set of code entry points in the `:entries` to find everything needed to actually compile and include in the output. Namespaces that are not required will not be included."
-msgstr ""
+msgstr "`shadow-cljs` は `:entry` のコードエントリーポイントのルートセットから依存関係グラフを辿り、実際にコンパイルして出力に含めるために必要なすべてのものを見つけます。必要のない名前空間は含まれません。"
 
 msgid "The above config will create a `public/js/main.js` file. During development there will be an additional `public/js/cljs-runtime` directory with lots of files. This directory is not required for `release` builds."
-msgstr ""
+msgstr "上記の設定は `public/js/main.js` ファイルを作成します。開発中には、たくさんのファイルを含む `public/js/cljs-runtime` ディレクトリが追加されます。このディレクトリは `release` ビルドには必要ありません。"
 
 msgid "Code Splitting"
 msgstr ""
 
 msgid "Declaring more than one Module requires a tiny bit of additional static configuration so the Compiler can figure out how the Modules are related to each other and how you will be loading them later."
-msgstr ""
+msgstr "複数のモジュールを宣言するには、少しだけ静的な設定を追加する必要があります。これにより、コンパイラはモジュールがどのように相互に関連しているか、また後でどのようにモジュールをロードするかを把握することができます。"
 
 msgid "In addition to `:entries` you'll need to declare which module depends on which (via `:depends-on`). How you structure this is entirely up to your needs and there is no one-size-fits-all solution unfortunately."
-msgstr ""
+msgstr "どのモジュールがどのモジュールに依存しているかを宣言する必要があります ( `:deined-on` を使って)。これをどのように構成するかは完全にあなたのニーズ次第であり、残念ながらすべてに当てはまる解決策はありません。"
 
 msgid "Say you have a traditional website with actual different pages."
-msgstr ""
+msgstr "あなたが実際に異なるページを持つ伝統的なウェブサイトを持っているとします。"
 
 msgid "`www.acme.com` - serving the homepage"
-msgstr ""
+msgstr "`www.acme.com` - ホームページ"
 
 msgid "`www.acme.com/login` - serving the login form"
-msgstr ""
+msgstr "`www.acme.com/login` - ログインフォーム"
 
 msgid "`www.acme.com/protected` - protected section that is only available once the user is logged in"
-msgstr ""
+msgstr "`www.acme.com/protected` - ログインしていないと利用できない保護されたセクション"
 
 msgid "One good configuration for this would be to have one common module that is shared between all the pages. Then one for each page."
-msgstr ""
+msgstr "このための良い構成の一つは、各ページに1つずつ全てのページで共有される共通モジュールを持つことでしょう"
 
 msgid "Example config with multiple <code>:modules</code>"
-msgstr ""
+msgstr "Example config with multiple ':modules'"
 
 msgid ""
 "{...\n"
@@ -2430,7 +2475,7 @@ msgid ""
 msgstr ""
 
 msgid "You can leave the `:entries` of the `:shared` module empty to let the compiler figure out which namespaces are shared between the other modules."
-msgstr ""
+msgstr "`shared` モジュールの `:entries` を空のままにしておくと、コンパイラが他のモジュール間でどの名前空間が共有されているかを把握できるようになります。"
 
 msgid "Generated file structure"
 msgstr ""
@@ -2446,10 +2491,10 @@ msgid ""
 msgstr ""
 
 msgid "In your HTML for the Homepage you'd then always include the `shared.js` on each page and the others conditionally depending on which page the user is on."
-msgstr ""
+msgstr "ホームページ用のHTMLには常に `shared.js` を各ページに、その他のページにはユーザーがどのページにいるかに応じて条件付きで含めることになります。"
 
 msgid "HTML for the <code>/login</code> page"
-msgstr ""
+msgstr "'/login' のHTML"
 
 msgid ""
 "<script src=\"/js/shared.js\"></script>\n"
@@ -2457,25 +2502,25 @@ msgid ""
 msgstr ""
 
 msgid "The `.js` files must be included in the correct order. The <<BrowserManifest, `manifest.edn`>> can help with this."
-msgstr ""
+msgstr "`.js` ファイルは正しい順序でインクルードしなければなりません。<<BrowserManifest, `manifest.edn`>>がこれを助けてくれます。"
 
 msgid "Loading code dynamically"
 msgstr ""
 
 msgid "These days Single-Page-Apps (SPA) are becoming more popular and they work similarly only that instead of letting the Server decide which JS to include to Client does it by itself."
-msgstr ""
+msgstr "最近ではシングルページアプリ(SPA)が人気を集めていますが、似たような働きをしています。"
 
 msgid "Using shadow-cljs&#8217;s built-in Loader Support"
 msgstr ""
 
 msgid "The compiler supports generating the required data for using the `shadow.loader` utility namespace. It exposes a simple interface to let you load modules on-demand at runtime."
-msgstr ""
+msgstr "コンパイラは `shadow.loader` ユーティリティの名前空間を使用するために必要なデータの生成をサポートしています。これは、実行時にモジュールをオンデマンドでロードできるようにするためのシンプルなインターフェースを公開しています。"
 
 msgid "You only need to add `:module-loader true` to your build config. The loader will always be injected into the default module (the one everything else depends on)."
-msgstr ""
+msgstr "ビルド設定に `:module-loader true` を追加するだけです。ローダは常にデフォルトのモジュール (他のすべてのものが依存するモジュール) に注入されます。"
 
 msgid "At runtime you may use the `shadow.loader` namespace to load modules. You may also load a module eagerly by just using a `<script>` tag in your page."
-msgstr ""
+msgstr "実行時には `shadow.loader` 名前空間を使ってモジュールをロードすることができます。また、ページ内で `<script>` タグを使用するだけで、積極的にモジュールをロードすることもできます。"
 
 msgid ""
 "{...\n"
@@ -2490,7 +2535,7 @@ msgid ""
 msgstr ""
 
 msgid "If you had the following for your main entry point:"
-msgstr ""
+msgstr "メインのエントリーポイントに以下のようなものがあったとします。"
 
 msgid ""
 "(ns my.app\n"
@@ -2504,7 +2549,7 @@ msgid ""
 msgstr ""
 
 msgid "Then the following expressions can be used for loading code:"
-msgstr ""
+msgstr "そうすると、以下のような式でコードをロードすることができます。"
 
 msgid "Loading a module"
 msgstr ""
@@ -2514,6 +2559,9 @@ msgid ""
 "(-> (loader/load \"extra\")\n"
 "    (.then fn-to-call-on-load fn-to-call-on-error))"
 msgstr ""
+";; loadはgoog.async.Deferredを返し、promiseのように使うことができます。\n"
+"(-> (loader/load \"extra\")\n"
+"    (.then fn-to-call-on-load fn-to-call-on-error))"
 
 msgid "Loading many modules"
 msgstr ""
@@ -2522,6 +2570,8 @@ msgid ""
 ";; must be a JS array, also returns goog.async.Deferred\n"
 "(loader/load-many #js [\"foo\" \"bar\"])"
 msgstr ""
+";; 引数はJS配列でなければなりませんがgoog.async.Deferredが返ります。\n"
+"(loader/load-many #js [\"foo\" \"bar\"])"
 
 msgid "Including a callback"
 msgstr ""
@@ -2530,34 +2580,34 @@ msgid "(loader/with-module \"extra\" fn-to-call-on-load)"
 msgstr ""
 
 msgid "You can check if a module is loaded using `(loaded? \"module-name\")`."
-msgstr ""
+msgstr "モジュールがロードされているかどうかは `(loaded? \"module-name\")` で確認できます。"
 
 msgid "Loader Costs"
 msgstr ""
 
 msgid "Using the loader is very lightweight. It has a few dependencies which you may not be otherwise using. In practice using `:module-loader true` adds about 8KB gzip'd to the default module. This will vary depending on how much of `goog.net` and `goog.events` you are already using, and what level of optimization you use for your release builds."
-msgstr ""
+msgstr "ローダの使用は非常に軽量です。ローダにはいくつかの依存関係がありますが、他の方法では使用しないかもしれません。実際には、`:module-loader true`を使うと、デフォルトのモジュールに約8KBのgzipが追加されます。これは `goog.net` や `goog.event` をどの程度使用しているか、また、リリースビルドにどの程度の最適化を使用しているかによって異なります。"
 
 msgid "Using the Standard ClojureScript API"
 msgstr ""
 
 msgid "The generated code is capable of using the standard ClojureScript `cljs.loader` API. See the https://clojurescript.org/news/2017-07-10-code-splitting[documentation] on the ClojureScript website for instructions."
-msgstr ""
+msgstr "生成されたコードは標準のClojureScript `cljs.loader` APIを使用することができます。説明はClojureScriptのウェブサイトの https://clojurescript.org/news/2017-07-10-code-splitting[ドキュメンテーション] を参照してください。"
 
 msgid "The advantage of using the standard API is that your code will play well with others. This may be of particular importance to library authors. The disadvantage is that the dynamic module loading API in the standard distribution is currently somewhat less easy-to-use than the support in `shadow-cljs`."
-msgstr ""
+msgstr "標準APIを使用する利点は、あなたのコードが他の人とうまく連携できることです。これはライブラリの作者にとって特に重要かもしれません。不利な点は、標準ディストリビューションの動的モジュールロードAPIが `shadow-cljs` のサポートに比べて、現在のところ使い勝手がやや悪いことです。"
 
 msgid "Output Wrapper"
 msgstr ""
 
 msgid "*Release builds only*: The code generated by the Closure Compiler `:advanced` compilation will create a lot of global variables which has the potential to create conflicts with other JS running in your page. To isolate the created variables the code can be wrapped in an anonymous function to the variables only apply in that scope."
-msgstr ""
+msgstr "*リリースビルドのみ*: Closureコンパイラの `:advanced` コンパイルによって生成されたコードは、多くのグローバル変数を生成し、ページ内で実行されている他のJSとの競合を引き起こす可能性があります。作成された変数を分離するには、コードを匿名関数でラップして、そのスコープ内でのみ適用される変数にすることです。"
 
 msgid "`release` builds for `:browser` with only one `:modules` are wrapped in `(function(){<the-code>}).call(this);` by default. So no global variables are created."
-msgstr ""
+msgstr "`release` はデフォルトでは `:browser` のビルドで `:modules` が1つしかない場合は `(function(){<コード>}).call(this);` でラップされているので、グローバル変数は生成されません。そのため、グローバル変数は生成されません。"
 
 msgid "When using multiple `:modules` (a.k.a <<CodeSplitting, code splitting>>) this is not enabled by default since each module must be able to access the variables created by the modules it depends on. The Closure Compiler supports an additional option to enable the use of an output wrapper in combination with multiple `:modules` named `:rename-prefix-namespace`. This will cause the Compiler to scope all \"global\" variables used by the build into one actual global variable. By default this is set to `:rename-prefix-namespace \"$APP\"` when `:output-wrapper` is set to `true`."
-msgstr ""
+msgstr "複数の `:modules` (別名 <<CodeSplitting, code splitting>>) を使用する場合、これはデフォルトでは有効になっていません。Closureコンパイラは `:rename-prefix-namespace` という名前の複数の `:modules` と組み合わせて出力ラッパーを使用できるようにする追加オプションをサポートしています。これによりコンパイラーはビルドで使用される全ての「グローバル」変数を1つの実際のグローバル変数にスコープするようになります。デフォルトでは、`:output-wrapper` が `true` に設定されている場合、これは `:remame-prefix-namespace \"$APP\"` に設定されています。"
 
 msgid ""
 "{...\n"
@@ -2570,19 +2620,19 @@ msgid ""
 msgstr ""
 
 msgid "This will only create the `MY_APP` global variable. Since every \"global\" variable will now be prefixed by `MY_APP.` (e.g. `MY_APP.a` instead of just `a`) the code size can go up substantially. It is important to keep this short. Browser compression (e.g. `gzip`) helps reduce the overhead of the extra code but depending on the amount of global variables in your build this can still produce a noticeable increase."
-msgstr ""
+msgstr "これは `MY_APP` グローバル変数を作成するだけです。すべての「global」変数の前に `MY_APP.` が付くようになったので (例えば `a` だけではなく `MY_APP.a`)、コードサイズは大幅に大きくなる可能性があります。これを短くしておくことが重要です。ブラウザ圧縮(例: `gzip`)は、余分なコードのオーバーヘッドを減らすのに役立ちますが、ビルド中のグローバル変数の量によっては、コードサイズが顕著に増加する可能性があります。"
 
 msgid "Note that the created variable isn't actually useful directly. It will contain a lot of munged/minified properties. All exported (eg. `^:export`) variables will still be exported into the global scope and are not affect by this setting. The setting only serves to limit the amount of global variables created, nothing else. Do not use it directly."
-msgstr ""
+msgstr "作成された変数は、実際には直接役立つものではないことに注意してください。この変数には、多くのmunged/minifiedされたプロパティが含まれています。すべてのエクスポートされた変数(例: `^:export`)はグローバルスコープにエクスポートされ、この設定の影響を受けません。この設定は、作成されるグローバル変数の量を制限するのに役立つだけで、他には何もありません。直接使用しないでください。"
 
 msgid "Web Workers"
 msgstr ""
 
 msgid "The `:modules` configuration may also be used to generate files intended to be used as a Web Workers. You may declare any module as a Web Worker by setting `:web-worker true`. The generated file will contain some additional bootstrap code which will load its dependencies automatically. The way `:modules` work also ensures that code used only by the worker will also only be in the final file for the worker. Each worker should have a dedicated CLJS namespace."
-msgstr ""
+msgstr "また、`:modules` 設定は、ウェブワーカーとして利用することを意図したファイルを生成するためにも利用できる。任意のモジュールをウェブワーカーとして宣言するには、`:web-worker true` を設定します。生成されたファイルには、依存関係を自動的にロードする追加のブートストラップコードが含まれます。モジュールが動作する方法は、ワーカーによってのみ使用されるコードが、ワーカーの最終ファイルにのみ存在することを保証します。各ワーカーは専用のCLJS名前空間を持つべきです。"
 
 msgid "An example of generating a web worker script"
-msgstr ""
+msgstr "ウェブワーカースクリプトの生成例"
 
 msgid ""
 "{...\n"
@@ -2606,10 +2656,10 @@ msgid ""
 msgstr ""
 
 msgid "The above configuration will generate `worker.js` which you can use to start the Web Worker. It will have all code from the `:shared` module available (but not `:main`). The code in the `my.app.worker` namespace will only ever execute in the worker. Worker generation happens in both development and release modes."
-msgstr ""
+msgstr "上記の設定により `worker.js` が生成され、これを使ってウェブワーカーを起動することができます。これには `:shared` モジュールのすべてのコードが含まれています (ただし `:main` は含まれていません)。名前空間 `my.app.worker` のコードはワーカー内でのみ実行されます。ワーカーの生成は開発モードとリリースモードの両方で行われます。"
 
 msgid "Note that the empty `:entries []` in the `:shared` module will make it collect all the code shared between the `:main` and `:worker` modules."
-msgstr ""
+msgstr "`shared` モジュールの空の `:entries []` は `:main` と `:worker` モジュール間で共有されているすべてのコードを収集するようにすることに注意してください。"
 
 msgid "Sample echo worker"
 msgstr ""
@@ -2636,7 +2686,7 @@ msgid ""
 msgstr ""
 
 msgid "Since we now have a `:shared` module you must ensure to load it properly in your HTML. If you just load `main.js` you will get an error."
-msgstr ""
+msgstr "これで `:shared` モジュールができたので、それを HTML で適切にロードする必要があります。`main.js` を読み込んだだけではエラーが発生します。"
 
 msgid "HTML Loading shared.js and main.js"
 msgstr ""
@@ -2650,13 +2700,13 @@ msgid "Cacheable Output"
 msgstr ""
 
 msgid "In a web setting it is desirable to cache `.js` files for a very long time to avoid extra request. It is common practice the generate a unique name for the `.js` file for every released version. This changes the URL used to access it and thereby is safe to cache forever."
-msgstr ""
+msgstr "ウェブ設定では、余計なリクエストを避けるために `.js` ファイルを非常に長い間キャッシュしておくことが望ましいです。一般的には、リリースされたバージョンごとに `.js` ファイルに一意の名前を生成します。これにより、アクセスに使用するURLが変更されるため、永遠にキャッシュしても安全です。"
 
 msgid "Release Versions"
 msgstr ""
 
 msgid "Creating unique filenames for each release can be done via the `:release-version` config setting. Generally you'll pass this in from the command line via <<config-merge, --config-merge>>."
-msgstr ""
+msgstr "各リリースに固有のファイル名を作成するには `:release-version` の設定で行うことができます。通常はコマンドラインから <<config-merge, --config-merge>> で指定します。"
 
 msgid "shadow-cljs release app --config-merge '{:release-version \"v1\"}'"
 msgstr ""
@@ -2678,19 +2728,19 @@ msgid ""
 msgstr ""
 
 msgid "This would create the `main.v1.js` and `extra.v1.js` files in `public/js` instead of the usual `main.js` and `extra.js`."
-msgstr ""
+msgstr "これにより、通常の `main.js` と `extra.js` の代わりに `public/js` に `main.v1.js` と `extra.v1.js` のファイルが作成されます。"
 
 msgid "You can use manual versions or something automated like the `git` sha at the time of the build. Just make sure that you bump whatever it is once you shipped something out to the user since with caching they won't be requesting newer versions of old files."
-msgstr ""
+msgstr "手動のバージョンを使うこともできますし、ビルド時に `git` sha のような自動化されたものを使うこともできます。ただ、キャッシュを使うとユーザは古いファイルの新しいバージョンを要求しないためユーザに何かを出荷したら、それが何であれ弾き上げるようにしてください。"
 
 msgid "Filenames with Fingerprint-Hash"
 msgstr ""
 
 msgid "You can add `:module-hash-names true` to your build config to automatically create a MD5 signature for each generated output module file. That means that a `:main` module will generate a `main.<md5hash>.js` instead of just the default `main.js`."
-msgstr ""
+msgstr "ビルド設定に `:module-hash-names true` を追加することで、生成された各出力モジュールファイルの MD5 シグネチャを自動的に作成することができます。これは `:main` モジュールがデフォルトの `main.js` の代わりに `main.<md5hash>.js` を生成することを意味します。"
 
 msgid "`:module-hash-names true` will include the full 32-length md5 hash, if you prefer a shorter version you can specify a number between 1-32 instead (eg. `:module-hash-names 8`). Be aware that shortening the hash may increase the chances of generating conflicts. I recommend using the full hash."
-msgstr ""
+msgstr "`:module-hash-names true` の場合モジュールハッシュの長さが32で完全なmd5ハッシュを含んでいることになります。もし短い方が良い場合は、代わりに1-32の間の数字を指定することができます (例: `module-hash-name 8`)。ハッシュを短くすると競合が発生する可能性が高くなることに注意してください。完全なハッシュを使うことをお勧めします。"
 
 msgid "Example :module-hash-names config"
 msgstr ""
@@ -2710,19 +2760,19 @@ msgid ""
 msgstr ""
 
 msgid "Instead of generating `main.js` it will now generate `main.<hash>.js` in the `:output-dir`."
-msgstr ""
+msgstr "これまでの `main.js` の代わりに `:output-dir` に `main.<hash>.js` を生成するようになりました。"
 
 msgid "Since the filename can change with every release it gets a little bit more complicated to include them in your HTML. The <<BrowserManifest, Output Manifest>> can help with that."
-msgstr ""
+msgstr "リリースごとにファイル名が変わることがあるので、HTMLに含めるのは少し複雑になります。 <<BrowserManifest, Output Manifest>>がそれを助けてくれます。"
 
 msgid "Output Manifest"
 msgstr ""
 
 msgid "`shadow-cljs` generates a `manifest.edn` file in the configured `:output-dir`. This file contains a description of the module config together with an extra `:output-name` property which maps the original module name to actual filename (important when using the `:module-hash-names` feature)."
-msgstr ""
+msgstr "`shadow-cljs` は `:output-dir` に `manifest.edn` ファイルを生成します。このファイルにはモジュールの設定の説明と、元のモジュール名を実際のファイル名にマップする追加の `:output-name` プロパティが含まれています (`:module-hash-names` 機能を使うときに重要です)。"
 
 msgid "Sample output of manifest.edn when using hashed filenames."
-msgstr ""
+msgstr "ハッシュ化されたファイル名を使用した場合の manifest.edn の出力サンプル。"
 
 msgid ""
 "[{:module-id :common,\n"
@@ -2741,13 +2791,13 @@ msgid ""
 msgstr ""
 
 msgid "The manifest contains all `:modules` sorted in dependency order. You can use it to map the `:module-id` back to the actual generated filename."
-msgstr ""
+msgstr "マニフェストには、依存関係の順に並べ替えられたすべての `:modules` が含まれています。これを使って `:module-id` を実際に生成されたファイル名にマップすることができます。"
 
 msgid "Development builds also produce this file and you may check if for modifications to know when a new build completed. `:module-hash-names` does not apply during development so you'll get the usual filenames."
-msgstr ""
+msgstr "開発ビルドでもこのファイルが生成されますので、新しいビルドが完了したときに変更があるかどうかを確認することができます。開発中は `:module-hash-names` は適用されないので、通常のファイル名を取得します。"
 
 msgid "You can configure the name of the generated manifest file via the `:build-options :manifest-name` entry. It defaults to `manifest.edn`. If you configure a filename with `.json` ending the output will be JSON instead of EDN. The file will be relative to the configured `:output-dir`."
-msgstr ""
+msgstr "生成されるマニフェストファイルの名前は、`:build-options :manifest-name`エントリで設定できます。デフォルトは `manifest.edn` です。ファイル名の末尾に `.json` を指定した場合、出力は EDN ではなく JSON になります。ファイルは設定された `:output-dir` からの相対的なものになります。"
 
 msgid "Example manifest.json config"
 msgstr ""
@@ -2768,31 +2818,31 @@ msgid "Development Support"
 msgstr ""
 
 msgid "The `:devtools` section of the configuration for `:browser` supports a few additional options for configuring an optional dev-time HTTP server for a build and CSS reloading."
-msgstr ""
+msgstr "`:browser` の設定の `:devtools` セクションは、ビルドや CSS のリロードのためにオプションの dev-time HTTP サーバを設定するためのいくつかの追加オプションをサポートしています。"
 
 msgid "Heads-Up Display (HUD)"
 msgstr ""
 
 msgid "The `:browser` target now uses a HUD to display a loading indicator when a build is started. It will also display warnings and errors if there are any."
-msgstr ""
+msgstr "`:browser` ターゲットはビルドが開始されたときにロードインディケータを表示するために HUD を使用するようになりました。また、警告やエラーがあれば表示されます。"
 
 msgid "You can disable it completely by setting `:hud false` in the `:devtools` section."
-msgstr ""
+msgstr "これを完全に無効にするには、`:devtools` セクションで `:hud false` を設定します。"
 
 msgid "You may also toggle certain features by specifying which features you care about via setting `:hud #{:errors :warnings}`. This will show errors/warnings but no progress indicator. Available options are `:errors`, `:warnings`, `:progress`. Only options included will be enabled, all other will be disabled."
-msgstr ""
+msgstr "また `:hud #{:errors :warnings}` を設定することで、気になる機能を指定して、特定の機能を切り替えることもできます。これにより、エラーや警告は表示されますが、進捗状況は表示されません。利用可能なオプションは `:errors`, `:warnings`, `:progress` です。含まれるオプションのみが有効になり、それ以外はすべて無効になります。"
 
 msgid "Opening Files"
 msgstr ""
 
 msgid "Warnings include a link to source location which can be clicked to open the file in your editor. For this a little bit of config is required."
-msgstr ""
+msgstr "警告にはソースの場所へのリンクが含まれており、クリックするとエディタでファイルを開くことができます。このためには少しの設定が必要です。"
 
 msgid "You can either configure this in your `shadow-cljs.edn` config for the project or globally in your home directory under `~/.shadow-cljs/config.edn`."
-msgstr ""
+msgstr "この設定は、プロジェクトの `shadow-cljs.edn` の設定で行うか、ホームディレクトリの `~/.shadow-cljs/config.edn` の下にあるグローバルな設定で行うことができます。"
 
 msgid "<code>:open-file-command</code> configuration"
-msgstr ""
+msgstr "`:open-file-command` configuration"
 
 msgid ""
 "{:open-file-command\n"
@@ -2800,16 +2850,16 @@ msgid ""
 msgstr ""
 
 msgid "The `:open-file-command` expects a vector representing a very simple DSL. Strings are kept as they are and keyword are replaced by their respective values. A nested vector can be used in case you need to combine multiple params, using `clojure.core/format` style pattern."
-msgstr ""
+msgstr "`open-file-command` は非常に単純なDSLを表すベクトルを期待します。文字列はそのまま保持され、キーワードはそれぞれの値に置き換えられます。複数のパラメータを組み合わせる必要がある場合は、`clojure.core/format` スタイルのパターンを使って、入れ子になったベクトルを使うことができます。"
 
 msgid "The above example would execute"
-msgstr ""
+msgstr "上記の例では、次のように実行されます。"
 
 msgid "$ idea /path/to/project-root --line 3 /path/to/project-root/srv/main/demo/foo.cljs"
 msgstr ""
 
 msgid "<code>emacsclient</code> example"
-msgstr ""
+msgstr "`emacsclient` example"
 
 msgid ""
 "{:open-file-command\n"
@@ -2820,37 +2870,37 @@ msgid "$ emacsclient -n +3:1 /path/to/project-root/srv/main/demo/foo.cljs"
 msgstr ""
 
 msgid "The available replacement variables are:"
-msgstr ""
+msgstr "利用可能な置換変数は以下の通りです:"
 
 msgid "`:pwd`"
 msgstr ""
 
 msgid "Process Working Directory (aka project root)"
-msgstr ""
+msgstr "プロセス作業ディレクトリ (別名プロジェクトルート)"
 
 msgid "`:file`"
 msgstr ""
 
 msgid "Absolute File Path"
-msgstr ""
+msgstr "ファイルの絶対パス"
 
 msgid "`:line`"
 msgstr ""
 
 msgid "Line Number of Warning/Error"
-msgstr ""
+msgstr "警告/エラーの行番号"
 
 msgid "`:column`"
 msgstr ""
 
 msgid "Column Number"
-msgstr ""
+msgstr "カラム番号"
 
 msgid "`:wsl-file`"
 msgstr ""
 
 msgid "Translated WSL file path. Useful when running `shadow-cljs` via WSL Bash. Translates a `/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs` path into `C:\\Users\\...`"
-msgstr ""
+msgstr "WSLファイルのパスを翻訳したもの。WSL Bashで `shadow-cljs` を実行するときに便利。`/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs` のパスを `C:\\Users\\...` に変換します。"
 
 msgid "`:wsl-pwd`"
 msgstr ""
@@ -2862,10 +2912,10 @@ msgid "CSS Reloading"
 msgstr ""
 
 msgid "The Browser devtools can also reload CSS for you. This is enabled by default and in most cases requires no additional configuration when you are using the built-in <<dev-http, development HTTP servers>>."
-msgstr ""
+msgstr "また、ブラウザのdevtoolsは、あなたのためにCSSをリロードすることができます。これはデフォルトで有効になっており、組み込みの <<dev-http, development HTTP servers>> を使用している場合は、ほとんどの場合、追加の設定は必要ありません。"
 
 msgid "Any stylesheet included in a page will be reloaded if modified on the filesystem. Prefer using absolute paths but relative paths should work as well."
-msgstr ""
+msgstr "ページに含まれるスタイルシートは、ファイルシステム上で変更されるとリロードされます。絶対パスの使用を推奨しますが、相対パスも同様に動作します。"
 
 msgid "Example HTML snippet"
 msgstr ""
@@ -2883,13 +2933,13 @@ msgid "Using the built-in dev HTTP server"
 msgstr ""
 
 msgid "This will cause the browser to reload `/css/main.css` when `public/css/main.css` is changed."
-msgstr ""
+msgstr "これにより、`public/css/main.css` が変更されたときにブラウザが `/css/main.css` をリロードするようになります。"
 
 msgid "`shadow-cljs` currently provides no support for directly compiling CSS but the usual tools will work and should be run separately. Just make sure the output is generated into the correct places."
-msgstr ""
+msgstr "`shadow-cljs` は現在のところ CSS の直接コンパイルをサポートしていませんが、通常のツールは動作しますので、別途実行する必要があります。ただ、出力が正しい場所に生成されることを確認してください。"
 
 msgid "When you are not using the built-in HTTP Server you can specify `:watch-dir` instead which should be a path to the document root used to serve your content."
-msgstr ""
+msgstr "組み込みのHTTPサーバを使用していない場合は、代わりに `:watch-dir` を指定することができます。"
 
 msgid "Example :watch-dir config"
 msgstr ""
@@ -2902,10 +2952,10 @@ msgid ""
 msgstr ""
 
 msgid "When your HTTP Server is serving the files from a virtual directory and the filesystem paths don't exactly match the path used in the HTML you may adjust the path by setting `:watch-path` which will be used as a prefix."
-msgstr ""
+msgstr "HTTP サーバが仮想ディレクトリからファイルを提供していて、ファイルシステムのパスが HTML で使われているパスと正確に一致しない場合は、`:watch-path` を設定することでパスを調整することができます。"
 
 msgid "Example <code>public/css/main.css</code> being served under <code>/foo/css/main.css</code>"
-msgstr ""
+msgstr "例 `public/css/main.css` が `/foo/css/main.css` の下に提供されている場合"
 
 msgid ""
 "{...\n"
@@ -2920,7 +2970,7 @@ msgid "Proxy Support"
 msgstr ""
 
 msgid "By default the devtools client will attempt to connect to the `shadow-cljs` process via the configured <<http, HTTP server>> (usually `localhost`). If you are using a reverse proxy to serve your HTML that might not be possible. You can set `:devtools-url` to configure which URL to use."
-msgstr ""
+msgstr "デフォルトでは、devtools クライアントは設定された <<http, HTTP server>> (通常は `localhost`) を介して `shadow-cljs` プロセスに接続しようとします。リバースプロキシを使って HTML を提供している場合は、それができないかもしれません。どのURLを使うかは `:devtools-url` で設定することができます。"
 
 msgid ""
 "{...\n"
@@ -2933,7 +2983,7 @@ msgid ""
 msgstr ""
 
 msgid "`shadow-cljs` will then use the `:devtools-url` as the base when making requests. It is not the final URL so you must ensure that all requests starting with the path you configured (eg. `/shadow-cljs/*`) are forwarded to the host `shadow-cljs` is running on."
-msgstr ""
+msgstr "`shadow-cljs` はリクエストを行う際に `:devtools-url` をベースにします。これは最終的な URL ではないので、設定したパス (例えば `/shadow-cljs/*`) で始まるすべてのリクエストが `shadow-cljs` が動作しているホストに転送されるようにしなければなりません。"
 
 msgid "Incoming Request to Proxy"
 msgstr ""
@@ -2948,25 +2998,25 @@ msgid "http://localhost:9630/foo/bar?asdf"
 msgstr ""
 
 msgid "The client will make WebSocket request as well as normal XHR requests to load files. Ensure that your proxy properly upgrades WebSockets."
-msgstr ""
+msgstr "クライアントは、ファイルをロードするために通常の XHR 要求と同様に WebSocket 要求を行います。プロキシが適切に WebSocket をアップグレードしていることを確認してください。"
 
 msgid "The requests must be forwarded to the main <<http, HTTP server>>, not the one configured in the build itself."
-msgstr ""
+msgstr "リクエストは、ビルド自体で設定されたものではなく、メインの <<http, HTTP server>> に転送されなければなりません。"
 
 msgid "Targeting React Native"
 msgstr ""
 
 msgid "The `:target :react-native` produces code that is meant to integrate into the default `react-native` tooling (eg. `metro`). Tools like `expo` which wrap those tools should automatically work and require no additional setup."
-msgstr ""
+msgstr "`:target :react-native` は、デフォルトの `react-native` ツール (例: `metro`) に統合するコードを生成します。これらのツールをラップする `expo` のようなツールは自動的に動作し、追加の設定は必要ありません。"
 
 msgid "You will need the same basic <<config,main configuration>> as in other targets (like `:source-paths`), the build specific config is very minimal and requires at least 2 options (besides `:target` itself)"
-msgstr ""
+msgstr "他のターゲット (`:source-paths` のようなもの) と同じ基本的な <<config,main configuration>> が必要ですが、ビルド固有の設定は非常に最小限で、少なくとも 2 つのオプションが必要です (`:target` 自体の他に)。"
 
 msgid "(required). The namespace-qualified symbol of your apps init function. This function will be called once on startup and should probably render something."
-msgstr ""
+msgstr "(必須)。アプリのinit関数の名前空間修飾シンボル。この関数は起動時に一度だけ呼び出され、おそらく何かをレンダリングする必要があります。"
 
 msgid "(required). The directory used to write output files."
-msgstr ""
+msgstr "(必須)。出力ファイルの書き込みに使用するディレクトリ。"
 
 msgid "Sample :react-native config"
 msgstr ""
@@ -2983,13 +3033,13 @@ msgid ""
 msgstr ""
 
 msgid "When compiled this results in a `app/index.js` file intended to be used as an entry point for the `react-native` tools. During development the `:output-dir` will contain many more files but you should only reference the generated `app/index.js` directly. A `release` build will only generated the optimized `app/index.js` and requires no additional files."
-msgstr ""
+msgstr "コンパイルすると `app/index.js` ファイルが生成され、これは `react-native` ツールのエントリーポイントとして使用されることを意図しています。開発中の `:output-dir` にはさらに多くのファイルが含まれますが、生成された `app/index.js` だけを直接参照するようにしてください。 `release` ビルドでは最適化された `app/index.js` が生成されるだけで、追加のファイルは必要ありません。"
 
 msgid "React Native"
 msgstr ""
 
 msgid "There are two ways to use `react-native`, \"plain\" `react-native`, which allows you to use native code and libraries and the one \"wrapped\" in https://expo.io/[expo] (described below). All the steps described above are sufficient to start using shadow-cljs with the plain `react-native`. See this example repo:"
-msgstr ""
+msgstr "`react-native`を使うには2つの方法があり、ネイティブコードやライブラリを使えるプレーンな `react-native` と https://expo.io/[expo] でラップされたもの(後述)です。上記のすべてのステップを踏めば、プレーンな `react-native` で shadow-cljs を使い始めることができます。この例のリポジトリを参照してください:"
 
 msgid "https://github.com/thheller/reagent-react-native"
 msgstr ""
@@ -2998,7 +3048,7 @@ msgid "Expo"
 msgstr ""
 
 msgid "https://expo.io/[expo] makes working with `react-native` quite easy. There are two provided example setups."
-msgstr ""
+msgstr "https://expo.io/[expo] を使うと `react-native` を使うのがとても簡単になります。提供されている設定例は2つあります。"
 
 msgid "https://github.com/thheller/fulcro-expo"
 msgstr ""
@@ -3007,7 +3057,7 @@ msgid "https://github.com/thheller/reagent-expo"
 msgstr ""
 
 msgid "Both examples where generated using `expo init ...` and the only adjusted change in the config was adding the proper `entryPoint` to the generated `app.json`."
-msgstr ""
+msgstr "どちらの例も `expo init ...` を使って生成されたもので、設定の変更点は生成された `app.json` に適切な `entryPoint` を追加することだけでした。"
 
 msgid ""
 "{\n"
@@ -3022,10 +3072,10 @@ msgid ""
 msgstr ""
 
 msgid "`expo` requires that a React Component is registered on startup which can be done manually or by using the `shadow.expo/render-root` function which takes care of creating the Component and instead directly expects a React Element instance to start rendering."
-msgstr ""
+msgstr "これは手動で行うこともできますが、`shadow.expo/render-root`関数を使用することで行うこともでき、代わりにReact Elementのインスタンスがレンダリングを開始することを直接期待できます。"
 
 msgid "From the Reagent <a href=\"https://github.com/thheller/reagent-expo/blob/2c73ed0513a8f5050b250c0c7e53b9ae7543cee9/src/main/test/app.cljs#L34-L40\">example</a>"
-msgstr ""
+msgstr "From the Reagent <a href=\"https://github.com/thheller/reagent-expo/blob/2c73ed0513a8f5050b250c0c7e53b9ae7543cee9/src/main/test/app.cljs#L34-L40\">example</a>"
 
 msgid ""
 "(defn start\n"
@@ -3038,19 +3088,19 @@ msgid ""
 msgstr ""
 
 msgid "`init` is called once on startup. Since the example doesn't need to do any special setup it just calls `start` directly. `start` will be called repeatedly when `watch` is running each time after the code changes were reloaded. The `reagent.core/as-element` function can be used to generate the required React Element from the reagent hiccup markup."
-msgstr ""
+msgstr "`init` は起動時に一度だけ呼び出されます。この例では特別な設定をする必要がないので `start` を直接呼び出すだけです。 `start` は `watch` が実行されているときには、コードの変更がリロードされた後、毎回繰り返し呼び出されます。 `reagent.core/as-element` 関数は、試薬のHiccup markupから必要なReact要素を生成するために利用できます。"
 
 msgid "Targeting node.js"
 msgstr ""
 
 msgid "There is built-in support for generating code that is intended to be used as a stand-alone script, and also for code that is intended to be used as a library. See the section on <<config,common configuration>> for the base settings needed in a configuration file."
-msgstr ""
+msgstr "スタンドアロンスクリプトとして使用することを目的としたコードや、ライブラリとして使用することを目的としたコードの生成をビルトインでサポートしています。設定ファイルに必要な基本設定については、 <<config,common configuration>> の項を参照してください。"
 
 msgid "node.js Scripts"
 msgstr ""
 
 msgid "The `:target :node-script` produces single-file stand-alone output that can be run using `node.js`. The code is just ClojureScript, and an entry point is easy to define:"
-msgstr ""
+msgstr "`:target :node-script` はシングルファイルのスタンドアロン出力を生成し、`node.js` を使って実行できます。コードはClojureScriptだけで、エントリポイントの定義も簡単です。"
 
 msgid ""
 "(ns demo.script)\n"
@@ -3063,22 +3113,22 @@ msgid "Build Options"
 msgstr ""
 
 msgid "You will need the same basic <<config,main configuration>> as in other targets (like `:source-paths`), but you'll need some node-specific build target options:"
-msgstr ""
+msgstr "他のターゲット (`:source-paths` など) と同じ基本的な <<config,main configuration>> が必要ですが、いくつかのノード固有のビルドターゲットオプションが必要になります:"
 
 msgid "`:main`"
 msgstr ""
 
 msgid "(required). The namespace-qualified symbol of your script's entry point function."
-msgstr ""
+msgstr "(必須)。スクリプトのエントリポイント関数の名前空間修飾シンボル。"
 
 msgid "`:output-to`"
 msgstr ""
 
 msgid "(required). The path and filename for the generated script."
-msgstr ""
+msgstr "(必須)。生成されたスクリプトのパスとファイル名。"
 
 msgid "(optional). The path for supporting files in development mode. Defaults to a cache directory."
-msgstr ""
+msgstr "(オプション)。開発モードでサポートするファイルのパス。デフォルトはキャッシュディレクトリです。"
 
 msgid "Sample node script build"
 msgstr ""
@@ -3094,22 +3144,22 @@ msgid ""
 msgstr ""
 
 msgid "When compiled this results in a standalone `out/demo-script/script.js` file intended to be called via `node script.js <command line args>`. When run it will call `(demo.script/main <command line args>)` function on startup. This only ever produces the file specified in `:output-to`. Any other support files (e.g. for development mode) are written to a temporary support directory."
-msgstr ""
+msgstr "コンパイルすると、これはスタンドアロンの `out/demo-script/script.js` ファイルになり `node script.js <command line args>` から呼び出されることを意図しています。実行すると、起動時に `(demo.script/main <command line args>)` 関数が呼び出されます。これは `:output-to` で指定されたファイルのみを生成します。その他のサポートファイル(開発モード用など)は、一時的なサポートディレクトリに書き込まれます。"
 
 msgid "You will often write scripts that run as servers or some other long-running process. Hot code reload can be quite useful when working with these, and it is simple to set up:"
-msgstr ""
+msgstr "サーバーやその他の長時間稼働するプロセスとして動作するスクリプトを書くことが多いでしょう。ホットコードリロードはこれらの作業を行う際に非常に便利で、設定も簡単です:"
 
 msgid "Add start/stop callback functions."
-msgstr ""
+msgstr "start/stop コールバック関数を追加します。"
 
 msgid "Configure the build use those hooks."
-msgstr ""
+msgstr "これらのフックを使用するビルドを設定します。"
 
 msgid "Here is an example http server in node:"
-msgstr ""
+msgstr "ここではnode内のhttpサーバの例を示します:"
 
 msgid "Sample node script with start/stop hooks for hot code reload."
-msgstr ""
+msgstr "ホットコードのリロードのための satrt/stop フックを持つサンプルノードスクリプト。"
 
 msgid ""
 "(ns demo.script\n"
@@ -3155,10 +3205,10 @@ msgid ""
 msgstr ""
 
 msgid "The associated configuration is (`shadow-cljs.edn`):"
-msgstr ""
+msgstr "関連する設定は (`shadow-cljs.edn`) です。"
 
 msgid "Adding hooks for hot code reload."
-msgstr ""
+msgstr "ホットコードのリロードのためのフックを追加。"
 
 msgid ""
 "{...\n"
@@ -3171,16 +3221,16 @@ msgid ""
 msgstr ""
 
 msgid "Many libraries hide state or do actions that prevent hot code reloading from working well. There is nothing the compiler can do to improve this since it has no idea what those libraries are doing. Hot code reload will only work well in situations where you can cleanly \"stop\" and \"restart\" the artifacts used."
-msgstr ""
+msgstr "多くのライブラリは状態を隠したり、ホットコードのリロードがうまく動作しないような動作をしています。コンパイラは、それらのライブラリが何をしているかを知らないので、これを改善することはできません。ホット・コード・リロードがうまくいくのは、使用されたアーティファクトをきれいに 「stop」と「restart」することができる状況でのみです。"
 
 msgid "node.js Libraries"
 msgstr ""
 
 msgid "The `:target :node-library` emits code that can be used (via `require`) as a standard node library, and is useful for publishing your code for re-use as a compiled Javascript artifact."
-msgstr ""
+msgstr "`:target :node-library` は、標準のノードライブラリとして(`require` を介して)利用できるコードを出力し、コンパイルされた Javascript の成果物として再利用するためにコードを公開するのに便利です。"
 
 msgid "As with other modes the <<config, main configuration options>> apply and must be set. The target-specific options are:"
-msgstr ""
+msgstr "他のモードと同様に <<config, main configuration options>> が適用され、設定しなければなりません。ターゲット固有のオプションは以下の通りです:"
 
 msgid "`:target`"
 msgstr ""
@@ -3189,31 +3239,31 @@ msgid "Use :node-library"
 msgstr ""
 
 msgid "(required). The path and filename for the generated library."
-msgstr ""
+msgstr "(必須)。生成されたライブラリのパスとファイル名。"
 
 msgid "The hot code reload story is similar to <<NodeHotCodeReload, the script target>>, but may not work as well since it cannot as easily control all of the code that is loaded."
-msgstr ""
+msgstr "ホットコードのリロードの話は <<NodeHotCodeReload, the script target>> と似ていますが、ロードされるコードの全てを簡単に制御できないので、うまくいかないかもしれません。"
 
 msgid "Controlling what code is actually exported is done via one of the following options:"
-msgstr ""
+msgstr "実際にエクスポートされるコードを制御するには、以下のオプションのいずれかを使用します:"
 
 msgid "`:exports` -  a map of keyword to fully qualified symbols"
-msgstr ""
+msgstr "`:exports` -  キーワードと完全修飾シンボルのマップ"
 
 msgid "`:exports-var` - a fully qualified symbol"
-msgstr ""
+msgstr "`:exports-var` - 完全修飾シンボル"
 
 msgid "`:exports-fn` - a fully qualified symbol"
-msgstr ""
+msgstr "`:exports-fn` - 完全修飾シンボル"
 
 msgid "Single static \"default\" export"
 msgstr ""
 
 msgid "`:exports-var` will just return whatever is declared under that var. It can point to a `defn` or normal `def`."
-msgstr ""
+msgstr "`:exports-var` は、その var の下で宣言されたものを返すだけです。 これは `defn` または通常の `def` を指すことができます。"
 
 msgid "Build config using <code>:exports-var</code>"
-msgstr ""
+msgstr "Build config using `:exports-var`"
 
 msgid ""
 "{...\n"
@@ -3243,13 +3293,13 @@ msgid ""
 msgstr ""
 
 msgid "It is effectively generating `module.exports = demo.ns.f;`"
-msgstr ""
+msgstr "効果的に `module.exports = demo.ns.f;` を生成しています。"
 
 msgid "Multiple static named exports"
-msgstr ""
+msgstr "複数の静的名前付きエクスポート"
 
 msgid "Build configuration with multiple exports"
-msgstr ""
+msgstr "複数のエクスポートで構成を構築"
 
 msgid ""
 "{...\n"
@@ -3260,7 +3310,7 @@ msgid ""
 msgstr ""
 
 msgid "The keyword is used as the name of the entry in the exported object. *No munging is done* to this keyword name (but namespaces are dropped). So, the above example maps cljs `f` to `g`, etc.:"
-msgstr ""
+msgstr "このキーワードは、エクスポートされたオブジェクトのエントリの名前として使用されます。このキーワード名には *munging は行われません*  (ただし、名前空間は削除されます)。ですから、上の例では cljs `f` を `g` などにマップしています。"
 
 msgid ""
 "$ node\n"
@@ -3270,7 +3320,7 @@ msgid ""
 msgstr ""
 
 msgid "You can achieve the exact same thing by using `:exports-var` pointing to a `def`"
-msgstr ""
+msgstr "`:exports-var` が指す `def` を使うことで、全く同じことができます。"
 
 msgid ""
 "(def exports #js {:g f\n"
@@ -3281,7 +3331,7 @@ msgid "\"Dynamic\" exports"
 msgstr ""
 
 msgid "In addition you may specify `:exports-fn` as a fully qualified symbol. This should point to a function with no arguments which should return a JS object (or function). This function will only ever be called ONCE as `node` caches the return value."
-msgstr ""
+msgstr "さらに、完全修飾シンボルとして `:exports-fn` を指定することもできます。これはJSオブジェクト(または関数)を返す引数を持たない関数を指します。この関数は `node` が戻り値をキャッシュするため、一度だけ呼び出されます。"
 
 msgid ""
 "(ns demo.ns\n"
@@ -3299,13 +3349,13 @@ msgid ""
 msgstr ""
 
 msgid "The exports config automatically tracks exported symbols and passes them on to the optimization stage. This means that anything listed in `:exports` will not be renamed by Google Closure optimizations."
-msgstr ""
+msgstr "exports設定は、エクスポートされたシンボルを自動的に追跡し、最適化の段階に渡します。これは、`:exports` にリストされているものは、Google Closure の最適化によってリネームされないことを意味します。"
 
 msgid "Full Example"
 msgstr ""
 
 msgid "The example below creates a `lib.js` file intended to be consumed via the normal Node `require` mechanism."
-msgstr ""
+msgstr "以下の例では、通常のNodeの `require` メカニズムで消費されることを意図した `lib.js` ファイルを作成しています。"
 
 msgid ""
 "(ns demo.lib)\n"
@@ -3316,7 +3366,7 @@ msgid ""
 msgstr ""
 
 msgid "The build configuration would be:"
-msgstr ""
+msgstr "ビルド構成は次のようになります:"
 
 msgid ""
 "{...\n"
@@ -3326,7 +3376,7 @@ msgid ""
 msgstr ""
 
 msgid "and the runtime use is as you would expect:"
-msgstr ""
+msgstr "で、実行時の使用方法は期待通りです:"
 
 msgid ""
 "$ cd out/demo-library\n"
@@ -3339,13 +3389,13 @@ msgid ""
 msgstr ""
 
 msgid "As `:node-script` this will only create the file specified in `:output-to`. The `:exports` map maps CLJS vars to the name they should be exported to."
-msgstr ""
+msgstr "これは `:node-script` のように `:output-to` で指定されたファイルのみを作成します。マップ `:exports` は CLJS の vars をエクスポート先の名前にマップします。"
 
 msgid "Development mode has the <<NodeModes,same setup>> as for node scripts (extra dependencies)."
-msgstr ""
+msgstr "開発モードでは、ノードスクリプトと同様に <<NodeModes, same setup>> を使用します（余分な依存関係があります）。"
 
 msgid "Creating <code>npm</code> packages"
-msgstr ""
+msgstr "Creating `npm` packages"
 
 msgid "Embedding in the JS Ecosystem&#8201;&#8212;&#8201;The <code>:npm-module</code> Target"
 msgstr ""

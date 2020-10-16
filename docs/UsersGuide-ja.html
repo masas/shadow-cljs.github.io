@@ -692,15 +692,15 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#target-node-library">9.2. node.js Libraries</a>
 <ul class="sectlevel3">
 <li><a href="#_single_static_default_export">9.2.1. Single static "default" export</a></li>
-<li><a href="#_multiple_static_named_exports">9.2.2. Multiple static named exports</a></li>
+<li><a href="#_multiple_static_named_exports">9.2.2. 複数の静的名前付きエクスポート</a></li>
 <li><a href="#_dynamic_exports">9.2.3. "Dynamic" exports</a></li>
 <li><a href="#_full_example">9.2.4. Full Example</a></li>
 </ul>
 </li>
-<li><a href="#_creating_code_npm_code_packages">9.3. Creating &lt;code&gt;npm&lt;/code&gt; packages</a></li>
+<li><a href="#_creating_code_npm_code_packages">9.3. Creating <code>npm</code> packages</a></li>
 </ul>
 </li>
-<li><a href="#target-npm-module">10. Embedding in the JS Ecosystem&#8201;&#8212;&#8201;The &lt;code&gt;:npm-module&lt;/code&gt; Target</a>
+<li><a href="#target-npm-module">10. JSエコシステムへの組み込み&#8201;&#8212;&#8212;&#8201; <code>:npm-module</code> ターゲット</a>
 <ul class="sectlevel2">
 <li><a href="#_working_with_optimizations">10.1. Working with Optimizations</a></li>
 </ul>
@@ -2724,48 +2724,48 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect3">
 <h4 id="compile-stages"><a class="anchor" href="#compile-stages"></a><a class="link" href="#compile-stages">6.3.1. Compilation Stages</a></h4>
 <div class="paragraph">
-<p>The possible stages the <code>:build-hooks</code> can use are:</p>
+<p>`:build-hooks``が使用できるステージは下記の通りです。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>:configure</code> - initial <code>:target</code> specific configuration</p>
+<p><code>:configure</code> - 初期の <code>:target</code> 固有の設定</p>
 </li>
 <li>
-<p><code>:compile-prepare</code> - called before any compilation is done</p>
+<p><code>:compile-prepare</code> - コンパイル開始前に呼び出されます。</p>
 </li>
 <li>
-<p><code>:compile-finish</code> - called after all compilation finishes</p>
+<p><code>:compile-finish</code> - すべてのコンパイルが終了した後に呼び出されます。</p>
 </li>
 <li>
-<p><code>:optimize-prepare</code> - called before running the Closure Compiler optimization phase (<code>:release</code> only)</p>
+<p><code>:optimize-prepare</code> - Closure Compilerの最適化フェーズを実行する前に呼び出されます (<code>:release</code> のみ)</p>
 </li>
 <li>
-<p><code>:optimize-finish</code> - called after Closure is done (<code>:release</code> only)</p>
+<p><code>:optimize-finish</code> - Closureコンパイルの終了時に呼び出されます。 (<code>:release</code> のみ)</p>
 </li>
 <li>
-<p><code>:flush</code> - called after everything was flushed to disk</p>
+<p><code>:flush</code> - ディスクにすべてを書き込んだ後に呼び出されます</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>With a running <code>watch</code> the <code>:configure</code> is only called once. Any of the others may be called again (in order) for each re-compile. The <code>build-state</code> will be re-used until the build config changes at which point it will be thrown away and a fresh one will be created.</p>
+<p>実行中の <code>watch</code> では <code>:configure</code> が呼ばれるのは一度だけです。他のどれかは再コンパイルのたびに (順番に) 再度呼ばれるかもしれません。ビルド状態 <code>build-state</code> は、ビルド設定が変更されるまで再利用され、その時点で破棄されて新しいものが作成されます。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_compiler_cache"><a class="anchor" href="#_compiler_cache"></a><a class="link" href="#_compiler_cache">6.4. Compiler Cache</a></h3>
 <div class="paragraph">
-<p><code>shadow-cljs</code> will cache all compilation results by default. The cache is invalidated whenever anything relevant to the individual source files changes (eg. changed compiler setting, changed dependencies, etc.). This greatly improves the developer experience since incremental compilation will be <strong>much</strong> faster than starting from scratch.</p>
+<p><code>shadow-cljs</code> はデフォルトですべてのコンパイル結果をキャッシュします。個々のソースファイルに関連する何かが変更されると、キャッシュは無効になります (例: コンパイラの設定の変更、依存関係の変更など)。これは開発者の体験を <strong>大幅</strong> に向上させます。</p>
 </div>
 <div class="paragraph">
-<p>Invalidating the cache however can not always be done reliably if you are using a lot of macros with side-effects (reading files, storing things outside the compiler state, etc.). In those cases you might need to disable caching entirely.</p>
+<p>しかし、副作用のあるマクロを多く使用している場合 (ファイルを読んだり、コンパイラの状態の外に保存したり)、キャッシュを無効にすることは必ずしも確実にできるわけではありません。そのような場合は、キャッシュを完全に無効にする必要があるかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>Namespaces that are known to include side-effecting macros can be blocked from caching. They won&#8217;t be cached themselves and namespaces requiring them will not be cached as well. The <a href="https://github.com/cerner/clara-rules">clara-rules</a> library has side-effecting macros and is blocked by default. You can specify which namespaces to block globally via the <code>:cache-blockers</code> configuration. It expects a set of namespace symbols.</p>
+<p>副作用のあるマクロを含むことが知られている名前空間は、キャッシュをブロックすることができます。これらはそれ自体はキャッシュされず、それらを必要とする名前空間もキャッシュされません。 <a href="https://github.com/cerner/clara-rules">clara-rules</a> ライブラリには副作用のあるマクロがあり、デフォルトでブロックされています。どの名前空間をグローバルにブロックするかは <code>:cache-blockers</code> 設定で指定できます。これは名前空間シンボルのセットを期待しています。</p>
 </div>
 <div class="listingblock">
-<div class="title">clara.rules cache blocking example (this is done by default)</div>
+<div class="title">clara.rules キャッシュブロックの例 (デフォルトで行われています)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:cache-blockers</span> #{clara.rules}
@@ -2773,7 +2773,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>In addition you can control how much caching is done more broadly via the <code>:build-options</code> <code>:cache-level</code> entry. The supported options are:</p>
+<p>さらに、<code>:build-options</code> <code>:cache-level</code> エントリを使用することで、キャッシュの量をより広範囲に制御することができます。サポートされているオプションは以下の通りです:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -2782,7 +2782,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <code>:all</code>
 </td>
 <td class="hdlist2">
-<p>The default, all CLJS files are cached</p>
+<p>デフォルトでは、すべての CLJS ファイルがキャッシュされます。</p>
 </td>
 </tr>
 <tr>
@@ -2790,7 +2790,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <code>:jars</code>
 </td>
 <td class="hdlist2">
-<p>Only caches files from libraries, ie. source files in <code>.jar</code> files</p>
+<p>ライブラリからのファイルのみをキャッシュします。 つまり、<code>.jar</code> ファイル内のソースファイル。</p>
 </td>
 </tr>
 <tr>
@@ -2798,7 +2798,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <code>:off</code>
 </td>
 <td class="hdlist2">
-<p>Does not cache any CLJS compilation results (by far the slowest option)</p>
+<p>CLJSのコンパイル結果をキャッシュしない(最も遅いオプション)</p>
 </td>
 </tr>
 </table>
@@ -2816,16 +2816,16 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>The cache files are stored in a dedicated directory for each build so the cache is never shared between builds. A build with the id <code>:app</code> will have the <code>:dev</code> cache in the directory:</p>
+<p>キャッシュファイルはビルドごとに専用のディレクトリに保存されるので、ビルド間でキャッシュが共有されることはありません。id が <code>:app</code> のビルドは <code>:dev</code> キャッシュをディレクトリに格納します。</p>
 </div>
 <div class="listingblock">
-<div class="title">Cache location for &lt;code&gt;cljs/core.cljs&lt;/code&gt;</div>
+<div class="title"><code>cljs/core.cljs</code> のキャッシュ場所</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">target/shadow-cljs/builds/app/dev/ana/cljs/core.cljs.cache.transit.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>:cache-root</code> setting defaults to <code>target/shadow-cljs</code> and controls where ALL cache files will be written. It can only be configured globally, not per build.</p>
+<p>デフォルトの <code>:cache-root</code> 設定は <code>target/shadow-cljs</code> で、すべてのキャッシュファイルをどこに書き込むかを制御します。これは全体に設定され、ビルドごとに設定できるわけではありません。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2839,16 +2839,16 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>:cache-root</code> is always resolved relative to the project directory. You can also specify absolute paths (eg. <code>/tmp/shadow-cljs</code>).</p>
+<p>キャッシュルート <code>:cache-root</code> は常にプロジェクトディレクトリからの相対パスですが、絶対パスを指定することもできます (例: <code>/tmp/shadow-cljs</code>)。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="closure-defines"><a class="anchor" href="#closure-defines"></a><a class="link" href="#closure-defines">6.5. Closure Defines</a></h3>
 <div class="paragraph">
-<p>The Closure Library &amp; Compiler allow you to define variables that are essentially compile time constants. You can use these to configure certain features of your build. Since the Closure compiler treats these as constants when running <code>:advanced</code> optimizations they are fully supported in the Dead-Code-Elimination passes and can be used to remove certain parts of the code that should not be included in <code>release</code> builds.</p>
+<p>Closure ライブラリとコンパイラでは、基本的にコンパイル時の定数である変数を定義することができます。これらを使用してビルドの特定の機能を設定することができます。Closureコンパイラは <code>:advanced</code> 最適化を実行する際に定数として扱いますので、デッドコード除去パスでは完全にサポートされています。</p>
 </div>
 <div class="paragraph">
-<p>You can define them in your code</p>
+<p>コード内で定義することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2861,7 +2861,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>This defines the <code>your.app/VERBOSE</code> variable as <code>false</code> by default. This will cause the <code>println</code> to be removed in <code>:advanced</code> compilation. You can toggle this to <code>true</code> via the <code>:closure-defines</code> options which will enable the <code>println</code>. This can either be done for development only or always.</p>
+<p>これはデフォルトで <code>your.app/VERBOSE</code> 変数を <code>false</code> に定義します。これにより、 <code>:advanced</code> のコンパイル時に <code>println</code> が削除されます。これを <code>:closure-defines</code> オプションで <code>true</code> に切り替えると <code>println</code> が有効になります。これは開発用にのみ行うことも、常に行うこともできます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2887,7 +2887,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="title">Tip</div>
 </td>
 <td class="content">
-It is generally safer to use the "disabled" variant as the default since it makes things less likely to be included in a <code>release</code> build when they shouldn&#8217;t be. Forgetting to set a <code>:closure-defines</code> variable should almost always result in less code being used not more.
+"disabled" バリアントをデフォルトとして使用する方が一般的に安全です。変数 <code>:closure-defines</code> を設定するのを忘れた場合、ほとんどの場合、使用されるコードは少なくなりますが、多くはなりません。
 </td>
 </tr>
 </table>
@@ -2898,10 +2898,10 @@ It is generally safer to use the "disabled" variant as the default since it make
 <div class="ulist">
 <ul>
 <li>
-<p><code>goog.DEBUG</code>: The Closure Library uses this for many development features. <code>shadow-cljs</code> automatically sets this to <code>false</code> for <code>release</code> builds.</p>
+<p><code>goog.DEBUG</code>: クロージャーライブラリはこれを多くの開発機能に利用します。 <code>shadow-cljs</code> は、 <code>release</code> ビルドでは自動的に <code>false</code> に設定します。</p>
 </li>
 <li>
-<p><code>goog.LOCALE</code> can be used to configure certain localization features like <code>goog.i18n.DateTimeFormat</code>. It accepts a standard locale string and defaults to <code>en</code>. Pretty much all locales are supported, see <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbols.js">here</a> and <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbolsext.js">here</a>.</p>
+<p><code>goog.LOCALE</code> は、<code>goog.i18n.DateTimeFormat</code> のような特定のローカライゼーション機能を設定するために使用します。標準のロケール文字列を受け付け、デフォルトは <code>en</code> です。ほとんどすべてのロケールに対応しています。 <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbols.js">こちら</a> および <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbolsext.js">こちら</a> を参照ください。</p>
 </li>
 </ul>
 </div>
@@ -2909,10 +2909,10 @@ It is generally safer to use the "disabled" variant as the default since it make
 <div class="sect2">
 <h3 id="compiler-options"><a class="anchor" href="#compiler-options"></a><a class="link" href="#compiler-options">6.6. Compiler Options</a></h3>
 <div class="paragraph">
-<p>The CLJS compiler supports several options to influence how some code is generated. For the most part <code>shadow-cljs</code> will pick some good defaults for each <code>:target</code> but you might occasionally want to change some of them.</p>
+<p>CLJSコンパイラはコードの生成方法に影響を与えるいくつかのオプションをサポートしています。ほとんどの場合、 <code>shadow-cljs</code> は <code>:target</code> ごとにいくつかの良いデフォルト値を選択しますが、時々それらのいくつかを変更したくなるかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>These are all grouped under the <code>:compiler-options</code> key in your build config.</p>
+<p>これらはすべてビルド設定の <code>:compiler-options</code> キーの下にグループ化されています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2925,45 +2925,45 @@ It is generally safer to use the "disabled" variant as the default since it make
 </div>
 </div>
 <div class="paragraph">
-<p>Most of the standard ClojureScript <a href="https://clojurescript.org/reference/compiler-options">Compiler Options</a> are either enabled by default or do not apply. So very few of them actually have an effect. A lot of them are also specific to certain <code>:target</code> types and do not apply universally (e.g. <code>:compiler-options {:output-wrapper true}</code> is only relevant for <code>:target :browser</code>).</p>
+<p>標準のClojureScript <a href="https://clojurescript.org/reference/compiler-options">コンパイラオプション</a> のほとんどは、デフォルトで有効になっているか、適用されていません。そのため、実際に効果があるものはほとんどありません。それらの多くは特定の <code>:target</code> タイプに固有のものであり、普遍的には適用されません (例えば、 <code>:compiler-options {:output-wrapper true}</code> は <code>:target :browser</code> にのみ関連しています)。</p>
 </div>
 <div class="paragraph">
-<p>Currently supported options include</p>
+<p>現在サポートされているオプションには以下のものがあります。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>:optimizations</code> supports <code>:advanced</code>, <code>:simple</code> or <code>:whitespace</code>, defaults to <code>:advanced</code>. <code>:none</code> is the default for development and cannot be set manually. <code>release</code> with <code>:none</code> won&#8217;t work.</p>
+<p><code>:optimizations</code> は <code>:advanced</code>, <code>:simple</code>, <code>:whitespace</code> をサポートしており、デフォルトは <code>:advanced</code> です。 <code>:none</code> は開発時のデフォルトであり、手動で設定することはできません。 <code>release</code> に <code>:none</code> を指定しても動作しません。</p>
 </li>
 <li>
-<p><code>:infer-externs</code> <code>:all</code>, <code>:auto</code>, <code>true</code> or <code>false</code>, defaults to <code>true</code></p>
+<p><code>:infer-externs</code> <code>:all</code>, <code>:auto</code>, <code>true</code> または <code>false</code>, デフォルトは <code>true</code> です。</p>
 </li>
 <li>
-<p><code>:static-fns</code> (Boolean) defaults to <code>true</code></p>
+<p><code>:static-fns</code> (ブール値) デフォルトは <code>true</code> です。</p>
 </li>
 <li>
-<p><code>:fn-invoke-direct</code> (Boolean) defaults to <code>false</code></p>
+<p><code>:fn-invoke-direct</code> (ブール値) デフォルトは <code>false</code> です。</p>
 </li>
 <li>
-<p><code>:elide-asserts</code> (Boolean) default to <code>false</code> in development and <code>true</code> in <code>release</code> builds</p>
+<p><code>:elide-asserts</code> (ブール値) デフォルトは開発版では <code>false</code>, <code>release</code> ビルド版では <code>true</code> です。</p>
 </li>
 <li>
-<p><code>:pretty-print</code> and <code>:pseudo-names</code> default to <code>false</code>. You can use <code>shadow-cljs release app --debug</code> to enable both temporarily without touching your config. This is very useful when running into problem with <code>release</code> builds</p>
+<p><code>:pretty-print</code> と <code>:pseudo-name</code> のデフォルトは <code>false</code> です。 <code>shadow-cljs release app --debug</code> を使うと、設定に触れずに一時的に両方を有効にすることができます。これは <code>release</code> ビルドで問題が発生したときに非常に便利です。</p>
 </li>
 <li>
-<p><code>:source-map</code> (Boolean) defaults to <code>true</code> during development, <code>false</code> for <code>release</code>.</p>
+<p><code>:source-map</code> (ブール値) デフォルトは開発中は <code>true</code> で、<code>release</code> では <code>false</code> です。</p>
 </li>
 <li>
-<p><code>:source-map-include-sources-content</code> (Boolean) defaults to <code>true</code> and decides whether source maps should contains their sources in the <code>.map</code> files directly.</p>
+<p><code>:source-map-includes-sources-content</code> (ブール値) デフォルトは <code>true</code> で、ソースマップが <code>.map</code> ファイルに直接ソースを含めるかどうかを決定します。</p>
 </li>
 <li>
-<p><code>:source-map-detail-level</code> <code>:all</code> or <code>:symbols</code> (<code>:symbols</code> reduces overall size a bit but also a bit less accurate)</p>
+<p><code>:source-map-detail-level</code> <code>:all</code> または <code>:synmbols</code> (<code>:synmbols</code> は全体のサイズを少し小さくしますが、精度は少し落ちます)</p>
 </li>
 <li>
-<p><code>:externs</code> vector of paths, defaults to <code>[]</code></p>
+<p><code>:externs</code> pathのベクタです、デフォルトは <code>[]</code></p>
 </li>
 <li>
-<p><code>:checked-arrays</code> (Boolean), defaults to <code>false</code></p>
+<p><code>:checked-arrays</code> (ブール値), デフォルトは <code>false</code></p>
 </li>
 <li>
 <p><code>:anon-fn-naming-policy</code></p>
@@ -2972,26 +2972,26 @@ It is generally safer to use the "disabled" variant as the default since it make
 <p><code>:rename-prefix</code> and <code>:rename-prefix-namespace</code></p>
 </li>
 <li>
-<p><code>:warnings</code> as a map of <code>{warning-type true|false}</code>, eg. <code>:warnings {:undeclared-var false}</code> to turn off specific warnings.</p>
+<p><code>:warnings</code> は <code>{warning-type true|false}</code> のマップとして使用します。 例えば 特定の警告をオフにするには <code>:warnings {:undeclared-var false}</code> とします。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Unsupported or non-applicable Options</strong></p>
+<p><strong>サポートされていない、または適用されないオプション</strong></p>
 </div>
 <div class="paragraph">
-<p>Options that don&#8217;t have any effect at all include</p>
+<p>全く効果がないオプションには以下のようなものがあります。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>:verbose</code> is controlled by running <code>shadow-cljs compile app --verbose</code> not in the build config.</p>
+<p><code>:verbose</code> はビルド設定ではなく <code>shadow-cljs compile app --verbose</code> を実行することで制御されます。</p>
 </li>
 <li>
 <p><code>:foreign-libs</code> and <code>:libs</code></p>
 </li>
 <li>
-<p><code>:stable-names</code> always enabled, cannot be disabled</p>
+<p><code>:stable-names</code> は常に有効で、無効にすることはできません。</p>
 </li>
 <li>
 <p><code>:install-deps</code></p>
@@ -3000,7 +3000,7 @@ It is generally safer to use the "disabled" variant as the default since it make
 <p><code>:source-map-path</code>, <code>:source-asset-path</code> and <code>:source-map-timestamp</code></p>
 </li>
 <li>
-<p><code>:cache-analysis</code> always enabled, cannot be disabled.</p>
+<p><code>:cache-analysis</code> は常に有効で、無効にすることはできません。</p>
 </li>
 <li>
 <p><code>:recompile-dependents</code></p>
@@ -3009,22 +3009,22 @@ It is generally safer to use the "disabled" variant as the default since it make
 <p><code>:preamble</code></p>
 </li>
 <li>
-<p><code>:hashbang</code> (the <code>:node-script</code> target supports this, others don&#8217;t)</p>
+<p><code>:hashbang</code> (<code>:node-script</code> ターゲットはこれをサポートしていますが、他のターゲットはこれをサポートしていません)</p>
 </li>
 <li>
-<p><code>:compiler-stats</code> use <code>--verbose</code> to get detailed information instead</p>
+<p><code>:compiler-stats</code> は詳細な情報を得るために <code>--verbose</code> を使用します。</p>
 </li>
 <li>
-<p><code>:optimize-constants</code> always done for <code>release</code> builds, cannot be disabled</p>
+<p><code>:optimize-constants</code> は <code>release</code> ビルドに対して常に行われ、無効にすることはできません。</p>
 </li>
 <li>
-<p><code>:parallel-build</code> always enabled</p>
+<p><code>:parallel-build</code> は常に有効です</p>
 </li>
 <li>
 <p><code>:aot-cache</code></p>
 </li>
 <li>
-<p><code>:package-json-resolution</code> see <a href="#js-resolve">:js-options :resolve</a> instead</p>
+<p><code>:package-json-resolution</code> 代わりに <a href="#js-resolve">:js-options :resolve</a> を参照してください。</p>
 </li>
 <li>
 <p><code>:watch-fn</code></p>
@@ -3037,10 +3037,10 @@ It is generally safer to use the "disabled" variant as the default since it make
 <div class="sect3">
 <h4 id="warnigs-as-errors"><a class="anchor" href="#warnigs-as-errors"></a><a class="link" href="#warnigs-as-errors">6.6.1. Warnings as Errors</a></h4>
 <div class="paragraph">
-<p>It is sometimes desireable to fail a build with warnings rather than continuing with the build (eg. in CI envs). You can use the <code>:warnings-as-errors</code> compiler options to customize how that is handled.</p>
+<p>ビルドを継続するのではなく、警告を表示してビルドを失敗させたいと思うことがあります (CI環境など)。コンパイラのオプション <code>:warnings-as-errors</code> を使って、この処理方法をカスタマイズすることができます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Treat all warnings as errors</div>
+<div class="title">すべての警告をエラーとして扱う</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3050,7 +3050,7 @@ It is generally safer to use the "disabled" variant as the default since it make
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Only throw certain warnings</div>
+<div class="title">特定の警告のみを投げる</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3060,10 +3060,10 @@ It is generally safer to use the "disabled" variant as the default since it make
 </div>
 </div>
 <div class="paragraph">
-<p>A set of possible warning-type keywords can be found <a href="https://github.com/clojure/clojurescript/blob/5ad96a8b3ae2e3616a19715ba9ba2471a36933a2/src/main/clojure/cljs/analyzer.cljc#L124-L163">here</a>.</p>
+<p>可能性のある警告型キーワードのセットは、 <a href="https://github.com/clojure/clojurescript/blob/5ad96a8b3ae2e3616a19715ba9ba2471a36933a2/src/main/clojure/cljs/analyzer.cljc#L124-L163">こちら</a> を参照してください。</p>
 </div>
 <div class="listingblock">
-<div class="title">Only throw for certain namespaces</div>
+<div class="title">特定の名前空間に対してのみ投げる</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3074,17 +3074,17 @@ It is generally safer to use the "disabled" variant as the default since it make
 </div>
 </div>
 <div class="paragraph">
-<p><code>:ignore</code> takes a set of symbols refering to namespaces. Either direct matches or <code>.*</code> wildcards are allowed. <code>:warning-types</code> has the same functionality as above, not specifying it means all warnings will throw except the ignored namespaces.</p>
+<p><code>:ignore</code> は名前空間を参照するシンボルのセットを取ります。直接一致か <code>.*</code> ワイルドカードのいずれかを使用することができます。<code>:warning-types</code> は上記と同じ機能を持ちますが、指定しない場合は無視された名前空間を除いてすべての警告を投げることになります。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_output_language_options"><a class="anchor" href="#_output_language_options"></a><a class="link" href="#_output_language_options">6.7. Output Language Options</a></h3>
 <div class="paragraph">
-<p>By default the generated JS output will be compatible with ES5 and all "newer" features will be transpiled to compatible code using polyfills. This is currently the safest default and supports most browsers in active use (including IE10+).</p>
+<p>デフォルトでは、生成された JS 出力は ES5 と互換性があり、すべての"新機能"は polyfills を使用して互換性のあるコードにトランスパイルされます。これは現在のところ最も安全なデフォルトであり、アクティブに使用されているほとんどのブラウザ (IE10+ を含む) をサポートしています。</p>
 </div>
 <div class="paragraph">
-<p>You can select other output options if you only care about more modern environments and want to keep the original code without replacements (eg. <code>node</code>, Chrome Extensions, &#8230;&#8203;)</p>
+<p>よりモダンな環境にのみ配慮し、置換せずにオリジナルのコードを保持したい場合は、他の出力オプションを選択することができます (例: <code>node</code>, Chrome Extensions, &#8230;&#8203;.など)。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3093,13 +3093,13 @@ It is generally safer to use the "disabled" variant as the default since it make
 <div class="title">Important</div>
 </td>
 <td class="content">
-Note that this mostly affects imported JS code from <a href="#npm">npm</a> or <code>.js</code> files from the <a href="#classpath-js">classpath</a>. CLJS will currently only generate ES5 output and is not affected by setting higher options.
+これは主に <a href="#npm">npm</a> や <code>.js</code> ファイルを <a href="#classpath-js">classpath</a> からインポートした JS コードに影響を与えることに注意してください。CLJSは現在のところES5の出力のみを生成し、より高いオプションを設定しても影響を受けません。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You can configure this via the <code>:output-feature-set</code> in <code>:compiler-options</code>. The older <code>:language-out</code> option should not be used as <code>:output-feature-set</code> replaced it.</p>
+<p>これは <code>:compiler-options</code> の <code>:output-feature-set</code> で設定できます。古い <code>:language-out</code> オプションは <code>:output-feature-set</code> に取って代わられたものなので、使用すべきではありません。</p>
 </div>
 <div class="paragraph">
 <p>Supported options are:</p>
@@ -3139,7 +3139,7 @@ Note that this mostly affects imported JS code from <a href="#npm">npm</a> or <c
 </div>
 </div>
 <div class="paragraph">
-<p>Documentation on these options is a bit sparse and is mostly documented in the code <a href="https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java">here</a>.</p>
+<p>これらのオプションに関するドキュメントは少しまばらで、ほとんどが <a href="https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java">こちら</a> のコードに書かれています。</p>
 </div>
 </div>
 <div class="sect2">
@@ -3151,16 +3151,16 @@ Note that this mostly affects imported JS code from <a href="#npm">npm</a> or <c
 <div class="title">Caution</div>
 </td>
 <td class="content">
-This feature only works in <code>shadow-cljs</code>. It was officially <a href="https://dev.clojure.org/jira/browse/CLJS-2396">rejected</a> by the ClojureScript project. It will still compile fine in CLJS but only the official branches work (e.g. <code>:cljs</code>). It might still be <a href="https://groups.google.com/d/msg/clojure-dev/8YJJM8lJuQs/hR5_vUZPCQAJ">supported</a> one day but as of now it is not.
+この機能は <code>shadow-cljs</code> でのみ動作します。ClojureScriptプロジェクトによって公式に <a href="https://dev.clojure.org/jira/browse/CLJS-2396">rejected</a> されました。CLJSではまだ問題なくコンパイルできますが、公式ブランチ(`:cljs`など)でしか動作しません。いつかは <a href="https://groups.google.com/d/msg/clojure-dev/8YJJM8lJuQs/hR5_vUZPCQAJ">supported</a> になるかもしれませんが、今のところはそうではありません。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> lets you configure additional reader features in <code>.cljc</code> files. By default you can only use reader conditionals to generate separate code for <code>:clj</code>, <code>:cljs</code> or <code>:cljr</code>. In many CLJS builds however it is also desirable to select which code is generated based on your <code>:target</code>.</p>
+<p><code>shadow-cljs</code> は <code>.cljc</code> ファイルに追加のリーダ機能を設定することができます。デフォルトでは、<code>:clj</code>, <code>:cljs</code>, <code>:cljr</code> のために別々のコードを生成するためにリーダ条件式を使うことしかできません。しかし、多くの CLJS ビルドでは、<code>:target</code> に基づいてどのコードを生成するかを選択することが望ましいです。</p>
 </div>
 <div class="paragraph">
-<p>Example: Some <code>npm</code> packages only work when targeting the <code>:browser</code>, but you may have a <code>ns</code> that you also want to use in a <code>:node-script</code> build. This might happen frequently when trying to use Server-Side Rendering (SSR) with your React App. <code>codemirror</code> is one such package.</p>
+<p>例: <code>npm</code> パッケージの中には <code>:browser</code> をターゲットにしたときにのみ動作するものもありますが、<code>:node-script</code> ビルドでも使用したい <code>ns</code> があるかもしれません。これはReactアプリでサーバーサイドレンダリング(SSR)を使おうとしているときに頻繁に起こるかもしれません。 <code>codemirror</code> はそのようなパッケージの一つです。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3178,19 +3178,19 @@ This feature only works in <code>shadow-cljs</code>. It was officially <a href="
 </div>
 </div>
 <div class="paragraph">
-<p>This namespace will compile fine for both builds (<code>:node-script</code> and <code>:browser</code>) but when trying to run the <code>:node-script</code> it will fail since the <code>codemirror</code> package tries to access the DOM. Since <code>react-dom/server</code> does not use refs the <code>init-cm</code> function will never be called anyways.</p>
+<p>この名前空間は両方のビルド(<code>:node-script</code> と <code>:browser</code>)で正常にコンパイルされますが <code>:node-script</code> を実行しようとすると <code>codemirror</code> パッケージが DOM にアクセスしようとするので失敗します。 <code>react-dom/server</code> は refs を使わないので <code>init-cm</code> 関数は決して呼ばれません。</p>
 </div>
 <div class="paragraph">
-<p>While you can use <a href="#closure-defines">:closure-defines</a> to conditionally compile away the <code>init-cm</code> fn you can not use it to get rid of the extra <code>:require</code>. Reader conditionals let you do this easily.</p>
+<p><a href="#closure-defines">:closure-defines</a> を使って <code>init-cm</code> 関数を条件付きでコンパイルすることができますが、余分な <code>:require</code> を取り除くためには使えません。リーダー条件式を使えば、これを簡単に行うことができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">ns</span> <span class="namespace">my.awesome.component</span>
  (<span class="symbol">:require</span>
    [<span class="string"><span class="delimiter">&quot;</span><span class="content">react</span><span class="delimiter">&quot;</span></span> <span class="symbol">:as</span> react]
-   <span class="comment">;; NOTE: The order here matters. Only the first applicable</span>
-   <span class="comment">;; branch is used. If :cljs is used first it will still be</span>
-   <span class="comment">;; taken by the :server build</span>
+   <span class="comment">;; 注意：ここでは順番が重要です。</span>
+   <span class="comment">;; 最初の該当するブランチが使われます。</span>
+   <span class="comment">;; もし :cljs が先に使われた場合は、 :server ビルドで取得されます</span>
    <span class="error">#</span>?@(<span class="symbol">:node</span> [[]]
        <span class="symbol">:cljs</span> [[<span class="string"><span class="delimiter">&quot;</span><span class="content">codemirror</span><span class="delimiter">&quot;</span></span> <span class="symbol">:as</span> CodeMirror]])))
 
@@ -3205,16 +3205,16 @@ This feature only works in <code>shadow-cljs</code>. It was officially <a href="
 </div>
 </div>
 <div class="listingblock">
-<div class="title">&lt;code&gt;:reader-features&lt;/code&gt; config examples</div>
+<div class="title"><code>:reader-feature</code> config examples</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
- <span class="comment">;; app build configured normally, no adjustments required</span>
+ <span class="comment">;; アプリのビルドは正常に設定されており、調整は必要ありません</span>
  {<span class="symbol">:app</span>
   {<span class="symbol">:target</span> <span class="symbol">:browser</span>
    <span class="keyword">..</span><span class="keyword">.</span>}
-  <span class="comment">;; for the server we add the :node reader feature</span>
-  <span class="comment">;; it will then be used instead of the default :cljs</span>
+  <span class="comment">;; サーバに :node reader機能を追加すると</span>
+  <span class="comment">;; デフォルトの :cljs の代わりに使用されます</span>
   <span class="symbol">:server</span>
   {<span class="symbol">:target</span> <span class="symbol">:node-script</span>
    <span class="symbol">:compiler-options</span>
@@ -3222,7 +3222,7 @@ This feature only works in <code>shadow-cljs</code>. It was officially <a href="
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>:server</code> build will then no longer have the <code>codemirror</code> require and the <code>init-cm</code> function is removed. Becoming only</p>
+<p>これで <code>:server</code> ビルドでは <code>codemirror</code> が不要になり、<code>init-cm</code> 関数が削除されます。ただの</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3230,8 +3230,8 @@ This feature only works in <code>shadow-cljs</code>. It was officially <a href="
   (<span class="symbol">:require</span>
     [<span class="string"><span class="delimiter">&quot;</span><span class="content">react</span><span class="delimiter">&quot;</span></span> <span class="symbol">:as</span> react]))
 
-<span class="comment">;; this will likely be removed as dead code if</span>
-<span class="comment">;; its never actually called anywhere</span>
+<span class="comment">;; これは、実際にはどこにも呼ばれなかった場合</span>
+<span class="comment">;; デッドコードとして削除される可能性が高いでしょう</span>
 
 (<span class="keyword">defn</span> <span class="function">init-cm</span> [dom-node] <span class="symbol">:no-op</span>)
 <span class="keyword">..</span><span class="keyword">.</span></code></pre>
@@ -3244,7 +3244,7 @@ This feature only works in <code>shadow-cljs</code>. It was officially <a href="
 <div class="title">Important</div>
 </td>
 <td class="content">
-This feature is only available in <code>.cljc</code> files and will fail in <code>.cljs</code> files.
+この機能は <code>.cljc</code> ファイルでのみ利用可能で、<code>.cljs</code> ファイルでは失敗します。
 </td>
 </tr>
 </table>
@@ -3253,13 +3253,13 @@ This feature is only available in <code>.cljc</code> files and will fail in <cod
 <div class="sect2">
 <h3 id="config-merge"><a class="anchor" href="#config-merge"></a><a class="link" href="#config-merge">6.9. Overriding from the CLI</a></h3>
 <div class="paragraph">
-<p>It is sometimes desirable to make small adjustments to the build configuration from the command line with values that can&#8217;t be added statically to the <code>shadow-cljs.edn</code> config or may change depending on the environment you are in.</p>
+<p><code>shadow-cljs.edn</code> の設定に静的に追加できない値や、環境によっては変更される可能性のある値をコマンドラインからビルド設定に小さな調整を加えることが望ましい場合があります。</p>
 </div>
 <div class="paragraph">
-<p>You can pass additional config data via the <code>--config-merge {:some "data"}</code> command line option which will be merged into the build config. Data added from the CLI will override data from the <code>shadow-cljs.edn</code> file.</p>
+<p>追加の設定データを <code>--config-merge {:some "data"}</code> コマンドラインオプションで渡すことができます。CLIから追加されたデータは <code>shadow-cljs.edn</code> ファイルからのデータを上書きします。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example &lt;code&gt;shadow-cljs.edn&lt;/code&gt; config</div>
+<div class="title">Example shadow-cljs.edn` config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3270,19 +3270,19 @@ This feature is only available in <code>.cljc</code> files and will fail in <cod
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Overriding the &lt;code&gt;:output-dir&lt;/code&gt; from the CLI</div>
+<div class="title">CLIから <code>:output-dir</code> を上書きする</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ shadow-cljs release app --config-merge '{:output-dir &quot;somewhere/else&quot;}'</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Overriding the &lt;code&gt;:closure-defines&lt;/code&gt; from the CLI</div>
+<div class="title">CLIから <code>:closure-defines</code> を上書きする</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ shadow-cljs release app --config-merge '{:closure-defines {your.app/DEBUG true}}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>--config-merge</code> expects one EDN map and can be used multiple times, they will be merged left to right. The data added is also visible to build-hooks.</p>
+<p><code>config-merge</code> は1つのEDNマップを想定しており、複数回使用することができるので、左から右にマージされます。追加されたデータはbuild-hooksからも見えます。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3291,7 +3291,7 @@ This feature is only available in <code>.cljc</code> files and will fail in <cod
 <div class="title">Important</div>
 </td>
 <td class="content">
-If you specify multiple build ids the data will be merged into all specified builds. <code>shadow-cljs release frontend backend --config-merge '{:hello "world"}'</code> will be applied to both.
+複数のビルドIDを指定すると、指定した全てのビルドにマージされます。 <code>shadow-cljs release frontend backend --config-merge '{:hello "world"}'</code> は両方に適用されます。
 </td>
 </tr>
 </table>
@@ -3300,10 +3300,10 @@ If you specify multiple build ids the data will be merged into all specified bui
 <div class="sect2">
 <h3 id="shadow-env"><a class="anchor" href="#shadow-env"></a><a class="link" href="#shadow-env">6.10. Using Environment Variables</a></h3>
 <div class="paragraph">
-<p>It is possible to use environment variables to set configuration values in <code>shadow-cljs.edn</code> but you should consider using <code>--config-merge</code> instead. If you really must use an environment variable you can do so via the <code>#shadow/env "FOO"</code> reader tag. You can also use the shorter <code>#env</code>.</p>
+<p>環境変数を使って <code>shadow-cljs.edn</code> の設定値を設定することは可能ですが、代わりに <code>--config-merge</code> を使うことを検討してください。どうしても環境変数を使わなければならない場合は <code>#shadow/env "FOO"</code> リーダータグで設定することができます。もっと短い <code>#env</code> を使うこともできます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example &lt;code&gt;shadow-cljs.edn&lt;/code&gt; config</div>
+<div class="title">Example shadow-cljs.edn` config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3315,21 +3315,21 @@ If you specify multiple build ids the data will be merged into all specified bui
 </div>
 </div>
 <div class="paragraph">
-<p>The are also a few more supported forms that you can use <code>#shadow/env</code> with.</p>
+<p>また、<code>#shadow/env</code> で使用できるフォームもいくつかサポートされています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure"><span class="error">#</span>shadow/env <span class="string"><span class="delimiter">&quot;</span><span class="content">APP_URL</span><span class="delimiter">&quot;</span></span>
 <span class="error">#</span>shadow/env [<span class="string"><span class="delimiter">&quot;</span><span class="content">APP_URL</span><span class="delimiter">&quot;</span></span>]
-<span class="comment">;; with default value, used if env variable is not set</span>
+<span class="comment">;; 環境変数が設定されていない場合にデフォルト値として使用されます</span>
 <span class="error">#</span>shadow/env [<span class="string"><span class="delimiter">&quot;</span><span class="content">APP_URL</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">default-value</span><span class="delimiter">&quot;</span></span>]
 <span class="error">#</span>shadow/env [<span class="string"><span class="delimiter">&quot;</span><span class="content">APP_URL</span><span class="delimiter">&quot;</span></span> <span class="symbol">:default</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">default-value</span><span class="delimiter">&quot;</span></span>]
-<span class="comment">;; turn PORT env into an integer, with default</span>
+<span class="comment">;; PORT 環境変数を整数に変換します</span>
 <span class="error">#</span>shadow/env [<span class="string"><span class="delimiter">&quot;</span><span class="content">PORT</span><span class="delimiter">&quot;</span></span> <span class="symbol">:as</span> <span class="symbol">:int</span> <span class="symbol">:default</span> <span class="integer">8080</span>]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Supported <code>:as</code> coercions are <code>:int</code>, <code>:bool</code>, <code>:keyword</code>, <code>:symbol</code>. Supplied <code>:default</code> values will not be converted and are expected to be in the correct type already.</p>
+<p>サポートされる <code>:as</code> の強制力は <code>:int</code>, <code>:bool</code>, <code>:keyword</code>, <code>:symbol</code> です。与えられた <code>:default</code> の値は変換されず、すでに正しい型になっているものとみなされます。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3338,7 +3338,7 @@ If you specify multiple build ids the data will be merged into all specified bui
 <div class="title">Important</div>
 </td>
 <td class="content">
-The environment variables used when the <code>shadow-cljs</code> process was started are used. If a server process is used its environment variables will be used over those potentially set by other commands. This is mostly relevant during development but may be confusing. <code>--config-merge</code> does not have this limitation.
+<code>shadow-cljs</code> プロセスが起動したときに使用された環境変数が使用されます。サーバプロセスが使用されている場合、その環境変数は他のコマンドで設定される可能性のある環境変数よりも優先して使用されます。これはほとんどの場合、開発中に関連していますが、混乱を招くかもしれません。 <code>config-merge</code> にはこの制限はありません。
 </td>
 </tr>
 </table>
@@ -3347,13 +3347,13 @@ The environment variables used when the <code>shadow-cljs</code> process was sta
 <div class="sect2">
 <h3 id="build-target-defaults"><a class="anchor" href="#build-target-defaults"></a><a class="link" href="#build-target-defaults">6.11. Build and Target defaults</a></h3>
 <div class="paragraph">
-<p>It is possible to use set defaults that will be used for all builds, or for all targets of a certain type.</p>
+<p>すべてのビルド、または特定のタイプのすべてのターゲットに使用されるデフォルト設定を使用することができます。</p>
 </div>
 <div class="paragraph">
-<p>Configuration merge order is as follows <code>:build-defaults</code> &#8594; <code>:target-defaults</code> &#8594; actual build config &#8594; extra config overrides.</p>
+<p>コンフィギュレーションのマージ順序は、<code>:build-defaults</code> &#8594; <code>:target-defaults</code> &#8594; 実際のビルドコンフィグ &#8594; 追加コンフィグの順で上書きされます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example &lt;code&gt;shadow-cljs.edn&lt;/code&gt; config</div>
+<div class="title">Example shadow-cljs.edn` config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:build-defaults</span>
@@ -3373,7 +3373,7 @@ The environment variables used when the <code>shadow-cljs</code> process was sta
 </div>
 </div>
 <div class="paragraph">
-<p>In this example the <code>:app</code> target will inherit both <code>:build-defaults</code> and the <code>:target-defaults</code> for <code>:browser</code>.</p>
+<p>この例では、<code>:app</code> ターゲットは <code>:build-defaults</code> と <code>:browser</code> の <code>:target-defaults</code> の両方を継承します。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3382,7 +3382,7 @@ The environment variables used when the <code>shadow-cljs</code> process was sta
 <div class="title">Important</div>
 </td>
 <td class="content">
-Configs later in the merge order can override, but not remove previous configuration items. Once a default is set, the only way to remove it is by overriding it.
+マージ順の後の設定は、以前の設定項目を上書きすることはできますが、削除することはできません。デフォルトが設定されている場合、それを削除するには、それを上書きするしかありません。
 </td>
 </tr>
 </table>
@@ -3394,7 +3394,7 @@ Configs later in the merge order can override, but not remove previous configura
 <h2 id="target-browser"><a class="anchor" href="#target-browser"></a><a class="link" href="#target-browser">7. Targeting the Browser</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>:browser</code> target produces output intended to run in a Browser environment. During development it supports live code reloading, REPL, CSS reloading. The <code>release</code> output will be minified by the Closure Compiler with <code>:advanced</code> optimizations.</p>
+<p><code>browser</code> ターゲットはブラウザ環境で実行することを意図した出力を生成します。開発中はライブコードのリロード、REPL、CSSのリロードをサポートしています。 <code>release</code> の出力はClosureコンパイラによって <code>:advanced</code> の最適化が施されて最小化されます。</p>
 </div>
 <div class="paragraph">
 <p>A basic browser configuration looks like this:</p>
@@ -3414,22 +3414,22 @@ Configs later in the merge order can override, but not remove previous configura
 <div class="sect2">
 <h3 id="_output_settings"><a class="anchor" href="#_output_settings"></a><a class="link" href="#_output_settings">7.1. Output Settings</a></h3>
 <div class="paragraph">
-<p>The browser target outputs a lot of files, and a directory is needed for them all. You&#8217;ll need to serve these assets with some kind of server, and the Javascript loading code needs to know the server-centric path to these assets. The options you need to specify are:</p>
+<p>ブラウザ ターゲットは多くのファイルを出力し、それらすべてのためのディレクトリが必要です。これらのアセットを何らかのサーバーで提供する必要があり、Javascript の読み込みコードは、これらのアセットへのサーバー中心のパスを知る必要があります。指定する必要があるオプションは以下の通りです。</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
 <dt><code>:output-dir</code></dt>
 <dd>
-<p>The directory to use for all compiler output.</p>
+<p>すべてのコンパイラの出力に使用するディレクトリです。</p>
 </dd>
 <dt><code>:asset-path</code></dt>
 <dd>
-<p>The relative path from <strong>web server&#8217;s root</strong> to the resources in <code>:output-dir</code>.</p>
+<p><strong>webサーバのルート</strong> から <code>:output-dir</code> にあるリソースまでの相対パス。</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Your entry point javascript file and all related JS files will appear in <code>:output-dir</code>.</p>
+<p>エントリーポイントのjavascriptファイルと関連するすべてのJSファイルは <code>:output-dir</code> に現れます。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -3438,25 +3438,25 @@ Configs later in the merge order can override, but not remove previous configura
 <div class="title">Warning</div>
 </td>
 <td class="content">
-Each build requires its own :output-dir, you may not put multiple builds into the same directory. This directory should also be exclusively owned by the build. There should be no other files in there. While <code>shadow-cljs</code> won&#8217;t delete anything it is safer to leave it alone. Compilation creates many more files than just the main entry point javascript file during development: source maps, original sources, and generated sources.
+各ビルドはそれ自身の :output-dir を必要とし、複数のビルドを同じディレクトリに置くことはできません。また、このディレクトリはそのビルドが独占的に所有していなければなりません。他のファイルを入れてはいけません。 <code>shadow-cljs</code> は何も削除しませんが、放っておいた方が安全です。コンパイルは開発中にメインのエントリーポイントjavascriptファイル以外にも多くのファイルを作成します: ソースマップ、オリジナルのソース、生成されたソースなどです。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>:asset-path</code> is a prefix that gets added to the paths of module loading code inside of the generated javascript. It allows you to output your javascript module to a particular subdirectory of your web server&#8217;s root. The dynamic loading during development (hot code reload) and production (code splitting) need this to correctly locate files.</p>
+<p><code>asset-path</code> は生成された javascript の中のモジュールの読み込みコードのパスに追加される接頭辞です。これにより、javascriptモジュールをWebサーバーのルートの特定のサブディレクトリに出力することができます。開発中の動的な読み込み (ホットコードの再読み込み) や本番環境 (コードの分割) では、ファイルを正しく見つけるためにこれが必要になります。</p>
 </div>
 <div class="paragraph">
-<p>Locating your generated files in a directory and asset path like this make it so that other assets (images, css, etc.) can easily co-exist on the same server without accidental collisions.</p>
+<p>生成されたファイルをこのようにディレクトリとアセットパスに配置することで、他のアセット（画像やCSSなど）が偶然に衝突することなく、同じサーバー上に簡単に共存できるようになります。</p>
 </div>
 <div class="paragraph">
-<p>For example: if your web server will serve the folder <code>public/x</code> when asked for the URI <code>/x</code>, and your <code>output-dir</code> for a module is <code>public/assets/app/js</code> then your asset-path should be <code>/assets/app/js</code>. You are not required to use an absolute asset path, but it is highly recommended.</p>
+<p>例えば、URI <code>/x</code> を要求されたときにウェブサーバが <code>public/x</code> というフォルダを提供し、モジュールの <code>output-dir</code> が <code>public/assets/app/js</code> である場合、アセットパスは <code>/assets/app/js</code> でなければなりません。絶対的なアセットパスを使う必要はありませんが、それを強く推奨します。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_modules"><a class="anchor" href="#_modules"></a><a class="link" href="#_modules">7.2. Modules</a></h3>
 <div class="paragraph">
-<p>Modules configure how the compiled sources are bundled together and how the final <code>.js</code> are generated. Each Module declares a list of Entry Namespace and from that dependency graph is built. When using multiple Modules the code is split so that the maximum amount of code is moved to the outer edges of the graph. The goal is to minimize the amount of code the browser has to load initially and loading the rest on-demand.</p>
+<p>モジュールはコンパイルされたソースがどのようにバンドルされ、最終的な <code>.js</code> がどのように生成されるかを設定します。各モジュールは Entry Namespace のリストを宣言し、その依存関係グラフを構築します。複数のモジュールを使用する場合は、最大量のコードがグラフの外側に移動するようにコードが分割されます。目標は、ブラウザが最初にロードしなければならないコードの量を最小限に抑え、残りのコードをオンデマンドでロードすることです。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3465,16 +3465,16 @@ Each build requires its own :output-dir, you may not put multiple builds into th
 <div class="title">Tip</div>
 </td>
 <td class="content">
-Don&#8217;t worry too much about :modules in the beginning. Start with one and split them later.
+最初のうちは :modules をあまり気にしないでください。最初は1つのモジュールから始めて、後で分割してください。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>:modules</code> section of the config is always a map keyed by module ID. The module ID is also used to generate the Javascript filename. Module <code>:main</code> will generate <code>main.js</code> in <code>:output-dir</code>.</p>
+<p>設定の <code>:modules</code> セクションは常にモジュールIDがキーとなるマップです。モジュールIDはJavascriptのファイル名を生成するためにも使われます。モジュール <code>:main</code> は <code>:output-dir</code> に <code>main.js</code> を生成します。</p>
 </div>
 <div class="paragraph">
-<p>The available options in a module are:</p>
+<p>モジュールで利用可能なオプションは以下の通りです:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -3483,7 +3483,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <code>:entries</code>
 </td>
 <td class="hdlist2">
-<p>The namespaces that serve as the root nodes of the dependency graph for the output code of this module.</p>
+<p>このモジュールの出力コードの依存関係グラフのルートノードとして機能する名前空間。</p>
 </td>
 </tr>
 <tr>
@@ -3491,7 +3491,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <code>:init-fn</code>
 </td>
 <td class="hdlist2">
-<p>Fully qualified symbol pointing to a function that should be called when the module is loaded initially.</p>
+<p>モジュールが最初にロードされたときに呼び出されるべき関数を指す完全修飾シンボル。</p>
 </td>
 </tr>
 <tr>
@@ -3499,7 +3499,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <code>:depends-on</code>
 </td>
 <td class="hdlist2">
-<p>The names of other modules that must be loaded in order for this one to have everything it needs.</p>
+<p>このモジュールに必要なものをすべて搭載するためにロードしなければならない他のモジュールの名前です。</p>
 </td>
 </tr>
 <tr>
@@ -3507,7 +3507,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <code>:prepend</code>
 </td>
 <td class="hdlist2">
-<p>String content that will be prepended to the js output. Useful for comments, copyright notice, etc.</p>
+<p>jsの出力の前に付加される文字列の内容。コメントや著作権表示などに便利です。</p>
 </td>
 </tr>
 <tr>
@@ -3515,7 +3515,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <code>:append</code>
 </td>
 <td class="hdlist2">
-<p>String content that will be appended to the js output. Useful for comments, copyright notice, etc.</p>
+<p>jsの出力に追加される文字列コンテンツ。コメントや著作権表示などに便利です。</p>
 </td>
 </tr>
 <tr>
@@ -3523,7 +3523,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <code>:prepend-js</code>
 </td>
 <td class="hdlist2">
-<p>A string to prepend to the module output containing valid javascript that will be run through Closure optimizer.</p>
+<p>Closureオプティマイザーで実行される有効なjavascriptを含むモジュールの出力に付加する文字列。</p>
 </td>
 </tr>
 <tr>
@@ -3531,7 +3531,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <code>:append-js</code>
 </td>
 <td class="hdlist2">
-<p>A string to append to the module output containing valid javascript that will be run through Closure optimizer.</p>
+<p>モジュールの出力に追加する文字列で、Closureオプティマイザーで実行される有効なjavascriptを含みます。</p>
 </td>
 </tr>
 </table>
@@ -3562,41 +3562,41 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 </div>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> will follow the dependency graph from the root set of code entry points in the <code>:entries</code> to find everything needed to actually compile and include in the output. Namespaces that are not required will not be included.</p>
+<p><code>shadow-cljs</code> は <code>:entry</code> のコードエントリーポイントのルートセットから依存関係グラフを辿り、実際にコンパイルして出力に含めるために必要なすべてのものを見つけます。必要のない名前空間は含まれません。</p>
 </div>
 <div class="paragraph">
-<p>The above config will create a <code>public/js/main.js</code> file. During development there will be an additional <code>public/js/cljs-runtime</code> directory with lots of files. This directory is not required for <code>release</code> builds.</p>
+<p>上記の設定は <code>public/js/main.js</code> ファイルを作成します。開発中には、たくさんのファイルを含む <code>public/js/cljs-runtime</code> ディレクトリが追加されます。このディレクトリは <code>release</code> ビルドには必要ありません。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="CodeSplitting"><a class="anchor" href="#CodeSplitting"></a><a class="link" href="#CodeSplitting">7.3. Code Splitting</a></h3>
 <div class="paragraph">
-<p>Declaring more than one Module requires a tiny bit of additional static configuration so the Compiler can figure out how the Modules are related to each other and how you will be loading them later.</p>
+<p>複数のモジュールを宣言するには、少しだけ静的な設定を追加する必要があります。これにより、コンパイラはモジュールがどのように相互に関連しているか、また後でどのようにモジュールをロードするかを把握することができます。</p>
 </div>
 <div class="paragraph">
-<p>In addition to <code>:entries</code> you&#8217;ll need to declare which module depends on which (via <code>:depends-on</code>). How you structure this is entirely up to your needs and there is no one-size-fits-all solution unfortunately.</p>
+<p>どのモジュールがどのモジュールに依存しているかを宣言する必要があります ( <code>:deined-on</code> を使って)。これをどのように構成するかは完全にあなたのニーズ次第であり、残念ながらすべてに当てはまる解決策はありません。</p>
 </div>
 <div class="paragraph">
-<p>Say you have a traditional website with actual different pages.</p>
+<p>あなたが実際に異なるページを持つ伝統的なウェブサイトを持っているとします。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>www.acme.com</code> - serving the homepage</p>
+<p><code>www.acme.com</code> - ホームページ</p>
 </li>
 <li>
-<p><code>www.acme.com/login</code> - serving the login form</p>
+<p><code>www.acme.com/login</code> - ログインフォーム</p>
 </li>
 <li>
-<p><code>www.acme.com/protected</code> - protected section that is only available once the user is logged in</p>
+<p><code>www.acme.com/protected</code> - ログインしていないと利用できない保護されたセクション</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>One good configuration for this would be to have one common module that is shared between all the pages. Then one for each page.</p>
+<p>このための良い構成の一つは、各ページに1つずつ全てのページで共有される共通モジュールを持つことでしょう</p>
 </div>
 <div class="listingblock">
-<div class="title">Example config with multiple &lt;code&gt;:modules&lt;/code&gt;</div>
+<div class="title">Example config with multiple ':modules'</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:output-dir</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">public/js</span><span class="delimiter">&quot;</span></span>
@@ -3621,7 +3621,7 @@ Don&#8217;t worry too much about :modules in the beginning. Start with one and s
 <div class="title">Tip</div>
 </td>
 <td class="content">
-You can leave the <code>:entries</code> of the <code>:shared</code> module empty to let the compiler figure out which namespaces are shared between the other modules.
+<code>shared</code> モジュールの <code>:entries</code> を空のままにしておくと、コンパイラが他のモジュール間でどの名前空間が共有されているかを把握できるようになります。
 </td>
 </tr>
 </table>
@@ -3639,10 +3639,10 @@ You can leave the <code>:entries</code> of the <code>:shared</code> module empty
 </div>
 </div>
 <div class="paragraph">
-<p>In your HTML for the Homepage you&#8217;d then always include the <code>shared.js</code> on each page and the others conditionally depending on which page the user is on.</p>
+<p>ホームページ用のHTMLには常に <code>shared.js</code> を各ページに、その他のページにはユーザーがどのページにいるかに応じて条件付きで含めることになります。</p>
 </div>
 <div class="listingblock">
-<div class="title">HTML for the &lt;code&gt;/login&lt;/code&gt; page</div>
+<div class="title">'/login' のHTML</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/js/shared.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/js/login.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
@@ -3655,7 +3655,7 @@ You can leave the <code>:entries</code> of the <code>:shared</code> module empty
 <div class="title">Important</div>
 </td>
 <td class="content">
-The <code>.js</code> files must be included in the correct order. The <a href="#BrowserManifest"><code>manifest.edn</code></a> can help with this.
+<code>.js</code> ファイルは正しい順序でインクルードしなければなりません。<a href="#BrowserManifest"><code>manifest.edn</code></a>がこれを助けてくれます。
 </td>
 </tr>
 </table>
@@ -3663,18 +3663,18 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 <div class="sect3">
 <h4 id="_loading_code_dynamically"><a class="anchor" href="#_loading_code_dynamically"></a><a class="link" href="#_loading_code_dynamically">7.3.1. Loading code dynamically</a></h4>
 <div class="paragraph">
-<p>These days Single-Page-Apps (SPA) are becoming more popular and they work similarly only that instead of letting the Server decide which JS to include to Client does it by itself.</p>
+<p>最近ではシングルページアプリ(SPA)が人気を集めていますが、似たような働きをしています。</p>
 </div>
 <div class="sect4">
 <h5 id="_using_shadow_cljs_s_built_in_loader_support"><a class="anchor" href="#_using_shadow_cljs_s_built_in_loader_support"></a><a class="link" href="#_using_shadow_cljs_s_built_in_loader_support">Using shadow-cljs&#8217;s built-in Loader Support</a></h5>
 <div class="paragraph">
-<p>The compiler supports generating the required data for using the <code>shadow.loader</code> utility namespace. It exposes a simple interface to let you load modules on-demand at runtime.</p>
+<p>コンパイラは <code>shadow.loader</code> ユーティリティの名前空間を使用するために必要なデータの生成をサポートしています。これは、実行時にモジュールをオンデマンドでロードできるようにするためのシンプルなインターフェースを公開しています。</p>
 </div>
 <div class="paragraph">
-<p>You only need to add <code>:module-loader true</code> to your build config. The loader will always be injected into the default module (the one everything else depends on).</p>
+<p>ビルド設定に <code>:module-loader true</code> を追加するだけです。ローダは常にデフォルトのモジュール (他のすべてのものが依存するモジュール) に注入されます。</p>
 </div>
 <div class="paragraph">
-<p>At runtime you may use the <code>shadow.loader</code> namespace to load modules. You may also load a module eagerly by just using a <code>&lt;script&gt;</code> tag in your page.</p>
+<p>実行時には <code>shadow.loader</code> 名前空間を使ってモジュールをロードすることができます。また、ページ内で <code>&lt;script&gt;</code> タグを使用するだけで、積極的にモジュールをロードすることもできます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3690,7 +3690,7 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 </div>
 </div>
 <div class="paragraph">
-<p>If you had the following for your main entry point:</p>
+<p>メインのエントリーポイントに以下のようなものがあったとします。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3705,12 +3705,12 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 </div>
 </div>
 <div class="paragraph">
-<p>Then the following expressions can be used for loading code:</p>
+<p>そうすると、以下のような式でコードをロードすることができます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Loading a module</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">;; load returns a goog.async.Deferred, and can be used like a promise</span>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">;; loadはgoog.async.Deferredを返し、promiseのように使うことができます。</span>
 (<span class="keyword">-&gt;</span> (loader/load <span class="string"><span class="delimiter">&quot;</span><span class="content">extra</span><span class="delimiter">&quot;</span></span>)
     (<span class="keyword">.</span>then fn-to-call-on-load fn-to-call-on-error))</code></pre>
 </div>
@@ -3718,7 +3718,7 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 <div class="listingblock">
 <div class="title">Loading many modules</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">;; must be a JS array, also returns goog.async.Deferred</span>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">;; 引数はJS配列でなければなりませんがgoog.async.Deferredが返ります。</span>
 (loader/load-many <span class="error">#</span>js [<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span>])</code></pre>
 </div>
 </div>
@@ -3729,22 +3729,22 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 </div>
 </div>
 <div class="paragraph">
-<p>You can check if a module is loaded using <code>(loaded? "module-name")</code>.</p>
+<p>モジュールがロードされているかどうかは <code>(loaded? "module-name")</code> で確認できます。</p>
 </div>
 <div class="sect5">
 <h6 id="_loader_costs"><a class="anchor" href="#_loader_costs"></a><a class="link" href="#_loader_costs">Loader Costs</a></h6>
 <div class="paragraph">
-<p>Using the loader is very lightweight. It has a few dependencies which you may not be otherwise using. In practice using <code>:module-loader true</code> adds about 8KB gzip&#8217;d to the default module. This will vary depending on how much of <code>goog.net</code> and <code>goog.events</code> you are already using, and what level of optimization you use for your release builds.</p>
+<p>ローダの使用は非常に軽量です。ローダにはいくつかの依存関係がありますが、他の方法では使用しないかもしれません。実際には、<code>:module-loader true`を使うと、デフォルトのモジュールに約8KBのgzipが追加されます。これは `goog.net</code> や <code>goog.event</code> をどの程度使用しているか、また、リリースビルドにどの程度の最適化を使用しているかによって異なります。</p>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_using_the_standard_clojurescript_api"><a class="anchor" href="#_using_the_standard_clojurescript_api"></a><a class="link" href="#_using_the_standard_clojurescript_api">Using the Standard ClojureScript API</a></h5>
 <div class="paragraph">
-<p>The generated code is capable of using the standard ClojureScript <code>cljs.loader</code> API. See the <a href="https://clojurescript.org/news/2017-07-10-code-splitting">documentation</a> on the ClojureScript website for instructions.</p>
+<p>生成されたコードは標準のClojureScript <code>cljs.loader</code> APIを使用することができます。説明はClojureScriptのウェブサイトの <a href="https://clojurescript.org/news/2017-07-10-code-splitting">ドキュメンテーション</a> を参照してください。</p>
 </div>
 <div class="paragraph">
-<p>The advantage of using the standard API is that your code will play well with others. This may be of particular importance to library authors. The disadvantage is that the dynamic module loading API in the standard distribution is currently somewhat less easy-to-use than the support in <code>shadow-cljs</code>.</p>
+<p>標準APIを使用する利点は、あなたのコードが他の人とうまく連携できることです。これはライブラリの作者にとって特に重要かもしれません。不利な点は、標準ディストリビューションの動的モジュールロードAPIが <code>shadow-cljs</code> のサポートに比べて、現在のところ使い勝手がやや悪いことです。</p>
 </div>
 </div>
 </div>
@@ -3752,13 +3752,13 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 <div class="sect2">
 <h3 id="output-wrapper"><a class="anchor" href="#output-wrapper"></a><a class="link" href="#output-wrapper">7.4. Output Wrapper</a></h3>
 <div class="paragraph">
-<p><strong>Release builds only</strong>: The code generated by the Closure Compiler <code>:advanced</code> compilation will create a lot of global variables which has the potential to create conflicts with other JS running in your page. To isolate the created variables the code can be wrapped in an anonymous function to the variables only apply in that scope.</p>
+<p><strong>リリースビルドのみ</strong>: Closureコンパイラの <code>:advanced</code> コンパイルによって生成されたコードは、多くのグローバル変数を生成し、ページ内で実行されている他のJSとの競合を引き起こす可能性があります。作成された変数を分離するには、コードを匿名関数でラップして、そのスコープ内でのみ適用される変数にすることです。</p>
 </div>
 <div class="paragraph">
-<p><code>release</code> builds for <code>:browser</code> with only one <code>:modules</code> are wrapped in <code>(function(){&lt;the-code&gt;}).call(this);</code> by default. So no global variables are created.</p>
+<p><code>release</code> はデフォルトでは <code>:browser</code> のビルドで <code>:modules</code> が1つしかない場合は <code>(function(){&lt;コード&gt;}).call(this);</code> でラップされているので、グローバル変数は生成されません。そのため、グローバル変数は生成されません。</p>
 </div>
 <div class="paragraph">
-<p>When using multiple <code>:modules</code> (a.k.a <a href="#CodeSplitting">code splitting</a>) this is not enabled by default since each module must be able to access the variables created by the modules it depends on. The Closure Compiler supports an additional option to enable the use of an output wrapper in combination with multiple <code>:modules</code> named <code>:rename-prefix-namespace</code>. This will cause the Compiler to scope all "global" variables used by the build into one actual global variable. By default this is set to <code>:rename-prefix-namespace "$APP"</code> when <code>:output-wrapper</code> is set to <code>true</code>.</p>
+<p>複数の <code>:modules</code> (別名 <a href="#CodeSplitting">code splitting</a>) を使用する場合、これはデフォルトでは有効になっていません。Closureコンパイラは <code>:rename-prefix-namespace</code> という名前の複数の <code>:modules</code> と組み合わせて出力ラッパーを使用できるようにする追加オプションをサポートしています。これによりコンパイラーはビルドで使用される全ての「グローバル」変数を1つの実際のグローバル変数にスコープするようになります。デフォルトでは、<code>:output-wrapper</code> が <code>true</code> に設定されている場合、これは <code>:remame-prefix-namespace "$APP"</code> に設定されています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3772,7 +3772,7 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 </div>
 </div>
 <div class="paragraph">
-<p>This will only create the <code>MY_APP</code> global variable. Since every "global" variable will now be prefixed by <code>MY_APP.</code> (e.g. <code>MY_APP.a</code> instead of just <code>a</code>) the code size can go up substantially. It is important to keep this short. Browser compression (e.g. <code>gzip</code>) helps reduce the overhead of the extra code but depending on the amount of global variables in your build this can still produce a noticeable increase.</p>
+<p>これは <code>MY_APP</code> グローバル変数を作成するだけです。すべての「global」変数の前に <code>MY_APP.</code> が付くようになったので (例えば <code>a</code> だけではなく <code>MY_APP.a</code>)、コードサイズは大幅に大きくなる可能性があります。これを短くしておくことが重要です。ブラウザ圧縮(例: <code>gzip</code>)は、余分なコードのオーバーヘッドを減らすのに役立ちますが、ビルド中のグローバル変数の量によっては、コードサイズが顕著に増加する可能性があります。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3781,7 +3781,7 @@ The <code>.js</code> files must be included in the correct order. The <a href="#
 <div class="title">Important</div>
 </td>
 <td class="content">
-Note that the created variable isn&#8217;t actually useful directly. It will contain a lot of munged/minified properties. All exported (eg. <code>^:export</code>) variables will still be exported into the global scope and are not affect by this setting. The setting only serves to limit the amount of global variables created, nothing else. Do not use it directly.
+作成された変数は、実際には直接役立つものではないことに注意してください。この変数には、多くのmunged/minifiedされたプロパティが含まれています。すべてのエクスポートされた変数(例: <code>^:export</code>)はグローバルスコープにエクスポートされ、この設定の影響を受けません。この設定は、作成されるグローバル変数の量を制限するのに役立つだけで、他には何もありません。直接使用しないでください。
 </td>
 </tr>
 </table>
@@ -3790,10 +3790,10 @@ Note that the created variable isn&#8217;t actually useful directly. It will con
 <div class="sect2">
 <h3 id="_web_workers"><a class="anchor" href="#_web_workers"></a><a class="link" href="#_web_workers">7.5. Web Workers</a></h3>
 <div class="paragraph">
-<p>The <code>:modules</code> configuration may also be used to generate files intended to be used as a Web Workers. You may declare any module as a Web Worker by setting <code>:web-worker true</code>. The generated file will contain some additional bootstrap code which will load its dependencies automatically. The way <code>:modules</code> work also ensures that code used only by the worker will also only be in the final file for the worker. Each worker should have a dedicated CLJS namespace.</p>
+<p>また、<code>:modules</code> 設定は、ウェブワーカーとして利用することを意図したファイルを生成するためにも利用できる。任意のモジュールをウェブワーカーとして宣言するには、<code>:web-worker true</code> を設定します。生成されたファイルには、依存関係を自動的にロードする追加のブートストラップコードが含まれます。モジュールが動作する方法は、ワーカーによってのみ使用されるコードが、ワーカーの最終ファイルにのみ存在することを保証します。各ワーカーは専用のCLJS名前空間を持つべきです。</p>
 </div>
 <div class="listingblock">
-<div class="title">An example of generating a web worker script</div>
+<div class="title">ウェブワーカースクリプトの生成例</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3816,10 +3816,10 @@ Note that the created variable isn&#8217;t actually useful directly. It will con
 </div>
 </div>
 <div class="paragraph">
-<p>The above configuration will generate <code>worker.js</code> which you can use to start the Web Worker. It will have all code from the <code>:shared</code> module available (but not <code>:main</code>). The code in the <code>my.app.worker</code> namespace will only ever execute in the worker. Worker generation happens in both development and release modes.</p>
+<p>上記の設定により <code>worker.js</code> が生成され、これを使ってウェブワーカーを起動することができます。これには <code>:shared</code> モジュールのすべてのコードが含まれています (ただし <code>:main</code> は含まれていません)。名前空間 <code>my.app.worker</code> のコードはワーカー内でのみ実行されます。ワーカーの生成は開発モードとリリースモードの両方で行われます。</p>
 </div>
 <div class="paragraph">
-<p>Note that the empty <code>:entries []</code> in the <code>:shared</code> module will make it collect all the code shared between the <code>:main</code> and <code>:worker</code> modules.</p>
+<p><code>shared</code> モジュールの空の <code>:entries []</code> は <code>:main</code> と <code>:worker</code> モジュール間で共有されているすべてのコードを収集するようにすることに注意してください。</p>
 </div>
 <div class="listingblock">
 <div class="title">Sample echo worker</div>
@@ -3850,7 +3850,7 @@ Note that the created variable isn&#8217;t actually useful directly. It will con
 <div class="title">Important</div>
 </td>
 <td class="content">
-Since we now have a <code>:shared</code> module you must ensure to load it properly in your HTML. If you just load <code>main.js</code> you will get an error.
+これで <code>:shared</code> モジュールができたので、それを HTML で適切にロードする必要があります。<code>main.js</code> を読み込んだだけではエラーが発生します。
 </td>
 </tr>
 </table>
@@ -3866,12 +3866,12 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 <div class="sect2">
 <h3 id="_cacheable_output"><a class="anchor" href="#_cacheable_output"></a><a class="link" href="#_cacheable_output">7.6. Cacheable Output</a></h3>
 <div class="paragraph">
-<p>In a web setting it is desirable to cache <code>.js</code> files for a very long time to avoid extra request. It is common practice the generate a unique name for the <code>.js</code> file for every released version. This changes the URL used to access it and thereby is safe to cache forever.</p>
+<p>ウェブ設定では、余計なリクエストを避けるために <code>.js</code> ファイルを非常に長い間キャッシュしておくことが望ましいです。一般的には、リリースされたバージョンごとに <code>.js</code> ファイルに一意の名前を生成します。これにより、アクセスに使用するURLが変更されるため、永遠にキャッシュしても安全です。</p>
 </div>
 <div class="sect3">
 <h4 id="release-version"><a class="anchor" href="#release-version"></a><a class="link" href="#release-version">7.6.1. Release Versions</a></h4>
 <div class="paragraph">
-<p>Creating unique filenames for each release can be done via the <code>:release-version</code> config setting. Generally you&#8217;ll pass this in from the command line via <a href="#config-merge">--config-merge</a>.</p>
+<p>各リリースに固有のファイル名を作成するには <code>:release-version</code> の設定で行うことができます。通常はコマンドラインから <a href="#config-merge">--config-merge</a> で指定します。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3894,19 +3894,19 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p>This would create the <code>main.v1.js</code> and <code>extra.v1.js</code> files in <code>public/js</code> instead of the usual <code>main.js</code> and <code>extra.js</code>.</p>
+<p>これにより、通常の <code>main.js</code> と <code>extra.js</code> の代わりに <code>public/js</code> に <code>main.v1.js</code> と <code>extra.v1.js</code> のファイルが作成されます。</p>
 </div>
 <div class="paragraph">
-<p>You can use manual versions or something automated like the <code>git</code> sha at the time of the build. Just make sure that you bump whatever it is once you shipped something out to the user since with caching they won&#8217;t be requesting newer versions of old files.</p>
+<p>手動のバージョンを使うこともできますし、ビルド時に <code>git</code> sha のような自動化されたものを使うこともできます。ただ、キャッシュを使うとユーザは古いファイルの新しいバージョンを要求しないためユーザに何かを出荷したら、それが何であれ弾き上げるようにしてください。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="NameHashing"><a class="anchor" href="#NameHashing"></a><a class="link" href="#NameHashing">7.6.2. Filenames with Fingerprint-Hash</a></h4>
 <div class="paragraph">
-<p>You can add <code>:module-hash-names true</code> to your build config to automatically create a MD5 signature for each generated output module file. That means that a <code>:main</code> module will generate a <code>main.&lt;md5hash&gt;.js</code> instead of just the default <code>main.js</code>.</p>
+<p>ビルド設定に <code>:module-hash-names true</code> を追加することで、生成された各出力モジュールファイルの MD5 シグネチャを自動的に作成することができます。これは <code>:main</code> モジュールがデフォルトの <code>main.js</code> の代わりに <code>main.&lt;md5hash&gt;.js</code> を生成することを意味します。</p>
 </div>
 <div class="paragraph">
-<p><code>:module-hash-names true</code> will include the full 32-length md5 hash, if you prefer a shorter version you can specify a number between 1-32 instead (eg. <code>:module-hash-names 8</code>). Be aware that shortening the hash may increase the chances of generating conflicts. I recommend using the full hash.</p>
+<p><code>:module-hash-names true</code> の場合モジュールハッシュの長さが32で完全なmd5ハッシュを含んでいることになります。もし短い方が良い場合は、代わりに1-32の間の数字を指定することができます (例: <code>module-hash-name 8</code>)。ハッシュを短くすると競合が発生する可能性が高くなることに注意してください。完全なハッシュを使うことをお勧めします。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example :module-hash-names config</div>
@@ -3925,20 +3925,20 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p>Instead of generating <code>main.js</code> it will now generate <code>main.&lt;hash&gt;.js</code> in the <code>:output-dir</code>.</p>
+<p>これまでの <code>main.js</code> の代わりに <code>:output-dir</code> に <code>main.&lt;hash&gt;.js</code> を生成するようになりました。</p>
 </div>
 <div class="paragraph">
-<p>Since the filename can change with every release it gets a little bit more complicated to include them in your HTML. The <a href="#BrowserManifest">Output Manifest</a> can help with that.</p>
+<p>リリースごとにファイル名が変わることがあるので、HTMLに含めるのは少し複雑になります。 <a href="#BrowserManifest">Output Manifest</a>がそれを助けてくれます。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="BrowserManifest"><a class="anchor" href="#BrowserManifest"></a><a class="link" href="#BrowserManifest">7.7. Output Manifest</a></h3>
 <div class="paragraph">
-<p><code>shadow-cljs</code> generates a <code>manifest.edn</code> file in the configured <code>:output-dir</code>. This file contains a description of the module config together with an extra <code>:output-name</code> property which maps the original module name to actual filename (important when using the <code>:module-hash-names</code> feature).</p>
+<p><code>shadow-cljs</code> は <code>:output-dir</code> に <code>manifest.edn</code> ファイルを生成します。このファイルにはモジュールの設定の説明と、元のモジュール名を実際のファイル名にマップする追加の <code>:output-name</code> プロパティが含まれています (<code>:module-hash-names</code> 機能を使うときに重要です)。</p>
 </div>
 <div class="listingblock">
-<div class="title">Sample output of manifest.edn when using hashed filenames.</div>
+<div class="title">ハッシュ化されたファイル名を使用した場合の manifest.edn の出力サンプル。</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">[{<span class="symbol">:module-id</span> <span class="symbol">:common</span>,
   <span class="symbol">:name</span> <span class="symbol">:common</span>,
@@ -3956,13 +3956,13 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p>The manifest contains all <code>:modules</code> sorted in dependency order. You can use it to map the <code>:module-id</code> back to the actual generated filename.</p>
+<p>マニフェストには、依存関係の順に並べ替えられたすべての <code>:modules</code> が含まれています。これを使って <code>:module-id</code> を実際に生成されたファイル名にマップすることができます。</p>
 </div>
 <div class="paragraph">
-<p>Development builds also produce this file and you may check if for modifications to know when a new build completed. <code>:module-hash-names</code> does not apply during development so you&#8217;ll get the usual filenames.</p>
+<p>開発ビルドでもこのファイルが生成されますので、新しいビルドが完了したときに変更があるかどうかを確認することができます。開発中は <code>:module-hash-names</code> は適用されないので、通常のファイル名を取得します。</p>
 </div>
 <div class="paragraph">
-<p>You can configure the name of the generated manifest file via the <code>:build-options :manifest-name</code> entry. It defaults to <code>manifest.edn</code>. If you configure a filename with <code>.json</code> ending the output will be JSON instead of EDN. The file will be relative to the configured <code>:output-dir</code>.</p>
+<p>生成されるマニフェストファイルの名前は、<code>:build-options :manifest-name`エントリで設定できます。デフォルトは `manifest.edn</code> です。ファイル名の末尾に <code>.json</code> を指定した場合、出力は EDN ではなく JSON になります。ファイルは設定された <code>:output-dir</code> からの相対的なものになります。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example manifest.json config</div>
@@ -3982,39 +3982,39 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 <div class="sect2">
 <h3 id="_development_support"><a class="anchor" href="#_development_support"></a><a class="link" href="#_development_support">7.8. Development Support</a></h3>
 <div class="paragraph">
-<p>The <code>:devtools</code> section of the configuration for <code>:browser</code> supports a few additional options for configuring an optional dev-time HTTP server for a build and CSS reloading.</p>
+<p><code>:browser</code> の設定の <code>:devtools</code> セクションは、ビルドや CSS のリロードのためにオプションの dev-time HTTP サーバを設定するためのいくつかの追加オプションをサポートしています。</p>
 </div>
 <div class="sect3">
 <h4 id="hud"><a class="anchor" href="#hud"></a><a class="link" href="#hud">7.8.1. Heads-Up Display (HUD)</a></h4>
 <div class="paragraph">
-<p>The <code>:browser</code> target now uses a HUD to display a loading indicator when a build is started. It will also display warnings and errors if there are any.</p>
+<p><code>:browser</code> ターゲットはビルドが開始されたときにロードインディケータを表示するために HUD を使用するようになりました。また、警告やエラーがあれば表示されます。</p>
 </div>
 <div class="paragraph">
-<p>You can disable it completely by setting <code>:hud false</code> in the <code>:devtools</code> section.</p>
+<p>これを完全に無効にするには、<code>:devtools</code> セクションで <code>:hud false</code> を設定します。</p>
 </div>
 <div class="paragraph">
-<p>You may also toggle certain features by specifying which features you care about via setting <code>:hud #{:errors :warnings}</code>. This will show errors/warnings but no progress indicator. Available options are <code>:errors</code>, <code>:warnings</code>, <code>:progress</code>. Only options included will be enabled, all other will be disabled.</p>
+<p>また <code>:hud #{:errors :warnings}</code> を設定することで、気になる機能を指定して、特定の機能を切り替えることもできます。これにより、エラーや警告は表示されますが、進捗状況は表示されません。利用可能なオプションは <code>:errors</code>, <code>:warnings</code>, <code>:progress</code> です。含まれるオプションのみが有効になり、それ以外はすべて無効になります。</p>
 </div>
 <div class="sect4">
 <h5 id="open-file-command"><a class="anchor" href="#open-file-command"></a><a class="link" href="#open-file-command">Opening Files</a></h5>
 <div class="paragraph">
-<p>Warnings include a link to source location which can be clicked to open the file in your editor. For this a little bit of config is required.</p>
+<p>警告にはソースの場所へのリンクが含まれており、クリックするとエディタでファイルを開くことができます。このためには少しの設定が必要です。</p>
 </div>
 <div class="paragraph">
-<p>You can either configure this in your <code>shadow-cljs.edn</code> config for the project or globally in your home directory under <code>~/.shadow-cljs/config.edn</code>.</p>
+<p>この設定は、プロジェクトの <code>shadow-cljs.edn</code> の設定で行うか、ホームディレクトリの <code>~/.shadow-cljs/config.edn</code> の下にあるグローバルな設定で行うことができます。</p>
 </div>
 <div class="listingblock">
-<div class="title">&lt;code&gt;:open-file-command&lt;/code&gt; configuration</div>
+<div class="title"><code>:open-file-command</code> configuration</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="symbol">:open-file-command</span>
  [<span class="string"><span class="delimiter">&quot;</span><span class="content">idea</span><span class="delimiter">&quot;</span></span> <span class="symbol">:pwd</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">--line</span><span class="delimiter">&quot;</span></span> <span class="symbol">:line</span> <span class="symbol">:file</span>]}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>:open-file-command</code> expects a vector representing a very simple DSL. Strings are kept as they are and keyword are replaced by their respective values. A nested vector can be used in case you need to combine multiple params, using <code>clojure.core/format</code> style pattern.</p>
+<p><code>open-file-command</code> は非常に単純なDSLを表すベクトルを期待します。文字列はそのまま保持され、キーワードはそれぞれの値に置き換えられます。複数のパラメータを組み合わせる必要がある場合は、<code>clojure.core/format</code> スタイルのパターンを使って、入れ子になったベクトルを使うことができます。</p>
 </div>
 <div class="paragraph">
-<p>The above example would execute</p>
+<p>上記の例では、次のように実行されます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4022,7 +4022,7 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="listingblock">
-<div class="title">&lt;code&gt;emacsclient&lt;/code&gt; example</div>
+<div class="title"><code>emacsclient</code> example</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="symbol">:open-file-command</span>
  [<span class="string"><span class="delimiter">&quot;</span><span class="content">emacsclient</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">-n</span><span class="delimiter">&quot;</span></span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">+%s:%s</span><span class="delimiter">&quot;</span></span> <span class="symbol">:line</span> <span class="symbol">:column</span>] <span class="symbol">:file</span>]}</code></pre>
@@ -4034,29 +4034,29 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p>The available replacement variables are:</p>
+<p>利用可能な置換変数は以下の通りです:</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
 <dt><code>:pwd</code></dt>
 <dd>
-<p>Process Working Directory (aka project root)</p>
+<p>プロセス作業ディレクトリ (別名プロジェクトルート)</p>
 </dd>
 <dt><code>:file</code></dt>
 <dd>
-<p>Absolute File Path</p>
+<p>ファイルの絶対パス</p>
 </dd>
 <dt><code>:line</code></dt>
 <dd>
-<p>Line Number of Warning/Error</p>
+<p>警告/エラーの行番号</p>
 </dd>
 <dt><code>:column</code></dt>
 <dd>
-<p>Column Number</p>
+<p>カラム番号</p>
 </dd>
 <dt><code>:wsl-file</code></dt>
 <dd>
-<p>Translated WSL file path. Useful when running <code>shadow-cljs</code> via WSL Bash. Translates a <code>/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs</code> path into <code>C:\Users...</code></p>
+<p>WSLファイルのパスを翻訳したもの。WSL Bashで <code>shadow-cljs</code> を実行するときに便利。<code>/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs</code> のパスを <code>C:\Users...</code> に変換します。</p>
 </dd>
 <dt><code>:wsl-pwd</code></dt>
 <dd>
@@ -4069,10 +4069,10 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 <div class="sect3">
 <h4 id="_css_reloading"><a class="anchor" href="#_css_reloading"></a><a class="link" href="#_css_reloading">7.8.2. CSS Reloading</a></h4>
 <div class="paragraph">
-<p>The Browser devtools can also reload CSS for you. This is enabled by default and in most cases requires no additional configuration when you are using the built-in <a href="#dev-http">development HTTP servers</a>.</p>
+<p>また、ブラウザのdevtoolsは、あなたのためにCSSをリロードすることができます。これはデフォルトで有効になっており、組み込みの <a href="#dev-http">development HTTP servers</a> を使用している場合は、ほとんどの場合、追加の設定は必要ありません。</p>
 </div>
 <div class="paragraph">
-<p>Any stylesheet included in a page will be reloaded if modified on the filesystem. Prefer using absolute paths but relative paths should work as well.</p>
+<p>ページに含まれるスタイルシートは、ファイルシステム上で変更されるとリロードされます。絶対パスの使用を推奨しますが、相対パスも同様に動作します。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example HTML snippet</div>
@@ -4093,13 +4093,13 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p>This will cause the browser to reload <code>/css/main.css</code> when <code>public/css/main.css</code> is changed.</p>
+<p>これにより、<code>public/css/main.css</code> が変更されたときにブラウザが <code>/css/main.css</code> をリロードするようになります。</p>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> currently provides no support for directly compiling CSS but the usual tools will work and should be run separately. Just make sure the output is generated into the correct places.</p>
+<p><code>shadow-cljs</code> は現在のところ CSS の直接コンパイルをサポートしていませんが、通常のツールは動作しますので、別途実行する必要があります。ただ、出力が正しい場所に生成されることを確認してください。</p>
 </div>
 <div class="paragraph">
-<p>When you are not using the built-in HTTP Server you can specify <code>:watch-dir</code> instead which should be a path to the document root used to serve your content.</p>
+<p>組み込みのHTTPサーバを使用していない場合は、代わりに <code>:watch-dir</code> を指定することができます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example :watch-dir config</div>
@@ -4111,10 +4111,10 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p>When your HTTP Server is serving the files from a virtual directory and the filesystem paths don&#8217;t exactly match the path used in the HTML you may adjust the path by setting <code>:watch-path</code> which will be used as a prefix.</p>
+<p>HTTP サーバが仮想ディレクトリからファイルを提供していて、ファイルシステムのパスが HTML で使われているパスと正確に一致しない場合は、<code>:watch-path</code> を設定することでパスを調整することができます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example &lt;code&gt;public/css/main.css&lt;/code&gt; being served under &lt;code&gt;/foo/css/main.css&lt;/code&gt;</div>
+<div class="title">例 <code>public/css/main.css</code> が <code>/foo/css/main.css</code> の下に提供されている場合</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  {<span class="symbol">:builds</span>
@@ -4128,7 +4128,7 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 <div class="sect3">
 <h4 id="proxy-support"><a class="anchor" href="#proxy-support"></a><a class="link" href="#proxy-support">7.8.3. Proxy Support</a></h4>
 <div class="paragraph">
-<p>By default the devtools client will attempt to connect to the <code>shadow-cljs</code> process via the configured <a href="#http">HTTP server</a> (usually <code>localhost</code>). If you are using a reverse proxy to serve your HTML that might not be possible. You can set <code>:devtools-url</code> to configure which URL to use.</p>
+<p>デフォルトでは、devtools クライアントは設定された <a href="#http">HTTP server</a> (通常は <code>localhost</code>) を介して <code>shadow-cljs</code> プロセスに接続しようとします。リバースプロキシを使って HTML を提供している場合は、それができないかもしれません。どのURLを使うかは <code>:devtools-url</code> で設定することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4142,7 +4142,7 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> will then use the <code>:devtools-url</code> as the base when making requests. It is not the final URL so you must ensure that all requests starting with the path you configured (eg. <code>/shadow-cljs/*</code>) are forwarded to the host <code>shadow-cljs</code> is running on.</p>
+<p><code>shadow-cljs</code> はリクエストを行う際に <code>:devtools-url</code> をベースにします。これは最終的な URL ではないので、設定したパス (例えば <code>/shadow-cljs/*</code>) で始まるすべてのリクエストが <code>shadow-cljs</code> が動作しているホストに転送されるようにしなければなりません。</p>
 </div>
 <div class="listingblock">
 <div class="title">Incoming Request to Proxy</div>
@@ -4157,7 +4157,7 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 </div>
 </div>
 <div class="paragraph">
-<p>The client will make WebSocket request as well as normal XHR requests to load files. Ensure that your proxy properly upgrades WebSockets.</p>
+<p>クライアントは、ファイルをロードするために通常の XHR 要求と同様に WebSocket 要求を行います。プロキシが適切に WebSocket をアップグレードしていることを確認してください。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -4166,7 +4166,7 @@ Since we now have a <code>:shared</code> module you must ensure to load it prope
 <div class="title">Important</div>
 </td>
 <td class="content">
-The requests must be forwarded to the main <a href="#http">HTTP server</a>, not the one configured in the build itself.
+リクエストは、ビルド自体で設定されたものではなく、メインの <a href="#http">HTTP server</a> に転送されなければなりません。
 </td>
 </tr>
 </table>
@@ -4179,10 +4179,10 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <h2 id="target-react-native"><a class="anchor" href="#target-react-native"></a><a class="link" href="#target-react-native">8. Targeting React Native</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>:target :react-native</code> produces code that is meant to integrate into the default <code>react-native</code> tooling (eg. <code>metro</code>). Tools like <code>expo</code> which wrap those tools should automatically work and require no additional setup.</p>
+<p><code>:target :react-native</code> は、デフォルトの <code>react-native</code> ツール (例: <code>metro</code>) に統合するコードを生成します。これらのツールをラップする <code>expo</code> のようなツールは自動的に動作し、追加の設定は必要ありません。</p>
 </div>
 <div class="paragraph">
-<p>You will need the same basic <a href="#config">main configuration</a> as in other targets (like <code>:source-paths</code>), the build specific config is very minimal and requires at least 2 options (besides <code>:target</code> itself)</p>
+<p>他のターゲット (<code>:source-paths</code> のようなもの) と同じ基本的な <a href="#config">main configuration</a> が必要ですが、ビルド固有の設定は非常に最小限で、少なくとも 2 つのオプションが必要です (<code>:target</code> 自体の他に)。</p>
 </div>
 <div class="hdlist">
 <table>
@@ -4191,7 +4191,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <code>:init-fn</code>
 </td>
 <td class="hdlist2">
-<p>(required). The namespace-qualified symbol of your apps init function. This function will be called once on startup and should probably render something.</p>
+<p>(必須)。アプリのinit関数の名前空間修飾シンボル。この関数は起動時に一度だけ呼び出され、おそらく何かをレンダリングする必要があります。</p>
 </td>
 </tr>
 <tr>
@@ -4199,7 +4199,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <code>:output-dir</code>
 </td>
 <td class="hdlist2">
-<p>(required). The directory used to write output files.</p>
+<p>(必須)。出力ファイルの書き込みに使用するディレクトリ。</p>
 </td>
 </tr>
 </table>
@@ -4218,12 +4218,12 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 </div>
 </div>
 <div class="paragraph">
-<p>When compiled this results in a <code>app/index.js</code> file intended to be used as an entry point for the <code>react-native</code> tools. During development the <code>:output-dir</code> will contain many more files but you should only reference the generated <code>app/index.js</code> directly. A <code>release</code> build will only generated the optimized <code>app/index.js</code> and requires no additional files.</p>
+<p>コンパイルすると <code>app/index.js</code> ファイルが生成され、これは <code>react-native</code> ツールのエントリーポイントとして使用されることを意図しています。開発中の <code>:output-dir</code> にはさらに多くのファイルが含まれますが、生成された <code>app/index.js</code> だけを直接参照するようにしてください。 <code>release</code> ビルドでは最適化された <code>app/index.js</code> が生成されるだけで、追加のファイルは必要ありません。</p>
 </div>
 <div class="sect2">
 <h3 id="_react_native"><a class="anchor" href="#_react_native"></a><a class="link" href="#_react_native">8.1. React Native</a></h3>
 <div class="paragraph">
-<p>There are two ways to use <code>react-native</code>, "plain" <code>react-native</code>, which allows you to use native code and libraries and the one "wrapped" in <a href="https://expo.io/">expo</a> (described below). All the steps described above are sufficient to start using shadow-cljs with the plain <code>react-native</code>. See this example repo:</p>
+<p><code>react-native`を使うには2つの方法があり、ネイティブコードやライブラリを使えるプレーンな `react-native</code> と <a href="https://expo.io/">expo</a> でラップされたもの(後述)です。上記のすべてのステップを踏めば、プレーンな <code>react-native</code> で shadow-cljs を使い始めることができます。この例のリポジトリを参照してください:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4236,7 +4236,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <div class="sect2">
 <h3 id="_expo"><a class="anchor" href="#_expo"></a><a class="link" href="#_expo">8.2. Expo</a></h3>
 <div class="paragraph">
-<p><a href="https://expo.io/">expo</a> makes working with <code>react-native</code> quite easy. There are two provided example setups.</p>
+<p><a href="https://expo.io/">expo</a> を使うと <code>react-native</code> を使うのがとても簡単になります。提供されている設定例は2つあります。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4249,7 +4249,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 </ul>
 </div>
 <div class="paragraph">
-<p>Both examples where generated using <code>expo init &#8230;&#8203;</code> and the only adjusted change in the config was adding the proper <code>entryPoint</code> to the generated <code>app.json</code>.</p>
+<p>どちらの例も <code>expo init &#8230;&#8203;</code> を使って生成されたもので、設定の変更点は生成された <code>app.json</code> に適切な <code>entryPoint</code> を追加することだけでした。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4265,7 +4265,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 </div>
 </div>
 <div class="paragraph">
-<p><code>expo</code> requires that a React Component is registered on startup which can be done manually or by using the <code>shadow.expo/render-root</code> function which takes care of creating the Component and instead directly expects a React Element instance to start rendering.</p>
+<p>これは手動で行うこともできますが、`shadow.expo/render-root`関数を使用することで行うこともでき、代わりにReact Elementのインスタンスがレンダリングを開始することを直接期待できます。</p>
 </div>
 <div class="listingblock">
 <div class="title">From the Reagent &lt;a href="https://github.com/thheller/reagent-expo/blob/2c73ed0513a8f5050b250c0c7e53b9ae7543cee9/src/main/test/app.cljs#L34-L40"&gt;example&lt;/a&gt;</div>
@@ -4280,7 +4280,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 </div>
 </div>
 <div class="paragraph">
-<p><code>init</code> is called once on startup. Since the example doesn&#8217;t need to do any special setup it just calls <code>start</code> directly. <code>start</code> will be called repeatedly when <code>watch</code> is running each time after the code changes were reloaded. The <code>reagent.core/as-element</code> function can be used to generate the required React Element from the reagent hiccup markup.</p>
+<p><code>init</code> は起動時に一度だけ呼び出されます。この例では特別な設定をする必要がないので <code>start</code> を直接呼び出すだけです。 <code>start</code> は <code>watch</code> が実行されているときには、コードの変更がリロードされた後、毎回繰り返し呼び出されます。 <code>reagent.core/as-element</code> 関数は、試薬のHiccup markupから必要なReact要素を生成するために利用できます。</p>
 </div>
 </div>
 </div>
@@ -4289,12 +4289,12 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <h2 id="target-node"><a class="anchor" href="#target-node"></a><a class="link" href="#target-node">9. Targeting node.js</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There is built-in support for generating code that is intended to be used as a stand-alone script, and also for code that is intended to be used as a library. See the section on <a href="#config">common configuration</a> for the base settings needed in a configuration file.</p>
+<p>スタンドアロンスクリプトとして使用することを目的としたコードや、ライブラリとして使用することを目的としたコードの生成をビルトインでサポートしています。設定ファイルに必要な基本設定については、 <a href="#config">common configuration</a> の項を参照してください。</p>
 </div>
 <div class="sect2">
 <h3 id="target-node-script"><a class="anchor" href="#target-node-script"></a><a class="link" href="#target-node-script">9.1. node.js Scripts</a></h3>
 <div class="paragraph">
-<p>The <code>:target :node-script</code> produces single-file stand-alone output that can be run using <code>node.js</code>. The code is just ClojureScript, and an entry point is easy to define:</p>
+<p><code>:target :node-script</code> はシングルファイルのスタンドアロン出力を生成し、<code>node.js</code> を使って実行できます。コードはClojureScriptだけで、エントリポイントの定義も簡単です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4307,7 +4307,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <div class="sect3">
 <h4 id="_build_options"><a class="anchor" href="#_build_options"></a><a class="link" href="#_build_options">9.1.1. Build Options</a></h4>
 <div class="paragraph">
-<p>You will need the same basic <a href="#config">main configuration</a> as in other targets (like <code>:source-paths</code>), but you&#8217;ll need some node-specific build target options:</p>
+<p>他のターゲット (<code>:source-paths</code> など) と同じ基本的な <a href="#config">main configuration</a> が必要ですが、いくつかのノード固有のビルドターゲットオプションが必要になります:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -4316,7 +4316,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <code>:main</code>
 </td>
 <td class="hdlist2">
-<p>(required). The namespace-qualified symbol of your script&#8217;s entry point function.</p>
+<p>(必須)。スクリプトのエントリポイント関数の名前空間修飾シンボル。</p>
 </td>
 </tr>
 <tr>
@@ -4324,7 +4324,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <code>:output-to</code>
 </td>
 <td class="hdlist2">
-<p>(required). The path and filename for the generated script.</p>
+<p>(必須)。生成されたスクリプトのパスとファイル名。</p>
 </td>
 </tr>
 <tr>
@@ -4332,7 +4332,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <code>:output-dir</code>
 </td>
 <td class="hdlist2">
-<p>(optional). The path for supporting files in development mode. Defaults to a cache directory.</p>
+<p>(オプション)。開発モードでサポートするファイルのパス。デフォルトはキャッシュディレクトリです。</p>
 </td>
 </tr>
 </table>
@@ -4350,29 +4350,29 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 </div>
 </div>
 <div class="paragraph">
-<p>When compiled this results in a standalone <code>out/demo-script/script.js</code> file intended to be called via <code>node script.js &lt;command line args&gt;</code>. When run it will call <code>(demo.script/main &lt;command line args&gt;)</code> function on startup. This only ever produces the file specified in <code>:output-to</code>. Any other support files (e.g. for development mode) are written to a temporary support directory.</p>
+<p>コンパイルすると、これはスタンドアロンの <code>out/demo-script/script.js</code> ファイルになり <code>node script.js &lt;command line args&gt;</code> から呼び出されることを意図しています。実行すると、起動時に <code>(demo.script/main &lt;command line args&gt;)</code> 関数が呼び出されます。これは <code>:output-to</code> で指定されたファイルのみを生成します。その他のサポートファイル(開発モード用など)は、一時的なサポートディレクトリに書き込まれます。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="NodeHotCodeReload"><a class="anchor" href="#NodeHotCodeReload"></a><a class="link" href="#NodeHotCodeReload">9.1.2. Hot Code Reload</a></h4>
 <div class="paragraph">
-<p>You will often write scripts that run as servers or some other long-running process. Hot code reload can be quite useful when working with these, and it is simple to set up:</p>
+<p>サーバーやその他の長時間稼働するプロセスとして動作するスクリプトを書くことが多いでしょう。ホットコードリロードはこれらの作業を行う際に非常に便利で、設定も簡単です:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add start/stop callback functions.</p>
+<p>start/stop コールバック関数を追加します。</p>
 </li>
 <li>
-<p>Configure the build use those hooks.</p>
+<p>これらのフックを使用するビルドを設定します。</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Here is an example http server in node:</p>
+<p>ここではnode内のhttpサーバの例を示します:</p>
 </div>
 <div class="listingblock">
-<div class="title">Sample node script with start/stop hooks for hot code reload.</div>
+<div class="title">ホットコードのリロードのための satrt/stop フックを持つサンプルノードスクリプト。</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">ns</span> <span class="namespace">demo.script</span>
   (<span class="symbol">:require</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">http</span><span class="delimiter">&quot;</span></span> <span class="symbol">:as</span> http]))
@@ -4417,10 +4417,10 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 </div>
 </div>
 <div class="paragraph">
-<p>The associated configuration is (<code>shadow-cljs.edn</code>):</p>
+<p>関連する設定は (<code>shadow-cljs.edn</code>) です。</p>
 </div>
 <div class="listingblock">
-<div class="title">Adding hooks for hot code reload.</div>
+<div class="title">ホットコードのリロードのためのフックを追加。</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -4438,7 +4438,7 @@ The requests must be forwarded to the main <a href="#http">HTTP server</a>, not 
 <div class="title">Warning</div>
 </td>
 <td class="content">
-Many libraries hide state or do actions that prevent hot code reloading from working well. There is nothing the compiler can do to improve this since it has no idea what those libraries are doing. Hot code reload will only work well in situations where you can cleanly "stop" and "restart" the artifacts used.
+多くのライブラリは状態を隠したり、ホットコードのリロードがうまく動作しないような動作をしています。コンパイラは、それらのライブラリが何をしているかを知らないので、これを改善することはできません。ホット・コード・リロードがうまくいくのは、使用されたアーティファクトをきれいに 「stop」と「restart」することができる状況でのみです。
 </td>
 </tr>
 </table>
@@ -4448,10 +4448,10 @@ Many libraries hide state or do actions that prevent hot code reloading from wor
 <div class="sect2">
 <h3 id="target-node-library"><a class="anchor" href="#target-node-library"></a><a class="link" href="#target-node-library">9.2. node.js Libraries</a></h3>
 <div class="paragraph">
-<p>The <code>:target :node-library</code> emits code that can be used (via <code>require</code>) as a standard node library, and is useful for publishing your code for re-use as a compiled Javascript artifact.</p>
+<p><code>:target :node-library</code> は、標準のノードライブラリとして(<code>require</code> を介して)利用できるコードを出力し、コンパイルされた Javascript の成果物として再利用するためにコードを公開するのに便利です。</p>
 </div>
 <div class="paragraph">
-<p>As with other modes the <a href="#config">main configuration options</a> apply and must be set. The target-specific options are:</p>
+<p>他のモードと同様に <a href="#config">main configuration options</a> が適用され、設定しなければなりません。ターゲット固有のオプションは以下の通りです:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -4468,7 +4468,7 @@ Many libraries hide state or do actions that prevent hot code reloading from wor
 <code>:output-to</code>
 </td>
 <td class="hdlist2">
-<p>(required). The path and filename for the generated library.</p>
+<p>(必須)。生成されたライブラリのパスとファイル名。</p>
 </td>
 </tr>
 <tr>
@@ -4476,37 +4476,37 @@ Many libraries hide state or do actions that prevent hot code reloading from wor
 <code>:output-dir</code>
 </td>
 <td class="hdlist2">
-<p>(optional). The path for supporting files in development mode. Defaults to a cache directory.</p>
+<p>(オプション)。開発モードでサポートするファイルのパス。デフォルトはキャッシュディレクトリです。</p>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The hot code reload story is similar to <a href="#NodeHotCodeReload">the script target</a>, but may not work as well since it cannot as easily control all of the code that is loaded.</p>
+<p>ホットコードのリロードの話は <a href="#NodeHotCodeReload">the script target</a> と似ていますが、ロードされるコードの全てを簡単に制御できないので、うまくいかないかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>Controlling what code is actually exported is done via one of the following options:</p>
+<p>実際にエクスポートされるコードを制御するには、以下のオプションのいずれかを使用します:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>:exports</code> -  a map of keyword to fully qualified symbols</p>
+<p><code>:exports</code> -  キーワードと完全修飾シンボルのマップ</p>
 </li>
 <li>
-<p><code>:exports-var</code> - a fully qualified symbol</p>
+<p><code>:exports-var</code> - 完全修飾シンボル</p>
 </li>
 <li>
-<p><code>:exports-fn</code> - a fully qualified symbol</p>
+<p><code>:exports-fn</code> - 完全修飾シンボル</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="_single_static_default_export"><a class="anchor" href="#_single_static_default_export"></a><a class="link" href="#_single_static_default_export">9.2.1. Single static "default" export</a></h4>
 <div class="paragraph">
-<p><code>:exports-var</code> will just return whatever is declared under that var. It can point to a <code>defn</code> or normal <code>def</code>.</p>
+<p><code>:exports-var</code> は、その var の下で宣言されたものを返すだけです。 これは <code>defn</code> または通常の <code>def</code> を指すことができます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Build config using &lt;code&gt;:exports-var&lt;/code&gt;</div>
+<div class="title">Build config using <code>:exports-var</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span> {<span class="symbol">:lib</span> {<span class="symbol">:output-to</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">lib.js</span><span class="delimiter">&quot;</span></span>
@@ -4533,13 +4533,13 @@ f(); // the actual demo.ns/f function</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It is effectively generating <code>module.exports = demo.ns.f;</code></p>
+<p>効果的に <code>module.exports = demo.ns.f;</code> を生成しています。</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multiple_static_named_exports"><a class="anchor" href="#_multiple_static_named_exports"></a><a class="link" href="#_multiple_static_named_exports">9.2.2. Multiple static named exports</a></h4>
+<h4 id="_multiple_static_named_exports"><a class="anchor" href="#_multiple_static_named_exports"></a><a class="link" href="#_multiple_static_named_exports">9.2.2. 複数の静的名前付きエクスポート</a></h4>
 <div class="listingblock">
-<div class="title">Build configuration with multiple exports</div>
+<div class="title">複数のエクスポートで構成を構築</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span> {<span class="symbol">:lib</span> {<span class="symbol">:exports</span> {<span class="symbol">:g</span>       demo.ns/f
@@ -4549,7 +4549,7 @@ f(); // the actual demo.ns/f function</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The keyword is used as the name of the entry in the exported object. <strong>No munging is done</strong> to this keyword name (but namespaces are dropped). So, the above example maps cljs <code>f</code> to <code>g</code>, etc.:</p>
+<p>このキーワードは、エクスポートされたオブジェクトのエントリの名前として使用されます。このキーワード名には <strong>munging は行われません</strong>  (ただし、名前空間は削除されます)。ですから、上の例では cljs <code>f</code> を <code>g</code> などにマップしています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4560,7 +4560,7 @@ lib[&quot;ok?&quot;](); // call another-ns/ok?</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can achieve the exact same thing by using <code>:exports-var</code> pointing to a <code>def</code></p>
+<p><code>:exports-var</code> が指す <code>def</code> を使うことで、全く同じことができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4572,7 +4572,7 @@ lib[&quot;ok?&quot;](); // call another-ns/ok?</code></pre>
 <div class="sect3">
 <h4 id="_dynamic_exports"><a class="anchor" href="#_dynamic_exports"></a><a class="link" href="#_dynamic_exports">9.2.3. "Dynamic" exports</a></h4>
 <div class="paragraph">
-<p>In addition you may specify <code>:exports-fn</code> as a fully qualified symbol. This should point to a function with no arguments which should return a JS object (or function). This function will only ever be called ONCE as <code>node</code> caches the return value.</p>
+<p>さらに、完全修飾シンボルとして <code>:exports-fn</code> を指定することもできます。これはJSオブジェクト(または関数)を返す引数を持たない関数を指します。この関数は <code>node</code> が戻り値をキャッシュするため、一度だけ呼び出されます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4598,7 +4598,7 @@ lib[&quot;ok?&quot;](); // call another-ns/ok?</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-The exports config automatically tracks exported symbols and passes them on to the optimization stage. This means that anything listed in <code>:exports</code> will not be renamed by Google Closure optimizations.
+exports設定は、エクスポートされたシンボルを自動的に追跡し、最適化の段階に渡します。これは、<code>:exports</code> にリストされているものは、Google Closure の最適化によってリネームされないことを意味します。
 </td>
 </tr>
 </table>
@@ -4607,7 +4607,7 @@ The exports config automatically tracks exported symbols and passes them on to t
 <div class="sect3">
 <h4 id="_full_example"><a class="anchor" href="#_full_example"></a><a class="link" href="#_full_example">9.2.4. Full Example</a></h4>
 <div class="paragraph">
-<p>The example below creates a <code>lib.js</code> file intended to be consumed via the normal Node <code>require</code> mechanism.</p>
+<p>以下の例では、通常のNodeの <code>require</code> メカニズムで消費されることを意図した <code>lib.js</code> ファイルを作成しています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4619,7 +4619,7 @@ The exports config automatically tracks exported symbols and passes them on to t
 </div>
 </div>
 <div class="paragraph">
-<p>The build configuration would be:</p>
+<p>ビルド構成は次のようになります:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4630,7 +4630,7 @@ The exports config automatically tracks exported symbols and passes them on to t
 </div>
 </div>
 <div class="paragraph">
-<p>and the runtime use is as you would expect:</p>
+<p>で、実行時の使用方法は期待通りです:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4644,7 +4644,7 @@ hello
 </div>
 </div>
 <div class="paragraph">
-<p>As <code>:node-script</code> this will only create the file specified in <code>:output-to</code>. The <code>:exports</code> map maps CLJS vars to the name they should be exported to.</p>
+<p>これは <code>:node-script</code> のように <code>:output-to</code> で指定されたファイルのみを作成します。マップ <code>:exports</code> は CLJS の vars をエクスポート先の名前にマップします。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4653,7 +4653,7 @@ hello
 <div class="title">Note</div>
 </td>
 <td class="content">
-Development mode has the <a href="#NodeModes">same setup</a> as for node scripts (extra dependencies).
+開発モードでは、ノードスクリプトと同様に <a href="#NodeModes">same setup</a> を使用します（余分な依存関係があります）。
 </td>
 </tr>
 </table>
@@ -4661,13 +4661,13 @@ Development mode has the <a href="#NodeModes">same setup</a> as for node scripts
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creating_code_npm_code_packages"><a class="anchor" href="#_creating_code_npm_code_packages"></a><a class="link" href="#_creating_code_npm_code_packages">9.3. Creating &lt;code&gt;npm&lt;/code&gt; packages</a></h3>
+<h3 id="_creating_code_npm_code_packages"><a class="anchor" href="#_creating_code_npm_code_packages"></a><a class="link" href="#_creating_code_npm_code_packages">9.3. Creating <code>npm</code> packages</a></h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="target-npm-module"><a class="anchor" href="#target-npm-module"></a><a class="link" href="#target-npm-module">10. Embedding in the JS Ecosystem&#8201;&#8212;&#8201;The &lt;code&gt;:npm-module&lt;/code&gt; Target</a></h2>
+<h2 id="target-npm-module"><a class="anchor" href="#target-npm-module"></a><a class="link" href="#target-npm-module">10. JSエコシステムへの組み込み&#8201;&#8212;&#8212;&#8201; <code>:npm-module</code> ターゲット</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>There is an additional target that is intended to integrate CLJS into an existing JS project. The output can seamlessly integrate with existing JS tools (eg. webpack, browserify, babel, create-react-app, &#8230;&#8203;) with little configuration.</p>
@@ -4693,7 +4693,7 @@ Development mode has the <a href="#NodeModes">same setup</a> as for node scripts
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Example &lt;code&gt;shadow-cljs.edn&lt;/code&gt; config</div>
+<div class="title">Example shadow-cljs.edn` config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
