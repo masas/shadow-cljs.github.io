@@ -2900,13 +2900,13 @@ msgid "`:wsl-file`"
 msgstr ""
 
 msgid "Translated WSL file path. Useful when running `shadow-cljs` via WSL Bash. Translates a `/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs` path into `C:\\Users\\...`"
-msgstr "WSLファイルのパスを翻訳したもの。WSL Bashで `shadow-cljs` を実行するときに便利。`/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs` のパスを `C:\\Users\\...` に変換します。"
+msgstr "WSLファイルのパスを変換したもの。WSL Bashで `shadow-cljs` を実行するときに便利。`/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs` のパスを `C:\\Users\\...` に変換します。"
 
 msgid "`:wsl-pwd`"
 msgstr ""
 
 msgid "Translated `:pwd`"
-msgstr ""
+msgstr "`:pwd` を変換したもの"
 
 msgid "CSS Reloading"
 msgstr ""
@@ -3398,16 +3398,16 @@ msgid "Creating <code>npm</code> packages"
 msgstr "Creating `npm` packages"
 
 msgid "Embedding in the JS Ecosystem&#8201;&#8212;&#8201;The <code>:npm-module</code> Target"
-msgstr ""
+msgstr "Embedding in the JS Ecosystem&#8201;&#8212;&#8201;The `:npm-module` Target"
 
 msgid "There is an additional target that is intended to integrate CLJS into an existing JS project. The output can seamlessly integrate with existing JS tools (eg. webpack, browserify, babel, create-react-app, ...) with little configuration."
-msgstr ""
+msgstr "既存のJSプロジェクトにCLJSを統合することを目的とした追加ターゲットがあります。出力は既存のJSツール（例：webpack、browserify、babel、create-react-app、...）とほとんど設定なしでシームレスに統合することができます。"
 
 msgid "The path for the output files are written to, defaults to `node_modules/shadow-cljs`."
-msgstr ""
+msgstr "出力ファイルのパスはデフォルトで `node_modules/shadow-cljs` に書き込まれます。"
 
 msgid "(required) A vector of namespace symbols that should be compiled"
-msgstr ""
+msgstr "(必須) コンパイルされるべき名前空間シンボルのベクトル"
 
 msgid ""
 "{...\n"
@@ -3418,19 +3418,19 @@ msgid ""
 msgstr ""
 
 msgid "If you use the default `:output-dir` of `\"node_modules/shadow-cljs\"` you can access the declared namespaces by using `require(\"shadow-cljs/demo.foo\")` in JS. When using something not in `node_modules` you must include them using a relative path. With `:output-dir \"out\"` that would be `require(\"./out/demo.foo\")` from your project root."
-msgstr ""
+msgstr "デフォルトの `:output-dir` の `\"node_modules/shadow-cljs\"` を使っている場合は、JSで `require(\"shadow-cljs/demo.foo\")` を使うことで、宣言された名前空間にアクセスすることができます。 `node_modules` にないものを使うときは、相対パスを使ってインクルードする必要があります。`:output-dir \\″out\"` とすると、プロジェクトのルートから `require(\"./out/demo.foo\")` となります。"
 
 msgid "If you plan to distribute code on NPM, then you may want to use the <<NodeLibrary, `:node-library` target>> instead since it allows for a finer level of control over exports and optimization."
-msgstr ""
+msgstr "NPM上でコードを配布する予定があるのであれば、代わりに <<NodeLibrary, `:node-library` target>> を使うのが良いでしょう。"
 
 msgid "Working with Optimizations"
 msgstr ""
 
 msgid "Unlike the `:node-library` target, the module target does not know what you want to call the symbols you're exporting, so it just exports them as-is. If you use advanced compilation, then everything will get a minified munged name!"
-msgstr ""
+msgstr "`:node-library` ターゲットとは異なり、モジュールターゲットはエクスポートしたシンボルを何と呼びたいかを知らないので、そのままエクスポートします。advanced コンパイルを使っている場合は、すべてのものが短縮化された名前になります!"
 
 msgid "This is easy to remedy, simply add `:export` metadata on any symbols that you want to preserve:"
-msgstr ""
+msgstr "保存したいシンボルに `:export` のメタデータを追加するだけです:"
 
 msgid ""
 "(ns demo.foo)\n"
@@ -3441,7 +3441,7 @@ msgid ""
 msgstr ""
 
 msgid "This is a standard annotation that is understood by ClojureScript and prevents Google Closure from renaming an artifact. JS code will still be able to access them after optimizations. Without the `^:export` hint the closure-compiler will likely have removed or renamed them."
-msgstr ""
+msgstr "これはClojureScriptで理解されている標準的なアノテーションで、Google Closureがアーティファクトの名前を変更するのを防ぎます。JSコードは最適化された後でもアクセスすることができます。ヒント `^:export` がなければ、クロージャコンパイラはそれらを削除したり、名前を変更したりしているでしょう。"
 
 msgid ""
 "var ns = require(\"shadow-cljs/demo.foo\");\n"
@@ -3454,16 +3454,16 @@ msgid "Testing"
 msgstr ""
 
 msgid "`shadow-cljs` provides a few utility targets to make building tests a little easier."
-msgstr ""
+msgstr "`shadow-cljs` はテストのビルドを少し簡単にするためのユーティリティターゲットをいくつか提供します。"
 
 msgid "All test targets generate a test runner and automatically add all namespaces matching the configurable `:ns-regexp`. The default test runners were built for `cljs.test` but you can create custom runners if you prefer to use other test frameworks."
-msgstr ""
+msgstr "すべてのテストターゲットはテストランナーを生成し、設定可能な `:ns-regexp` にマッチするすべての名前空間を自動的に追加します。デフォルトのテストランナーは `cljs.test` 用にビルドされていますが、他のテストフレームワークを使いたい場合はカスタムランナーを作成することができます。"
 
 msgid "The default `:ns-regexp` is `\"-test$\"`, so your first test could look like:"
-msgstr ""
+msgstr "デフォルトの `:ns-regexp` は `\"-test$\"` なので、最初のテストは以下のようになります:"
 
 msgid "File: <code>src/test/demo/app_test.cljs</code>"
-msgstr ""
+msgstr "File: `src/test/demo/app_test.cljs'"
 
 msgid ""
 "(ns demo.app-test\n"
@@ -3474,40 +3474,40 @@ msgid ""
 msgstr ""
 
 msgid "In the Clojure world it is common to keep test files in their own source paths so the above example assumes you have configured `:source-paths [\"src/main\" \"src/test\"]` in your `shadow-cljs.edn` config. Your usual app code goes into `src/main` and the tests go into `src/test`. This however is optional and it is totally fine to keep everything in `src` and just use `:source-paths [\"src\"]`."
-msgstr ""
+msgstr "Clojureの世界では、テストファイルをそれぞれのソースパスに保存するのが一般的ですので、上の例では `shadow-cljs.edn` の設定で `:source-paths [\"src/main\" \"src/test\"]` を設定したと仮定しています。通常のアプリのコードは `src/main` に、テストは `src/test` に入れます。これは任意で、全てを `src` に入れておいて `:source-paths [\\”src\\”]` を使っても全く問題ありません。"
 
 msgid "Testing in node.js"
 msgstr ""
 
 msgid "This target will create a test runner including all test namespaces matching the given regular expression."
-msgstr ""
+msgstr "このターゲットは、指定された正規表現にマッチするすべてのテスト名前空間を含むテストランナーを作成します。"
 
 msgid "The relevant configuration options are:"
-msgstr ""
+msgstr "関連する設定オプションは以下の通りです:"
 
 msgid "`:node-test`"
 msgstr ""
 
 msgid "The final output file that will be used to run tests."
-msgstr ""
+msgstr "テストの実行に使用される最終的な出力ファイル。"
 
 msgid "`:ns-regexp`"
 msgstr ""
 
 msgid "(optional) A regular expression matching namespaces against project files. This only scans files, and will not scan jars. Defaults to `\"-test$\"`."
-msgstr ""
+msgstr "(オプション) プロジェクトファイルに対して名前空間をマッチさせる正規表現。これはファイルのみをスキャンし、jarはスキャンしません。デフォルトは `\"-test$test\"` です。"
 
 msgid "`:autorun`"
 msgstr ""
 
 msgid "(boolean, optional) Run the tests via `node` when a build completes. This is mostly meant to be used in combination with `watch`. The `node` process exit code will not be returned as that would have to forcefully kill the running JVM."
-msgstr ""
+msgstr "(boolean, オプション) ビルドが完了したときに `node` 経由でテストを実行します。これは主に `watch` と組み合わせて使うことを意図しています。実行中のJVMを強制的に終了させる必要があるため、`node`プロセスの終了コードは返されません。"
 
 msgid "(qualified symbol, optional) Function called on startup to run the tests, defaults to `shadow.test.node/main` which runs tests using `cljs.test`."
-msgstr ""
+msgstr "(修飾されたシンボルです,オプション) 起動時にテストを実行するために呼び出される関数です。デフォルトは `shadow.test.node/main` で、これは `cljs.test` を使ってテストを実行します。"
 
 msgid "Test config matching all <code>*-spec</code> namespaces"
-msgstr ""
+msgstr "すべての `*-spec` 名前空間にマッチする設定をテストする"
 
 msgid ""
 "{...\n"
@@ -3520,7 +3520,7 @@ msgid ""
 msgstr ""
 
 msgid "The `:node-test` target only generates the test file. You can run it via `node`."
-msgstr ""
+msgstr "ターゲット `:node-test` はテストファイルを生成するだけです。 `node`を経由して実行することができます。"
 
 msgid ""
 "$ shadow-cljs compile test\n"
@@ -3535,13 +3535,13 @@ msgid ""
 msgstr ""
 
 msgid "The `node` process exit code will be set to `0` when successful and `1` on any failures. (The `node` process exit code will not be returned when using `:autorun`.)"
-msgstr ""
+msgstr "成功した場合は `node` のプロセス終了コードは `0` に、失敗した場合は `1` に設定されます。(`:autorun` を利用している場合は `node` のプロセス終了コードは返されません)。"
 
 msgid "Testing in the Browser"
 msgstr ""
 
 msgid "This target is meant for gathering up namespaces that contain tests (based on a filename pattern match), and triggering a test runner. It contains a built-in runner that will automatically scan for `cljs.test` tests and run them."
-msgstr ""
+msgstr "このターゲットは、(ファイル名のパターンマッチに基づいて)テストを含む名前空間を収集し、テストランナーを起動するためのものです。自動的に `cljs.test` テストをスキャンして実行する組み込みのランナーが含まれています。"
 
 msgid "`:browser-test`"
 msgstr ""
@@ -3550,19 +3550,19 @@ msgid "`:test-dir`"
 msgstr ""
 
 msgid "A folder in which to output files. See below."
-msgstr ""
+msgstr "ファイルを出力するフォルダ。下記参照。"
 
 msgid "(optional) A regular expression matching namespaces against project files. This only scans files, and will not scan jars. Defaults to \"-test$\"."
-msgstr ""
+msgstr "(オプション) プロジェクトファイルに対して名前空間をマッチさせる正規表現。これはファイルのみをスキャンし、jarはスキャンしません。デフォルトは \"-test$$\" です。"
 
 msgid "`:runner-ns`"
 msgstr ""
 
 msgid "(optional) A namespace that can contain a start, stop, and init function. Defaults to `shadow.test.browser`."
-msgstr ""
+msgstr "(オプション) start、stopおよび init 関数を含むことができる名前空間。デフォルトは `shadow.test.browser` です。"
 
 msgid "The normal `:devtools` options are supported, so you will usually create an http server to serve the files. In general you will need a config that looks like this:"
-msgstr ""
+msgstr "通常の `:devtools` オプションがサポートされているので、通常はファイルを提供するために http サーバを作成します。一般的には以下のような設定が必要になります:"
 
 msgid ""
 "{...\n"
@@ -3575,10 +3575,10 @@ msgid ""
 msgstr ""
 
 msgid "Remember that the test directory will have the index.html, and a js folder."
-msgstr ""
+msgstr "テストディレクトリにはindex.htmlとjsフォルダがあることを覚えておいてください。"
 
 msgid "If you choose to supply a custom `:runner-ns`, it might look like this:"
-msgstr ""
+msgstr "カスタムの `:runner-ns` を指定すると、以下のようになります:"
 
 msgid ""
 "(ns tests.client-test-main)\n"
@@ -3593,36 +3593,46 @@ msgid ""
 "(defn ^:export init []\n"
 "  (start))"
 msgstr ""
+"(ns tests.client-test-main)\n"
+"\n"
+"(defn start []\n"
+"  ... run the tests...)\n"
+"\n"
+"(defn stop [done]\n"
+"  ; テストは非同期にすることができます。ランナーが実際に終了したことを知ることができるように done を呼び出す必要があります  (done))\n"
+"\n"
+"(defn ^:export init []\n"
+"  (start))"
 
 msgid "It just has `init`, `start`, `stop` methods. `init` will be called once on startup, `stop` will be called before any code is reloaded and `start` will be called after all code was reloaded."
-msgstr ""
+msgstr "これは単に `init`, `start`, `stop` メソッドを持っているだけです。init`は起動時に一度だけ呼び出され、`stop`はコードがリロードされる前に呼び出され、`start`はすべてのコードがリロードされた後に呼び出されます。"
 
 msgid "`:runner-ns` is optional, just leave it out to use the default."
-msgstr ""
+msgstr "`:runner-ns` はオプションで、デフォルトのままにしておきます。"
 
 msgid "Generated output in <code>:test-dir</code>"
-msgstr ""
+msgstr "Generated output in `:test-dir`"
 
 msgid "The output includes two primary artifacts in your `test-dir` folder:"
-msgstr ""
+msgstr "出力には、`test-dir`フォルダ内の2つの主要な成果物が含まれています。"
 
 msgid "`index.html` - If and only if there was not already an `index.html` file present. By default the generated file loads the tests and runs `init` in the `:runner-ns`. You may edit or add a custom version that will not be overwritten."
-msgstr ""
+msgstr "`index.html` - `index.html` ファイルが存在しない場合に限ります。デフォルトでは、生成されたファイルはテストをロードして `:runner-ns` で `init` を実行します。上書きされないカスタムバージョンを編集したり、追加したりすることができます。"
 
 msgid "`js/test.js` - The Javascript tests. The tests will always have this name. The entries for the module are auto-generated."
-msgstr ""
+msgstr "`js/test.js` - Javascriptのテスト。テストは常にこの名前を持ちます。モジュールのエントリは自動生成されます。"
 
 msgid "Targeting Tests to Karma for Continuous Integration"
-msgstr ""
+msgstr "継続的インテグレーションのためにテストをKarmaターゲットに絞る"
 
 msgid "When you want to run your CLJS tests against a browser on some kind of CI server you'll need to be able to run the tests from a command line and get back a status code. Karma is a well-known and supported test runner that can do this for you, and `shadow-cljs` includes a target that can add the appropriate wrappers around your tests so they will work in it."
-msgstr ""
+msgstr "ある種のCIサーバ上のブラウザに対してCLJSテストを実行したい場合、コマンドラインからテストを実行してステータスコードを返すことができる必要があります。Karma はよく知られていてサポートされているテストランナーであり、`shadow-cljs` にはテストに適切なラッパーを追加してテストを実行できるようにするターゲットが含まれています。"
 
 msgid "Installing Karma"
 msgstr ""
 
 msgid "See their http://karma-runner.github.io[website] for full instructions. You'll typically need something like this is your `package.json`:"
-msgstr ""
+msgstr "完全な説明は http://karma-runner.github.io[website] を参照してください。通常、以下のようなものが必要になります。"
 
 msgid ""
 "{\n"
@@ -3642,25 +3652,25 @@ msgid ""
 msgstr ""
 
 msgid "So, you need Karma, a browser launcher, and the cljs-test integration."
-msgstr ""
+msgstr "そのためには、Karma、ブラウザランチャー、cljs-testの統合が必要です。"
 
 msgid "The Build"
 msgstr ""
 
 msgid "The build options are:"
-msgstr ""
+msgstr "ビルドオプション:"
 
 msgid "`:karma`"
 msgstr ""
 
 msgid "A path/filename for the js file."
-msgstr ""
+msgstr "jsファイルのパス/ファイル名。"
 
 msgid "(optional) A regex to match the test namespaces, defaults to \"-test$"
-msgstr ""
+msgstr "(オプション) テストの名前空間にマッチする正規表現、デフォルトは\"-test$\"です。"
 
 msgid "So you might have something like this:"
-msgstr ""
+msgstr "なので、こんな感じのものがあるかもしれません:"
 
 msgid ""
 "{...\n"
@@ -3672,7 +3682,7 @@ msgid ""
 msgstr ""
 
 msgid "You also need a `karma.conf.js`:"
-msgstr ""
+msgstr "また、`karma.conf.js`も必要です。"
 
 msgid ""
 "module.exports = function (config) {\n"
@@ -3693,9 +3703,26 @@ msgid ""
 "    })\n"
 "};"
 msgstr ""
+"module.exports = function (config) {\n"
+"    config.set({\n"
+"        browsers: ['ChromeHeadless'],\n"
+"        // 出力ファイルがあるディレクトリ\n"
+"        basePath: 'target',\n"
+"        // ファイルそのもの\n"
+"        files: ['ci.js'],\n"
+"        frameworks: ['cljs-test'],\n"
+"        plugins: ['karma-cljs-test', 'karma-chrome-launcher'],\n"
+"        colors: true,\n"
+"        logLevel: config.LOG_INFO,\n"
+"        client: {\n"
+"            args: [\"shadow.test.karma.init\"],\n"
+"            singleRun: true\n"
+"        }\n"
+"    })\n"
+"};"
 
 msgid "then you can run the tests as follows (assuming you've installed global executables of the tools):"
-msgstr ""
+msgstr "で、以下のようにテストを実行することができます（ツールのグローバル実行ファイルをインストールしていると仮定します）"
 
 msgid ""
 "$ shadow-cljs compile ci\n"
@@ -3712,13 +3739,13 @@ msgid "JavaScript Integration"
 msgstr ""
 
 msgid "https://www.npmjs.com/[npm] has come the de-facto standard package manager for JavaScript. Almost all JS libraries can be found there and shadow-cljs provides seamless integration for accessing those packages."
-msgstr ""
+msgstr "https://www.npmjs.com/[npm] は JavaScript のデファクトスタンダードなパッケージマネージャです。ほとんどすべてのJSライブラリがここにあり、shadow-cljsはそれらのパッケージにアクセスするためのシームレスな統合を提供しています。"
 
 msgid "Using npm packages"
 msgstr ""
 
 msgid "Most npm packages will also include some instructions on how to use the actual code. The “old” CommonJS style just has require calls which translate directly:"
-msgstr ""
+msgstr "ほとんどの npm パッケージには、実際のコードの使用方法についての説明が含まれています。「古い」 CommonJS のスタイルは、直接変換する require 呼び出しを持っているだけです。"
 
 msgid "var react = require(\"react\");"
 msgstr ""
@@ -3729,25 +3756,25 @@ msgid ""
 msgstr ""
 
 msgid "Whatever \"string\" parameter is used when calling require we transfer to the `:require` as-is. The `:as` alias is up to you. Once we have that we can use the code like any other CLJS namespace!"
-msgstr ""
+msgstr "requireを呼び出す際に使用される文字列パラメータが何であれ、そのまま `:require` に転送します。\":as\" の別名はあなた次第です。これがわかれば、他のCLJSの名前空間と同じようにコードを使うことができます。"
 
 msgid "(react/createElement \"div\" nil \"hello world\")"
 msgstr ""
 
 msgid "In `shadow-cljs`: *always use the `ns` form and whatever `:as` alias you provided.* You may also use `:refer` and `:rename`. This is different than what `:foreign-libs`/CLJSJS does where you include the thing in the namespace but then used a global `js/Thing` in your code."
-msgstr ""
+msgstr "`shadow-cljs` では、 *常に `ns` 形式と指定した `:as` のエイリアスを使用します。* また、`:reference` や `:rename` を使うこともできます。これは、`:foreign-libs`/CLJSJS が行うものとは異なり、名前空間にそれをインクルードし、コードの中でグローバルな `js/Thhing` を使用します。"
 
 msgid "Some packages just export a single function which you can call directly by using `(:require [\"thing\" :as thing])` and then `(thing)`."
-msgstr ""
+msgstr "パッケージによっては `(:require [\"thing\" :as thing])` と `(thing)` を使って直接呼び出すことができる関数をエクスポートするだけのものもあります。"
 
 msgid "More recently some packages started using ES6 `import` statements in their examples. Those also translate pretty much 1:1 with one slight difference related to default exports."
-msgstr ""
+msgstr "最近では、いくつかのパッケージが ES6 の `import` 文を使用するようになりました。これらのパッケージも、デフォルトのエクスポートに関連したわずかな違いがありますが、ほぼ1:1で変換されています。"
 
 msgid "The following table can be used for translation:"
-msgstr ""
+msgstr "変換には以下の表を使用することができます:"
 
 msgid "This table only applies if the code you are consuming is packaged as actual ES6+ code. If the code is packaged as CommonJS instead the `:default` may not apply. See the section below for more info."
-msgstr ""
+msgstr "このテーブルは、消費するコードが実際のES6+コードとしてパッケージ化されている場合にのみ適用されます。コードがCommonJSとしてパッケージ化されている場合、`:default`は適用されない場合があります。詳細は以下のセクションを参照してください。"
 
 msgid "ES6 Import to CLJS Require"
 msgstr ""
@@ -3813,10 +3840,10 @@ msgid "`(:require [\"module-name\"])`"
 msgstr ""
 
 msgid "Notice that previously we were stuck using bundled code which included a lot of code we didn’t actually need. Now we're in a better situation: Some libraries are also packaged in ways that allow you to include only the parts you need, leading to much less code in your final build."
-msgstr ""
+msgstr "以前は、実際には必要のないコードがたくさん含まれているバンドルコードを使用していたことに注意してください。今では、より良い状況になっています。ライブラリの中には、必要な部分だけを含めることができるようにパッケージ化されているものもあり、最終的なビルドのコード数を大幅に減らすことができます。"
 
 msgid "`react-virtualized` is a great example:"
-msgstr ""
+msgstr "`react-virtualized` は素晴らしい例です:"
 
 msgid ""
 "// You can import any component you want as a named export from 'react-virtualized', eg\n"
@@ -3828,9 +3855,17 @@ msgid ""
 "import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'\n"
 "import List from 'react-virtualized/dist/commonjs/List'"
 msgstr ""
+"// react-virtualized' から任意のコンポーネントを名前付きエクスポートとしてインポートすることができます。 例：\n"
+"import { Column, Table } from 'react-virtualized'\n"
+" \n"
+"// しかし、いくつかの react-virtualized コンポーネントだけを使用していて、\n"
+"// アプリケーションのバンドルサイズが大きくなるのが気になる場合は、\n"
+"// 以下のように必要なコンポーネントだけを直接インポートすることができます。\n"
+"import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'\n"
+"import List from 'react-virtualized/dist/commonjs/List'"
 
 msgid "With our improved support we we can easily translate this to:"
-msgstr ""
+msgstr "私たちのサポートが向上したことで、私たちはこれを簡単に変換することができます。"
 
 msgid ""
 "(ns my-ns\n"
@@ -3840,18 +3875,24 @@ msgid ""
 "  (:require [\"react-virtualized/dist/commonjs/AutoSizer\" :default virtual-auto-sizer]\n"
 "            [\"react-virtualized/dist/commonjs/List\" :default virtual-list]))"
 msgstr ""
+"(ns my-ns\n"
+"  ;; 全て\n"
+"  (:require [\"react-virtualized\" :refer (Column Table)])\n"
+"  ;; または1つずつ\n"
+"  (:require [\"react-virtualized/dist/commonjs/AutoSizer\" :default virtual-auto-sizer]\n"
+"            [\"react-virtualized/dist/commonjs/List\" :default virtual-list]))"
 
 msgid "About :default Exports"
 msgstr ""
 
 msgid "The `:default` option is currently only available in `shadow-cljs`, you can https://dev.clojure.org/jira/browse/CLJS-2376[vote here] to hopefully make it standard. You can always use `:as alias` and then call `alias/default` if you prefer to stay compatible with standard CLJS in the meantime."
-msgstr ""
+msgstr "オプション `:default` は現在のところ `shadow-cljs` でしか利用できませんが、 https://dev.clojure.org/jira/browse/CLJS-2376[ここに投票する] で標準化できることを願っています(訳注：現在は投票を受け付けていません)。標準のCLJSとの互換性を保ちたいのであれば `:as alias` を使って `alias/default` を呼び出すこともできます。"
 
 msgid "Default exports are a new addition in ECMAScript Modules and do not exist in CommonJS code. Sometimes you will see examples of `import Foo from \"something\"` when the code is actually CommonJS code. In theses cases `(:require [\"something\" :default Foo])` will not work and `(:require [\"something\" :as Foo])` must be used instead."
-msgstr ""
+msgstr "デフォルトのエクスポートは ECMAScript モジュールに新たに追加されたもので、CommonJS コードには存在しません。CommonJSのコードの場合 `import Foo from \"something\"\"` の例を見かけることがあります。その場合は `(:require [\"something\" :default Foo])` は動作せず、代わりに `(:require [\"something\" :as Foo])` を使用しなければなりません。"
 
 msgid "If a `:require` does not seem to work properly it is recommended to try looking at it in the REPL."
-msgstr ""
+msgstr "もし `:require` が正しく動作しないようであれば、REPL で見てみることをお勧めします。"
 
 msgid ""
 "$ shadow-cljs browser-repl (or node-repl)\n"
@@ -3867,49 +3908,49 @@ msgid ""
 msgstr ""
 
 msgid "Since printing arbitrary JS objects is not always useful (as seen above) you can use `(js/console.dir x)` instead to get a more useful reprensentation in the browser console. `goog/typeOf` may also be useful at times. Since the above example shows `\"function\"` using `:default` would not work since `:default` basically is just syntax sugar for `x/default`."
-msgstr ""
+msgstr "任意のJSオブジェクトを表示することが必ずしも有用とは限らないので(上で見たように)、代わりに `(js/console.dir x)` を使用すると、ブラウザコンソールでより有用な再表示を得ることができます。また `goog/typeOf` も有用な場合があります。上の例では `:default` は基本的には `x/default` の文法上の糖質に過ぎないので `:default` を使ってもうまくいかないでしょう。"
 
 msgid "Package Provider"
 msgstr ""
 
 msgid "`shadow-cljs` supports several different ways to include `npm` packages into your build. They are configurable via the `:js-options :js-provider` setting. Each `:target` usually sets the one appropriate for your build most often you won't need to touch this setting."
-msgstr ""
+msgstr "`shadow-cljs` は、ビルドに `npm` パッケージを含めるためのいくつかの異なる方法をサポートしています。これらは `:js-options :js-provider` 設定で設定できます。各 `:target` は通常、ビルドに適したものを設定しますが、ほとんどの場合、この設定に触れる必要はありません。"
 
 msgid "Currently there are 3 supported JS Providers:"
-msgstr ""
+msgstr "現在サポートされているJSプロバイダは3つあります:"
 
 msgid "`:require`"
 msgstr ""
 
 msgid "Maps directly to the JS `require(\"thing\")` function call. It is the default for all `node.js` targets since it can resolve `require` natively at runtime. The included JS is not processed in any way."
-msgstr ""
+msgstr "JSの `require(\"thing\")` 関数呼び出しに直接マップします。これはすべての `node.js` ターゲットのデフォルトで、実行時にネイティブに `require` を解決することができます。インクルードされたJSは何も処理されません。"
 
 msgid "`:shadow`"
 msgstr ""
 
 msgid "Resolves the JS via `node_modules` and includes a minified version of each referenced file in the build. It is the default for the `:browser` target. `node_modules` sources do not go through `:advanced` compilation."
-msgstr ""
+msgstr "`node_modules` 経由でJSを解決し、ビルド中に参照された各ファイルの修正版を含みます。これは `:browser` ターゲットのデフォルトです。 `node_modules` のソースは `:advanced` のコンパイルを通過しません。"
 
 msgid "`:closure`"
 msgstr ""
 
 msgid "Resolves similarly to `:shadow` but attempts to process all included files via the Closure Compiler CommonJS/ES6 rewrite facilities. They will also be processed via `:advanced` compilation."
-msgstr ""
+msgstr "`:shadow` と同様に解決しますが、すべてのインクルードされたファイルをClosure Compiler CommonJS/ES6の書き換え機能を使って処理しようとします。これらのファイルは `:advanced` コンパイルによっても処理されます。"
 
 msgid "<code>:shadow</code> vs <code>:closure</code>"
-msgstr ""
+msgstr "`:shadow` vs `:closure`"
 
 msgid "Ideally we want to use `:closure` as our primary JS Provider since that will run the entire application through `:advanced` giving us the most optimized output. In practice however lots of code available via `npm` is not compatible with the aggressive optimizations that `:advanced` compilation does. They either fail to compile at all or expose subtle bugs at runtime that are very hard to identify."
-msgstr ""
+msgstr "理想的には `:closure` をプライマリの JS プロバイダとして使いたいものです。しかし実際には、`npm` で利用できるコードの多くは `:advanced` のコンパイルが行う積極的な最適化とは互換性がありません。これらのコードはコンパイルに全く失敗するか、実行時に識別するのが非常に困難な微妙なバグを露呈します。"
 
 msgid "`:shadow` is sort of a stopgap solution that only processes code via `:simple` and achieves much more reliable support while still getting reasonably optimized code. The output is comparable (or often better) to what other tools like `webpack` generate."
-msgstr ""
+msgstr "`:shadow` は `:simple` を経由してコードを処理するだけで、より信頼性の高いサポートを実現しつつ、合理的に最適化されたコードを得ることができるその場限りの解決方法のようなものです。出力は `webpack` のような他のツールが生成するものに匹敵します (あるいはそれよりも優れていることが多い)。"
 
 msgid "Until support in Closure gets more reliable `:shadow` is the recommend JS Provider for `:browser` builds."
-msgstr ""
+msgstr "Closureのサポートがより信頼性の高いものになるまでは `:shadow` が `:browser` ビルドの推奨JSプロバイダです。"
 
 msgid "Example config for using <code>:closure</code> in a <code>:browser</code> build."
-msgstr ""
+msgstr "`:browser` ビルドで `:closure` を使うための設定例。"
 
 msgid ""
 "{...\n"
@@ -3925,16 +3966,16 @@ msgid "Resolving Packages"
 msgstr ""
 
 msgid "By default `shadow-cljs` will resolve all `(:require [\"thing\" :as x])` requires following the `npm` convention. This means it will look at `<project>/node_modules/thing/package.json` and follow the code from there. To customize how this works `shadow-cljs` exposes a `:resolve` config option that lets you override how things are resolved."
-msgstr ""
+msgstr "デフォルトでは、`shadow-cljs` は `(:require [\" thing\" :as x])` 要求をすべて `npm` の規約に従って解決します。つまり、`<project>/node_modules/thing/package.json`を見て、そこからコードを辿ります。この動作をカスタマイズするために `shadow-cljs` は `:resolve` という設定オプションを公開しています。"
 
 msgid "Using a CDN"
 msgstr ""
 
 msgid "Say you already have React included in your page via a CDN. You could just start using `js/React` again but we stopped doing that for a good reason. Instead you can continue to use `(:require [\"react\" :as react])` but configure how \"react\" resolves!"
-msgstr ""
+msgstr "CDN経由で既にReactがページに含まれているとします。あなたは再び `js/React` を使い始めることができますが、私たちは正当な理由のためにそれをするのをやめました。代わりに `(:require [\"react\" :as react])` を使い続けることができますが、\\”react\" の解決方法を設定してください!"
 
 msgid "Here is a sample `shadow-cljs.edn` config for such a build:"
-msgstr ""
+msgstr "以下はそのようなビルドのための `shadow-cljs.edn` の設定例です:"
 
 msgid ""
 "{...\n"
@@ -3952,13 +3993,13 @@ msgid ""
 msgstr ""
 
 msgid "The `:app` build will now use the global `React` instance while the `:server` build continues using the \"react\" npm package! No need to fiddle with the code to make this work."
-msgstr ""
+msgstr "`:app` のビルドではグローバルな `React` インスタンスを使用しますが、`:server` のビルドでは \\” react\" npm パッケージを使用してビルドを継続します。これを動作させるためにコードをいじる必要はありません。"
 
 msgid "Redirecting “require”"
 msgstr ""
 
 msgid "Sometimes you wan't more control over which `npm` package is actually used depending on your build. You can \"redirect\" certain requires from your build config without changing the code. This is often useful if you either don't have access to the sources using such packages or you just want to change it for one build."
-msgstr ""
+msgstr "ビルドによっては、どの `npm` パッケージが実際に使用されるかをコントロールしたくないこともあるでしょう。コードを変更せずに、ビルド設定から特定の要求を \\”redirect\" することができます。これは、そのようなパッケージを使っているソースにアクセスできない場合や、 あるビルドのためだけに変更したい場合に便利です。"
 
 msgid ""
 "{...\n"
@@ -3975,7 +4016,7 @@ msgid "Limitations"
 msgstr ""
 
 msgid "The `:shadow-js` and `:closure` have full control over `:resolve` and everything mentioned above works without any downsides. The `:js-provider :require` however is more limited. Only the initial require can be influenced since the standard `require` is in control after that. This means it is not possible to influence what a package might `require` internally. It is therefore not recommended to be used with targets that use `require` directly (eg. `:node-script`)."
-msgstr ""
+msgstr "`:shadow-js` と `:closure` は `:resolve` を完全に制御することができます。しかし `:js-provider :require` はより制限されています。標準の `require` がその後を制御しているため、最初の `require` だけが影響を受けることができます。つまり、パッケージが内部的に `require` するものに影響を与えることはできないということです。したがって `require` を直接使用するターゲット (例えば `:node-script`) と一緒に使用することは推奨されません。"
 
 msgid "Redirecting \"react\" to \"preact\""
 msgstr ""
@@ -4001,19 +4042,19 @@ msgid ""
 msgstr ""
 
 msgid "The above works fine in the Browser since every `\"react\"` require will be replaced, including the `\"react\"` require `\"react-table\"` has internally. For `:js-provider :require` however a `require(\"react-table\")` will be emitted and `node` will be in control how that is resolved. Meaning that it will resolve it to the standard `\"react\"` and not the `\"preact\"` we had configured."
-msgstr ""
+msgstr "ブラウザ上では、すべての `\"react\"` requireが置き換えられ `\"react-table\"` が内部的に持っている `\"react\"` requireも置き換えられるので、上記の方法で問題なく動作します。しかし `:js-provider :require` の場合は `require(\"react-table\")` が発行され `node` はそれをどのように解決するかを制御します。つまり、設定した `\"preact\"` ではなく、標準の `\"react\"` に解決されます。"
 
 msgid "Alternate Modules Directories"
 msgstr ""
 
 msgid "By default `shadow-cljs` will only look at the `<project-dir>/node_modules` directory when resolving JS packages. This can be configured via the `:js-package-dirs` option in `:js-options`. This can be applied globally or per build."
-msgstr ""
+msgstr "デフォルトでは `shadow-cljs` は JS パッケージを解決する際に `<project-dir>/node_modules` ディレクトリのみを参照します。これは `:js-options` の `:js-package-dirs` オプションで設定できます。これは全体またはビルドごとに適用することができます。"
 
 msgid "Relative paths will be resolved relative to the project root directory. Paths will be tried from left to right and the first matching package will be used."
-msgstr ""
+msgstr "相対パスは、プロジェクトのルートディレクトリからの相対パスとして解決されます。パスは左から右へと試行され、最初にマッチしたパッケージが使用されます。"
 
 msgid "Global config in <code>shadow-cljs.edn</code>"
-msgstr ""
+msgstr "Global config in `shadow-cljs.edn`"
 
 msgid ""
 "{...\n"
@@ -4036,22 +4077,22 @@ msgid "Dealing with .js Files"
 msgstr ""
 
 msgid "*DANGER: This feature is an experiment!* It is currently only supported in `shadow-cljs` and other CLJS tools will yell at you if you attempt to use it. Use at your own risk. The feature was initially rejected from CLJS core but I think it is useful and should not have been https://dev.clojure.org/jira/browse/CLJS-2061?focusedCommentId=46191&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-46191[dismissed] without further discussion."
-msgstr ""
+msgstr "*危険: この機能は実験的なものです！* 現在のところ `shadow-cljs` でのみサポートされており、他の CLJS ツールが使用しようとすると怒鳴りつけてきます。使用は自己責任で行ってください。この機能は当初CLJSコアから却下されましたが、私は便利だと思っていますし、さらなる議論なしに https://dev.clojure.org/jira/browse/CLJS-2061?focusedCommentId=46191&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-46191[dismissed] にすべきではありませんでした。"
 
 msgid "CLJS has an alternate https://clojurescript.org/guides/javascript-modules[implementation] which in turn is not supported by `shadow-cljs`. I found this implementation to be lacking in certain aspects so I opted for the different solution. Happy to discuss the pros/cons of both approaches though."
-msgstr ""
+msgstr "CLJSには代替の https://clojurescript.org/guides/javascript-modules[実装] がありますが、これは `shadow-cljs` がサポートしていません。私はこの実装がある面で欠けていることを発見したので、別の解決策を選択しました。両方のアプローチの長所と短所を議論したいと思います。"
 
 msgid "We covered how <<npm, npm>> packages are used but you may be working on a codebase that already has lots of plain JavaScript and you don't want to rewrite everything in ClojureScript just yet. `shadow-cljs` provides 100% full interop between JavaScript and ClojureScript. Which means your JS can use your CLJS and CLJS can use your JS."
-msgstr ""
+msgstr "<<npm, npm>> パッケージがどのように使われるかを説明しましたが、すでにたくさんのプレーンなJavaScriptを持っているコードベースで作業しているかもしれませんし、まだClojureScriptですべてを書き換えたくないかもしれません。 `shadow-cljs` は、JavaScriptとClojureScriptの間で100%完全な相互運用を提供します。つまり、あなたのJSはCLJSを使用でき、CLJSはあなたのJSを使用できるということです。"
 
 msgid "There are only a few conventions you need to follow in order for this to work reliably but chances are that you are already doing that anyways."
-msgstr ""
+msgstr "これを確実に動作させるためには、いくつかの規則に従う必要がありますが、いずれにせよ、あなたはすでにそれを行っている可能性があります。"
 
 msgid "Requiring JS"
 msgstr ""
 
 msgid "We already covered how `npm` packages are accessed by their name but on the classpath we access `.js` files by either a full path or relative to the current namespace."
-msgstr ""
+msgstr "`npm` パッケージが名前でアクセスする方法はすでに説明しましたが、クラスパスではフルパスか現在の名前空間からの相対パスのいずれかで `.js` ファイルにアクセスします。"
 
 msgid "Loading JS from the classpath"
 msgstr ""
@@ -4064,19 +4105,19 @@ msgid ""
 msgstr ""
 
 msgid "For string requires the extension `.js` will be added automatically but you can specify the extension if you prefer. Note that currently only `.js` is supported though."
-msgstr ""
+msgstr "文字列が必要な場合、拡張子 `.js` は自動的に追加されますが、お好みで拡張子を指定することもできます。しかし、現在は `.js` のみがサポートされていることに注意してください。"
 
 msgid "Absolute requires like `/some-library/components/foo` mean that the compiler will look for a `some-library/components/foo.js` on the classpath; unlike `node` which would attempt to load the file from the local filesystem. The same classpath rules apply so the file may either be in your `:source-paths` or in some third-party `.jar` library you are using."
-msgstr ""
+msgstr "`/some-library/components/foo` のような絶対的な要求は、コンパイラがクラスパス上の `some-library/components/foo.js` を探すことを意味します。同じクラスパスルールが適用されるので、ファイルは `:source-paths` または使用しているサードパーティの `.jar` ライブラリにあるかもしれません。"
 
 msgid "Relative requires are resolved by first looking at the current namespace and then resolving a relative path from that name. In the above example we are in `demo/app.cljs` to the `./bar` require resolves to `demo/bar.js`, so it is identical to `(:require [\"/demo/bar\"])`."
-msgstr ""
+msgstr "相対パスは、まず現在の名前空間を見て、その名前からの相対パスを解決することで解決されます。上の例では、`demo/app.cljs` から `./bar` の require は `demo/bar.js` に解決されるので `(:require [\"/demo/bar\")` と同じです。"
 
 msgid "The files must not be physically located in the same directory. The lookup for the file appears on the classpath instead. This is unlike node which expects relative requires to always resolve to physical files."
-msgstr ""
+msgstr "ファイルが物理的に同じディレクトリにあってはいけません。ファイルの検索は、代わりにクラスパス上に表示されます。これは、相対的な要求が常に物理的なファイルに解決することを期待しているnodeとは異なります。"
 
 msgid "Example File Structure with Separate Paths"
-msgstr ""
+msgstr "パスが分離されたファイル構造の例"
 
 msgid ""
 ".\n"
@@ -4095,16 +4136,16 @@ msgid "Language Support"
 msgstr ""
 
 msgid "It is expected that the classpath only contains JavaScript that can be consumed without any pre-processing by the Compiler. `npm` has a very similar convention."
-msgstr ""
+msgstr "クラスパスには、コンパイラによる前処理なしで消費できるJavaScriptのみが含まれていることが期待されています。 `npm` にも非常に似たような規約があります。"
 
 msgid "The Closure Compiler is used for processing all JavaScript found on the classpath using its `ECMASCRIPT_NEXT` language setting. What exactly this setting means is not well documented but it mostly represents the next generation JavaScript code which might not even be supported by most browsers yet. ES6 is very well supported as well as most ES8 features. Similarly to standard CLJS this will be compiled down to ES5 with polyfills when required."
-msgstr ""
+msgstr "Closureコンパイラは `ECMASCRIPT_NEXT` 言語設定を使用してクラスパス上のすべてのJavaScriptを処理するために使用されます。この設定が何を意味するのかはよくわかっていませんが、ほとんどのブラウザではまだサポートされていないかもしれない次世代のJavaScriptコードを表しています。ES6はES8の機能と同様に非常によくサポートされています。標準のCLJSと同様に、必要に応じてポリフィルを使用してES5までコンパイルされます。"
 
 msgid "Since the Closure Compiler is getting constant updates newer features will be available over time. Just don't expect to use the latest cutting edge preview features to be available immediately. Somewhat recent additions like `async/await` already work quite well."
-msgstr ""
+msgstr "Closureコンパイラは常に更新されていますので、新しい機能は時間の経過とともに利用可能になります。ただ、最新の最先端のプレビュー機能をすぐに使えるようになるとは思っていません。最近追加された `async/await` のような機能はすでに十分に機能しています。"
 
 msgid "The JS should be written using ES Module Syntax using `import` and `export`. JS files can include other JS files and reference CLJS code directly. They may also access `npm` packages directly with one caveat."
-msgstr ""
+msgstr "JSは、`import`や`export`を使ってESモジュール構文を使って記述する必要があります。JSファイルは他のJSファイルをインクルードしたり、CLJSコードを直接参照したりすることができます。また、`npm` パッケージに直接アクセスすることもできますが、1つの注意点があります。"
 
 msgid ""
 "// regular JS require\n"
@@ -4122,13 +4163,13 @@ msgid ""
 msgstr ""
 
 msgid "Due to strict checking of the Closure Compiler it is not possible to use the `import * as X from \"npm\";` syntax when requiring CLJS or npm code. It is fine to use when requiring other JS files."
-msgstr ""
+msgstr "Closure Compilerのチェックが厳しいため、CLJSやnpmのコードが必要な場合は、`import * as X from \\”npm\";`構文を使うことができません。他のJSファイルが必要な場合は問題ありません。"
 
 msgid "JavaScript Dialects"
 msgstr ""
 
 msgid "Since there are many popular JavaScript dialects (JSX, CoffeeScript, etc) that are not directly parsable by the Closure Compiler we need to pre-process them before putting them onto the classpath. https://babeljs.io/[babel] is commonly used in the JavaScript world so we are going to use `babel` to process `.jsx` files as an example here."
-msgstr ""
+msgstr "多くの一般的なJavaScriptの方言(JSX、CoffeeScriptなど)はClosureコンパイラで直接解析できないので、クラスパスに置く前に前処理をする必要があります。 https://babeljs.io/[babel] はJavaScriptの世界で一般的に使われているので、 `.jsx` ファイルを処理するために `babel` を例に挙げてみます。"
 
 msgid "Example shadow-cljs.edn Config"
 msgstr ""
@@ -4158,7 +4199,7 @@ msgid ""
 msgstr ""
 
 msgid "Notice how `src/js` is not added to `:source-paths` which means it will not be on the classpath."
-msgstr ""
+msgstr "`src/js` が `:source-paths` に追加されていないことに注目してください。"
 
 msgid "src/js/demo/bar.jsx"
 msgstr ""
@@ -4174,7 +4215,7 @@ msgid ""
 msgstr ""
 
 msgid "We run https://babeljs.io/docs/usage/cli/[babel] to convert the files and write them to the configured `src/gen` directory. Which directory you use it up to you. I prefer `src/gen` for generated files."
-msgstr ""
+msgstr "https://babeljs.io/docs/usage/cli/[babel] を実行してファイルを変換し、設定された `src/gen` ディレクトリに書き出します。どのディレクトリを使うかはあなた次第です。私は生成されたファイルは `src/gen` の方が好きです。"
 
 msgid ""
 "$ babel src/js --out-dir src/gen\n"
@@ -4183,7 +4224,7 @@ msgid ""
 msgstr ""
 
 msgid "`babel` itself is configured via the `src/js/.babelrc`. See the official https://babeljs.io/docs/plugins/transform-react-jsx/[example for JSX]."
-msgstr ""
+msgstr "`babel`自体は `src/js/.babelrc` で設定します。公式の https://babeljs.io/docs/plugins/transform-react-jsx/[JSXの例] を参照してください。"
 
 msgid "JSX minimal .babelrc"
 msgstr ""
@@ -4195,16 +4236,16 @@ msgid ""
 msgstr ""
 
 msgid "Once `babel` writes the `src/gen/demo/bar.js` it will be available to use via ClojureScript and will even be hot loaded just like your ClojureScript sources."
-msgstr ""
+msgstr "一度 `babel` が `src/gen/demo/bar.js` を書けば、ClojureScript から利用可能になり、ClojureScript のソースと同じようにホットロードされるようになります。"
 
 msgid "`shadow-cljs` currently does not provide any support for running those transformation steps. Please use the standard tools (eg. `babel`, `coffeescript`, etc.) directly until it does."
-msgstr ""
+msgstr "現在 `shadow-cljs` はこれらの変換ステップを実行するためのサポートを提供していません。サポートされるまでは、標準的なツール (例えば `babel`, `coffeescript` など) を直接使用してください。"
 
 msgid "Access CLJS from JS"
 msgstr ""
 
 msgid "The JS sources can access all your ClojureScript (and the Closure Library) directly by importing their namespaces with a `goog:` prefix which the Compiler will rewrite to expose the namespace as the default ES6 export."
-msgstr ""
+msgstr "JSソースは名前空間 `goog:` を接頭辞でインポートすることで、すべてのClojureScript (とClosure Library)に直接アクセスすることができます。"
 
 msgid ""
 "import cljs, { keyword } from \"goog:cljs.core\";\n"
@@ -4214,22 +4255,22 @@ msgid ""
 msgstr ""
 
 msgid "The `goog:` prefix currently only works for ES6 file. `require(\"goog:cljs.core\")` does not work."
-msgstr ""
+msgstr "接頭辞 `goog:` は現在のところ ES6 ファイルでしか動作しません。require(\"goog:cljs.core\")` は動作しません。"
 
 msgid "Migrating cljsjs.*"
 msgstr ""
 
 msgid "CLJSJS is an effort to package Javascript libraries to be able to use them from within ClojureScript."
-msgstr ""
+msgstr "CLJSJSは、Javascriptのライブラリをパッケージ化して、ClojureScript内から利用できるようにする取り組みです。"
 
 msgid "Since `shadow-cljs` can access <<npm, npm packages>> directly we do not need to rely on re-packaged https://github.com/cljsjs/packages[CLJSJS] packages."
-msgstr ""
+msgstr "`shadow-cljs` は <<npm, npm packages>> に直接アクセスできるので、再パッケージ化された https://github.com/cljsjs/packages[CLJSJS] パッケージに頼る必要はありません。"
 
 msgid "However many CLJS libraries are still using CLJSJS packages and they would break with `shadow-cljs` since it doesn't support those anymore. It is however very easy to mimick those `cljsjs` namespaces since they are mostly build from `npm` packages anyways. It just requires one shim file that maps the `cljsjs.thing` back to its original `npm` package and exposes the expected global variable."
-msgstr ""
+msgstr "しかし、多くのCLJSライブラリはまだCLJSJSパッケージを使っており `shadow-cljs` はもうサポートしていないので `shadow-cljs` では壊れてしまいます。しかし `cljsjs` 名前空間はほとんどが `npm` パッケージからビルドされているので `cljs` 名前空間を真似るのは非常に簡単です。 `cljsjs.thing` を元の `npm` パッケージにマップして、期待されるグローバル変数を公開する shim ファイルが必要です。"
 
 msgid "For React this requires a file like `src/cljsjs/react.cljs`:"
-msgstr ""
+msgstr "Reactの場合は `src/cljsjs/react.cljs` のようなファイルが必要です:"
 
 msgid ""
 "(ns cljsjs.react\n"
@@ -4243,31 +4284,31 @@ msgid ""
 msgstr ""
 
 msgid "Since this would be tedious for everyone to do manually I created the https://github.com/thheller/shadow-cljsjs[`shadow-cljsjs`] library which provides just that. It does not include every package but I’ll keep adding them and contributions are very welcome as well."
-msgstr ""
+msgstr "誰もが手動で行うのは面倒なので https://github.com/thheller/shadow-cljsjs[`shadow-cljsjs`] ライブラリを作成しました。これはすべてのパッケージを含んでいるわけではありませんが、私はそれらを追加し続けます。"
 
 msgid "The `shadow-cljsjs` library only provides the shim files. You’ll still need to `npm install` the actual packages yourself."
-msgstr ""
+msgstr "`shadow-cljsjs` ライブラリは shim ファイルのみを提供します。実際のパッケージを自分で `npm` インストールする必要があります。"
 
 msgid "Why not use CLJSJS?"
 msgstr ""
 
 msgid "CLJSJS packages basically just take the package from `npm` and put them into a `.jar` and re-publish them via https://clojars.org[clojars]. As a bonus they often bundle Externs. The compiler otherwise does nothing with these files and only prepends them to the generated output."
-msgstr ""
+msgstr "CLJSJSのパッケージは基本的に `npm` からパッケージを取り出して `.jar` に入れ、https://clojars.org[clojars] 経由で再公開するだけです。ボーナスとしてExternsがバンドルされていることが多いです。それ以外の場合、コンパイラはこれらのファイルには何もせず、生成された出力に前置きするだけです。"
 
 msgid "This was very useful when we had no access to `npm` directly but has certain issues since not all packages are easily combined with others. A package might rely on `react` but instead of expressing this via `npm` https://github.com/cljsjs/packages/tree/master/material-ui[they] bundle their own `react`. If you are not careful you could end up including 2 different `react` versions in your build which may lead to very confusing errors or at the very least increase the build size substantially."
-msgstr ""
+msgstr "これは `npm` に直接アクセスできなかったときに非常に便利でしたが、すべてのパッケージが他のパッケージと簡単に結合できるわけではないので、ある種の問題があります。あるパッケージは `react` に依存しているかもしれませんが、これを `npm` で表現する代わりに https://github.com/cljsjs/packages/tree/master/material-ui[彼ら] は独自の `react` をバンドルしています。注意を怠ると、ビルド中に 2 つの異なる `react` バージョンを含むことになり、非常に混乱を招くエラーを引き起こしたり、 少なくともビルドサイズが大幅に大きくなったりする可能性があります。"
 
 msgid "Apart from that not every `npm` package is available via CLJSJS and keeping the package versions in sync requires manual work, which means packages are often out of date."
-msgstr ""
+msgstr "また、すべての `npm` パッケージが CLJSJS で利用できるわけではなく、パッケージのバージョンを同期させるには手作業が必要で、パッケージが古くなっていることがよくあります。"
 
 msgid "`shadow-cljs` does not support CLJSJS at all to avoid conflicts in your code. One library might attempt to use the \"old\" `cljsjs.react` while another uses the newer `(:require [\"react\"])` directly. This would again lead to 2 versions of `react` on your page again."
-msgstr ""
+msgstr "`shadow-cljs` は CLJSJS を全くサポートしていません。あるライブラリは \"old\"の `cljsjs.react` を使おうとするかもしれないし、別のライブラリは新しい `(:require [\"react\"])` を直接使おうとするかもしれない。これはまた、あなたのページに2つのバージョンの `react` が再び現れることになるでしょう。"
 
 msgid "So the only thing we are missing are the bundled Externs. In many instances these are not required due to improved <<infer-externs, externs inference>>. Often those Externs are generated using third-party tools which means they are not totally accurate anyways."
-msgstr ""
+msgstr "つまり、足りないのはバンドルされているExternsだけです。多くの場合、これらは改良された <<infer-externs, externs推論>> のために必要とされていません。多くの場合、これらのExternsはサードパーティのツールを使って生成されます。"
 
 msgid "Conclusion: Use <<npm, npm>> directly. Use <<infer-externs, :infer-externs auto>>."
-msgstr ""
+msgstr "結論：<<npm, npm>>を直接使う。<<infer-externs, :infer-externs auto>>を使う。"
 
 msgid "Generating Production Code&#8201;&#8212;&#8201;All Targets"
 msgstr ""

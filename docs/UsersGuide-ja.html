@@ -700,7 +700,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_creating_code_npm_code_packages">9.3. Creating <code>npm</code> packages</a></li>
 </ul>
 </li>
-<li><a href="#target-npm-module">10. JSエコシステムへの組み込み&#8201;&#8212;&#8212;&#8201; <code>:npm-module</code> ターゲット</a>
+<li><a href="#target-npm-module">10. Embedding in the JS Ecosystem&#8201;&#8212;&#8201;The <code>:npm-module</code> Target</a>
 <ul class="sectlevel2">
 <li><a href="#_working_with_optimizations">10.1. Working with Optimizations</a></li>
 </ul>
@@ -710,10 +710,10 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#target-node-test">11.1. Testing in node.js</a></li>
 <li><a href="#target-browser-test">11.2. Testing in the Browser</a>
 <ul class="sectlevel3">
-<li><a href="#_generated_output_in_code_test_dir_code">11.2.1. Generated output in &lt;code&gt;:test-dir&lt;/code&gt;</a></li>
+<li><a href="#_generated_output_in_code_test_dir_code">11.2.1. Generated output in <code>:test-dir</code></a></li>
 </ul>
 </li>
-<li><a href="#target-karma">11.3. Targeting Tests to Karma for Continuous Integration</a>
+<li><a href="#target-karma">11.3. 継続的インテグレーションのためにテストをKarmaターゲットに絞る</a>
 <ul class="sectlevel3">
 <li><a href="#_installing_karma">11.3.1. Installing Karma</a></li>
 <li><a href="#_the_build">11.3.2. The Build</a></li>
@@ -4056,11 +4056,11 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </dd>
 <dt><code>:wsl-file</code></dt>
 <dd>
-<p>WSLファイルのパスを翻訳したもの。WSL Bashで <code>shadow-cljs</code> を実行するときに便利。<code>/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs</code> のパスを <code>C:\Users...</code> に変換します。</p>
+<p>WSLファイルのパスを変換したもの。WSL Bashで <code>shadow-cljs</code> を実行するときに便利。<code>/mnt/c/Users/someone/code/project/src/main/demo/foo.cljs</code> のパスを <code>C:\Users...</code> に変換します。</p>
 </dd>
 <dt><code>:wsl-pwd</code></dt>
 <dd>
-<p>Translated <code>:pwd</code></p>
+<p><code>:pwd</code> を変換したもの</p>
 </dd>
 </dl>
 </div>
@@ -4667,10 +4667,10 @@ hello
 </div>
 </div>
 <div class="sect1">
-<h2 id="target-npm-module"><a class="anchor" href="#target-npm-module"></a><a class="link" href="#target-npm-module">10. JSエコシステムへの組み込み&#8201;&#8212;&#8212;&#8201; <code>:npm-module</code> ターゲット</a></h2>
+<h2 id="target-npm-module"><a class="anchor" href="#target-npm-module"></a><a class="link" href="#target-npm-module">10. Embedding in the JS Ecosystem&#8201;&#8212;&#8201;The <code>:npm-module</code> Target</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There is an additional target that is intended to integrate CLJS into an existing JS project. The output can seamlessly integrate with existing JS tools (eg. webpack, browserify, babel, create-react-app, &#8230;&#8203;) with little configuration.</p>
+<p>既存のJSプロジェクトにCLJSを統合することを目的とした追加ターゲットがあります。出力は既存のJSツール（例：webpack、browserify、babel、create-react-app、&#8230;&#8203;）とほとんど設定なしでシームレスに統合することができます。</p>
 </div>
 <div class="hdlist">
 <table>
@@ -4679,7 +4679,7 @@ hello
 <code>:output-dir</code>
 </td>
 <td class="hdlist2">
-<p>The path for the output files are written to, defaults to <code>node_modules/shadow-cljs</code>.</p>
+<p>出力ファイルのパスはデフォルトで <code>node_modules/shadow-cljs</code> に書き込まれます。</p>
 </td>
 </tr>
 <tr>
@@ -4687,7 +4687,7 @@ hello
 <code>:entries</code>
 </td>
 <td class="hdlist2">
-<p>(required) A vector of namespace symbols that should be compiled</p>
+<p>(必須) コンパイルされるべき名前空間シンボルのベクトル</p>
 </td>
 </tr>
 </table>
@@ -4703,18 +4703,18 @@ hello
 </div>
 </div>
 <div class="paragraph">
-<p>If you use the default <code>:output-dir</code> of <code>"node_modules/shadow-cljs"</code> you can access the declared namespaces by using <code>require("shadow-cljs/demo.foo")</code> in JS. When using something not in <code>node_modules</code> you must include them using a relative path. With <code>:output-dir "out"</code> that would be <code>require("./out/demo.foo")</code> from your project root.</p>
+<p>デフォルトの <code>:output-dir</code> の <code>"node_modules/shadow-cljs"</code> を使っている場合は、JSで <code>require("shadow-cljs/demo.foo")</code> を使うことで、宣言された名前空間にアクセスすることができます。 <code>node_modules</code> にないものを使うときは、相対パスを使ってインクルードする必要があります。<code>:output-dir \″out"</code> とすると、プロジェクトのルートから <code>require("./out/demo.foo")</code> となります。</p>
 </div>
 <div class="paragraph">
-<p>If you plan to distribute code on NPM, then you may want to use the <a href="#NodeLibrary"><code>:node-library</code> target</a> instead since it allows for a finer level of control over exports and optimization.</p>
+<p>NPM上でコードを配布する予定があるのであれば、代わりに <a href="#NodeLibrary"><code>:node-library</code> target</a> を使うのが良いでしょう。</p>
 </div>
 <div class="sect2">
 <h3 id="_working_with_optimizations"><a class="anchor" href="#_working_with_optimizations"></a><a class="link" href="#_working_with_optimizations">10.1. Working with Optimizations</a></h3>
 <div class="paragraph">
-<p>Unlike the <code>:node-library</code> target, the module target does not know what you want to call the symbols you&#8217;re exporting, so it just exports them as-is. If you use advanced compilation, then everything will get a minified munged name!</p>
+<p><code>:node-library</code> ターゲットとは異なり、モジュールターゲットはエクスポートしたシンボルを何と呼びたいかを知らないので、そのままエクスポートします。advanced コンパイルを使っている場合は、すべてのものが短縮化された名前になります!</p>
 </div>
 <div class="paragraph">
-<p>This is easy to remedy, simply add <code>:export</code> metadata on any symbols that you want to preserve:</p>
+<p>保存したいシンボルに <code>:export</code> のメタデータを追加するだけです:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4726,7 +4726,7 @@ hello
 </div>
 </div>
 <div class="paragraph">
-<p>This is a standard annotation that is understood by ClojureScript and prevents Google Closure from renaming an artifact. JS code will still be able to access them after optimizations. Without the <code>^:export</code> hint the closure-compiler will likely have removed or renamed them.</p>
+<p>これはClojureScriptで理解されている標準的なアノテーションで、Google Closureがアーティファクトの名前を変更するのを防ぎます。JSコードは最適化された後でもアクセスすることができます。ヒント <code>^:export</code> がなければ、クロージャコンパイラはそれらを削除したり、名前を変更したりしているでしょう。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4743,16 +4743,16 @@ ns.bar()<span class="comment">;</span></code></pre>
 <h2 id="_testing"><a class="anchor" href="#_testing"></a><a class="link" href="#_testing">11. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>shadow-cljs</code> provides a few utility targets to make building tests a little easier.</p>
+<p><code>shadow-cljs</code> はテストのビルドを少し簡単にするためのユーティリティターゲットをいくつか提供します。</p>
 </div>
 <div class="paragraph">
-<p>All test targets generate a test runner and automatically add all namespaces matching the configurable <code>:ns-regexp</code>. The default test runners were built for <code>cljs.test</code> but you can create custom runners if you prefer to use other test frameworks.</p>
+<p>すべてのテストターゲットはテストランナーを生成し、設定可能な <code>:ns-regexp</code> にマッチするすべての名前空間を自動的に追加します。デフォルトのテストランナーは <code>cljs.test</code> 用にビルドされていますが、他のテストフレームワークを使いたい場合はカスタムランナーを作成することができます。</p>
 </div>
 <div class="paragraph">
-<p>The default <code>:ns-regexp</code> is <code>"-test$"</code>, so your first test could look like:</p>
+<p>デフォルトの <code>:ns-regexp</code> は <code>"-test$"</code> なので、最初のテストは以下のようになります:</p>
 </div>
 <div class="listingblock">
-<div class="title">File: &lt;code&gt;src/test/demo/app_test.cljs&lt;/code&gt;</div>
+<div class="title">File: `src/test/demo/app_test.cljs'</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">ns</span> <span class="namespace">demo.app-test</span>
   (<span class="symbol">:require</span> [cljs.test <span class="symbol">:refer</span> (deftest is)]))
@@ -4762,15 +4762,15 @@ ns.bar()<span class="comment">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the Clojure world it is common to keep test files in their own source paths so the above example assumes you have configured <code>:source-paths ["src/main" "src/test"]</code> in your <code>shadow-cljs.edn</code> config. Your usual app code goes into <code>src/main</code> and the tests go into <code>src/test</code>. This however is optional and it is totally fine to keep everything in <code>src</code> and just use <code>:source-paths ["src"]</code>.</p>
+<p>Clojureの世界では、テストファイルをそれぞれのソースパスに保存するのが一般的ですので、上の例では <code>shadow-cljs.edn</code> の設定で <code>:source-paths ["src/main" "src/test"]</code> を設定したと仮定しています。通常のアプリのコードは <code>src/main</code> に、テストは <code>src/test</code> に入れます。これは任意で、全てを <code>src</code> に入れておいて <code>:source-paths [\”src\”]</code> を使っても全く問題ありません。</p>
 </div>
 <div class="sect2">
 <h3 id="target-node-test"><a class="anchor" href="#target-node-test"></a><a class="link" href="#target-node-test">11.1. Testing in node.js</a></h3>
 <div class="paragraph">
-<p>This target will create a test runner including all test namespaces matching the given regular expression.</p>
+<p>このターゲットは、指定された正規表現にマッチするすべてのテスト名前空間を含むテストランナーを作成します。</p>
 </div>
 <div class="paragraph">
-<p>The relevant configuration options are:</p>
+<p>関連する設定オプションは以下の通りです:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -4787,7 +4787,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 <code>:output-to</code>
 </td>
 <td class="hdlist2">
-<p>The final output file that will be used to run tests.</p>
+<p>テストの実行に使用される最終的な出力ファイル。</p>
 </td>
 </tr>
 <tr>
@@ -4795,7 +4795,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 <code>:ns-regexp</code>
 </td>
 <td class="hdlist2">
-<p>(optional) A regular expression matching namespaces against project files. This only scans files, and will not scan jars. Defaults to <code>"-test$"</code>.</p>
+<p>(オプション) プロジェクトファイルに対して名前空間をマッチさせる正規表現。これはファイルのみをスキャンし、jarはスキャンしません。デフォルトは <code>"-test$test"</code> です。</p>
 </td>
 </tr>
 <tr>
@@ -4803,7 +4803,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 <code>:autorun</code>
 </td>
 <td class="hdlist2">
-<p>(boolean, optional) Run the tests via <code>node</code> when a build completes. This is mostly meant to be used in combination with <code>watch</code>. The <code>node</code> process exit code will not be returned as that would have to forcefully kill the running JVM.</p>
+<p>(boolean, オプション) ビルドが完了したときに <code>node</code> 経由でテストを実行します。これは主に <code>watch</code> と組み合わせて使うことを意図しています。実行中のJVMを強制的に終了させる必要があるため、`node`プロセスの終了コードは返されません。</p>
 </td>
 </tr>
 <tr>
@@ -4811,13 +4811,13 @@ ns.bar()<span class="comment">;</span></code></pre>
 <code>:main</code>
 </td>
 <td class="hdlist2">
-<p>(qualified symbol, optional) Function called on startup to run the tests, defaults to <code>shadow.test.node/main</code> which runs tests using <code>cljs.test</code>.</p>
+<p>(修飾されたシンボルです,オプション) 起動時にテストを実行するために呼び出される関数です。デフォルトは <code>shadow.test.node/main</code> で、これは <code>cljs.test</code> を使ってテストを実行します。</p>
 </td>
 </tr>
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Test config matching all &lt;code&gt;*-spec&lt;/code&gt; namespaces</div>
+<div class="title">すべての <code>*-spec</code> 名前空間にマッチする設定をテストする</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -4829,7 +4829,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>:node-test</code> target only generates the test file. You can run it via <code>node</code>.</p>
+<p>ターゲット <code>:node-test</code> はテストファイルを生成するだけです。 `node`を経由して実行することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4845,16 +4845,16 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>node</code> process exit code will be set to <code>0</code> when successful and <code>1</code> on any failures. (The <code>node</code> process exit code will not be returned when using <code>:autorun</code>.)</p>
+<p>成功した場合は <code>node</code> のプロセス終了コードは <code>0</code> に、失敗した場合は <code>1</code> に設定されます。(<code>:autorun</code> を利用している場合は <code>node</code> のプロセス終了コードは返されません)。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="target-browser-test"><a class="anchor" href="#target-browser-test"></a><a class="link" href="#target-browser-test">11.2. Testing in the Browser</a></h3>
 <div class="paragraph">
-<p>This target is meant for gathering up namespaces that contain tests (based on a filename pattern match), and triggering a test runner. It contains a built-in runner that will automatically scan for <code>cljs.test</code> tests and run them.</p>
+<p>このターゲットは、(ファイル名のパターンマッチに基づいて)テストを含む名前空間を収集し、テストランナーを起動するためのものです。自動的に <code>cljs.test</code> テストをスキャンして実行する組み込みのランナーが含まれています。</p>
 </div>
 <div class="paragraph">
-<p>The relevant configuration options are:</p>
+<p>関連する設定オプションは以下の通りです:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -4871,7 +4871,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <code>:test-dir</code>
 </td>
 <td class="hdlist2">
-<p>A folder in which to output files. See below.</p>
+<p>ファイルを出力するフォルダ。下記参照。</p>
 </td>
 </tr>
 <tr>
@@ -4879,7 +4879,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <code>:ns-regexp</code>
 </td>
 <td class="hdlist2">
-<p>(optional) A regular expression matching namespaces against project files. This only scans files, and will not scan jars. Defaults to "-test$".</p>
+<p>(オプション) プロジェクトファイルに対して名前空間をマッチさせる正規表現。これはファイルのみをスキャンし、jarはスキャンしません。デフォルトは "-test$$" です。</p>
 </td>
 </tr>
 <tr>
@@ -4887,13 +4887,13 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <code>:runner-ns</code>
 </td>
 <td class="hdlist2">
-<p>(optional) A namespace that can contain a start, stop, and init function. Defaults to <code>shadow.test.browser</code>.</p>
+<p>(オプション) start、stopおよび init 関数を含むことができる名前空間。デフォルトは <code>shadow.test.browser</code> です。</p>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The normal <code>:devtools</code> options are supported, so you will usually create an http server to serve the files. In general you will need a config that looks like this:</p>
+<p>通常の <code>:devtools</code> オプションがサポートされているので、通常はファイルを提供するために http サーバを作成します。一般的には以下のような設定が必要になります:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4907,10 +4907,10 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Remember that the test directory will have the index.html, and a js folder.</p>
+<p>テストディレクトリにはindex.htmlとjsフォルダがあることを覚えておいてください。</p>
 </div>
 <div class="paragraph">
-<p>If you choose to supply a custom <code>:runner-ns</code>, it might look like this:</p>
+<p>カスタムの <code>:runner-ns</code> を指定すると、以下のようになります:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4920,15 +4920,14 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
   <span class="keyword">..</span><span class="keyword">.</span> run the tests.<span class="keyword">..</span>)
 
 (<span class="keyword">defn</span> <span class="function">stop</span> [done]
-  <span class="comment">; tests can be async. You must call done so that the runner knows you actually finished</span>
-  (done))
+  <span class="comment">; テストは非同期にすることができます。ランナーが実際に終了したことを知ることができるように done を呼び出す必要があります  (done))</span>
 
 (<span class="keyword">defn</span> ^<span class="symbol">:export</span> init []
   (start))</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It just has <code>init</code>, <code>start</code>, <code>stop</code> methods. <code>init</code> will be called once on startup, <code>stop</code> will be called before any code is reloaded and <code>start</code> will be called after all code was reloaded.</p>
+<p>これは単に <code>init</code>, <code>start</code>, <code>stop</code> メソッドを持っているだけです。init`は起動時に一度だけ呼び出され、`stop`はコードがリロードされる前に呼び出され、`start`はすべてのコードがリロードされた後に呼び出されます。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -4937,37 +4936,37 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <div class="title">Tip</div>
 </td>
 <td class="content">
-<code>:runner-ns</code> is optional, just leave it out to use the default.
+<code>:runner-ns</code> はオプションで、デフォルトのままにしておきます。
 </td>
 </tr>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_generated_output_in_code_test_dir_code"><a class="anchor" href="#_generated_output_in_code_test_dir_code"></a><a class="link" href="#_generated_output_in_code_test_dir_code">11.2.1. Generated output in &lt;code&gt;:test-dir&lt;/code&gt;</a></h4>
+<h4 id="_generated_output_in_code_test_dir_code"><a class="anchor" href="#_generated_output_in_code_test_dir_code"></a><a class="link" href="#_generated_output_in_code_test_dir_code">11.2.1. Generated output in <code>:test-dir</code></a></h4>
 <div class="paragraph">
-<p>The output includes two primary artifacts in your <code>test-dir</code> folder:</p>
+<p>出力には、`test-dir`フォルダ内の2つの主要な成果物が含まれています。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>index.html</code> - If and only if there was not already an <code>index.html</code> file present. By default the generated file loads the tests and runs <code>init</code> in the <code>:runner-ns</code>. You may edit or add a custom version that will not be overwritten.</p>
+<p><code>index.html</code> - <code>index.html</code> ファイルが存在しない場合に限ります。デフォルトでは、生成されたファイルはテストをロードして <code>:runner-ns</code> で <code>init</code> を実行します。上書きされないカスタムバージョンを編集したり、追加したりすることができます。</p>
 </li>
 <li>
-<p><code>js/test.js</code> - The Javascript tests. The tests will always have this name. The entries for the module are auto-generated.</p>
+<p><code>js/test.js</code> - Javascriptのテスト。テストは常にこの名前を持ちます。モジュールのエントリは自動生成されます。</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="target-karma"><a class="anchor" href="#target-karma"></a><a class="link" href="#target-karma">11.3. Targeting Tests to Karma for Continuous Integration</a></h3>
+<h3 id="target-karma"><a class="anchor" href="#target-karma"></a><a class="link" href="#target-karma">11.3. 継続的インテグレーションのためにテストをKarmaターゲットに絞る</a></h3>
 <div class="paragraph">
-<p>When you want to run your CLJS tests against a browser on some kind of CI server you&#8217;ll need to be able to run the tests from a command line and get back a status code. Karma is a well-known and supported test runner that can do this for you, and <code>shadow-cljs</code> includes a target that can add the appropriate wrappers around your tests so they will work in it.</p>
+<p>ある種のCIサーバ上のブラウザに対してCLJSテストを実行したい場合、コマンドラインからテストを実行してステータスコードを返すことができる必要があります。Karma はよく知られていてサポートされているテストランナーであり、<code>shadow-cljs</code> にはテストに適切なラッパーを追加してテストを実行できるようにするターゲットが含まれています。</p>
 </div>
 <div class="sect3">
 <h4 id="_installing_karma"><a class="anchor" href="#_installing_karma"></a><a class="link" href="#_installing_karma">11.3.1. Installing Karma</a></h4>
 <div class="paragraph">
-<p>See their <a href="http://karma-runner.github.io">website</a> for full instructions. You&#8217;ll typically need something like this is your <code>package.json</code>:</p>
+<p>完全な説明は <a href="http://karma-runner.github.io">website</a> を参照してください。通常、以下のようなものが必要になります。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4988,13 +4987,13 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So, you need Karma, a browser launcher, and the cljs-test integration.</p>
+<p>そのためには、Karma、ブラウザランチャー、cljs-testの統合が必要です。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_the_build"><a class="anchor" href="#_the_build"></a><a class="link" href="#_the_build">11.3.2. The Build</a></h4>
 <div class="paragraph">
-<p>The build options are:</p>
+<p>ビルドオプション:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -5011,7 +5010,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <code>:output-to</code>
 </td>
 <td class="hdlist2">
-<p>A path/filename for the js file.</p>
+<p>jsファイルのパス/ファイル名。</p>
 </td>
 </tr>
 <tr>
@@ -5019,13 +5018,13 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <code>:ns-regexp</code>
 </td>
 <td class="hdlist2">
-<p>(optional) A regex to match the test namespaces, defaults to "-test$</p>
+<p>(オプション) テストの名前空間にマッチする正規表現、デフォルトは"-test$"です。</p>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>So you might have something like this:</p>
+<p>なので、こんな感じのものがあるかもしれません:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5038,16 +5037,16 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You also need a <code>karma.conf.js</code>:</p>
+<p>また、`karma.conf.js`も必要です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">module.<span class="function">exports</span> = <span class="keyword">function</span> (config) {
     config.set({
         <span class="key">browsers</span>: [<span class="string"><span class="delimiter">'</span><span class="content">ChromeHeadless</span><span class="delimiter">'</span></span>],
-        <span class="comment">// The directory where the output file lives</span>
+        <span class="comment">// 出力ファイルがあるディレクトリ</span>
         <span class="key">basePath</span>: <span class="string"><span class="delimiter">'</span><span class="content">target</span><span class="delimiter">'</span></span>,
-        <span class="comment">// The file itself</span>
+        <span class="comment">// ファイルそのもの</span>
         <span class="key">files</span>: [<span class="string"><span class="delimiter">'</span><span class="content">ci.js</span><span class="delimiter">'</span></span>],
         <span class="key">frameworks</span>: [<span class="string"><span class="delimiter">'</span><span class="content">cljs-test</span><span class="delimiter">'</span></span>],
         <span class="key">plugins</span>: [<span class="string"><span class="delimiter">'</span><span class="content">karma-cljs-test</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">karma-chrome-launcher</span><span class="delimiter">'</span></span>],
@@ -5062,7 +5061,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>then you can run the tests as follows (assuming you&#8217;ve installed global executables of the tools):</p>
+<p>で、以下のようにテストを実行することができます（ツールのグローバル実行ファイルをインストールしていると仮定します）</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5086,12 +5085,12 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <div class="sect2">
 <h3 id="npm"><a class="anchor" href="#npm"></a><a class="link" href="#npm">12.1. NPM</a></h3>
 <div class="paragraph">
-<p><a href="https://www.npmjs.com/">npm</a> has come the de-facto standard package manager for JavaScript. Almost all JS libraries can be found there and shadow-cljs provides seamless integration for accessing those packages.</p>
+<p><a href="https://www.npmjs.com/">npm</a> は JavaScript のデファクトスタンダードなパッケージマネージャです。ほとんどすべてのJSライブラリがここにあり、shadow-cljsはそれらのパッケージにアクセスするためのシームレスな統合を提供しています。</p>
 </div>
 <div class="sect3">
 <h4 id="_using_npm_packages"><a class="anchor" href="#_using_npm_packages"></a><a class="link" href="#_using_npm_packages">12.1.1. Using npm packages</a></h4>
 <div class="paragraph">
-<p>Most npm packages will also include some instructions on how to use the actual code. The “old” CommonJS style just has require calls which translate directly:</p>
+<p>ほとんどの npm パッケージには、実際のコードの使用方法についての説明が含まれています。「古い」 CommonJS のスタイルは、直接変換する require 呼び出しを持っているだけです。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5105,7 +5104,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 </div>
 </div>
 <div class="paragraph">
-<p>Whatever "string" parameter is used when calling require we transfer to the <code>:require</code> as-is. The <code>:as</code> alias is up to you. Once we have that we can use the code like any other CLJS namespace!</p>
+<p>requireを呼び出す際に使用される文字列パラメータが何であれ、そのまま <code>:require</code> に転送します。":as" の別名はあなた次第です。これがわかれば、他のCLJSの名前空間と同じようにコードを使うことができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5113,16 +5112,16 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 </div>
 </div>
 <div class="paragraph">
-<p>In <code>shadow-cljs</code>: <strong>always use the <code>ns</code> form and whatever <code>:as</code> alias you provided.</strong> You may also use <code>:refer</code> and <code>:rename</code>. This is different than what <code>:foreign-libs</code>/CLJSJS does where you include the thing in the namespace but then used a global <code>js/Thing</code> in your code.</p>
+<p><code>shadow-cljs</code> では、 <strong>常に <code>ns</code> 形式と指定した <code>:as</code> のエイリアスを使用します。</strong> また、<code>:reference</code> や <code>:rename</code> を使うこともできます。これは、<code>:foreign-libs</code>/CLJSJS が行うものとは異なり、名前空間にそれをインクルードし、コードの中でグローバルな <code>js/Thhing</code> を使用します。</p>
 </div>
 <div class="paragraph">
-<p>Some packages just export a single function which you can call directly by using <code>(:require ["thing" :as thing])</code> and then <code>(thing)</code>.</p>
+<p>パッケージによっては <code>(:require ["thing" :as thing])</code> と <code>(thing)</code> を使って直接呼び出すことができる関数をエクスポートするだけのものもあります。</p>
 </div>
 <div class="paragraph">
-<p>More recently some packages started using ES6 <code>import</code> statements in their examples. Those also translate pretty much 1:1 with one slight difference related to default exports.</p>
+<p>最近では、いくつかのパッケージが ES6 の <code>import</code> 文を使用するようになりました。これらのパッケージも、デフォルトのエクスポートに関連したわずかな違いがありますが、ほぼ1:1で変換されています。</p>
 </div>
 <div class="paragraph">
-<p>The following table can be used for translation:</p>
+<p>変換には以下の表を使用することができます:</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -5131,7 +5130,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <div class="title">Important</div>
 </td>
 <td class="content">
-This table only applies if the code you are consuming is packaged as actual ES6+ code. If the code is packaged as CommonJS instead the <code>:default</code> may not apply. See the section below for more info.
+このテーブルは、消費するコードが実際のES6+コードとしてパッケージ化されている場合にのみ適用されます。コードがCommonJSとしてパッケージ化されている場合、`:default`は適用されない場合があります。詳細は以下のセクションを参照してください。
 </td>
 </tr>
 </table>
@@ -5188,32 +5187,32 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 </tbody>
 </table>
 <div class="paragraph">
-<p>Notice that previously we were stuck using bundled code which included a lot of code we didn’t actually need. Now we&#8217;re in a better situation: Some libraries are also packaged in ways that allow you to include only the parts you need, leading to much less code in your final build.</p>
+<p>以前は、実際には必要のないコードがたくさん含まれているバンドルコードを使用していたことに注意してください。今では、より良い状況になっています。ライブラリの中には、必要な部分だけを含めることができるようにパッケージ化されているものもあり、最終的なビルドのコード数を大幅に減らすことができます。</p>
 </div>
 <div class="paragraph">
-<p><code>react-virtualized</code> is a great example:</p>
+<p><code>react-virtualized</code> は素晴らしい例です:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="comment">// You can import any component you want as a named export from 'react-virtualized', eg</span>
+<pre class="CodeRay highlight"><code data-lang="js"><span class="comment">// react-virtualized' から任意のコンポーネントを名前付きエクスポートとしてインポートすることができます。 例：</span>
 <span class="reserved">import</span> { Column, Table } from <span class="string"><span class="delimiter">'</span><span class="content">react-virtualized</span><span class="delimiter">'</span></span>
-
-<span class="comment">// But if you only use a few react-virtualized components,</span>
-<span class="comment">// And you're concerned about increasing your application's bundle size,</span>
-<span class="comment">// You can directly import only the components you need, like so:</span>
+ 
+<span class="comment">// しかし、いくつかの react-virtualized コンポーネントだけを使用していて、</span>
+<span class="comment">// アプリケーションのバンドルサイズが大きくなるのが気になる場合は、</span>
+<span class="comment">// 以下のように必要なコンポーネントだけを直接インポートすることができます。</span>
 <span class="reserved">import</span> AutoSizer from <span class="string"><span class="delimiter">'</span><span class="content">react-virtualized/dist/commonjs/AutoSizer</span><span class="delimiter">'</span></span>
 <span class="reserved">import</span> List from <span class="string"><span class="delimiter">'</span><span class="content">react-virtualized/dist/commonjs/List</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With our improved support we we can easily translate this to:</p>
+<p>私たちのサポートが向上したことで、私たちはこれを簡単に変換することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">ns</span> <span class="namespace">my-ns</span>
-  <span class="comment">;; all</span>
+  <span class="comment">;; 全て</span>
   (<span class="symbol">:require</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">react-virtualized</span><span class="delimiter">&quot;</span></span> <span class="symbol">:refer</span> (Column Table)])
-  <span class="comment">;; OR one by one</span>
+  <span class="comment">;; または1つずつ</span>
   (<span class="symbol">:require</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">react-virtualized/dist/commonjs/AutoSizer</span><span class="delimiter">&quot;</span></span> <span class="symbol">:default</span> virtual-auto-sizer]
             [<span class="string"><span class="delimiter">&quot;</span><span class="content">react-virtualized/dist/commonjs/List</span><span class="delimiter">&quot;</span></span> <span class="symbol">:default</span> virtual-list]))</code></pre>
 </div>
@@ -5221,13 +5220,13 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 <div class="sect4">
 <h5 id="_about_default_exports"><a class="anchor" href="#_about_default_exports"></a><a class="link" href="#_about_default_exports">About :default Exports</a></h5>
 <div class="paragraph">
-<p>The <code>:default</code> option is currently only available in <code>shadow-cljs</code>, you can <a href="https://dev.clojure.org/jira/browse/CLJS-2376">vote here</a> to hopefully make it standard. You can always use <code>:as alias</code> and then call <code>alias/default</code> if you prefer to stay compatible with standard CLJS in the meantime.</p>
+<p>オプション <code>:default</code> は現在のところ <code>shadow-cljs</code> でしか利用できませんが、 <a href="https://dev.clojure.org/jira/browse/CLJS-2376">ここに投票する</a> で標準化できることを願っています(訳注：現在は投票を受け付けていません)。標準のCLJSとの互換性を保ちたいのであれば <code>:as alias</code> を使って <code>alias/default</code> を呼び出すこともできます。</p>
 </div>
 <div class="paragraph">
-<p>Default exports are a new addition in ECMAScript Modules and do not exist in CommonJS code. Sometimes you will see examples of <code>import Foo from "something"</code> when the code is actually CommonJS code. In theses cases <code>(:require ["something" :default Foo])</code> will not work and <code>(:require ["something" :as Foo])</code> must be used instead.</p>
+<p>デフォルトのエクスポートは ECMAScript モジュールに新たに追加されたもので、CommonJS コードには存在しません。CommonJSのコードの場合 <code>import Foo from "something""</code> の例を見かけることがあります。その場合は <code>(:require ["something" :default Foo])</code> は動作せず、代わりに <code>(:require ["something" :as Foo])</code> を使用しなければなりません。</p>
 </div>
 <div class="paragraph">
-<p>If a <code>:require</code> does not seem to work properly it is recommended to try looking at it in the REPL.</p>
+<p>もし <code>:require</code> が正しく動作しないようであれば、REPL で見てみることをお勧めします。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5244,50 +5243,50 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 </div>
 </div>
 <div class="paragraph">
-<p>Since printing arbitrary JS objects is not always useful (as seen above) you can use <code>(js/console.dir x)</code> instead to get a more useful reprensentation in the browser console. <code>goog/typeOf</code> may also be useful at times. Since the above example shows <code>"function"</code> using <code>:default</code> would not work since <code>:default</code> basically is just syntax sugar for <code>x/default</code>.</p>
+<p>任意のJSオブジェクトを表示することが必ずしも有用とは限らないので(上で見たように)、代わりに <code>(js/console.dir x)</code> を使用すると、ブラウザコンソールでより有用な再表示を得ることができます。また <code>goog/typeOf</code> も有用な場合があります。上の例では <code>:default</code> は基本的には <code>x/default</code> の文法上の糖質に過ぎないので <code>:default</code> を使ってもうまくいかないでしょう。</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="js-provider"><a class="anchor" href="#js-provider"></a><a class="link" href="#js-provider">12.1.2. Package Provider</a></h4>
 <div class="paragraph">
-<p><code>shadow-cljs</code> supports several different ways to include <code>npm</code> packages into your build. They are configurable via the <code>:js-options :js-provider</code> setting. Each <code>:target</code> usually sets the one appropriate for your build most often you won&#8217;t need to touch this setting.</p>
+<p><code>shadow-cljs</code> は、ビルドに <code>npm</code> パッケージを含めるためのいくつかの異なる方法をサポートしています。これらは <code>:js-options :js-provider</code> 設定で設定できます。各 <code>:target</code> は通常、ビルドに適したものを設定しますが、ほとんどの場合、この設定に触れる必要はありません。</p>
 </div>
 <div class="paragraph">
-<p>Currently there are 3 supported JS Providers:</p>
+<p>現在サポートされているJSプロバイダは3つあります:</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
 <dt><code>:require</code></dt>
 <dd>
-<p>Maps directly to the JS <code>require("thing")</code> function call. It is the default for all <code>node.js</code> targets since it can resolve <code>require</code> natively at runtime. The included JS is not processed in any way.</p>
+<p>JSの <code>require("thing")</code> 関数呼び出しに直接マップします。これはすべての <code>node.js</code> ターゲットのデフォルトで、実行時にネイティブに <code>require</code> を解決することができます。インクルードされたJSは何も処理されません。</p>
 </dd>
 <dt><code>:shadow</code></dt>
 <dd>
-<p>Resolves the JS via <code>node_modules</code> and includes a minified version of each referenced file in the build. It is the default for the <code>:browser</code> target. <code>node_modules</code> sources do not go through <code>:advanced</code> compilation.</p>
+<p><code>node_modules</code> 経由でJSを解決し、ビルド中に参照された各ファイルの修正版を含みます。これは <code>:browser</code> ターゲットのデフォルトです。 <code>node_modules</code> のソースは <code>:advanced</code> のコンパイルを通過しません。</p>
 </dd>
 <dt><code>:closure</code></dt>
 <dd>
-<p>Resolves similarly to <code>:shadow</code> but attempts to process all included files via the Closure Compiler CommonJS/ES6 rewrite facilities. They will also be processed via <code>:advanced</code> compilation.</p>
+<p><code>:shadow</code> と同様に解決しますが、すべてのインクルードされたファイルをClosure Compiler CommonJS/ES6の書き換え機能を使って処理しようとします。これらのファイルは <code>:advanced</code> コンパイルによっても処理されます。</p>
 </dd>
 </dl>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">&lt;code&gt;:shadow&lt;/code&gt; vs &lt;code&gt;:closure&lt;/code&gt;</div>
+<div class="title"><code>:shadow</code> vs <code>:closure</code></div>
 <div class="paragraph">
-<p>Ideally we want to use <code>:closure</code> as our primary JS Provider since that will run the entire application through <code>:advanced</code> giving us the most optimized output. In practice however lots of code available via <code>npm</code> is not compatible with the aggressive optimizations that <code>:advanced</code> compilation does. They either fail to compile at all or expose subtle bugs at runtime that are very hard to identify.</p>
+<p>理想的には <code>:closure</code> をプライマリの JS プロバイダとして使いたいものです。しかし実際には、<code>npm</code> で利用できるコードの多くは <code>:advanced</code> のコンパイルが行う積極的な最適化とは互換性がありません。これらのコードはコンパイルに全く失敗するか、実行時に識別するのが非常に困難な微妙なバグを露呈します。</p>
 </div>
 <div class="paragraph">
-<p><code>:shadow</code> is sort of a stopgap solution that only processes code via <code>:simple</code> and achieves much more reliable support while still getting reasonably optimized code. The output is comparable (or often better) to what other tools like <code>webpack</code> generate.</p>
+<p><code>:shadow</code> は <code>:simple</code> を経由してコードを処理するだけで、より信頼性の高いサポートを実現しつつ、合理的に最適化されたコードを得ることができるその場限りの解決方法のようなものです。出力は <code>webpack</code> のような他のツールが生成するものに匹敵します (あるいはそれよりも優れていることが多い)。</p>
 </div>
 <div class="paragraph">
-<p>Until support in Closure gets more reliable <code>:shadow</code> is the recommend JS Provider for <code>:browser</code> builds.</p>
+<p>Closureのサポートがより信頼性の高いものになるまでは <code>:shadow</code> が <code>:browser</code> ビルドの推奨JSプロバイダです。</p>
 </div>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Example config for using &lt;code&gt;:closure&lt;/code&gt; in a &lt;code&gt;:browser&lt;/code&gt; build.</div>
+<div class="title"><code>:browser</code> ビルドで <code>:closure</code> を使うための設定例。</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -5302,15 +5301,15 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 <div class="sect3">
 <h4 id="js-resolve"><a class="anchor" href="#js-resolve"></a><a class="link" href="#js-resolve">12.1.3. Resolving Packages</a></h4>
 <div class="paragraph">
-<p>By default <code>shadow-cljs</code> will resolve all <code>(:require ["thing" :as x])</code> requires following the <code>npm</code> convention. This means it will look at <code>&lt;project&gt;/node_modules/thing/package.json</code> and follow the code from there. To customize how this works <code>shadow-cljs</code> exposes a <code>:resolve</code> config option that lets you override how things are resolved.</p>
+<p>デフォルトでは、<code>shadow-cljs</code> は <code>(:require [" thing" :as x])</code> 要求をすべて <code>npm</code> の規約に従って解決します。つまり、<code>&lt;project&gt;/node_modules/thing/package.json`を見て、そこからコードを辿ります。この動作をカスタマイズするために `shadow-cljs</code> は <code>:resolve</code> という設定オプションを公開しています。</p>
 </div>
 <div class="sect4">
 <h5 id="js-resolve-global"><a class="anchor" href="#js-resolve-global"></a><a class="link" href="#js-resolve-global">Using a CDN</a></h5>
 <div class="paragraph">
-<p>Say you already have React included in your page via a CDN. You could just start using <code>js/React</code> again but we stopped doing that for a good reason. Instead you can continue to use <code>(:require ["react" :as react])</code> but configure how "react" resolves!</p>
+<p>CDN経由で既にReactがページに含まれているとします。あなたは再び <code>js/React</code> を使い始めることができますが、私たちは正当な理由のためにそれをするのをやめました。代わりに <code>(:require ["react" :as react])</code> を使い続けることができますが、\”react" の解決方法を設定してください!</p>
 </div>
 <div class="paragraph">
-<p>Here is a sample <code>shadow-cljs.edn</code> config for such a build:</p>
+<p>以下はそのようなビルドのための <code>shadow-cljs.edn</code> の設定例です:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5329,13 +5328,13 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>:app</code> build will now use the global <code>React</code> instance while the <code>:server</code> build continues using the "react" npm package! No need to fiddle with the code to make this work.</p>
+<p><code>:app</code> のビルドではグローバルな <code>React</code> インスタンスを使用しますが、<code>:server</code> のビルドでは \” react" npm パッケージを使用してビルドを継続します。これを動作させるためにコードをいじる必要はありません。</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="js-resolve-npm"><a class="anchor" href="#js-resolve-npm"></a><a class="link" href="#js-resolve-npm">Redirecting “require”</a></h5>
 <div class="paragraph">
-<p>Sometimes you wan&#8217;t more control over which <code>npm</code> package is actually used depending on your build. You can "redirect" certain requires from your build config without changing the code. This is often useful if you either don&#8217;t have access to the sources using such packages or you just want to change it for one build.</p>
+<p>ビルドによっては、どの <code>npm</code> パッケージが実際に使用されるかをコントロールしたくないこともあるでしょう。コードを変更せずに、ビルド設定から特定の要求を \”redirect" することができます。これは、そのようなパッケージを使っているソースにアクセスできない場合や、 あるビルドのためだけに変更したい場合に便利です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5353,7 +5352,7 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 <div class="sect4">
 <h5 id="js-resolve-limitations"><a class="anchor" href="#js-resolve-limitations"></a><a class="link" href="#js-resolve-limitations">Limitations</a></h5>
 <div class="paragraph">
-<p>The <code>:shadow-js</code> and <code>:closure</code> have full control over <code>:resolve</code> and everything mentioned above works without any downsides. The <code>:js-provider :require</code> however is more limited. Only the initial require can be influenced since the standard <code>require</code> is in control after that. This means it is not possible to influence what a package might <code>require</code> internally. It is therefore not recommended to be used with targets that use <code>require</code> directly (eg. <code>:node-script</code>).</p>
+<p><code>:shadow-js</code> と <code>:closure</code> は <code>:resolve</code> を完全に制御することができます。しかし <code>:js-provider :require</code> はより制限されています。標準の <code>require</code> がその後を制御しているため、最初の <code>require</code> だけが影響を受けることができます。つまり、パッケージが内部的に <code>require</code> するものに影響を与えることはできないということです。したがって <code>require</code> を直接使用するターゲット (例えば <code>:node-script</code>) と一緒に使用することは推奨されません。</p>
 </div>
 <div class="listingblock">
 <div class="title">Redirecting "react" to "preact"</div>
@@ -5377,20 +5376,20 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 </div>
 </div>
 <div class="paragraph">
-<p>The above works fine in the Browser since every <code>"react"</code> require will be replaced, including the <code>"react"</code> require <code>"react-table"</code> has internally. For <code>:js-provider :require</code> however a <code>require("react-table")</code> will be emitted and <code>node</code> will be in control how that is resolved. Meaning that it will resolve it to the standard <code>"react"</code> and not the <code>"preact"</code> we had configured.</p>
+<p>ブラウザ上では、すべての <code>"react"</code> requireが置き換えられ <code>"react-table"</code> が内部的に持っている <code>"react"</code> requireも置き換えられるので、上記の方法で問題なく動作します。しかし <code>:js-provider :require</code> の場合は <code>require("react-table")</code> が発行され <code>node</code> はそれをどのように解決するかを制御します。つまり、設定した <code>"preact"</code> ではなく、標準の <code>"react"</code> に解決されます。</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="alt-node-modules"><a class="anchor" href="#alt-node-modules"></a><a class="link" href="#alt-node-modules">12.1.4. Alternate Modules Directories</a></h4>
 <div class="paragraph">
-<p>By default <code>shadow-cljs</code> will only look at the <code>&lt;project-dir&gt;/node_modules</code> directory when resolving JS packages. This can be configured via the <code>:js-package-dirs</code> option in <code>:js-options</code>. This can be applied globally or per build.</p>
+<p>デフォルトでは <code>shadow-cljs</code> は JS パッケージを解決する際に <code>&lt;project-dir&gt;/node_modules</code> ディレクトリのみを参照します。これは <code>:js-options</code> の <code>:js-package-dirs</code> オプションで設定できます。これは全体またはビルドごとに適用することができます。</p>
 </div>
 <div class="paragraph">
-<p>Relative paths will be resolved relative to the project root directory. Paths will be tried from left to right and the first matching package will be used.</p>
+<p>相対パスは、プロジェクトのルートディレクトリからの相対パスとして解決されます。パスは左から右へと試行され、最初にマッチしたパッケージが使用されます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Global config in &lt;code&gt;shadow-cljs.edn&lt;/code&gt;</div>
+<div class="title">Global config in <code>shadow-cljs.edn</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:js-options</span> {<span class="symbol">:js-package-dirs</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">node_modules</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">../node_modules</span><span class="delimiter">&quot;</span></span>]}
@@ -5414,23 +5413,23 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>DANGER: This feature is an experiment!</strong> It is currently only supported in <code>shadow-cljs</code> and other CLJS tools will yell at you if you attempt to use it. Use at your own risk. The feature was initially rejected from CLJS core but I think it is useful and should not have been <a href="https://dev.clojure.org/jira/browse/CLJS-2061?focusedCommentId=46191&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-46191">dismissed</a> without further discussion.</p>
+<p><strong>危険: この機能は実験的なものです！</strong> 現在のところ <code>shadow-cljs</code> でのみサポートされており、他の CLJS ツールが使用しようとすると怒鳴りつけてきます。使用は自己責任で行ってください。この機能は当初CLJSコアから却下されましたが、私は便利だと思っていますし、さらなる議論なしに <a href="https://dev.clojure.org/jira/browse/CLJS-2061?focusedCommentId=46191&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-46191">dismissed</a> にすべきではありませんでした。</p>
 </div>
 <div class="paragraph">
-<p>CLJS has an alternate <a href="https://clojurescript.org/guides/javascript-modules">implementation</a> which in turn is not supported by <code>shadow-cljs</code>. I found this implementation to be lacking in certain aspects so I opted for the different solution. Happy to discuss the pros/cons of both approaches though.</p>
+<p>CLJSには代替の <a href="https://clojurescript.org/guides/javascript-modules">実装</a> がありますが、これは <code>shadow-cljs</code> がサポートしていません。私はこの実装がある面で欠けていることを発見したので、別の解決策を選択しました。両方のアプローチの長所と短所を議論したいと思います。</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>We covered how <a href="#npm">npm</a> packages are used but you may be working on a codebase that already has lots of plain JavaScript and you don&#8217;t want to rewrite everything in ClojureScript just yet. <code>shadow-cljs</code> provides 100% full interop between JavaScript and ClojureScript. Which means your JS can use your CLJS and CLJS can use your JS.</p>
+<p><a href="#npm">npm</a> パッケージがどのように使われるかを説明しましたが、すでにたくさんのプレーンなJavaScriptを持っているコードベースで作業しているかもしれませんし、まだClojureScriptですべてを書き換えたくないかもしれません。 <code>shadow-cljs</code> は、JavaScriptとClojureScriptの間で100%完全な相互運用を提供します。つまり、あなたのJSはCLJSを使用でき、CLJSはあなたのJSを使用できるということです。</p>
 </div>
 <div class="paragraph">
-<p>There are only a few conventions you need to follow in order for this to work reliably but chances are that you are already doing that anyways.</p>
+<p>これを確実に動作させるためには、いくつかの規則に従う必要がありますが、いずれにせよ、あなたはすでにそれを行っている可能性があります。</p>
 </div>
 <div class="sect3">
 <h4 id="_requiring_js"><a class="anchor" href="#_requiring_js"></a><a class="link" href="#_requiring_js">12.2.1. Requiring JS</a></h4>
 <div class="paragraph">
-<p>We already covered how <code>npm</code> packages are accessed by their name but on the classpath we access <code>.js</code> files by either a full path or relative to the current namespace.</p>
+<p><code>npm</code> パッケージが名前でアクセスする方法はすでに説明しましたが、クラスパスではフルパスか現在の名前空間からの相対パスのいずれかで <code>.js</code> ファイルにアクセスします。</p>
 </div>
 <div class="listingblock">
 <div class="title">Loading JS from the classpath</div>
@@ -5448,16 +5447,16 @@ This table only applies if the code you are consuming is packaged as actual ES6+
 <div class="title">Tip</div>
 </td>
 <td class="content">
-For string requires the extension <code>.js</code> will be added automatically but you can specify the extension if you prefer. Note that currently only <code>.js</code> is supported though.
+文字列が必要な場合、拡張子 <code>.js</code> は自動的に追加されますが、お好みで拡張子を指定することもできます。しかし、現在は <code>.js</code> のみがサポートされていることに注意してください。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Absolute requires like <code>/some-library/components/foo</code> mean that the compiler will look for a <code>some-library/components/foo.js</code> on the classpath; unlike <code>node</code> which would attempt to load the file from the local filesystem. The same classpath rules apply so the file may either be in your <code>:source-paths</code> or in some third-party <code>.jar</code> library you are using.</p>
+<p><code>/some-library/components/foo</code> のような絶対的な要求は、コンパイラがクラスパス上の <code>some-library/components/foo.js</code> を探すことを意味します。同じクラスパスルールが適用されるので、ファイルは <code>:source-paths</code> または使用しているサードパーティの <code>.jar</code> ライブラリにあるかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>Relative requires are resolved by first looking at the current namespace and then resolving a relative path from that name. In the above example we are in <code>demo/app.cljs</code> to the <code>./bar</code> require resolves to <code>demo/bar.js</code>, so it is identical to <code>(:require ["/demo/bar"])</code>.</p>
+<p>相対パスは、まず現在の名前空間を見て、その名前からの相対パスを解決することで解決されます。上の例では、<code>demo/app.cljs</code> から <code>./bar</code> の require は <code>demo/bar.js</code> に解決されるので <code>(:require ["/demo/bar")</code> と同じです。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -5466,13 +5465,13 @@ For string requires the extension <code>.js</code> will be added automatically b
 <div class="title">Important</div>
 </td>
 <td class="content">
-The files must not be physically located in the same directory. The lookup for the file appears on the classpath instead. This is unlike node which expects relative requires to always resolve to physical files.
+ファイルが物理的に同じディレクトリにあってはいけません。ファイルの検索は、代わりにクラスパス上に表示されます。これは、相対的な要求が常に物理的なファイルに解決することを期待しているnodeとは異なります。
 </td>
 </tr>
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Example File Structure with Separate Paths</div>
+<div class="title">パスが分離されたファイル構造の例</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="text">.
 ├── package.json
@@ -5496,19 +5495,19 @@ The files must not be physically located in the same directory. The lookup for t
 <div class="title">Important</div>
 </td>
 <td class="content">
-It is expected that the classpath only contains JavaScript that can be consumed without any pre-processing by the Compiler. <code>npm</code> has a very similar convention.
+クラスパスには、コンパイラによる前処理なしで消費できるJavaScriptのみが含まれていることが期待されています。 <code>npm</code> にも非常に似たような規約があります。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The Closure Compiler is used for processing all JavaScript found on the classpath using its <code>ECMASCRIPT_NEXT</code> language setting. What exactly this setting means is not well documented but it mostly represents the next generation JavaScript code which might not even be supported by most browsers yet. ES6 is very well supported as well as most ES8 features. Similarly to standard CLJS this will be compiled down to ES5 with polyfills when required.</p>
+<p>Closureコンパイラは <code>ECMASCRIPT_NEXT</code> 言語設定を使用してクラスパス上のすべてのJavaScriptを処理するために使用されます。この設定が何を意味するのかはよくわかっていませんが、ほとんどのブラウザではまだサポートされていないかもしれない次世代のJavaScriptコードを表しています。ES6はES8の機能と同様に非常によくサポートされています。標準のCLJSと同様に、必要に応じてポリフィルを使用してES5までコンパイルされます。</p>
 </div>
 <div class="paragraph">
-<p>Since the Closure Compiler is getting constant updates newer features will be available over time. Just don&#8217;t expect to use the latest cutting edge preview features to be available immediately. Somewhat recent additions like <code>async/await</code> already work quite well.</p>
+<p>Closureコンパイラは常に更新されていますので、新しい機能は時間の経過とともに利用可能になります。ただ、最新の最先端のプレビュー機能をすぐに使えるようになるとは思っていません。最近追加された <code>async/await</code> のような機能はすでに十分に機能しています。</p>
 </div>
 <div class="paragraph">
-<p>The JS should be written using ES Module Syntax using <code>import</code> and <code>export</code>. JS files can include other JS files and reference CLJS code directly. They may also access <code>npm</code> packages directly with one caveat.</p>
+<p>JSは、<code>import`や`export`を使ってESモジュール構文を使って記述する必要があります。JSファイルは他のJSファイルをインクルードしたり、CLJSコードを直接参照したりすることができます。また、`npm</code> パッケージに直接アクセスすることもできますが、1つの注意点があります。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5533,7 +5532,7 @@ It is expected that the classpath only contains JavaScript that can be consumed 
 <div class="title">Important</div>
 </td>
 <td class="content">
-Due to strict checking of the Closure Compiler it is not possible to use the <code>import * as X from "npm";</code> syntax when requiring CLJS or npm code. It is fine to use when requiring other JS files.
+Closure Compilerのチェックが厳しいため、CLJSやnpmのコードが必要な場合は、`import * as X from \”npm";`構文を使うことができません。他のJSファイルが必要な場合は問題ありません。
 </td>
 </tr>
 </table>
@@ -5542,7 +5541,7 @@ Due to strict checking of the Closure Compiler it is not possible to use the <co
 <div class="sect3">
 <h4 id="_javascript_dialects"><a class="anchor" href="#_javascript_dialects"></a><a class="link" href="#_javascript_dialects">12.2.3. JavaScript Dialects</a></h4>
 <div class="paragraph">
-<p>Since there are many popular JavaScript dialects (JSX, CoffeeScript, etc) that are not directly parsable by the Closure Compiler we need to pre-process them before putting them onto the classpath. <a href="https://babeljs.io/">babel</a> is commonly used in the JavaScript world so we are going to use <code>babel</code> to process <code>.jsx</code> files as an example here.</p>
+<p>多くの一般的なJavaScriptの方言(JSX、CoffeeScriptなど)はClosureコンパイラで直接解析できないので、クラスパスに置く前に前処理をする必要があります。 <a href="https://babeljs.io/">babel</a> はJavaScriptの世界で一般的に使われているので、 <code>.jsx</code> ファイルを処理するために <code>babel</code> を例に挙げてみます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example shadow-cljs.edn Config</div>
@@ -5576,7 +5575,7 @@ Due to strict checking of the Closure Compiler it is not possible to use the <co
 <div class="title">Important</div>
 </td>
 <td class="content">
-Notice how <code>src/js</code> is not added to <code>:source-paths</code> which means it will not be on the classpath.
+<code>src/js</code> が <code>:source-paths</code> に追加されていないことに注目してください。
 </td>
 </tr>
 </table>
@@ -5594,7 +5593,7 @@ export { myComponent };</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We run <a href="https://babeljs.io/docs/usage/cli/">babel</a> to convert the files and write them to the configured <code>src/gen</code> directory. Which directory you use it up to you. I prefer <code>src/gen</code> for generated files.</p>
+<p><a href="https://babeljs.io/docs/usage/cli/">babel</a> を実行してファイルを変換し、設定された <code>src/gen</code> ディレクトリに書き出します。どのディレクトリを使うかはあなた次第です。私は生成されたファイルは <code>src/gen</code> の方が好きです。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5604,7 +5603,7 @@ $ babel src/js --out-dir src/gen --watch</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>babel</code> itself is configured via the <code>src/js/.babelrc</code>. See the official <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">example for JSX</a>.</p>
+<p><code>babel`自体は `src/js/.babelrc</code> で設定します。公式の <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">JSXの例</a> を参照してください。</p>
 </div>
 <div class="listingblock">
 <div class="title">JSX minimal .babelrc</div>
@@ -5615,7 +5614,7 @@ $ babel src/js --out-dir src/gen --watch</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once <code>babel</code> writes the <code>src/gen/demo/bar.js</code> it will be available to use via ClojureScript and will even be hot loaded just like your ClojureScript sources.</p>
+<p>一度 <code>babel</code> が <code>src/gen/demo/bar.js</code> を書けば、ClojureScript から利用可能になり、ClojureScript のソースと同じようにホットロードされるようになります。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -5624,7 +5623,7 @@ $ babel src/js --out-dir src/gen --watch</code></pre>
 <div class="title">Important</div>
 </td>
 <td class="content">
-<code>shadow-cljs</code> currently does not provide any support for running those transformation steps. Please use the standard tools (eg. <code>babel</code>, <code>coffeescript</code>, etc.) directly until it does.
+現在 <code>shadow-cljs</code> はこれらの変換ステップを実行するためのサポートを提供していません。サポートされるまでは、標準的なツール (例えば <code>babel</code>, <code>coffeescript</code> など) を直接使用してください。
 </td>
 </tr>
 </table>
@@ -5633,7 +5632,7 @@ $ babel src/js --out-dir src/gen --watch</code></pre>
 <div class="sect3">
 <h4 id="_access_cljs_from_js"><a class="anchor" href="#_access_cljs_from_js"></a><a class="link" href="#_access_cljs_from_js">12.2.4. Access CLJS from JS</a></h4>
 <div class="paragraph">
-<p>The JS sources can access all your ClojureScript (and the Closure Library) directly by importing their namespaces with a <code>goog:</code> prefix which the Compiler will rewrite to expose the namespace as the default ES6 export.</p>
+<p>JSソースは名前空間 <code>goog:</code> を接頭辞でインポートすることで、すべてのClojureScript (とClosure Library)に直接アクセスすることができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5650,7 +5649,7 @@ cljs.array_map(<span class="keyword">keyword</span>(<span class="string"><span c
 <div class="title">Tip</div>
 </td>
 <td class="content">
-The <code>goog:</code> prefix currently only works for ES6 file. <code>require("goog:cljs.core")</code> does not work.
+接頭辞 <code>goog:</code> は現在のところ ES6 ファイルでしか動作しません。require("goog:cljs.core")` は動作しません。
 </td>
 </tr>
 </table>
@@ -5662,18 +5661,18 @@ The <code>goog:</code> prefix currently only works for ES6 file. <code>require("
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>CLJSJS is an effort to package Javascript libraries to be able to use them from within ClojureScript.</p>
+<p>CLJSJSは、Javascriptのライブラリをパッケージ化して、ClojureScript内から利用できるようにする取り組みです。</p>
 </div>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Since <code>shadow-cljs</code> can access <a href="#npm">npm packages</a> directly we do not need to rely on re-packaged <a href="https://github.com/cljsjs/packages">CLJSJS</a> packages.</p>
+<p><code>shadow-cljs</code> は <a href="#npm">npm packages</a> に直接アクセスできるので、再パッケージ化された <a href="https://github.com/cljsjs/packages">CLJSJS</a> パッケージに頼る必要はありません。</p>
 </div>
 <div class="paragraph">
-<p>However many CLJS libraries are still using CLJSJS packages and they would break with <code>shadow-cljs</code> since it doesn&#8217;t support those anymore. It is however very easy to mimick those <code>cljsjs</code> namespaces since they are mostly build from <code>npm</code> packages anyways. It just requires one shim file that maps the <code>cljsjs.thing</code> back to its original <code>npm</code> package and exposes the expected global variable.</p>
+<p>しかし、多くのCLJSライブラリはまだCLJSJSパッケージを使っており <code>shadow-cljs</code> はもうサポートしていないので <code>shadow-cljs</code> では壊れてしまいます。しかし <code>cljsjs</code> 名前空間はほとんどが <code>npm</code> パッケージからビルドされているので <code>cljs</code> 名前空間を真似るのは非常に簡単です。 <code>cljsjs.thing</code> を元の <code>npm</code> パッケージにマップして、期待されるグローバル変数を公開する shim ファイルが必要です。</p>
 </div>
 <div class="paragraph">
-<p>For React this requires a file like <code>src/cljsjs/react.cljs</code>:</p>
+<p>Reactの場合は <code>src/cljsjs/react.cljs</code> のようなファイルが必要です:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5689,7 +5688,7 @@ The <code>goog:</code> prefix currently only works for ES6 file. <code>require("
 </div>
 </div>
 <div class="paragraph">
-<p>Since this would be tedious for everyone to do manually I created the <a href="https://github.com/thheller/shadow-cljsjs"><code>shadow-cljsjs</code></a> library which provides just that. It does not include every package but I’ll keep adding them and contributions are very welcome as well.</p>
+<p>誰もが手動で行うのは面倒なので <a href="https://github.com/thheller/shadow-cljsjs"><code>shadow-cljsjs</code></a> ライブラリを作成しました。これはすべてのパッケージを含んでいるわけではありませんが、私はそれらを追加し続けます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5698,7 +5697,7 @@ The <code>goog:</code> prefix currently only works for ES6 file. <code>require("
 <div class="title">Note</div>
 </td>
 <td class="content">
-The <code>shadow-cljsjs</code> library only provides the shim files. You’ll still need to <code>npm install</code> the actual packages yourself.
+<code>shadow-cljsjs</code> ライブラリは shim ファイルのみを提供します。実際のパッケージを自分で <code>npm</code> インストールする必要があります。
 </td>
 </tr>
 </table>
@@ -5706,22 +5705,22 @@ The <code>shadow-cljsjs</code> library only provides the shim files. You’ll st
 <div class="sect3">
 <h4 id="_why_not_use_cljsjs"><a class="anchor" href="#_why_not_use_cljsjs"></a><a class="link" href="#_why_not_use_cljsjs">12.3.1. Why not use CLJSJS?</a></h4>
 <div class="paragraph">
-<p>CLJSJS packages basically just take the package from <code>npm</code> and put them into a <code>.jar</code> and re-publish them via <a href="https://clojars.org">clojars</a>. As a bonus they often bundle Externs. The compiler otherwise does nothing with these files and only prepends them to the generated output.</p>
+<p>CLJSJSのパッケージは基本的に <code>npm</code> からパッケージを取り出して <code>.jar</code> に入れ、https://clojars.org[clojars] 経由で再公開するだけです。ボーナスとしてExternsがバンドルされていることが多いです。それ以外の場合、コンパイラはこれらのファイルには何もせず、生成された出力に前置きするだけです。</p>
 </div>
 <div class="paragraph">
-<p>This was very useful when we had no access to <code>npm</code> directly but has certain issues since not all packages are easily combined with others. A package might rely on <code>react</code> but instead of expressing this via <code>npm</code> <a href="https://github.com/cljsjs/packages/tree/master/material-ui">they</a> bundle their own <code>react</code>. If you are not careful you could end up including 2 different <code>react</code> versions in your build which may lead to very confusing errors or at the very least increase the build size substantially.</p>
+<p>これは <code>npm</code> に直接アクセスできなかったときに非常に便利でしたが、すべてのパッケージが他のパッケージと簡単に結合できるわけではないので、ある種の問題があります。あるパッケージは <code>react</code> に依存しているかもしれませんが、これを <code>npm</code> で表現する代わりに <a href="https://github.com/cljsjs/packages/tree/master/material-ui">彼ら</a> は独自の <code>react</code> をバンドルしています。注意を怠ると、ビルド中に 2 つの異なる <code>react</code> バージョンを含むことになり、非常に混乱を招くエラーを引き起こしたり、 少なくともビルドサイズが大幅に大きくなったりする可能性があります。</p>
 </div>
 <div class="paragraph">
-<p>Apart from that not every <code>npm</code> package is available via CLJSJS and keeping the package versions in sync requires manual work, which means packages are often out of date.</p>
+<p>また、すべての <code>npm</code> パッケージが CLJSJS で利用できるわけではなく、パッケージのバージョンを同期させるには手作業が必要で、パッケージが古くなっていることがよくあります。</p>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> does not support CLJSJS at all to avoid conflicts in your code. One library might attempt to use the "old" <code>cljsjs.react</code> while another uses the newer <code>(:require ["react"])</code> directly. This would again lead to 2 versions of <code>react</code> on your page again.</p>
+<p><code>shadow-cljs</code> は CLJSJS を全くサポートしていません。あるライブラリは "old"の <code>cljsjs.react</code> を使おうとするかもしれないし、別のライブラリは新しい <code>(:require ["react"])</code> を直接使おうとするかもしれない。これはまた、あなたのページに2つのバージョンの <code>react</code> が再び現れることになるでしょう。</p>
 </div>
 <div class="paragraph">
-<p>So the only thing we are missing are the bundled Externs. In many instances these are not required due to improved <a href="#infer-externs">externs inference</a>. Often those Externs are generated using third-party tools which means they are not totally accurate anyways.</p>
+<p>つまり、足りないのはバンドルされているExternsだけです。多くの場合、これらは改良された <a href="#infer-externs">externs推論</a> のために必要とされていません。多くの場合、これらのExternsはサードパーティのツールを使って生成されます。</p>
 </div>
 <div class="paragraph">
-<p>Conclusion: Use <a href="#npm">npm</a> directly. Use <a href="#infer-externs">:infer-externs auto</a>.</p>
+<p>結論：<a href="#npm">npm</a>を直接使う。<a href="#infer-externs">:infer-externs auto</a>を使う。</p>
 </div>
 </div>
 </div>
