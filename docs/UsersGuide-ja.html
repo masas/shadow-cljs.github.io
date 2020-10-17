@@ -770,8 +770,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_cursive">14.1. Cursive</a></li>
 <li><a href="#cider">14.2. Emacs / CIDER</a>
 <ul class="sectlevel3">
-<li><a href="#_launch_the_clojurescript_repl">14.2.1. Launch the ClojureScript REPL</a></li>
-<li><a href="#_simplify_startup_with_dir_local">14.2.2. Simplify startup with dir-local</a></li>
+<li><a href="#_launch_the_clojurescript_repl">14.2.1. ClojureScript REPLを起動します。</a></li>
+<li><a href="#_simplify_startup_with_dir_local">14.2.2. dir-localで起動を簡素化</a></li>
 </ul>
 </li>
 <li><a href="#_proto_repl_atom">14.3. Proto REPL (Atom)</a></li>
@@ -852,30 +852,30 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </div>
 <div class="paragraph">
-<p>必要であれば、<code>shadow-cljs</code> Clojureライブラリを他のClojure/JVMビルドツール(例: <a href="https://leiningen.org/">leiningen</a>やhttps://clojure.org/guides/deps_and_cli[Clojure CLI]ツール)に簡単に統合することができます。</p>
+<p>必要であれば <code>shadow-cljs</code> Clojureライブラリを他のClojure/JVMビルドツール(例: <a href="https://leiningen.org/">leiningen</a>やhttps://clojure.org/guides/deps_and_cli[Clojure CLI]ツール)に簡単に統合することができます。</p>
 </div>
 <div class="paragraph">
-<p>CLJS開発に合わせて最適化された開発体験を提供するため、`npm`パッケージを使用することをお勧めします。</p>
+<p>CLJS開発に合わせて最適化された開発体験を提供するため <code>npm</code> パッケージを使用することをお勧めします。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_basic_workflow"><a class="anchor" href="#_basic_workflow"></a><a class="link" href="#_basic_workflow">1.2. Basic Workflow</a></h3>
 <div class="paragraph">
-<p>shadow-cljs` を使うときは、<code>shadow-cljs.edn</code> 設定ファイルに 1 つ以上のビルドを定義することになります。各ビルドは <code>:target</code> プロパティを持ち、ターゲット環境(ブラウザ、<code>node.js</code> アプリケーション、Chrome 拡張機能など)に最適化された設定プリセットを表します。</p>
+<p><code>shadow-cljs</code> を使うときは <code>shadow-cljs.edn</code> 設定ファイルに1つ以上のビルドを定義することになります。各ビルドは <code>:target</code> プロパティを持ち、ターゲット環境(ブラウザ <code>node.js</code> アプリケーション、Chrome 拡張機能など)に最適化された設定プリセットを表します。</p>
 </div>
 <div class="paragraph">
-<p>各ビルドは、コンパイルのトリガーに使用されるコマンドに応じて、開発またはリリースの出力を生成することができます。標準的なビルドコマンドは以下の通りです。<code>compile</code>、<code>watch</code>、`release`です。</p>
+<p>各ビルドは、コンパイルのトリガーに使用されるコマンドに応じて、開発またはリリースの出力を生成することができます。標準的なビルドコマンドは以下の通りです。<code>compile</code>,<code>watch</code>,<code>release</code> です。</p>
 </div>
 <div class="sect3">
 <h4 id="_development_mode"><a class="anchor" href="#_development_mode"></a><a class="link" href="#_development_mode">1.2.1. Development Mode</a></h4>
 <div class="paragraph">
-<p>開発ビルドを一度 <code>compile</code> するか、<code>watch</code> プロセスを実行してソースファイルを監視し、自動的に再コンパイルすることができます (必要に応じてコードをライブリロードすることもできます)。</p>
+<p>開発ビルドを一度 <code>compile</code> するか <code>watch</code> プロセスを実行してソースファイルを監視し、自動的に再コンパイルすることができます (必要に応じてコードをライブリロードすることもできます)。</p>
 </div>
 <div class="paragraph">
 <p>すべての開発ビルドは、高速なフィードバックサイクルと、実行中のコードと直接対話するための REPL のような他の機能を備え、開発者の経験に合わせて最適化されています。</p>
 </div>
 <div class="paragraph">
-<p>開発ビルドは非常に大きくなり、`:target`によってはコンパイルされたマシン上でしか動作しない可能性があるため、決して公開してはいけません。</p>
+<p>開発ビルドは非常に大きくなり <code>:target</code> によってはコンパイルされたマシン上でしか動作しない可能性があるため、決して公開してはいけません。</p>
 </div>
 </div>
 <div class="sect3">
@@ -906,7 +906,7 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </div>
 <div class="paragraph">
-<p>Clojure(Script)では、すべてのものが名前空間になっており、それぞれの名前はファイルに解決されることが期待されています。名前空間が <code>(ns demo.app)</code> の場合、コンパイラはクラスパス上に <code>demo/app.cljs</code> (または <code>.cljc</code>) を見つけることを期待しています。クラスパスは見つかるまで順番に検索されます。例えば、<code>:source-paths ["src/main/" "src/test/test"]`を設定したとすると、コンパイラは最初に `src/main/demo/app.cljs</code> を探し、次に <code>src/test/demo/app.cljs</code> を探すことになります。ソースパス上にファイルが見つからない場合、JVMはクラスパス上の <code>.jar</code> ファイルを探し始めます。ライブラリのルートに <code>demo/app.cljs</code> を見つけると、そのファイルが使用されます。</p>
+<p>Clojure(Script)では、すべてのものが名前空間になっており、それぞれの名前はファイルに解決されることが期待されています。名前空間が <code>(ns demo.app)</code> の場合、コンパイラはクラスパス上に <code>demo/app.cljs</code> (または <code>.cljc</code>) を見つけることを期待しています。クラスパスは見つかるまで順番に検索されます。例えば <code>:source-paths ["src/main/" "src/test/test"]</code> を設定したとすると、コンパイラは最初に <code>src/main/demo/app.cljs</code> を探し、次に <code>src/test/demo/app.cljs</code> を探すことになります。ソースパス上にファイルが見つからない場合、JVMはクラスパス上の <code>.jar</code> ファイルを探し始めます。ライブラリのルートに <code>demo/app.cljs</code> を見つけると、そのファイルが使用されます。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -930,13 +930,13 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect3">
 <h4 id="_server_mode"><a class="anchor" href="#_server_mode"></a><a class="link" href="#_server_mode">1.3.2. Server Mode</a></h4>
 <div class="paragraph">
-<p>`shadow-cljs`は、`watch`のような長時間のタスクを実行する場合に必要な、\”server\” モードで起動することができます。watch`は、まだ起動していなければ暗黙のうちにサーバインスタンスを起動します。サーバは、ビルドが接続するWebsocketエンドポイントを提供し、他のすべてのエンドポイントと同様に、nREPL、Socket REPL、開発用HTTPサーバを提供します。</p>
+<p><code>shadow-cljs</code> は <code>watch</code> のような長時間のタスクを実行する場合に必要な、&#34;server&#34; モードで起動することができます。 <code>watch</code> はまだ起動していなければ暗黙のうちにサーバインスタンスを起動します。サーバはビルドが接続するWebsocketエンドポイントを提供し、他のすべてのエンドポイントと同様に nREPL, Socket REPL, 開発用HTTPサーバを提供します。</p>
 </div>
 <div class="paragraph">
 <p><code>shadow-cljs</code> CLIインターフェースを使用する場合、すべてのコマンドは新しいJVMを起動する代わりに、実行中のサーバインスタンスJVMを再利用します。これにより、JVM起動時間が非常に遅くなる可能性を排除するので、実質的に速くなります。</p>
 </div>
 <div class="paragraph">
-<p>いったんサーバが起動してしまえば、<code>:dependencies</code> が変更されたときだけ再起動すればよく、それ以外のことはすべて REPL を使って行うことができます。</p>
+<p>いったんサーバが起動してしまえば <code>:dependencies</code> が変更されたときだけ再起動すればよく、それ以外のことはすべて REPL を使って行うことができます。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1046,7 +1046,7 @@ project.clj
 <p>これで必要な基本ファイルがすべて作成されるので、以下のコマンドをスキップすることができます。</p>
 </div>
 <div class="paragraph">
-<p>既に <code>package.json</code> があり、<code>shadow-cljs</code> を追加したい場合は、以下のように実行してください。</p>
+<p>既に <code>package.json</code> があり <code>shadow-cljs</code> を追加したい場合は、以下のように実行してください。</p>
 </div>
 <div class="listingblock">
 <div class="title">NPM</div>
@@ -1067,7 +1067,7 @@ project.clj
 <div class="sect2">
 <h3 id="_library"><a class="anchor" href="#_library"></a><a class="link" href="#_library">2.2. Library</a></h3>
 <div class="paragraph">
-<p>スタンドアロン版を <code>npm</code> 経由で実行することを推奨しますが、<code>shadow-cljs</code> を他の Clojure JVM ツール (例えば <code>lein</code>, <code>boot</code>, &#8230;&#8203;. など) に埋め込むこともできます。</p>
+<p>スタンドアロン版を <code>npm</code> 経由で実行することを推奨しますが <code>shadow-cljs</code> を他の Clojure JVM ツール (例えば <code>lein</code>, <code>boot</code>, &#8230;&#8203;. など) に埋め込むこともできます。</p>
 </div>
 <div class="paragraph">
 <p>アーティファクトは以下の場所にあります。</p>
@@ -1092,7 +1092,7 @@ project.clj
 <p>`shadow-cljs`は様々な方法で使うことができますが、一般的なワークフローは同じです。</p>
 </div>
 <div class="paragraph">
-<p>開発中には、ビルドを一度コンパイルするか、<code>watch</code> ワーカーを実行してソースファイルの変更を監視し、自動的に再コンパイルするかを選択することができます。<a href="#devtools">enabled</a>の場合、<code>watch</code> ワーカーはコードをホットリロードして REPL を提供します。開発中は、開発者の経験と高速なフィードバックサイクルに焦点を当てています。開発コードは決して公開されるべきではありません。</p>
+<p>開発中にはビルドを一度コンパイルするか <code>watch</code> ワーカーを実行してソースファイルの変更を監視し、自動的に再コンパイルするかを選択することができます。 <a href="#devtools">enabled</a> の場合 <code>watch</code> ワーカーはコードをホットリロードして REPL を提供します。開発中は、開発者の経験と高速なフィードバックサイクルに焦点を当てています。開発コードは決して公開されるべきではありません。</p>
 </div>
 <div class="paragraph">
 <p>いよいよ本気を出す時が来た時には、<a href="#release"><code>release</code></a>ビルドを作成し、本番に適した最適化されたビルドを作成します。このために <a href="https://developers.google.com/closure/compiler/">Closure Compiler</a> を使用します。これは、あなたのコードに <code>:advanced</code> 最適化を適用して、最適な出力を作成します。これは、ネイティブのJavaScriptで多くのinteropを使用しているときに適切に動作するために、いくつかの<a href="#externs">tuning</a>を必要とするかもしれませんが、ClojureScript(とhttps://developers.google.com/closure/library/[Closure Library]からのコード)では完璧に動作します。</p>
@@ -1100,7 +1100,7 @@ project.clj
 <div class="sect2">
 <h3 id="_command_line"><a class="anchor" href="#_command_line"></a><a class="link" href="#_command_line">3.1. Command Line</a></h3>
 <div class="paragraph">
-<p>グローバルに<a href="#_installation">インストール</a>する場合は、<code>shadow-cljs</code> コマンドを直接使うことができます。</p>
+<p>グローバルに<a href="#_installation">インストール</a>する場合は <code>shadow-cljs</code> コマンドを直接使うことができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1108,7 +1108,7 @@ project.clj
 </div>
 </div>
 <div class="paragraph">
-<p>ローカルの <code>npm</code> インストールのみを使いたい場合は、<code>npx</code> や <code>yarn</code> を使って起動することができます。</p>
+<p>ローカルの <code>npm</code> インストールのみを使いたい場合は <code>npx</code> や <code>yarn</code> を使って起動することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1148,7 +1148,7 @@ $ shadow-cljs node-repl</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>時々、<code>:advanced</code> のコンパイルに起因するリリース上の問題が発生することがあります。これらのコマンドは原因を突き止めるのに役立ちます。</p>
+<p>時々 <code>:advanced</code> のコンパイルに起因するリリース上の問題が発生することがあります。これらのコマンドは原因を突き止めるのに役立ちます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Release debugging commands.</div>
@@ -1160,7 +1160,7 @@ $ shadow-cljs release app --debug</code></pre>
 <div class="sect3">
 <h4 id="server-mode"><a class="anchor" href="#server-mode"></a><a class="link" href="#server-mode">3.1.1. Server Mode</a></h4>
 <div class="paragraph">
-<p><code>shadow-cljs</code> コマンドの起動はかなり遅くなります。これを改善するために、<code>shadow-cljs</code> は、"server mode"で実行することができます。専用のプロセスで開始され、毎回新しい JVM/Clojure インスタンスを起動する必要がないので、他のすべてのコマンドがより速く実行できます。</p>
+<p><code>shadow-cljs</code> コマンドの起動はかなり遅くなります。これを改善するために <code>shadow-cljs</code> は "server mode" で実行することができます。専用のプロセスで開始され、毎回新しい JVM/Clojure インスタンスを起動する必要がないので、他のすべてのコマンドがより速く実行できます。</p>
 </div>
 <div class="paragraph">
 <p>長時間実行するようなコマンドは、暗黙のうちにサーバインスタンスを起動しますが(例: <code>watch</code>)、多くの場合専用のサーバプロセスを実行しておくことを推奨します。</p>
@@ -1194,7 +1194,7 @@ $ shadow-cljs restart</code></pre>
 <div class="sect2">
 <h3 id="_build_tool_integration"><a class="anchor" href="#_build_tool_integration"></a><a class="link" href="#_build_tool_integration">3.2. Build Tool Integration</a></h3>
 <div class="paragraph">
-<p>主なディストリビューションは <a href="https://clojars.org/thheller/shadow-cljs">Clojars</a> から入手できる <code>.jar</code> ファイルだけなので、<code>shadow-cljs</code> は他の Clojure ツールと統合することができます。デフォルトでは <code>:dependencies</code> は <code>shadow-cljs.edn</code> で管理されていますが、他のビルドツールを使って依存関係を管理することもできます。</p>
+<p>主なディストリビューションは <a href="https://clojars.org/thheller/shadow-cljs">Clojars</a> から入手できる <code>.jar</code> ファイルだけなので <code>shadow-cljs</code> は他の Clojure ツールと統合することができます。デフォルトでは <code>:dependencies</code> は <code>shadow-cljs.edn</code> で管理されていますが、他のビルドツールを使って依存関係を管理することもできます。</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -1211,7 +1211,7 @@ $ shadow-cljs restart</code></pre>
 <div class="sect3">
 <h4 id="Leiningen"><a class="anchor" href="#Leiningen"></a><a class="link" href="#Leiningen">3.2.1. Leiningen</a></h4>
 <div class="paragraph">
-<p><a href="https://leiningen.org/">Leiningen</a>を使って依存関係を管理したい場合は、<code>shadow-cljs.edn</code> の設定に <code>:lein</code> エントリを追加してください。この設定では、<code>shadow-cljs</code> コマンドは <code>lein</code> を使って JVM を起動し、<code>shadow-cljs.edn</code> の <code>:source-paths</code> や <code>:dependencies</code> は無視します。</p>
+<p><a href="https://leiningen.org/">Leiningen</a>を使って依存関係を管理したい場合は <code>shadow-cljs.edn</code> の設定に <code>:lein</code> エントリを追加してください。この設定では <code>shadow-cljs</code> コマンドは <code>lein</code> を使って JVM を起動し <code>shadow-cljs.edn</code> の <code>:source-paths</code> や <code>:dependencies</code> は無視します。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1258,7 +1258,7 @@ $ shadow-cljs restart</code></pre>
 <div class="sect4">
 <h5 id="_running_tasks_directly_from_leiningen"><a class="anchor" href="#_running_tasks_directly_from_leiningen"></a><a class="link" href="#_running_tasks_directly_from_leiningen">Leiningenから直接タスクを実行する</a></h5>
 <div class="paragraph">
-<p>また、<code>shadow-cljs</code> コマンド自体を使いたくない場合は、<code>lein</code> を使って <code>shadow-cljs</code> コマンドを直接実行することもできます。</p>
+<p>また <code>shadow-cljs</code> コマンド自体を使いたくない場合は <code>lein</code> を使って <code>shadow-cljs</code> コマンドを直接実行することもできます。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1387,7 +1387,7 @@ $ shadow-cljs restart</code></pre>
 <div class="sect2">
 <h3 id="clj-run"><a class="anchor" href="#clj-run"></a><a class="link" href="#clj-run">3.3. Running Clojure Code</a></h3>
 <div class="paragraph">
-<p>コマンドラインから特定のClojure関数を呼び出すために`shadow-cljs` CLIを使うことができます。これは、特定のタスクの前後にコードを実行したい場合に便利です。例えば、<code>release</code> ビルドの出力をリモートサーバに <code>rsync</code> したいとします。</p>
+<p>コマンドラインから特定のClojure関数を呼び出すために`shadow-cljs` CLIを使うことができます。これは、特定のタスクの前後にコードを実行したい場合に便利です。例えば <code>release</code> ビルドの出力をリモートサーバに <code>rsync</code> したいとします。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example Clojure Namespace in <code>src/my/build.clj</code></div>
@@ -1450,7 +1450,7 @@ $ shadow-cljs run my.build/release</code></pre>
 <div class="title">Important</div>
 </td>
 <td class="content">
-<a href="#server-mode">server</a>を実行している場合、名前空間は自動的にリロードされず、一度だけロードされます。REPLを使って開発を行い、通常通りリロードすることをお勧めします(例: <code>(require 'my.build :reload)</code>)。また、<code>shadow-cljs clj-eval "(require 'my.build :reload)"</code> を実行して、コマンドラインから手動でリロードすることもできます。
+<a href="#server-mode">server</a>を実行している場合、名前空間は自動的にリロードされず、一度だけロードされます。REPLを使って開発を行い、通常通りリロードすることをお勧めします(例: <code>(require 'my.build :reload)</code>)。また <code>shadow-cljs clj-eval "(require 'my.build :reload)"</code> を実行して、コマンドラインから手動でリロードすることもできます。
 </td>
 </tr>
 </table>
@@ -1458,7 +1458,7 @@ $ shadow-cljs run my.build/release</code></pre>
 <div class="sect3">
 <h4 id="_calling_watch_via_clj_run"><a class="anchor" href="#_calling_watch_via_clj_run"></a><a class="link" href="#_calling_watch_via_clj_run">3.3.1. Calling watch via clj-run</a></h4>
 <div class="paragraph">
-<p>デフォルトでは、<code>clj-run`によって呼び出された関数は、`compile</code>, `release`や他のClojure機能を実行するのに十分な最小限の`shadow-cljs`ランタイムにしかアクセスできません。JVMは、関数が完了すると終了します。</p>
+<p>デフォルトでは <code>clj-run</code> によって呼び出された関数は <code>compile</code>, <code>release</code> や他のClojure機能を実行するのに十分な最小限の <code>shadow-cljs</code> ランタイムにしかアクセスできません。JVMは、関数が完了すると終了します。</p>
 </div>
 <div class="paragraph">
 <p>あるビルドに対して <code>watch</code> を起動したい場合、呼び出した関数がフルサーバを必要とすることを宣言する必要があります。これにより、明示的に <code>(shadow.cljs.devtools.server/stop!)</code> を呼び出すか <code>CTRL+C</code> でプロセスを起動するまでプロセスは生きたままになります。</p>
@@ -1515,7 +1515,7 @@ $ shadow-cljs run my.build/release</code></pre>
 <div class="title">Important</div>
 </td>
 <td class="content">
-ノードREPLを終了した場合、`node`プロセスも終了します。
+ノードREPLを終了した場合 <code>node</code> プロセスも終了します。
 </td>
 </tr>
 </table>
@@ -1561,7 +1561,7 @@ $ shadow-cljs run my.build/release</code></pre>
 <p>ビルド用に実行中の <code>watch</code></p>
 </li>
 <li>
-<p><code>:target</code> の JS ランタイムに接続します。つまり、<code>:browser</code> ターゲットを使用している場合は、生成された JS が読み込まれたブラウザを開く必要があります。node.jsのビルドでは <code>node</code> プロセスを実行することを意味します。</p>
+<p><code>:target</code> の JS ランタイムに接続します。つまり <code>:browser</code> ターゲットを使用している場合は、生成された JS が読み込まれたブラウザを開く必要があります。node.jsのビルドでは <code>node</code> プロセスを実行することを意味します。</p>
 </li>
 </ol>
 </div>
@@ -1600,7 +1600,7 @@ shadow-cljs - connected to server
 <div class="title">Tip</div>
 </td>
 <td class="content">
-REPLを終了するには、`:repl/quit`とタイプします。これはREPLを終了するだけで、`watch`は実行されたままです。
+REPLを終了するには <code>:repl/quit</code> とタイプします。これはREPLを終了するだけで <code>watch</code> は実行されたままです。
 </td>
 </tr>
 </table>
@@ -1625,7 +1625,7 @@ There is no connected JS runtime.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>これが表示された場合は、ブラウザでアプリを開くか、`node`プロセスを開始する必要があります。</p>
+<p>これが表示された場合は、ブラウザでアプリを開くか <code>node</code> プロセスを開始する必要があります。</p>
 </div>
 </div>
 </div>
@@ -1885,7 +1885,7 @@ $ yarn add the-thing</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>ということは、<code>npm install react</code> をするべきだということです。</p>
+<p>ということは <code>npm install react</code> をするべきだということです。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1905,7 +1905,7 @@ $ yarn add the-thing</code></pre>
 <div class="sect2">
 <h3 id="user-config"><a class="anchor" href="#user-config"></a><a class="link" href="#user-config">5.3. User Configuration</a></h3>
 <div class="paragraph">
-<p>ほとんどの設定はプロジェクト自身で <code>shadow-cljs.edn</code> を使って行いますが、いくつかの設定はユーザに依存することがあります。https://docs.cider.mx[CIDER] のようなツールは、<code>shadow-cljs.edn</code> で依存関係を追加しても Cursive を使っている別のチームメンバーには意味がないので、追加の <code>cider-nrepl</code> 依存関係を必要とするかもしれません。</p>
+<p>ほとんどの設定はプロジェクト自身で <code>shadow-cljs.edn</code> を使って行いますが、いくつかの設定はユーザに依存することがあります。https://docs.cider.mx[CIDER] のようなツールは <code>shadow-cljs.edn</code> で依存関係を追加しても Cursive を使っている別のチームメンバーには意味がないので、追加の <code>cider-nrepl</code> 依存関係を必要とするかもしれません。</p>
 </div>
 <div class="paragraph">
 <p>制限された設定オプションのセットを <code>~/.shadow-cljs/config.edn</code> に追加することができ、このユーザのマシンでビルドされたすべてのプロジェクトに適用されます。</p>
@@ -1934,7 +1934,7 @@ $ yarn add the-thing</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>これにより、<code>deps.edn</code> を使っているプロジェクトで <code>shadow-cljs</code> コマンドが <code>[:cider :cljs]</code> エイリアスを使うようになります。これは、<code>~/.clojure/deps.edn</code> に追加の <code>:cider</code> エイリアスがある場合に便利です。</p>
+<p>これにより <code>deps.edn</code> を使っているプロジェクトで <code>shadow-cljs</code> コマンドが <code>[:cider :cljs]</code> エイリアスを使うようになります。これは <code>~/.clojure/deps.edn</code> に追加の <code>:cider</code> エイリアスがある場合に便利です。</p>
 </div>
 <div class="paragraph">
 <p>デフォルトでは <code>shadow-cljs</code> サーバモードは必要ないかもしれない組み込みの nREPL サーバを起動します。これを無効にするには、ユーザ設定で <code>:nrepl false</code> を設定します。</p>
@@ -1946,7 +1946,7 @@ $ yarn add the-thing</code></pre>
 <div class="sect2">
 <h3 id="_server_options"><a class="anchor" href="#_server_options"></a><a class="link" href="#_server_options">5.4. Server Options</a></h3>
 <div class="paragraph">
-<p>このセクションでは、<code>shadow-cljs</code> サーバインスタンスを設定する他のオプションについて説明します。これらはオプションです。</p>
+<p>このセクションでは <code>shadow-cljs</code> サーバインスタンスを設定する他のオプションについて説明します。これらはオプションです。</p>
 </div>
 <div class="sect3">
 <h4 id="nREPL"><a class="anchor" href="#nREPL"></a><a class="link" href="#nREPL">5.4.1. nREPL</a></h4>
@@ -1976,13 +1976,13 @@ shadow-cljs - watching build :app
 </div>
 </div>
 <div class="paragraph">
-<p>デフォルトのグローバル設定ファイルは <code>~/.nrepl/nrepl.edn</code> またはローカルの <code>.nrepl.edn</code> にあり、起動時に読み込まれ、 <code>:middleware</code> を設定するのに使われます。</p>
+<p>デフォルトのグローバル設定ファイルは <code>~/.nrepl/nrepl.edn</code> またはローカルの <code>.nrepl.edn</code> にあり、起動時に読み込まれ <code>:middleware</code> を設定するのに使われます。</p>
 </div>
 <div class="paragraph">
 <p>人気のあるミドルウェア <a href="https://github.com/clojure-emacs/cider-nrepl">cider-nrepl</a> がクラスパス上にあれば(例えば <code>:dependencies</code> に含まれているなど)、自動的に使用されます。追加の設定は必要ありません。これは <code>:nrepl {:cider false}</code> を設定することで無効にできます。</p>
 </div>
 <div class="paragraph">
-<p>接続時に開始する名前空間は、<code>:nrepl</code> オプションで <code>:init-ns</code> を設定することで設定できます。デフォルトは <code>shadow.user</code> です。</p>
+<p>接続時に開始する名前空間は <code>:nrepl</code> オプションで <code>:init-ns</code> を設定することで設定できます。デフォルトは <code>shadow.user</code> です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2021,7 +2021,7 @@ Use <code>:cljs/quit</code> to return to Clojure.
 <div class="sect4">
 <h5 id="_embedded_nrepl_server"><a class="anchor" href="#_embedded_nrepl_server"></a><a class="link" href="#_embedded_nrepl_server">Embedded nREPL Server</a></h5>
 <div class="paragraph">
-<p>独自のnREPLサーバを提供する他のツール(例: <code>lein</code>)に埋め込まれた <code>shadow-cljs</code> を使う場合、<code>shadow-cljs</code> ミドルウェアを設定する必要があります。そうしないと、CLJとCLJSのREPLを切り替えることができません。</p>
+<p>独自のnREPLサーバを提供する他のツール(例: <code>lein</code>)に埋め込まれた <code>shadow-cljs</code> を使う場合 <code>shadow-cljs</code> ミドルウェアを設定する必要があります。そうしないと、CLJとCLJSのREPLを切り替えることができません。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example Leiningen <code>project.clj</code></div>
@@ -2055,7 +2055,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p>Clojure Socket REPLはサーバモードで自動的に起動され、デフォルトではランダムなポートを使用します。ツールは、ポート番号を含む <code>.shadow-cljs/socket-repl.port</code> をチェックすることで、それが起動されたポートを見つけることができます。</p>
 </div>
 <div class="paragraph">
-<p>また、 <code>shadow-cljs.edn</code> を使って固定ポートを設定することもできます。</p>
+<p>また <code>shadow-cljs.edn</code> を使って固定ポートを設定することもできます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2066,7 +2066,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>ソケットREPLを無効にするには、`:socket-repl false`を設定します。</p>
+<p>ソケットREPLを無効にするには <code>:socket-repl false</code> を設定します。</p>
 </div>
 </div>
 <div class="sect3">
@@ -2100,7 +2100,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </ul>
 </div>
 <div class="paragraph">
-<p>作成した <code>Certificates.p12</code> (macOS) または <code>localhost.pfx</code> (Linux, Windows) ファイルは、<code>keytool</code> ユーティリティを使って必要な <code>keystore.jks</code> に変換することができます。</p>
+<p>作成した <code>Certificates.p12</code> (macOS) または <code>localhost.pfx</code> (Linux, Windows) ファイルは <code>keytool</code> ユーティリティを使って必要な <code>keystore.jks</code> に変換することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2147,7 +2147,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </table>
 </div>
 <div class="paragraph">
-<p>代わりに自分のポートを設定したい場合は、<code>:http</code> 設定で設定することができます。</p>
+<p>代わりに自分のポートを設定したい場合は <code>:http</code> 設定で設定することができます。</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>:http</code> を設定した <code>shadow-cljs.edn</code></div>
@@ -2159,7 +2159,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p><code>:ssl</code> はサーバを <code>https://</code> のみに切り替えます。もし <code>http://</code> バージョンを維持したい場合は、<code>:ssl-port</code> を別途設定することもできます。</p>
+<p><code>:ssl</code> はサーバを <code>https://</code> のみに切り替えます。もし <code>http://</code> バージョンを維持したい場合は <code>:ssl-port</code> を別途設定することもできます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2188,7 +2188,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </dl>
 </div>
 <div class="listingblock">
-<div class="title">基本的な例として、<code>public</code> ディレクトリを経由して <code><a href="http://localhost:8000" class="bare">http://localhost:8000</a></code> を提供する例。</div>
+<div class="title">基本的な例として <code>public</code> ディレクトリを経由して <code><a href="http://localhost:8000" class="bare">http://localhost:8000</a></code> を提供する例。</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:dev-http</span> {<span class="integer">8000</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">public</span><span class="delimiter">&quot;</span></span>}
@@ -2233,7 +2233,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </dd>
 <dt class="hdlist1"><code>:roots</code></dt>
 <dd>
-<p>(Vector of Strings) 複数のルートパスが必要な場合は、<code>:roots</code> を使う。</p>
+<p>(Vector of Strings) 複数のルートパスが必要な場合は <code>:roots</code> を使う。</p>
 </dd>
 <dt class="hdlist1"><code>:ssl-port</code></dt>
 <dd>
@@ -2296,7 +2296,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <dl>
 <dt><code>:proxy-rewrite-host-header</code></dt>
 <dd>
-<p>boolean, デフォルトは true です。オリジナルのHostヘッダを使うか、 <code>:proxy-url</code> のものを使うかを決定します。上の例で <code>localhost</code> と <code>some.host</code> を比較してみましょう。</p>
+<p>boolean, デフォルトは true です。オリジナルのHostヘッダを使うか <code>:proxy-url</code> のものを使うかを決定します。上の例で <code>localhost</code> と <code>some.host</code> を比較してみましょう。</p>
 </dd>
 <dt><code>:proxy-reuse-x-forwarded</code></dt>
 <dd>
@@ -2452,7 +2452,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect3">
 <h4 id="_preloads"><a class="anchor" href="#_preloads"></a><a class="link" href="#_preloads">6.2.2. Preloads</a></h4>
 <div class="paragraph">
-<p>開発者として、あなたの時間のほとんどは開発モードに費やされています。おそらく、<code>figwheel</code>, <code>boot-reload</code>, <code>devtools</code> などのツールをよく知っているでしょう。これらのうちの 1 つ以上がビルドに必要であることはほぼ間違いありません。</p>
+<p>開発者として、あなたの時間のほとんどは開発モードに費やされています。おそらく <code>figwheel</code>, <code>boot-reload</code>, <code>devtools</code> などのツールをよく知っているでしょう。これらのうちの 1 つ以上がビルドに必要であることはほぼ間違いありません。</p>
 </div>
 <div class="paragraph">
 <p>プリロードは、生成された Javascript の前に特定の名前空間を強制的に挿入するために使用されます。これは一般的に、アプリケーションが実際にロードされて実行される前にツールやインストルメンテーションを注入するために使用されます。preloads オプションは <code>shadow-cljs-edn</code> の <code>:devtools</code>/<code>:preloads</code> セクションにある名前空間のリストです。</p>
@@ -2473,7 +2473,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="title">Note</div>
 </td>
 <td class="content">
-バージョン 2.0.130 以降、shadow-cljs は <code>watch</code> と <code>compile</code> のプリロードに <code>cljs-devtools</code> を自動的に追加します。必要なのは <code>binaryage/devtools</code> が <code>dependencies</code> リストにあることを確認するだけです。(注意: binaryage/<strong>cljs-</strong>devtools  <strong>ではありません。</strong>) 特定のターゲットに <code>cljs-devtools</code> を入れたくない場合は、<code>:devtools</code> セクションに <code>:console-support false</code> を追加することで、これを抑制することができます。
+バージョン 2.0.130 以降、shadow-cljs は <code>watch</code> と <code>compile</code> のプリロードに <code>cljs-devtools</code> を自動的に追加します。必要なのは <code>binaryage/devtools</code> が <code>dependencies</code> リストにあることを確認するだけです。(注意: binaryage/<strong>cljs-</strong>devtools  <strong>ではありません。</strong>) 特定のターゲットに <code>cljs-devtools</code> を入れたくない場合は <code>:devtools</code> セクションに <code>:console-support false</code> を追加することで、これを抑制することができます。
 </td>
 </tr>
 </table>
@@ -2582,7 +2582,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect4">
 <h5 id="_config"><a class="anchor" href="#_config"></a><a class="link" href="#_config">Config</a></h5>
 <div class="paragraph">
-<p>メタデータに加えて、`shadow-cljs.edn`でライフサイクルフックを設定することができます。</p>
+<p>メタデータに加えて <code>shadow-cljs.edn</code> でライフサイクルフックを設定することができます。</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
@@ -2773,7 +2773,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>さらに、<code>:build-options</code> <code>:cache-level</code> エントリを使用することで、キャッシュの量をより広範囲に制御することができます。サポートされているオプションは以下の通りです:</p>
+<p>さらに <code>:build-options</code> <code>:cache-level</code> エントリを使用することで、キャッシュの量をより広範囲に制御することができます。サポートされているオプションは以下の通りです:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -2790,7 +2790,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <code>:jars</code>
 </td>
 <td class="hdlist2">
-<p>ライブラリからのファイルのみをキャッシュします。 つまり、<code>.jar</code> ファイル内のソースファイル。</p>
+<p>ライブラリからのファイルのみをキャッシュします。 つまり <code>.jar</code> ファイル内のソースファイル。</p>
 </td>
 </tr>
 <tr>
@@ -2861,7 +2861,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>これはデフォルトで <code>your.app/VERBOSE</code> 変数を <code>false</code> に定義します。これにより、 <code>:advanced</code> のコンパイル時に <code>println</code> が削除されます。これを <code>:closure-defines</code> オプションで <code>true</code> に切り替えると <code>println</code> が有効になります。これは開発用にのみ行うことも、常に行うこともできます。</p>
+<p>これはデフォルトで <code>your.app/VERBOSE</code> 変数を <code>false</code> に定義します。これにより <code>:advanced</code> のコンパイル時に <code>println</code> が削除されます。これを <code>:closure-defines</code> オプションで <code>true</code> に切り替えると <code>println</code> が有効になります。これは開発用にのみ行うことも、常に行うこともできます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2898,10 +2898,10 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="ulist">
 <ul>
 <li>
-<p><code>goog.DEBUG</code>: クロージャーライブラリはこれを多くの開発機能に利用します。 <code>shadow-cljs</code> は、 <code>release</code> ビルドでは自動的に <code>false</code> に設定します。</p>
+<p><code>goog.DEBUG</code>: クロージャーライブラリはこれを多くの開発機能に利用します。 <code>shadow-cljs</code> は <code>release</code> ビルドでは自動的に <code>false</code> に設定します。</p>
 </li>
 <li>
-<p><code>goog.LOCALE</code> は、<code>goog.i18n.DateTimeFormat</code> のような特定のローカライゼーション機能を設定するために使用します。標準のロケール文字列を受け付け、デフォルトは <code>en</code> です。ほとんどすべてのロケールに対応しています。 <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbols.js">こちら</a> および <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbolsext.js">こちら</a> を参照ください。</p>
+<p><code>goog.LOCALE</code> は <code>goog.i18n.DateTimeFormat</code> のような特定のローカライゼーション機能を設定するために使用します。標準のロケール文字列を受け付け、デフォルトは <code>en</code> です。ほとんどすべてのロケールに対応しています。 <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbols.js">こちら</a> および <a href="https://github.com/google/closure-library/blob/master/closure/goog/i18n/datetimesymbolsext.js">こちら</a> を参照ください。</p>
 </li>
 </ul>
 </div>
@@ -2909,7 +2909,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect2">
 <h3 id="compiler-options"><a class="anchor" href="#compiler-options"></a><a class="link" href="#compiler-options">6.6. Compiler Options</a></h3>
 <div class="paragraph">
-<p>CLJSコンパイラはコードの生成方法に影響を与えるいくつかのオプションをサポートしています。ほとんどの場合、 <code>shadow-cljs</code> は <code>:target</code> ごとにいくつかの良いデフォルト値を選択しますが、時々それらのいくつかを変更したくなるかもしれません。</p>
+<p>CLJSコンパイラはコードの生成方法に影響を与えるいくつかのオプションをサポートしています。ほとんどの場合 <code>shadow-cljs</code> は <code>:target</code> ごとにいくつかの良いデフォルト値を選択しますが、時々それらのいくつかを変更したくなるかもしれません。</p>
 </div>
 <div class="paragraph">
 <p>これらはすべてビルド設定の <code>:compiler-options</code> キーの下にグループ化されています。</p>
@@ -2925,7 +2925,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>標準のClojureScript <a href="https://clojurescript.org/reference/compiler-options">コンパイラオプション</a> のほとんどは、デフォルトで有効になっているか、適用されていません。そのため、実際に効果があるものはほとんどありません。それらの多くは特定の <code>:target</code> タイプに固有のものであり、普遍的には適用されません (例えば、 <code>:compiler-options {:output-wrapper true}</code> は <code>:target :browser</code> にのみ関連しています)。</p>
+<p>標準のClojureScript <a href="https://clojurescript.org/reference/compiler-options">コンパイラオプション</a> のほとんどは、デフォルトで有効になっているか、適用されていません。そのため、実際に効果があるものはほとんどありません。それらの多くは特定の <code>:target</code> タイプに固有のものであり、普遍的には適用されません (例えば <code>:compiler-options {:output-wrapper true}</code> は <code>:target :browser</code> にのみ関連しています)。</p>
 </div>
 <div class="paragraph">
 <p>現在サポートされているオプションには以下のものがあります。</p>
@@ -2951,7 +2951,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p><code>:pretty-print</code> と <code>:pseudo-name</code> のデフォルトは <code>false</code> です。 <code>shadow-cljs release app --debug</code> を使うと、設定に触れずに一時的に両方を有効にすることができます。これは <code>release</code> ビルドで問題が発生したときに非常に便利です。</p>
 </li>
 <li>
-<p><code>:source-map</code> (ブール値) デフォルトは開発中は <code>true</code> で、<code>release</code> では <code>false</code> です。</p>
+<p><code>:source-map</code> (ブール値) デフォルトは開発中は <code>true</code> で <code>release</code> では <code>false</code> です。</p>
 </li>
 <li>
 <p><code>:source-map-includes-sources-content</code> (ブール値) デフォルトは <code>true</code> で、ソースマップが <code>.map</code> ファイルに直接ソースを含めるかどうかを決定します。</p>
@@ -3157,10 +3157,10 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </table>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> は <code>.cljc</code> ファイルに追加のリーダ機能を設定することができます。デフォルトでは、<code>:clj</code>, <code>:cljs</code>, <code>:cljr</code> のために別々のコードを生成するためにリーダ条件式を使うことしかできません。しかし、多くの CLJS ビルドでは、<code>:target</code> に基づいてどのコードを生成するかを選択することが望ましいです。</p>
+<p><code>shadow-cljs</code> は <code>.cljc</code> ファイルに追加のリーダ機能を設定することができます。デフォルトでは <code>:clj</code>, <code>:cljs</code>, <code>:cljr</code> のために別々のコードを生成するためにリーダ条件式を使うことしかできません。しかし、多くの CLJS ビルドでは <code>:target</code> に基づいてどのコードを生成するかを選択することが望ましいです。</p>
 </div>
 <div class="paragraph">
-<p>例: <code>npm</code> パッケージの中には <code>:browser</code> をターゲットにしたときにのみ動作するものもありますが、<code>:node-script</code> ビルドでも使用したい <code>ns</code> があるかもしれません。これはReactアプリでサーバーサイドレンダリング(SSR)を使おうとしているときに頻繁に起こるかもしれません。 <code>codemirror</code> はそのようなパッケージの一つです。</p>
+<p>例: <code>npm</code> パッケージの中には <code>:browser</code> をターゲットにしたときにのみ動作するものもありますが <code>:node-script</code> ビルドでも使用したい <code>ns</code> があるかもしれません。これはReactアプリでサーバーサイドレンダリング(SSR)を使おうとしているときに頻繁に起こるかもしれません。 <code>codemirror</code> はそのようなパッケージの一つです。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3222,7 +3222,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>これで <code>:server</code> ビルドでは <code>codemirror</code> が不要になり、<code>init-cm</code> 関数が削除されます。ただの</p>
+<p>これで <code>:server</code> ビルドでは <code>codemirror</code> が不要になり <code>init-cm</code> 関数が削除されます。ただの</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3244,7 +3244,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="title">Important</div>
 </td>
 <td class="content">
-この機能は <code>.cljc</code> ファイルでのみ利用可能で、<code>.cljs</code> ファイルでは失敗します。
+この機能は <code>.cljc</code> ファイルでのみ利用可能で <code>.cljs</code> ファイルでは失敗します。
 </td>
 </tr>
 </table>
@@ -3315,7 +3315,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>また、<code>#shadow/env</code> で使用できるフォームもいくつかサポートされています。</p>
+<p>また <code>#shadow/env</code> で使用できるフォームもいくつかサポートされています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3350,7 +3350,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p>すべてのビルド、または特定のタイプのすべてのターゲットに使用されるデフォルト設定を使用することができます。</p>
 </div>
 <div class="paragraph">
-<p>コンフィギュレーションのマージ順序は、<code>:build-defaults</code> &#8594; <code>:target-defaults</code> &#8594; 実際のビルドコンフィグ &#8594; 追加コンフィグの順で上書きされます。</p>
+<p>コンフィギュレーションのマージ順序は <code>:build-defaults</code> &#8594; <code>:target-defaults</code> &#8594; 実際のビルドコンフィグ &#8594; 追加コンフィグの順で上書きされます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example shadow-cljs.edn` config</div>
@@ -3373,7 +3373,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>この例では、<code>:app</code> ターゲットは <code>:build-defaults</code> と <code>:browser</code> の <code>:target-defaults</code> の両方を継承します。</p>
+<p>この例では <code>:app</code> ターゲットは <code>:build-defaults</code> と <code>:browser</code> の <code>:target-defaults</code> の両方を継承します。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3734,7 +3734,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect5">
 <h6 id="_loader_costs"><a class="anchor" href="#_loader_costs"></a><a class="link" href="#_loader_costs">Loader Costs</a></h6>
 <div class="paragraph">
-<p>ローダの使用は非常に軽量です。ローダにはいくつかの依存関係がありますが、他の方法では使用しないかもしれません。実際には、<code>:module-loader true`を使うと、デフォルトのモジュールに約8KBのgzipが追加されます。これは `goog.net</code> や <code>goog.event</code> をどの程度使用しているか、また、リリースビルドにどの程度の最適化を使用しているかによって異なります。</p>
+<p>ローダの使用は非常に軽量です。ローダにはいくつかの依存関係がありますが、他の方法では使用しないかもしれません。実際には <code>:module-loader true</code> を使うと、デフォルトのモジュールに約8KBのgzipが追加されます。これは <code>goog.net</code> や <code>goog.event</code> をどの程度使用しているか、また、リリースビルドにどの程度の最適化を使用しているかによって異なります。</p>
 </div>
 </div>
 </div>
@@ -3758,7 +3758,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p><code>release</code> はデフォルトでは <code>:browser</code> のビルドで <code>:modules</code> が1つしかない場合は <code>(function(){&lt;コード&gt;}).call(this);</code> でラップされているので、グローバル変数は生成されません。そのため、グローバル変数は生成されません。</p>
 </div>
 <div class="paragraph">
-<p>複数の <code>:modules</code> (別名 <a href="#CodeSplitting">code splitting</a>) を使用する場合、これはデフォルトでは有効になっていません。Closureコンパイラは <code>:rename-prefix-namespace</code> という名前の複数の <code>:modules</code> と組み合わせて出力ラッパーを使用できるようにする追加オプションをサポートしています。これによりコンパイラーはビルドで使用される全ての「グローバル」変数を1つの実際のグローバル変数にスコープするようになります。デフォルトでは、<code>:output-wrapper</code> が <code>true</code> に設定されている場合、これは <code>:remame-prefix-namespace "$APP"</code> に設定されています。</p>
+<p>複数の <code>:modules</code> (別名 <a href="#CodeSplitting">code splitting</a>) を使用する場合、これはデフォルトでは有効になっていません。Closureコンパイラは <code>:rename-prefix-namespace</code> という名前の複数の <code>:modules</code> と組み合わせて出力ラッパーを使用できるようにする追加オプションをサポートしています。これによりコンパイラーはビルドで使用される全ての「グローバル」変数を1つの実際のグローバル変数にスコープするようになります。デフォルトでは <code>:output-wrapper</code> が <code>true</code> に設定されている場合、これは <code>:remame-prefix-namespace "$APP"</code> に設定されています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3790,7 +3790,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect2">
 <h3 id="_web_workers"><a class="anchor" href="#_web_workers"></a><a class="link" href="#_web_workers">7.5. Web Workers</a></h3>
 <div class="paragraph">
-<p>また、<code>:modules</code> 設定は、ウェブワーカーとして利用することを意図したファイルを生成するためにも利用できる。任意のモジュールをウェブワーカーとして宣言するには、<code>:web-worker true</code> を設定します。生成されたファイルには、依存関係を自動的にロードする追加のブートストラップコードが含まれます。モジュールが動作する方法は、ワーカーによってのみ使用されるコードが、ワーカーの最終ファイルにのみ存在することを保証します。各ワーカーは専用のCLJS名前空間を持つべきです。</p>
+<p>また <code>:modules</code> 設定は、ウェブワーカーとして利用することを意図したファイルを生成するためにも利用できる。任意のモジュールをウェブワーカーとして宣言するには <code>:web-worker true</code> を設定します。生成されたファイルには、依存関係を自動的にロードする追加のブートストラップコードが含まれます。モジュールが動作する方法は、ワーカーによってのみ使用されるコードが、ワーカーの最終ファイルにのみ存在することを保証します。各ワーカーは専用のCLJS名前空間を持つべきです。</p>
 </div>
 <div class="listingblock">
 <div class="title">ウェブワーカースクリプトの生成例</div>
@@ -3962,7 +3962,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p>開発ビルドでもこのファイルが生成されますので、新しいビルドが完了したときに変更があるかどうかを確認することができます。開発中は <code>:module-hash-names</code> は適用されないので、通常のファイル名を取得します。</p>
 </div>
 <div class="paragraph">
-<p>生成されるマニフェストファイルの名前は、<code>:build-options :manifest-name`エントリで設定できます。デフォルトは `manifest.edn</code> です。ファイル名の末尾に <code>.json</code> を指定した場合、出力は EDN ではなく JSON になります。ファイルは設定された <code>:output-dir</code> からの相対的なものになります。</p>
+<p>生成されるマニフェストファイルの名前は <code>:build-options :manifest-name</code> エントリで設定できます。デフォルトは <code>manifest.edn</code> です。ファイル名の末尾に <code>.json</code> を指定した場合、出力は EDN ではなく JSON になります。ファイルは設定された <code>:output-dir</code> からの相対的なものになります。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example manifest.json config</div>
@@ -3990,7 +3990,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p><code>:browser</code> ターゲットはビルドが開始されたときにロードインディケータを表示するために HUD を使用するようになりました。また、警告やエラーがあれば表示されます。</p>
 </div>
 <div class="paragraph">
-<p>これを完全に無効にするには、<code>:devtools</code> セクションで <code>:hud false</code> を設定します。</p>
+<p>これを完全に無効にするには <code>:devtools</code> セクションで <code>:hud false</code> を設定します。</p>
 </div>
 <div class="paragraph">
 <p>また <code>:hud #{:errors :warnings}</code> を設定することで、気になる機能を指定して、特定の機能を切り替えることもできます。これにより、エラーや警告は表示されますが、進捗状況は表示されません。利用可能なオプションは <code>:errors</code>, <code>:warnings</code>, <code>:progress</code> です。含まれるオプションのみが有効になり、それ以外はすべて無効になります。</p>
@@ -4011,7 +4011,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p><code>open-file-command</code> は非常に単純なDSLを表すベクトルを期待します。文字列はそのまま保持され、キーワードはそれぞれの値に置き換えられます。複数のパラメータを組み合わせる必要がある場合は、<code>clojure.core/format</code> スタイルのパターンを使って、入れ子になったベクトルを使うことができます。</p>
+<p><code>open-file-command</code> は非常に単純なDSLを表すベクトルを期待します。文字列はそのまま保持され、キーワードはそれぞれの値に置き換えられます。複数のパラメータを組み合わせる必要がある場合は <code>clojure.core/format</code> スタイルのパターンを使って、入れ子になったベクトルを使うことができます。</p>
 </div>
 <div class="paragraph">
 <p>上記の例では、次のように実行されます。</p>
@@ -4093,7 +4093,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>これにより、<code>public/css/main.css</code> が変更されたときにブラウザが <code>/css/main.css</code> をリロードするようになります。</p>
+<p>これにより <code>public/css/main.css</code> が変更されたときにブラウザが <code>/css/main.css</code> をリロードするようになります。</p>
 </div>
 <div class="paragraph">
 <p><code>shadow-cljs</code> は現在のところ CSS の直接コンパイルをサポートしていませんが、通常のツールは動作しますので、別途実行する必要があります。ただ、出力が正しい場所に生成されることを確認してください。</p>
@@ -4111,7 +4111,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>HTTP サーバが仮想ディレクトリからファイルを提供していて、ファイルシステムのパスが HTML で使われているパスと正確に一致しない場合は、<code>:watch-path</code> を設定することでパスを調整することができます。</p>
+<p>HTTP サーバが仮想ディレクトリからファイルを提供していて、ファイルシステムのパスが HTML で使われているパスと正確に一致しない場合は <code>:watch-path</code> を設定することでパスを調整することができます。</p>
 </div>
 <div class="listingblock">
 <div class="title">例 <code>public/css/main.css</code> が <code>/foo/css/main.css</code> の下に提供されている場合</div>
@@ -4265,7 +4265,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p>これは手動で行うこともできますが、`shadow.expo/render-root`関数を使用することで行うこともでき、代わりにReact Elementのインスタンスがレンダリングを開始することを直接期待できます。</p>
+<p>これは手動で行うこともできますが <code>shadow.expo/render-root</code> 関数を使用することで行うこともでき、代わりにReact Elementのインスタンスがレンダリングを開始することを直接期待できます。</p>
 </div>
 <div class="listingblock">
 <div class="title">From the Reagent &lt;a href="https://github.com/thheller/reagent-expo/blob/2c73ed0513a8f5050b250c0c7e53b9ae7543cee9/src/main/test/app.cljs#L34-L40"&gt;example&lt;/a&gt;</div>
@@ -4294,7 +4294,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect2">
 <h3 id="target-node-script"><a class="anchor" href="#target-node-script"></a><a class="link" href="#target-node-script">9.1. node.js Scripts</a></h3>
 <div class="paragraph">
-<p><code>:target :node-script</code> はシングルファイルのスタンドアロン出力を生成し、<code>node.js</code> を使って実行できます。コードはClojureScriptだけで、エントリポイントの定義も簡単です。</p>
+<p><code>:target :node-script</code> はシングルファイルのスタンドアロン出力を生成し <code>node.js</code> を使って実行できます。コードはClojureScriptだけで、エントリポイントの定義も簡単です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4598,7 +4598,7 @@ lib[&quot;ok?&quot;](); // call another-ns/ok?</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-exports設定は、エクスポートされたシンボルを自動的に追跡し、最適化の段階に渡します。これは、<code>:exports</code> にリストされているものは、Google Closure の最適化によってリネームされないことを意味します。
+exports設定は、エクスポートされたシンボルを自動的に追跡し、最適化の段階に渡します。これは <code>:exports</code> にリストされているものは、Google Closure の最適化によってリネームされないことを意味します。
 </td>
 </tr>
 </table>
@@ -4703,7 +4703,7 @@ hello
 </div>
 </div>
 <div class="paragraph">
-<p>デフォルトの <code>:output-dir</code> の <code>"node_modules/shadow-cljs"</code> を使っている場合は、JSで <code>require("shadow-cljs/demo.foo")</code> を使うことで、宣言された名前空間にアクセスすることができます。 <code>node_modules</code> にないものを使うときは、相対パスを使ってインクルードする必要があります。<code>:output-dir \″out"</code> とすると、プロジェクトのルートから <code>require("./out/demo.foo")</code> となります。</p>
+<p>デフォルトの <code>:output-dir</code> の <code>"node_modules/shadow-cljs"</code> を使っている場合は、JSで <code>require("shadow-cljs/demo.foo")</code> を使うことで、宣言された名前空間にアクセスすることができます。 <code>node_modules</code> にないものを使うときは、相対パスを使ってインクルードする必要があります。<code>:output-dir &#34;out&#34;</code> とすると、プロジェクトのルートから <code>require(&#34;./out/demo.foo&#34;)</code> となります。</p>
 </div>
 <div class="paragraph">
 <p>NPM上でコードを配布する予定があるのであれば、代わりに <a href="#NodeLibrary"><code>:node-library</code> target</a> を使うのが良いでしょう。</p>
@@ -4762,7 +4762,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Clojureの世界では、テストファイルをそれぞれのソースパスに保存するのが一般的ですので、上の例では <code>shadow-cljs.edn</code> の設定で <code>:source-paths ["src/main" "src/test"]</code> を設定したと仮定しています。通常のアプリのコードは <code>src/main</code> に、テストは <code>src/test</code> に入れます。これは任意で、全てを <code>src</code> に入れておいて <code>:source-paths [\”src\”]</code> を使っても全く問題ありません。</p>
+<p>Clojureの世界では、テストファイルをそれぞれのソースパスに保存するのが一般的ですので、上の例では <code>shadow-cljs.edn</code> の設定で <code>:source-paths ["src/main" "src/test"]</code> を設定したと仮定しています。通常のアプリのコードは <code>src/main</code> に、テストは <code>src/test</code> に入れます。これは任意で、全てを <code>src</code> に入れておいて <code>:source-paths [&#34;src&#34;]</code> を使っても全く問題ありません。</p>
 </div>
 <div class="sect2">
 <h3 id="target-node-test"><a class="anchor" href="#target-node-test"></a><a class="link" href="#target-node-test">11.1. Testing in node.js</a></h3>
@@ -4803,7 +4803,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 <code>:autorun</code>
 </td>
 <td class="hdlist2">
-<p>(boolean, オプション) ビルドが完了したときに <code>node</code> 経由でテストを実行します。これは主に <code>watch</code> と組み合わせて使うことを意図しています。実行中のJVMを強制的に終了させる必要があるため、`node`プロセスの終了コードは返されません。</p>
+<p>(boolean, オプション) ビルドが完了したときに <code>node</code> 経由でテストを実行します。これは主に <code>watch</code> と組み合わせて使うことを意図しています。実行中のJVMを強制的に終了させる必要があるため <code>node</code> プロセスの終了コードは返されません。</p>
 </td>
 </tr>
 <tr>
@@ -4927,7 +4927,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>これは単に <code>init</code>, <code>start</code>, <code>stop</code> メソッドを持っているだけです。init`は起動時に一度だけ呼び出され、`stop`はコードがリロードされる前に呼び出され、`start`はすべてのコードがリロードされた後に呼び出されます。</p>
+<p>これは単に <code>init</code>, <code>start</code>, <code>stop</code> メソッドを持っているだけです。init`は起動時に一度だけ呼び出され <code>stop</code> はコードがリロードされる前に呼び出され <code>start</code> はすべてのコードがリロードされた後に呼び出されます。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -4944,7 +4944,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <div class="sect3">
 <h4 id="_generated_output_in_code_test_dir_code"><a class="anchor" href="#_generated_output_in_code_test_dir_code"></a><a class="link" href="#_generated_output_in_code_test_dir_code">11.2.1. Generated output in <code>:test-dir</code></a></h4>
 <div class="paragraph">
-<p>出力には、`test-dir`フォルダ内の2つの主要な成果物が含まれています。</p>
+<p>出力には <code>test-dir</code> フォルダ内の2つの主要な成果物が含まれています。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4961,7 +4961,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 <div class="sect2">
 <h3 id="target-karma"><a class="anchor" href="#target-karma"></a><a class="link" href="#target-karma">11.3. 継続的インテグレーションのためにテストをKarmaターゲットに絞る</a></h3>
 <div class="paragraph">
-<p>ある種のCIサーバ上のブラウザに対してCLJSテストを実行したい場合、コマンドラインからテストを実行してステータスコードを返すことができる必要があります。Karma はよく知られていてサポートされているテストランナーであり、<code>shadow-cljs</code> にはテストに適切なラッパーを追加してテストを実行できるようにするターゲットが含まれています。</p>
+<p>ある種のCIサーバ上のブラウザに対してCLJSテストを実行したい場合、コマンドラインからテストを実行してステータスコードを返すことができる必要があります。Karma はよく知られていてサポートされているテストランナーであり <code>shadow-cljs</code> にはテストに適切なラッパーを追加してテストを実行できるようにするターゲットが含まれています。</p>
 </div>
 <div class="sect3">
 <h4 id="_installing_karma"><a class="anchor" href="#_installing_karma"></a><a class="link" href="#_installing_karma">11.3.1. Installing Karma</a></h4>
@@ -5037,7 +5037,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>また、`karma.conf.js`も必要です。</p>
+<p>また <code>karma.conf.js</code> も必要です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5112,7 +5112,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 </div>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> では、 <strong>常に <code>ns</code> 形式と指定した <code>:as</code> のエイリアスを使用します。</strong> また、<code>:reference</code> や <code>:rename</code> を使うこともできます。これは、<code>:foreign-libs</code>/CLJSJS が行うものとは異なり、名前空間にそれをインクルードし、コードの中でグローバルな <code>js/Thhing</code> を使用します。</p>
+<p><code>shadow-cljs</code> では、 <strong>常に <code>ns</code> 形式と指定した <code>:as</code> のエイリアスを使用します。</strong> また <code>:reference</code> や <code>:rename</code> を使うこともできます。これは <code>:foreign-libs</code>/CLJSJS が行うものとは異なり、名前空間にそれをインクルードし、コードの中でグローバルな <code>js/Thhing</code> を使用します。</p>
 </div>
 <div class="paragraph">
 <p>パッケージによっては <code>(:require ["thing" :as thing])</code> と <code>(thing)</code> を使って直接呼び出すことができる関数をエクスポートするだけのものもあります。</p>
@@ -5130,7 +5130,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <div class="title">Important</div>
 </td>
 <td class="content">
-このテーブルは、消費するコードが実際のES6+コードとしてパッケージ化されている場合にのみ適用されます。コードがCommonJSとしてパッケージ化されている場合、`:default`は適用されない場合があります。詳細は以下のセクションを参照してください。
+このテーブルは、消費するコードが実際のES6+コードとしてパッケージ化されている場合にのみ適用されます。コードがCommonJSとしてパッケージ化されている場合 <code>:default</code> は適用されない場合があります。詳細は以下のセクションを参照してください。
 </td>
 </tr>
 </table>
@@ -5275,7 +5275,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <div class="content">
 <div class="title"><code>:shadow</code> vs <code>:closure</code></div>
 <div class="paragraph">
-<p>理想的には <code>:closure</code> をプライマリの JS プロバイダとして使いたいものです。しかし実際には、<code>npm</code> で利用できるコードの多くは <code>:advanced</code> のコンパイルが行う積極的な最適化とは互換性がありません。これらのコードはコンパイルに全く失敗するか、実行時に識別するのが非常に困難な微妙なバグを露呈します。</p>
+<p>理想的には <code>:closure</code> をプライマリの JS プロバイダとして使いたいものです。しかし実際には <code>npm</code> で利用できるコードの多くは <code>:advanced</code> のコンパイルが行う積極的な最適化とは互換性がありません。これらのコードはコンパイルに全く失敗するか、実行時に識別するのが非常に困難な微妙なバグを露呈します。</p>
 </div>
 <div class="paragraph">
 <p><code>:shadow</code> は <code>:simple</code> を経由してコードを処理するだけで、より信頼性の高いサポートを実現しつつ、合理的に最適化されたコードを得ることができるその場限りの解決方法のようなものです。出力は <code>webpack</code> のような他のツールが生成するものに匹敵します (あるいはそれよりも優れていることが多い)。</p>
@@ -5301,12 +5301,12 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <div class="sect3">
 <h4 id="js-resolve"><a class="anchor" href="#js-resolve"></a><a class="link" href="#js-resolve">12.1.3. Resolving Packages</a></h4>
 <div class="paragraph">
-<p>デフォルトでは、<code>shadow-cljs</code> は <code>(:require [" thing" :as x])</code> 要求をすべて <code>npm</code> の規約に従って解決します。つまり、<code>&lt;project&gt;/node_modules/thing/package.json`を見て、そこからコードを辿ります。この動作をカスタマイズするために `shadow-cljs</code> は <code>:resolve</code> という設定オプションを公開しています。</p>
+<p>デフォルトでは <code>shadow-cljs</code> は <code>(:require [" thing" :as x])</code> 要求をすべて <code>npm</code> の規約に従って解決します。つまり <code>&lt;project&gt;/node_modules/thing/package.json</code> を見て、そこからコードを辿ります。この動作をカスタマイズするために <code>shadow-cljs</code> は <code>:resolve</code> という設定オプションを公開しています。</p>
 </div>
 <div class="sect4">
 <h5 id="js-resolve-global"><a class="anchor" href="#js-resolve-global"></a><a class="link" href="#js-resolve-global">Using a CDN</a></h5>
 <div class="paragraph">
-<p>CDN経由で既にReactがページに含まれているとします。あなたは再び <code>js/React</code> を使い始めることができますが、私たちは正当な理由のためにそれをするのをやめました。代わりに <code>(:require ["react" :as react])</code> を使い続けることができますが、\”react" の解決方法を設定してください!</p>
+<p>CDN経由で既にReactがページに含まれているとします。あなたは再び <code>js/React</code> を使い始めることができますが、私たちは正当な理由のためにそれをするのをやめました。代わりに <code>(:require ["react" :as react])</code> を使い続けることができますが、&#34;react&#34; の解決方法を設定してください!</p>
 </div>
 <div class="paragraph">
 <p>以下はそのようなビルドのための <code>shadow-cljs.edn</code> の設定例です:</p>
@@ -5328,13 +5328,13 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 </div>
 </div>
 <div class="paragraph">
-<p><code>:app</code> のビルドではグローバルな <code>React</code> インスタンスを使用しますが、<code>:server</code> のビルドでは \” react" npm パッケージを使用してビルドを継続します。これを動作させるためにコードをいじる必要はありません。</p>
+<p><code>:app</code> のビルドではグローバルな <code>React</code> インスタンスを使用しますが <code>:server</code> のビルドでは &#34;react&#34; npm パッケージを使用してビルドを継続します。これを動作させるためにコードをいじる必要はありません。</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="js-resolve-npm"><a class="anchor" href="#js-resolve-npm"></a><a class="link" href="#js-resolve-npm">Redirecting “require”</a></h5>
 <div class="paragraph">
-<p>ビルドによっては、どの <code>npm</code> パッケージが実際に使用されるかをコントロールしたくないこともあるでしょう。コードを変更せずに、ビルド設定から特定の要求を \”redirect" することができます。これは、そのようなパッケージを使っているソースにアクセスできない場合や、 あるビルドのためだけに変更したい場合に便利です。</p>
+<p>ビルドによっては、どの <code>npm</code> パッケージが実際に使用されるかをコントロールしたくないこともあるでしょう。コードを変更せずに、ビルド設定から特定の要求を &#34;redirect&#34; することができます。これは、そのようなパッケージを使っているソースにアクセスできない場合や、 あるビルドのためだけに変更したい場合に便利です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5456,7 +5456,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <p><code>/some-library/components/foo</code> のような絶対的な要求は、コンパイラがクラスパス上の <code>some-library/components/foo.js</code> を探すことを意味します。同じクラスパスルールが適用されるので、ファイルは <code>:source-paths</code> または使用しているサードパーティの <code>.jar</code> ライブラリにあるかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>相対パスは、まず現在の名前空間を見て、その名前からの相対パスを解決することで解決されます。上の例では、<code>demo/app.cljs</code> から <code>./bar</code> の require は <code>demo/bar.js</code> に解決されるので <code>(:require ["/demo/bar")</code> と同じです。</p>
+<p>相対パスは、まず現在の名前空間を見て、その名前からの相対パスを解決することで解決されます。上の例では <code>demo/app.cljs</code> から <code>./bar</code> の require は <code>demo/bar.js</code> に解決されるので <code>(:require ["/demo/bar")</code> と同じです。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -5507,7 +5507,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <p>Closureコンパイラは常に更新されていますので、新しい機能は時間の経過とともに利用可能になります。ただ、最新の最先端のプレビュー機能をすぐに使えるようになるとは思っていません。最近追加された <code>async/await</code> のような機能はすでに十分に機能しています。</p>
 </div>
 <div class="paragraph">
-<p>JSは、<code>import`や`export`を使ってESモジュール構文を使って記述する必要があります。JSファイルは他のJSファイルをインクルードしたり、CLJSコードを直接参照したりすることができます。また、`npm</code> パッケージに直接アクセスすることもできますが、1つの注意点があります。</p>
+<p>JSは <code>import</code> や <code>export</code> を使ってESモジュール構文を使って記述する必要があります。JSファイルは他のJSファイルをインクルードしたり、CLJSコードを直接参照したりすることができます。また <code>npm</code> パッケージに直接アクセスすることもできますが、1つの注意点があります。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5532,7 +5532,7 @@ HeadlessChrome 0.0.0 (Mac OS X 10.12.6): Executed 1 of 1 SUCCESS (0.007 secs / 0
 <div class="title">Important</div>
 </td>
 <td class="content">
-Closure Compilerのチェックが厳しいため、CLJSやnpmのコードが必要な場合は、`import * as X from \”npm";`構文を使うことができません。他のJSファイルが必要な場合は問題ありません。
+Closure Compilerのチェックが厳しいため、CLJSやnpmのコードが必要な場合は <code>import * as X from &#34;npm&#34;;</code> 構文を使うことができません。他のJSファイルが必要な場合は問題ありません。
 </td>
 </tr>
 </table>
@@ -5541,7 +5541,7 @@ Closure Compilerのチェックが厳しいため、CLJSやnpmのコードが必
 <div class="sect3">
 <h4 id="_javascript_dialects"><a class="anchor" href="#_javascript_dialects"></a><a class="link" href="#_javascript_dialects">12.2.3. JavaScript Dialects</a></h4>
 <div class="paragraph">
-<p>多くの一般的なJavaScriptの方言(JSX、CoffeeScriptなど)はClosureコンパイラで直接解析できないので、クラスパスに置く前に前処理をする必要があります。 <a href="https://babeljs.io/">babel</a> はJavaScriptの世界で一般的に使われているので、 <code>.jsx</code> ファイルを処理するために <code>babel</code> を例に挙げてみます。</p>
+<p>多くの一般的なJavaScriptの方言(JSX、CoffeeScriptなど)はClosureコンパイラで直接解析できないので、クラスパスに置く前に前処理をする必要があります。 <a href="https://babeljs.io/">babel</a> はJavaScriptの世界で一般的に使われているので <code>.jsx</code> ファイルを処理するために <code>babel</code> を例に挙げてみます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example shadow-cljs.edn Config</div>
@@ -5730,10 +5730,10 @@ cljs.array_map(<span class="keyword">keyword</span>(<span class="string"><span c
 <h2 id="release"><a class="anchor" href="#release"></a><a class="link" href="#release">13. Generating Production Code&#8201;&#8212;&#8201;All Targets</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Development mode always outputs individual files for each namespace so that they can be hot loaded in isolation. When you&#8217;re ready to deploy code to a real server you want to run the Closure Compiler on it to generate a single minified result for each <a href="#_modules">module</a>.</p>
+<p>開発モードでは、各名前空間ごとに個別のファイルを出力します。実際のサーバにコードをデプロイする準備ができたら、Closure Compilerを実行して、各 <a href="#_modules">module</a> に対して単一の最小化された結果を生成したいと思います。</p>
 </div>
 <div class="paragraph">
-<p>By default the release mode output file should just be a drop-in replacements for the development mode file: there is no difference in the way you include them in your HTML. You may use <a href="#NameHashing">filename hashing</a> to improve caching characteristics on browser targets.</p>
+<p>デフォルトでは、リリースモードの出力ファイルは、開発モードのファイルの代わりにドロップインされるだけです。ブラウザターゲットのキャッシュ特性を改善するために <a href="#NameHashing">filename hashing</a> を使うことができます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Generating Minified Output</div>
@@ -5744,15 +5744,15 @@ cljs.array_map(<span class="keyword">keyword</span>(<span class="string"><span c
 <div class="sect2">
 <h3 id="_release_configuration"><a class="anchor" href="#_release_configuration"></a><a class="link" href="#_release_configuration">13.1. Release Configuration</a></h3>
 <div class="paragraph">
-<p>Usually you won&#8217;t need to add any extra configuration to create a release version for your build. The default config already captures everything necessary and should only require extra configuration if you want to override the defaults.</p>
+<p>通常、ビルド用のリリースバージョンを作成するために余分な設定を追加する必要はありません。デフォルトの設定には必要なものがすべて含まれているので、デフォルトを上書きしたい場合に追加の設定が必要になるだけです。</p>
 </div>
 <div class="paragraph">
-<p>Each <code>:target</code> already provides good defaults optimized for each platform so you&#8217;ll have less to worry about.</p>
+<p>それぞれの <code>:target</code> には、それぞれのプラットフォームに最適化されたデフォルトが用意されているので、心配することは少なくなります。</p>
 </div>
 <div class="sect3">
 <h4 id="Optimization"><a class="anchor" href="#Optimization"></a><a class="link" href="#Optimization">13.1.1. Optimizations</a></h4>
 <div class="paragraph">
-<p>You can choose the optimization level using the <code>:compiler-options</code> section of the configuration:</p>
+<p>最適化レベルは設定の <code>:compiler-options</code> セクションで選択できます。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -5761,7 +5761,7 @@ cljs.array_map(<span class="keyword">keyword</span>(<span class="string"><span c
 <div class="title">Important</div>
 </td>
 <td class="content">
-You do not usually need to set <code>:optimizations</code> since the <code>:target</code> already sets it to an appropriate level.
+通常は <code>:target</code> が適切なレベルに設定しているので <code>:optimizations</code> を設定する必要はありません。
 </td>
 </tr>
 </table>
@@ -5773,7 +5773,7 @@ You do not usually need to set <code>:optimizations</code> since the <code>:targ
 <div class="title">Important</div>
 </td>
 <td class="content">
-<code>:optimizations</code> only apply when using the <code>release</code> command. Development builds are never optimized by the Closure Compiler. Development builds are always set to <code>:none</code>.
+<code>:optimizations</code> は <code>release</code> コマンドを使用した場合にのみ適用されます。開発ビルドはClosureコンパイラによって最適化されることはありません。開発ビルドは常に <code>:none</code> に設定されています。
 </td>
 </tr>
 </table>
@@ -5788,16 +5788,16 @@ You do not usually need to set <code>:optimizations</code> since the <code>:targ
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://developers.google.com/closure/compiler/docs/compilation_levels">the Closure compiler&#8217;s documentation</a> for more information on available optimization levels.</p>
+<p>利用可能な最適化レベルの詳細については <a href="https://developers.google.com/closure/compiler/docs/compilation_levels">Closureコンパイラのドキュメント</a> を参照してください。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_release_specific_vs_development_configuration"><a class="anchor" href="#_release_specific_vs_development_configuration"></a><a class="link" href="#_release_specific_vs_development_configuration">13.1.2. Release-Specific vs. Development Configuration</a></h4>
 <div class="paragraph">
-<p>If you wish to have separate configuration values in a build when running a release build then you can override settings by including a <code>:dev</code> and/or <code>:release</code> section in the build section:</p>
+<p>リリースビルドを実行する時にビルド中に別の設定値を設定したい場合は、ビルドセクションに <code>:dev</code> や <code>:release</code> セクションを含めることで設定を上書きすることができます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example &lt;code&gt;shadow-cljs.edn&lt;/code&gt; build config</div>
+<div class="title">Example <code>shadow-cljs.edn</code> build config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="symbol">:source-paths</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">src</span><span class="delimiter">&quot;</span></span>]
  <span class="symbol">:dependencies</span> []
@@ -5820,10 +5820,10 @@ You do not usually need to set <code>:optimizations</code> since the <code>:targ
 <div class="sect2">
 <h3 id="externs"><a class="anchor" href="#externs"></a><a class="link" href="#externs">13.2. Externs</a></h3>
 <div class="paragraph">
-<p>Since we want builds to be fully optimized by the Closure Compiler <code>:advanced</code> compilation we need to deal with <a href="https://developers.google.com/closure/compiler/docs/api-tutorial3">Externs</a>. Externs represent pieces of code that are not included when doing <code>:advanced</code> compilation. <code>:advanced</code> works by doing whole program optimizations but some code we just won&#8217;t be able to include so Externs inform the Compiler about this code. Without Externs the Compiler may rename or remove some code that it shouldn&#8217;t.</p>
+<p>Closure Compilerの <code>:advanced</code> コンパイルでビルドを完全に最適化したいため <a href="https://developers.google.com/closure/compiler/docs/api-tutorial3">Externs</a> を扱う必要があります。 Externsは <code>:advanced</code> コンパイル時に含めないコードを表します。 <code>:advanced</code> はプログラム全体の最適化を行うことで動作しますが、その中には含めたくないコードもあるため、Externsはそのコードをコンパイラーに通知します。Externsを使用しないとコンパイラはコードの名前を変更したり削除したりすることがあります。</p>
 </div>
 <div class="paragraph">
-<p>Typically all JS Dependencies are foreign and won&#8217;t be passed through <code>:advanced</code> and thus require Externs.</p>
+<p>典型的には、すべてのJS依存関係は外部のものであり <code>:advanced</code> には渡せないため、Externsが必要です。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -5832,7 +5832,7 @@ You do not usually need to set <code>:optimizations</code> since the <code>:targ
 <div class="title">Tip</div>
 </td>
 <td class="content">
-Externs are only required for <code>:advanced</code>, they are not required in <code>:simple</code> mode.
+エクスターンが必要なのは <code>:advanced</code> の場合のみであり <code>:simple</code> モードでは必要ありません。
 </td>
 </tr>
 </table>
@@ -5840,7 +5840,7 @@ Externs are only required for <code>:advanced</code>, they are not required in <
 <div class="sect3">
 <h4 id="infer-externs"><a class="anchor" href="#infer-externs"></a><a class="link" href="#infer-externs">13.2.1. Externs Inference</a></h4>
 <div class="paragraph">
-<p>To help deal with Externs the <code>shadow-cljs</code> compiler provides enhanced externs inference which can be enabled by setting <code>:infer-externs :auto</code> for your build.</p>
+<p>Externs扱うために <code>shadow-cljs</code> コンパイラは拡張externs推論を提供しています、これを有効にするにはビルドに <code>:infer-externs :auto</code> を設定する必要があります。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example Config</div>
@@ -5855,10 +5855,10 @@ Externs are only required for <code>:advanced</code>, they are not required in <
 </div>
 </div>
 <div class="paragraph">
-<p>With <code>:auto</code> the compiler will perform additional checks at compile time for your files only. It won&#8217;t warn you about possible externs issues in library code. <code>:all</code> will enable it for everthing but be aware that you may get a lot of warnings.</p>
+<p><code>:auto</code> を使うと、コンパイラはコンパイル時にファイルに対してのみ追加のチェックを行います。ライブラリコードのエクスターンの問題については警告しません。 <code>:all</code> を使うとすべての場合に有効になりますが、大量の警告を受ける可能性があることに注意してください。</p>
 </div>
 <div class="paragraph">
-<p>When enabled you&#8217;ll get warnings whenever the Compiler cannot figure out whether you are working with JS or CLJS code.</p>
+<p>この機能を有効にするとコンパイラは、JS と CLJS のどちらのコードを使用しているかを判別できず、警告を表示します。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example Code</div>
@@ -5882,10 +5882,10 @@ Externs are only required for <code>:advanced</code>, they are not required in <
 </div>
 </div>
 <div class="paragraph">
-<p>In <code>:advanced</code> the compiler will be renaming <code>.baz</code> to something "shorter" and Externs inform the Compiler that this is an external property that should not be renamed.</p>
+<p>コンパイラは <code>:advanced</code> において <code>.baz</code> の名前をもっと短いものに変更します、 Externsはこれがリネームすべきではない外部プロパティであることをコンパイラに伝えます。</p>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> can generate the appropriate externs if you add a typehint to the object you are performing native interop on.</p>
+<p><code>shadow-cljs</code> は、ネイティブInteropを実行するオブジェクトにタイプヒントを追加すれば、適切なエクスターンを生成することができます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Type-hint to help externs generation</div>
@@ -5895,7 +5895,7 @@ Externs are only required for <code>:advanced</code>, they are not required in <
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>^js</code> typehint will cause the compiler to generate proper externs and the warning will go away. The property is now safe from renaming.</p>
+<p>この <code>^js</code> 型ヒントは、コンパイラが適切なエクスターンを生成するようになり、警告はなくなります。これでこのプロパティはリネームされても安全になりました。</p>
 </div>
 <div class="listingblock">
 <div class="title">Multiple interop calls</div>
@@ -5906,10 +5906,10 @@ Externs are only required for <code>:advanced</code>, they are not required in <
 </div>
 </div>
 <div class="paragraph">
-<p>It can get tedious to annotate every single interop call so you can annotate the variable binding itself. It will be used in the entire scope for this variable. Externs for both calls will still be generated.</p>
+<p>interop呼び出しのたびにアノテーションをつけるのは面倒になるので、変数のバインディング自体にアノテーションをつけることができます。この変数のスコープ全体で使用されます。両方の呼び出しのためのエクスターンはまだ生成されます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Annotate &lt;code&gt;x&lt;/code&gt; directly</div>
+<div class="title">Annotate <code>x</code> directly</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">defn</span> <span class="function">wrap-baz</span> [^js x]
   (<span class="keyword">.</span>foo x)
@@ -5923,25 +5923,25 @@ Externs are only required for <code>:advanced</code>, they are not required in <
 <div class="title">Important</div>
 </td>
 <td class="content">
-Don&#8217;t annotate everything with <code>^js</code>. Sometimes you may be doing interop on CLJS or ClosureJS objects. Those do not require externs. If you are certain you are working with a CLJS Object prefer using the <code>^clj</code> hint.  It is not the end of the world when using <code>^js</code> incorrectly but it may affect some optimizations when a variable is not renamed when it could be.
+すべてのものに <code>^js</code> をアノテーションしてはいけません。CLJSやClosureJSオブジェクトのinteropを行うことがあるかもしれません。これらはエクスターンを必要としません。CLJSオブジェクトで作業していることが確実ならば <code>^clj</code> ヒントを使うことをお勧めします。 間違って <code>^js</code> を使用しても世界の終わりではありませんが、変数がリネームされず最適化に影響を与える可能性があります。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Calls on globals do not require a typehint when using direct <code>js/</code> calls.</p>
+<p>直接的な <code>js/</code> 呼び出しを使用する場合、グローバルの呼び出しはタイプヒントを必要としません。</p>
 </div>
 <div class="listingblock">
-<div class="title">No hint required, externs inferred automatically</div>
+<div class="title">ヒントは不要で、自動的にexternが推測されます</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(js/Some.Thing.coolFunction)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Calls on <code>:require</code> bindings are also inferred automatically.</p>
+<p><code>:require</code> バインディングの呼び出しも自動的に推測されます。</p>
 </div>
 <div class="listingblock">
-<div class="title">No hint required for &lt;code&gt;:as&lt;/code&gt; and &lt;code&gt;:refer&lt;/code&gt; bindings</div>
+<div class="title"><code>:as</code> および <code>:refer</code> バインディングにはヒントは必要ありません。</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">ns</span> <span class="namespace">my.app</span>
   (<span class="symbol">:require</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">react</span><span class="delimiter">&quot;</span></span> <span class="symbol">:as</span> react <span class="symbol">:refer</span> (createElement)]))
@@ -5954,7 +5954,7 @@ Don&#8217;t annotate everything with <code>^js</code>. Sometimes you may be doin
 <div class="sect3">
 <h4 id="_manual_externs"><a class="anchor" href="#_manual_externs"></a><a class="link" href="#_manual_externs">13.2.2. Manual Externs</a></h4>
 <div class="paragraph">
-<p>Some libraries provide Externs as separate <code>.js</code> files. You can include them into your build via the <code>:externs</code> compiler options.</p>
+<p>いくつかのライブラリでは、Externsを別の <code>.js</code> ファイルとして提供しています。コンパイラの <code>:externs</code> オプションを使ってビルドに含めることができます。</p>
 </div>
 <div class="listingblock">
 <div class="title">Manual Externs Config</div>
@@ -5975,7 +5975,7 @@ Don&#8217;t annotate everything with <code>^js</code>. Sometimes you may be doin
 <div class="title">Tip</div>
 </td>
 <td class="content">
-The compiler looks for files relative to the project root first. It will also attempt to load them from the classpath if no file is found.
+コンパイラは最初にプロジェクト・ルートからの相対的なファイルを探します。また、ファイルが見つからない場合は、クラスパスからの読み込みを試みます。
 </td>
 </tr>
 </table>
@@ -5984,10 +5984,10 @@ The compiler looks for files relative to the project root first. It will also at
 <div class="sect3">
 <h4 id="_simplified_externs"><a class="anchor" href="#_simplified_externs"></a><a class="link" href="#_simplified_externs">13.2.3. Simplified Externs</a></h4>
 <div class="paragraph">
-<p>Writing Externs by hand can be challenging and <code>shadow-cljs</code> provides a way to write a more convenient way to write them. In combination with <code>shadow-cljs check &lt;your-build&gt;</code> you can quickly add the missing Externs.</p>
+<p>Externsを手書きで書くのは難しいかもしれませんが <code>shadow-cljs</code> はより便利な書き方を提供してくれます。 <code>shadow-cljs check &lt;your-build&gt;</code> と組み合わせれば、不足しているエクスターンを素早く追加することができます。</p>
 </div>
 <div class="paragraph">
-<p>Start by creating a <code>externs/&lt;your-build&gt;.txt</code>, so build <code>:app</code> would be <code>externs/app.txt</code>. In that file each line should be one word specifying a JS property that should not be renamed. Global variables should be prefixed by <code>global:</code></p>
+<p>まず <code>externs/&lt;your-build&gt;.txt</code> を作成することから始めます。このファイルの各行には名前を変更してはいけないJSプロパティを1つずつ記述します。グローバル変数の前には <code>global:</code> を付けてください。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example externs/app.txt</div>
@@ -5999,17 +5999,17 @@ global<span class="symbol">:SomeGlobalVariable</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example the compiler will stop renaming <code>something.foo()</code>, <code>something.bar()</code>.</p>
+<p>この例ではコンパイラは <code>something.foo()</code>, <code>something.bar()</code> のリネームを停止します。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_code_stripping"><a class="anchor" href="#_code_stripping"></a><a class="link" href="#_code_stripping">13.3. Code Stripping</a></h3>
 <div class="paragraph">
-<p>The Closure Compiler supports removing unwanted code by name. This allows removing code that normal dead-code removal can&#8217;t or won&#8217;t remove. This is quite dangerous as it can remove code you actually care about but it can remove a lot of dev only code easily. It is grouped into 4 separate options of which pretty much only <code>:strip-type-prefixes</code> is relevant to ClojureScript but other may be useful as well.</p>
+<p>Closureコンパイラは、不要なコードを名前で削除することをサポートしています。これにより、通常のデッドコード除去では除去できないコードを除去することができます。これは非常に危険なことですが、実際に気になるコードを削除することができますが、多くの開発者専用のコードを簡単に削除することができます。これは4つの別々のオプションにグループ化されていて、そのうちのほとんどは <code>:strip-type-prefixes</code> だけがClojureScriptに関連していますが、他のオプションも同様に有用かもしれません。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example removing all uses of &lt;code&gt;cljs.pprint&lt;/code&gt;</div>
+<div class="title"><code>cljs.pprint</code> のすべての利用を削除する例</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -6021,32 +6021,32 @@ global<span class="symbol">:SomeGlobalVariable</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Each of these options is specified as a Set of Strings. Please note that all the names specified here are JS names so certain CLJS names must be munged. <code>my-lib.core</code> becomes <code>my_lib.core</code>.</p>
+<p>これらのオプションはそれぞれ文字列のセットとして指定されます。ここで指定された名前はすべてJS名なので、CLJS名を指定する必要があることに注意してください。 <code>my-lib.core</code> は <code>my_lib.core</code> になります。</p>
 </div>
 <div class="dlist Horizontal">
 <dl>
 <dt><code>:strip-types</code></dt>
 <dd>
-<p>Allows removing deftype/defrecord declarations or uses. <code>#{"my.ns.FooBar}</code> removes <code>(defrecord FooBar [])</code>.</p>
+<p>deftype/defrecordの宣言や使用法を削除することができます <code>#{&#34;my.ns.FooBar&#34;}</code> は <code>(defrecord FooBar [])</code> を削除します。</p>
 </dd>
 <dt><code>:strip-type-prefixes</code></dt>
 <dd>
-<p>Removes everything starting with any of the given Prefixes. Allows removing entire CLJS namespaces.</p>
+<p>与えられた接頭辞のいずれかで始まるすべてのものを削除します。CLJSの名前空間全体を削除することができます。</p>
 </dd>
 <dt><code>:strip-name-prefixes</code></dt>
 <dd>
-<p>Allows removing properties by prefix. <code>#{"log"}</code> removes <code>this.logX</code> or <code>(defn log-me [&#8230;&#8203;])</code></p>
+<p>接頭辞によるプロパティの削除を許可します。このように <code>#{"log"}</code> は <code>this.logX</code> または <code>(defn log-me [&#8230;&#8203;])</code> を削除します。</p>
 </dd>
 <dt><code>:strip-name-suffixes</code></dt>
 <dd>
-<p>Allows removing properties by suffix. <code>#{"log"}</code> removes <code>this.myLog</code> or <code>(defn my-log [&#8230;&#8203;])</code></p>
+<p>サフィックスによるプロパティの削除が可能です <code>#{&#34;log"}</code> は <code>this.myLog</code> または <code>(defn my-log [&#8230;&#8203;])</code> を削除します。</p>
 </dd>
 </dl>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>DANGER: Be careful with these options. They apply to your entire build and may remove code you actually need. You may accidentally remove code in libraries not written by you. Always consider other options before using this.</strong></p>
+<p><strong>危険: これらのオプションには注意してください。これらのオプションはビルド全体に適用され、実際に必要なコードを削除する可能性があります。あなたが書いたものではないライブラリのコードを誤って削除してしまうかもしれません。これを使用する前には、常に他のオプションを検討してください。</strong></p>
 </div>
 </div>
 </div>
@@ -6054,10 +6054,10 @@ global<span class="symbol">:SomeGlobalVariable</span></code></pre>
 <div class="sect2">
 <h3 id="_build_report"><a class="anchor" href="#_build_report"></a><a class="link" href="#_build_report">13.4. Build Report</a></h3>
 <div class="paragraph">
-<p><code>shadow-cljs</code> can generate a detailed report for your <code>release</code> builds which includes a detailed breakdown of the included sources and how much they each contributed to the overall size.</p>
+<p><code>shadow-cljs</code> は <code>release</code> ビルドの詳細なレポートを生成することができ、含まれるソースの詳細な内訳と、それらが全体のサイズにどれだけ貢献したかを含みます。</p>
 </div>
 <div class="paragraph">
-<p>A sample report can be found <a href="https://code.thheller.com/demos/build-report/huge.html">here</a>.</p>
+<p>レポートのサンプルは <a href="https://code.thheller.com/demos/build-report/huge.html">こちら</a> をご覧ください。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6067,7 +6067,7 @@ $ npx shadow-cljs run shadow.cljs.build-report app report.html</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The above example will generate a <code>report.html</code> in the project directory for the <code>:app</code> build.</p>
+<p>上記の例では <code>:app</code> ビルド用の <code>report.html</code> がプロジェクトディレクトリに生成されます。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -6076,7 +6076,7 @@ $ npx shadow-cljs run shadow.cljs.build-report app report.html</code></pre>
 <div class="title">Tip</div>
 </td>
 <td class="content">
-The generated <code>report.html</code> is entirely self-contained and includes all the required data/js/css. No other external sources are required.
+生成される <code>report.html</code> は完全に自己完結型で、必要なデータ/js/cssをすべて含んでいます。他の外部ソースは必要ありません。
 </td>
 </tr>
 </table>
@@ -6090,7 +6090,7 @@ The generated <code>report.html</code> is entirely self-contained and includes a
 <div class="sect2">
 <h3 id="_cursive"><a class="anchor" href="#_cursive"></a><a class="link" href="#_cursive">14.1. Cursive</a></h3>
 <div class="paragraph">
-<p>Cursive does not currently support resolving dependencies via <code>shadow-cljs.edn</code>. You can run <code>shadow-cljs pom</code> to generate a <code>pom.xml</code> and import that using the IntelliJ.</p>
+<p>Cursiveは現在のところ <code>shadow-cljs.edn</code> による依存関係の解決をサポートしていません。 <code>shadow-cljs pom</code> を実行して <code>pom.xml</code> を生成し、IntelliJを使ってそれをインポートすることができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6098,7 +6098,7 @@ The generated <code>report.html</code> is entirely self-contained and includes a
 </div>
 </div>
 <div class="paragraph">
-<p>Then in Cursive <strong>File &#8594; New &#8594; Project from Existing Sources</strong> then select the generated <code>pom.xml</code> in the project directory.</p>
+<p>次にCursiveから <strong>File &#8594; New &#8594; Project from Existing Sources</strong> で、プロジェクトディレクトリ内の生成された <code>pom.xml</code> を選択します。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -6107,13 +6107,13 @@ The generated <code>report.html</code> is entirely self-contained and includes a
 <div class="title">Important</div>
 </td>
 <td class="content">
-You need to have the "Build Tools" &#8594; "Maven" Plugin enabled for this. It might not be enabled by default.
+このためには、&#34;Build Tools&#34; &#8594; "Maven" Pluginが有効になっている必要があります。デフォルトでは有効になっていないかもしれません。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Alternatively you can create a dummy <code>project.clj</code> or use the full <a href="#Leiningen">Leiningen integration</a>.</p>
+<p>あるいはダミーの <code>project.clj</code> を作成するか、完全な <a href="#Leiningen">Leiningen integration</a> を使うことができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6126,10 +6126,10 @@ You need to have the "Build Tools" &#8594; "Maven" Plugin enabled for this. It m
 </div>
 </div>
 <div class="paragraph">
-<p>You can run <code>npx shadow-cljs server</code> inside the Terminal provided by IntelliJ and use <code>Clojure REPL &#8594; Remote</code> Run Configuration to connect to the provided <a href="#nREPL">nREPL server</a>. Just select the "Use port from nREPL file" option in Cursive Clojure REPL &#8594; Remote or configure a fixed nREPL port if you prefer.</p>
+<p>IntelliJが提供するターミナルの中で <code>npx shadow-cljs server</code> を実行し、 <code>Clojure REPL &#8594; Remote</code> Run Configuration を使って、提供された <a href="#nREPL">nREPL server</a> に接続することができます。Cursive Clojure REPL &#8594; Remoteで &#34;Use port from nREPL file &#34;オプションを選択するか、固定のnREPLポートを設定してください。</p>
 </div>
 <div class="paragraph">
-<p>Note that the Cursive REPL when first connected always starts out as a CLJ REPL. You can switch it to CLJS by calling <code>(shadow/repl :your-build-id)</code>. This will automatically switch the Cursive option as well. You can type <code>:cljs/quit</code> to drop back down to the CLJ REPL.</p>
+<p>最初に接続されたときのCursive REPLは常にCLJ REPLとして始まることに注意してください。 <code>(shadow/repl :your-build-id)</code> を呼び出すことでCLJSに切り替えることができます。これによりCursiveオプションも自動的に切り替わります。CLJ REPLに戻るには <code>:cljs/quit</code> と入力してください。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6138,7 +6138,7 @@ You need to have the "Build Tools" &#8594; "Maven" Plugin enabled for this. It m
 <div class="title">Note</div>
 </td>
 <td class="content">
-You cannot switch from CLJ&#8594;CLJS via the Cursive select box. Make sure you use the call above to switch.
+CLJ&#8594;CLJSからCursiveセレクトボックスを使って切り替えることはできません。必ず上記の呼び出しを使って切り替えてください。
 </td>
 </tr>
 </table>
@@ -6147,12 +6147,12 @@ You cannot switch from CLJ&#8594;CLJS via the Cursive select box. Make sure you 
 <div class="sect2">
 <h3 id="cider"><a class="anchor" href="#cider"></a><a class="link" href="#cider">14.2. Emacs / CIDER</a></h3>
 <div class="paragraph">
-<p>This section is written for CIDER version 0.20.0 and above. Ensure your Emacs environment has this version of the <code>cider</code> package or later. Refer to the <a href="https://docs.cider.mx">CIDER documentation</a> for full installation details.</p>
+<p>このセクションは CIDER バージョン 0.20.0 以降向けに書かれています。お使いのEmacs環境にこのバージョンの <code>cider</code> パッケージ以降があることを確認してください。インストールの詳細については、 <a href="https://docs.cider.mx">CIDER documentation</a> を参照してください。</p>
 </div>
 <div class="sect3">
-<h4 id="_launch_the_clojurescript_repl"><a class="anchor" href="#_launch_the_clojurescript_repl"></a><a class="link" href="#_launch_the_clojurescript_repl">14.2.1. Launch the ClojureScript REPL</a></h4>
+<h4 id="_launch_the_clojurescript_repl"><a class="anchor" href="#_launch_the_clojurescript_repl"></a><a class="link" href="#_launch_the_clojurescript_repl">14.2.1. ClojureScript REPLを起動します。</a></h4>
 <div class="paragraph">
-<p>Launch the nREPL and a ClojureScript REPL.</p>
+<p>nREPLとClojureScript REPLを起動します。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6160,26 +6160,26 @@ You cannot switch from CLJ&#8594;CLJS via the Cursive select box. Make sure you 
 </div>
 </div>
 <div class="paragraph">
-<p>CIDER will prompt you for the type of ClojureScript REPL:</p>
+<p>CIDERはClojureScript REPLの種類を尋ねてきます:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">Select ClojureScript REPL type:</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">ClojureScriptのREPLタイプを選択します:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Enter <code>shadow</code>.</p>
+<p><code>shadow</code> と入力します。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">Select shadow-cljs build:</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">shadow-cljs のビルドを選択します:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Enter the name of your build target, for example, <code>app</code>.</p>
+<p>ビルド対象の名前を入力してください(例: <code>app</code>):</p>
 </div>
 <div class="paragraph">
-<p>Emacs should now open a new nREPL connection to the <code>shadow-cljs</code> server of its sibling, bootstrapping into a ClojureScript REPL environment:</p>
+<p>Emacs はこれで、兄弟関係の <code>shadow-cljs</code> サーバへの新しい nREPL 接続を開き、ClojureScript の REPL 環境にブートストラップすることができるようになりました。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6189,10 +6189,10 @@ cljs.repl&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You should now be able to eval ClojureScript, jump to the definitions of vars (with <code>cider-find-var</code>) and much more.</p>
+<p>これで、ClojureScriptのevalやvarsの定義へのジャンプ（<code>cider-find-var</code> で）などができるようになりました。</p>
 </div>
 <div class="paragraph">
-<p>For example, to display an alert in the browser:</p>
+<p>例えば、ブラウザにアラートを表示させたり。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6201,9 +6201,9 @@ cljs.repl&gt;</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_simplify_startup_with_dir_local"><a class="anchor" href="#_simplify_startup_with_dir_local"></a><a class="link" href="#_simplify_startup_with_dir_local">14.2.2. Simplify startup with dir-local</a></h4>
+<h4 id="_simplify_startup_with_dir_local"><a class="anchor" href="#_simplify_startup_with_dir_local"></a><a class="link" href="#_simplify_startup_with_dir_local">14.2.2. dir-localで起動を簡素化</a></h4>
 <div class="paragraph">
-<p>You can simplify startup flow by a creating a <code>.dir-locals.el</code> file at project root.</p>
+<p>プロジェクトのルートに <code>.dir-locals.el</code> ファイルを作成することで、起動の流れを簡単にすることができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6216,13 +6216,13 @@ cljs.repl&gt;</code></pre>
 <div class="sect2">
 <h3 id="_proto_repl_atom"><a class="anchor" href="#_proto_repl_atom"></a><a class="link" href="#_proto_repl_atom">14.3. Proto REPL (Atom)</a></h3>
 <div class="paragraph">
-<p>Proto REPL is mostly intended for Clojure development so most features do not work for ClojureScript. It is however possible to use it for simple evals.</p>
+<p>Proto REPLはほとんどがClojure開発のためのものなので、ほとんどの機能はClojureScriptでは動作しません。しかし、単純な検証に使用することは可能です。</p>
 </div>
 <div class="paragraph">
-<p>You need to setup a couple of things to get it working.</p>
+<p>設定が必要なので</p>
 </div>
 <div class="paragraph">
-<p>1)  Create a <code>user.clj</code> in on of your <code>:source-paths</code>.</p>
+<p>1) <code>:source-paths</code> の中に <code>user.clj</code> を作成する。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6232,40 +6232,40 @@ cljs.repl&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The file must define the <code>user/reset</code> fn since Proto REPL will call that when connecting. If <code>user/reset</code> is not found it will call <code>tools.namespace</code> which destroys the running <code>shadow-cljs</code> server. We don&#8217;t want that. You could do something here but we don&#8217;t need to do anything for CLJS.</p>
+<p>Proto REPLは接続時にこれを呼び出すので、このファイルは <code>user/reset</code> 関数を定義しなければなりません。もし <code>user/reset</code> が見つからなければ、<code>tools.namespace</code> を呼び出し、実行中の <code>shadow-cljs</code> サーバを破壊します。これは望ましくありません。ここで何かできるかもしれませんが、CLJSのために何もする必要はありません。</p>
 </div>
 <div class="paragraph">
-<p>2) add <code>[proto-repl "0.3.1"]</code> to your <code>:dependencies</code> in <a href="#user-config">~/.shadow-cljs/config.edn</a> or <code>shadow-cljs.edn</code>.</p>
+<p>2) <a href="#user-config">~/.shadow-cljs/config.edn</a> または <code>shadow-cljs.edn</code> の <code>:dependencies</code> に <code>[proto-repl "0.3.1.1"]</code> を追加する。</p>
 </div>
 <div class="paragraph">
-<p>3) Configure a fixed <a href="#nREPL">nREPL port</a></p>
+<p>3) 固定の <a href="#nREPL">nREPLポート</a> を設定します。</p>
 </div>
 <div class="paragraph">
-<p>4) Start <code>shadow-cljs server</code> or <code>shadow-cljs watch your-build</code>.</p>
+<p>4) <code>shadow-cljs server</code> または <code>shadow-cljs watch your-build</code> を起動する。</p>
 </div>
 <div class="paragraph">
-<p>5) Run the Atom Command <code>Proto Repl: Remote Nrepl Connection</code> connect to <code>localhost</code> and the port you configured</p>
+<p>5) Atomコマンド <code>Proto Repl: Remote Nrepl Connection</code> で <code>localhost</code> と設定したポートに接続します。</p>
 </div>
 <div class="paragraph">
-<p>6) Eval <code>(shadow.cljs.devtools.api/watch :your-build)</code> (if you used <code>server</code> in 4)</p>
+<p>6) 4で <code>server</code> を使った場合 <code>(shadow.cljs.devtools.api/watch :your-build)</code> を評価します。</p>
 </div>
 <div class="paragraph">
-<p>7) Eval <code>(shadow.cljs.devtools.api/nrepl-select :your-build)</code>. The REPL connection is now in CLJS mode, meaning that everything you eval will be eval&#8217;d in JS. You can eval <code>:repl/quit</code> to get back to Clojure Mode. If you get <code>[:no-worker :browser]</code> you need to start the <code>watch</code> first.</p>
+<p>7) <code>(shadow.cljs.devtools.api/nrepl-select :your-build)</code> の評価を行います。REPL接続はCLJSモードになっているので、evalしたものはすべてJSでevalされることになります。Clojureモードに戻るには <code>:repl/quit</code> と入力してください。もし <code>[:no-worker :browser]</code> が出たら、まず <code>watch</code> を起動する必要があります。</p>
 </div>
 <div class="paragraph">
-<p>8) Before you can eval CLJS you need to connect your client (eg. your Browser when building a <code>:browser</code> App).</p>
+<p>8) CLJSを評価する前にクライアント（例えば <code>:browser</code> アプリを構築する際のブラウザ）を接続する必要があります。</p>
 </div>
 <div class="paragraph">
-<p>9) Eval some JS, eg. <code>(js/alert "foo")</code>. If you get <code>There is no connected JS runtime</code> the client is not connected properly. Otherwise the Browser should show an alert.</p>
+<p>9) JSを評価する、例えば <code>(js/alert "foo")</code>。 <code>There is no connected JS runtime</code> と表示されたらクライアントは正しく接続されていません。そうでなければブラウザにアラートが表示されるはずです。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_chlorine_atom"><a class="anchor" href="#_chlorine_atom"></a><a class="link" href="#_chlorine_atom">14.4. Chlorine (Atom)</a></h3>
 <div class="paragraph">
-<p>Chlorine connects Atom to a Socket REPL, but also tries to refresh namespace. So first, open up Chlorine package config and check if configuration <code>Should we use clojure.tools.namespace to refresh</code> is set to <code>simple</code>, otherwise it&#8217;ll destroy the running <code>shadow-cljs</code> server.</p>
+<p>ChlorineはAtomをSocket REPLに接続しますが名前空間をリフレッシュしようともします。そこでまずChlorineパッケージのconfigを開き、設定 <code>Should we use clojure.tools.namespace to refresh</code> が <code>simple</code> に設定されているかどうかを確認してください。</p>
 </div>
 <div class="paragraph">
-<p>Once you checked that the configuration is right, you can start your shadow app (replace <code>app</code> with whatever build):</p>
+<p>設定が正しいことを確認したら shadow app を起動します。(<code>app</code> をビルドしたものに置き換えてください)</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6273,24 +6273,24 @@ cljs.repl&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now, all you have to do is to run the atom command <code>Chlorine: Connect Clojure Socket Repl</code>. This will connect a REPL to evaluate Clojure code. Next you need to run <code>Chlorine: Connect Embeded</code>, and it&#8217;ll connect the ClojureScript REPL too.</p>
+<p>あとは、アトムコマンド <code>Chlorine: Connect Clojure Socket Repl</code> を実行するだけです、これでClojureコードを評価するためのREPLが接続されます。次に <code>Chlorine: Connect Embeded</code> を実行すると、ClojureScriptのREPLも接続されます。</p>
 </div>
 <div class="paragraph">
-<p>Now, you can use the <code>Chlorine: Evaluate&#8230;&#8203;</code> commands to evaluate any Clojure or ClojureScript REPL. It&#8217;ll evaluate <code>.clj</code> files as Clojure, and <code>cljc</code> files as ClojureScript.</p>
+<p>これで、<code>Chlorine: Evaluate…</code> コマンドを使って、任意のClojureやClojureScriptのREPLを評価できるようになりました。これは <code>.clj</code> ファイルを Clojure として、<code>cljc</code> ファイルを ClojureScript として評価します。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_calva_vs_code"><a class="anchor" href="#_calva_vs_code"></a><a class="link" href="#_calva_vs_code">14.5. Calva (VS Code)</a></h3>
 <div class="paragraph">
-<p>(Only tested with <code>browser</code> targets so far. Probably works with other targets too.)</p>
+<p>(今のところ <code>browser</code> ターゲットでしかテストしていません。おそらく他のターゲットでも動作します)</p>
 </div>
 <div class="sect3">
 <h4 id="_dependencies_2"><a class="anchor" href="#_dependencies_2"></a><a class="link" href="#_dependencies_2">14.5.1. 依存関係</a></h4>
 <div class="paragraph">
-<p>You need VS Code and install the <a href="https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva#overview">Calva</a> extension.</p>
+<p>VS Codeと <a href="https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva#overview">Calva</a> の拡張機能をインストールします。</p>
 </div>
 <div class="paragraph">
-<p>Since Calva uses nREPL and the <code>cider-nrepl</code> middlewares you need to include this dependency in <a href="#user-config">~/.shadow-cljs/config.edn</a> or <code>shadow-cljs.edn</code>:</p>
+<p>Calva は nREPL と <code>cider-nrepl</code> ミドルウェアを使用しているので、この依存関係を <a href="#user-config">~/.shadow-cljs/config.edn</a> または <code>shadow-cljs.edn</code> に含める必要があります。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6298,13 +6298,13 @@ cljs.repl&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> will inject the required <code>cider-nrepl</code> middleware once it sees this dependency.</p>
+<p><code>shadow-cljs</code> はこの依存関係を見つけると必要な <code>cider-nrepl</code> ミドルウェアを注入します。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_connecting_calva_to_the_repls"><a class="anchor" href="#_connecting_calva_to_the_repls"></a><a class="link" href="#_connecting_calva_to_the_repls">14.5.2. Connecting Calva to the REPLs</a></h4>
 <div class="paragraph">
-<p>Once that is done start your shadow app. (Using whatever build instead of <code>app</code>.):</p>
+<p>これが完了したら、シャドウアプリを起動します。(`app`の代わりに何でもいいからビルドしてください):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6312,51 +6312,51 @@ cljs.repl&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once the app is loaded in the browser, and you see <code>JS runime connected</code> in the terminal where you started the app, Calva can connect to its repl. Open the project in VS Code and Calva will by default try to auto connect and prompt you with a list of builds read from <code>shadow-cljs.edn</code>. Select the right one (<code>:app</code> in this example) and Calva&#8217;s Clojure and Clojurescript support is activated.</p>
+<p>アプリがブラウザに読み込まれ、アプリを起動したターミナルに <code>JS runime connected</code> と表示されると、Calva はその repl に接続することができます。VS Codeでプロジェクトを開くとCalvaはデフォルトで自動接続を試み <code>shadow-cljs.edn</code> から読み込んだビルドのリストを表示します。正しいもの(この例では <code>:app</code>)を選択すると、CalvaのClojureとClojurescriptのサポートが有効になります。</p>
 </div>
 <div class="paragraph">
-<p>(If you already have the project open in VS Code when you start the app, issue the <code>Calva: Connect to a Running REPL Server in the Project</code> command.)</p>
+<p>(アプリを起動したときにすでに VS Code でプロジェクトを開いている場合は <code>Calva: Connect to a Running REPL Server in the Project</code> コマンドを実行してください)</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_features"><a class="anchor" href="#_features"></a><a class="link" href="#_features">14.5.3. Features</a></h4>
 <div class="paragraph">
-<p>Some of the things you can now do:</p>
+<p>今できることのいくつか:</p>
 </div>
 <div class="sect4">
-<h5 id="_intellisense_and_stuff"><a class="anchor" href="#_intellisense_and_stuff"></a><a class="link" href="#_intellisense_and_stuff">Intellisense and stuff</a></h5>
+<h5 id="_intellisense_and_stuff"><a class="anchor" href="#_intellisense_and_stuff"></a><a class="link" href="#_intellisense_and_stuff">インテリセンスなど</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Peek at definitions on hover.</p>
+<p>hoverで定義を覗く</p>
 </li>
 <li>
-<p>Get auto completion help.</p>
+<p>自動補完の手助け</p>
 </li>
 <li>
-<p>Navigate to definitions (<code>cmd-click</code> on Mac, might be <code>ctrl-click</code> on Windows and Linux).</p>
+<p>定義へ移動 (Macでは <code>cmd-click</code> 、WindowsやLinuxでは <code>ctrl-click</code>)</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_evaluation_of_the_file_forms_and_selection"><a class="anchor" href="#_evaluation_of_the_file_forms_and_selection"></a><a class="link" href="#_evaluation_of_the_file_forms_and_selection">Evaluation of the file, forms and selection</a></h5>
+<h5 id="_evaluation_of_the_file_forms_and_selection"><a class="anchor" href="#_evaluation_of_the_file_forms_and_selection"></a><a class="link" href="#_evaluation_of_the_file_forms_and_selection">ファイルやフォーム、選択範囲の評価</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Evaluate the file: <code>ctrl+alt+c enter</code> (This is done automatically one opening files.)</p>
+<p>ファイルを評価する: <code>ctrl+alt+c enter</code> (これはファイルを開くときに自動で行います)</p>
 </li>
 <li>
-<p>Evaluate inline: <code>ctrl+alt+c e</code></p>
+<p>インラインで評価: <code>ctrl+alt+c e</code></p>
 </li>
 <li>
-<p>Evaluate and replace them in the editor: <code>ctrl+alt+c r</code></p>
+<p>エディタで評価して置き換える: <code>ctrl+alt+c r</code></p>
 </li>
 <li>
-<p>Pretty print evaluation resuls: <code>ctrl+alt+c p</code></p>
+<p>評価結果をプリティプリント: <code>ctrl+alt+c p</code></p>
 </li>
 <li>
-<p>Send forms to the integrated terminal repls for evaluation: <code>ctrl+alt+c alt+e</code></p>
+<p>評価のために統合されたreplにフォームを送る: <code>ctrl+alt+c alt+e</code></p>
 </li>
 </ul>
 </div>
@@ -6366,16 +6366,16 @@ cljs.repl&gt;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Run namespace tests: <code>ctrl+alt+c t</code></p>
+<p>名前空間テストの実行: <code>ctrl+alt+c t</code></p>
 </li>
 <li>
-<p>Run all tests: <code>ctrl+alt+c shift+t</code> (Really clunky in large projects so far.)</p>
+<p>全体テスト: <code>ctrl+alt+c shift+t</code> (大規模プロジェクトではとても不便です)</p>
 </li>
 <li>
-<p>Rerun previously failing tests: <code>ctrl+alt+c ctrl+t</code></p>
+<p>以前に失敗したテストの再実行: <code>ctrl+alt+c ctrl+t</code></p>
 </li>
 <li>
-<p>Test failures are marked in the explorer and editors and listed in the Problem tab for easy access.</p>
+<p>テストの失敗は、エクスプローラとエディタでマークされ、問題タブに一覧表示されるので、簡単にアクセスできます</p>
 </li>
 </ul>
 </div>
@@ -6385,10 +6385,10 @@ cljs.repl&gt;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Switch namespace in terminal repl to that of the currently open file: <code>ctrl+alt+c n</code></p>
+<p>ターミナルの名前空間を現在開いているファイルの名前空間に切り替える: <code>ctrl+alt+c n</code></p>
 </li>
 <li>
-<p>Load current file and switch namespace in: <code>ctrl+alt+c alt+n</code></p>
+<p>現在のファイルをロードして名前空間を切り替える: <code>ctrl+alt+c alt+n</code></p>
 </li>
 </ul>
 </div>
@@ -6398,7 +6398,7 @@ cljs.repl&gt;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Switch between Clojure and Clojurescript repl <code>ctrl+alt+c ctrl+alt+t</code> (or click the green <code>cljc/clj</code> button in the status bar). This determines both which repl is backing the editor and what terminal repl is being accessed, see above.</p>
+<p>Clojure と Clojurescript replの切り替え <code>ctrl+alt+c ctrl+alt+t</code> (またはステータスバーの緑の <code>cljc/clj</code> ボタンをクリック)。これは、どの repl がエディタを支持しているかと、どのターミナルの repl がアクセスされているかを決定します</p>
 </li>
 </ul>
 </div>
@@ -6408,24 +6408,24 @@ cljs.repl&gt;</code></pre>
 <div class="sect2">
 <h3 id="_fireplace_vim_vim_neovim"><a class="anchor" href="#_fireplace_vim_vim_neovim"></a><a class="link" href="#_fireplace_vim_vim_neovim">14.6. Fireplace.vim (Vim/Neovim)</a></h3>
 <div class="paragraph">
-<p><a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> is a Vim/Neovim plug-in which provides Clojure REPL integration by acting as an <a href="https://nrepl.org/">nREPL</a> client. When combined with Shadow-CLJS, it also provides ClojureScript REPL integration.</p>
+<p><a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> は <a href="https://nrepl.org/">nREPL</a> クライアントとして動作することでClojure REPLの統合を提供するVim/Neovimプラグインです。Shadow-CLJSと組み合わせるとClojureScriptのREPL統合も提供します。</p>
 </div>
 <div class="paragraph">
-<p>This guide uses as an example the app created in the official <a href="https://github.com/thheller/shadow-cljs#quick-start">Shadow-CLJS Quick Start</a> guide therefore refers to a few configuration items in the app&#8217;s <code>shadow-cljs.edn</code>. That being said, these configuration items are fairly generic so should be applicable to other apps with minor modifications.</p>
+<p>このガイドでは公式 <a href="https://github.com/thheller/shadow-cljs#quick-start">Shadow-CLJS Quick Start</a> ガイドで作成されたアプリを例にしているため、アプリの <code>shadow-cljs.edn</code> の中のいくつかの設定項目を参照しています。つまり、これらの設定項目はかなり汎用的なものなので、ちょっとした修正で他のアプリにも適用できるはずです。</p>
 </div>
 <div class="sect3">
 <h4 id="_dependencies_3"><a class="anchor" href="#_dependencies_3"></a><a class="link" href="#_dependencies_3">14.6.1. 依存関係</a></h4>
 <div class="paragraph">
-<p>Install <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> using your favorite method of installing plug-ins in Vim/Neovim.</p>
+<p><a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> をVim/Neovimで好きな方法でプラグインをインストールします。</p>
 </div>
 <div class="paragraph">
-<p>As an <a href="https://nrepl.org/">nREPL</a> client, <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> depends on <a href="https://docs.cider.mx/cider-nrepl/">CIDER-nREPL</a> (which is nREPL middleware that provides common, editor-agnostic REPL operations) therefore you need to include this dependency in <a href="#user-config">~/.shadow-cljs/config.edn</a> or <code>shadow-cljs.edn</code> (as shown in the next sub-section.) Shadow-CLJS will inject the required CIDER-nREPL middleware once it sees this dependency.</p>
+<p><a href="https://nrepl.org/">nREPL</a> クライアントとして <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> は <a href="https://docs.cider.mx/cider-nrepl/">CIDER-nREPL</a> に依存しています（これは一般的なエディタに依存しないREPL操作を提供するnREPLミドルウェアです）ので、この依存関係を <a href="#user-config">~/. shadow-cljs/config.edn</a> または <code>shadow-cljs.edn</code> (次のサブセクションで示されているように) に含める必要があります。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_preparing_the_app"><a class="anchor" href="#_preparing_the_app"></a><a class="link" href="#_preparing_the_app">14.6.2. Preparing the app</a></h4>
 <div class="paragraph">
-<p>Create the example app by following the official <a href="https://github.com/thheller/shadow-cljs#quick-start">Shadow-CLJS Quick Start</a> guide and modify its <code>shadow-cljs.edn</code> as follows:</p>
+<p>公式 <a href="https://github.com/thheller/shadow-cljs#quick-start">Shadow-CLJS Quick Start</a> ガイドに従ってサンプルアプリを作成し、その <code>shadow-cljs.edn</code> を以下のように修正します。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6435,34 +6435,34 @@ cljs.repl&gt;</code></pre>
   <span class="string"><span class="delimiter">&quot;</span><span class="content">src/main</span><span class="delimiter">&quot;</span></span>
   <span class="string"><span class="delimiter">&quot;</span><span class="content">src/test</span><span class="delimiter">&quot;</span></span>]
 
- <span class="comment">;; ADD - CIDER-nREPL middleware required by Fireplace.vim</span>
+ <span class="comment">;; 追加 - Fireplace.vimが必要とするCIDER-nREPLミドルウェア</span>
  <span class="symbol">:dependencies</span>
  [[cider/cider-nrepl <span class="string"><span class="delimiter">&quot;</span><span class="content">0.22.4</span><span class="delimiter">&quot;</span></span>]]
 
- <span class="comment">;; ADD - a port (e.g., 3333) for the REPL server to which Fireplace.vim connects</span>
+ <span class="comment">;; ADD - Fireplace.vimが接続するREPLサーバのポート（例：3333）</span>
  <span class="symbol">:nrepl</span>
  {<span class="symbol">:port</span> <span class="integer">3333</span>}
 
- <span class="comment">;; ADD - a port (e.g., 8080) for the development-time HTTP server that serves the app</span>
+ <span class="comment">;; 追加 - アプリを提供する開発時HTTPサーバーのポート（例：8080）</span>
  <span class="symbol">:dev-http</span>
  {<span class="integer">8080</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">public</span><span class="delimiter">&quot;</span></span>}
 
  <span class="symbol">:builds</span>
- {<span class="symbol">:frontend</span>  <span class="comment">; NOTE - This is the build ID referenced at various places below.</span>
+ {<span class="symbol">:frontend</span>  <span class="comment">; 注意 - これは以下の様々な場所で参照されているビルドIDです</span>
   {<span class="symbol">:target</span> <span class="symbol">:browser</span>
    <span class="symbol">:modules</span> {<span class="symbol">:main</span> {<span class="symbol">:init-fn</span> acme.frontend.app/init}}}}}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once that is done, start the app (note the Shadow-CLJS build ID, <code>frontend</code>, specified in <code>shadow-cljs.edn</code>):</p>
+<p>これが完了したらアプリを起動します（ <code>shadow-CLJS.edn</code> で指定されたShadow-CLJSのビルドIDである <code>frontend</code> に注意してください）</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="sh">npx shadow-cljs watch frontend</code></pre>
+<pre class="CodeRay highlight"><code data-lang="sh">$ npx shadow-cljs watch frontend</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Open the app in a browser at <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a>. Without this step, you would get the following error message from <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> if you attempt to connect to the REPL server from within Vim/Neovim:</p>
+<p><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> でブラウザでアプリを開きます。このステップがないと、Vim/Neovim 内から REPL サーバーに接続しようとすると <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> から以下のようなエラーメッセージが表示されます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6474,7 +6474,7 @@ Make sure your JS environment has loaded your compiled ClojureScript code.</code
 <div class="sect3">
 <h4 id="_connecting_fireplace_vim_to_repl_server"><a class="anchor" href="#_connecting_fireplace_vim_to_repl_server"></a><a class="link" href="#_connecting_fireplace_vim_to_repl_server">14.6.3. Connecting Fireplace.vim to REPL Server</a></h4>
 <div class="paragraph">
-<p>Open a ClojureScript source file in Vim/Neovim and execute the following command to connect <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> to the REPL server (note the port for the REPL server, <code>3333</code>, specified in <code>shadow-cljs.edn</code>):</p>
+<p>Vim/NeovimでClojureScriptのソースファイルを開き、以下のコマンドを実行して <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> をREPLサーバに接続します（ <code>shadow-cljs.edn</code> で指定したREPLサーバのポート <code>3333</code> に注意してください）</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6485,7 +6485,7 @@ Scope connection to<span class="error">:</span> ~/code/clojurescript/acme-app (E
 </div>
 </div>
 <div class="paragraph">
-<p>This creates a Clojure (instead of ClojureScript) REPL session. Execute the following command to add ClojureScript support to the session (note the Shadow-CLJS build ID, <code>frontend</code>, specified in <code>shadow-cljs.edn</code>):</p>
+<p>これによりClojure (ClojureScript の代わりに) REPL セッションが作成されます。セッションにClojureScriptのサポートを追加するには、以下のコマンドを実行してください（ <code>shadow-CLJS.edn</code> で指定されたShadow-CLJSのビルドID <code>frontend</code> に注意してください）</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6497,7 +6497,7 @@ Press ENTER <span class="keyword">or</span> <span class="keyword">type</span> co
 </div>
 </div>
 <div class="paragraph">
-<p>You should now be able to execute <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> commands against the REPL server. Please refer to the <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> documentation for the full list of commands you can execute.</p>
+<p>これでREPLサーバに対して <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> コマンドを実行できるようになるはずです。実行可能なコマンドの完全なリストについては <a href="https://www.vim.org/scripts/script.php?script_id=4978">Fireplace.vim</a> のドキュメントを参照してください。</p>
 </div>
 </div>
 </div>
