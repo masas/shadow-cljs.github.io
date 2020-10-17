@@ -820,7 +820,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#publish-deps-cljs">16.2. Declaring JS dependencies</a></li>
 </ul>
 </li>
-<li><a href="#_what_to_do_when_things_don_t_work">17. What to do when things don’t work?</a></li>
+<li><a href="#_what_to_do_when_things_don_t_work">17. うまくいかない時の対処法は？</a></li>
 <li><a href="#_hacking">18. Hacking</a>
 <ul class="sectlevel2">
 <li><a href="#_patching_libraries">18.1. Patching Libraries</a></li>
@@ -6439,7 +6439,7 @@ cljs.repl&gt;</code></pre>
  <span class="symbol">:dependencies</span>
  [[cider/cider-nrepl <span class="string"><span class="delimiter">&quot;</span><span class="content">0.22.4</span><span class="delimiter">&quot;</span></span>]]
 
- <span class="comment">;; ADD - Fireplace.vimが接続するREPLサーバのポート（例：3333）</span>
+ <span class="comment">;; 追加 - Fireplace.vimが接続するREPLサーバのポート（例：3333）</span>
  <span class="symbol">:nrepl</span>
  {<span class="symbol">:port</span> <span class="integer">3333</span>}
 
@@ -6509,10 +6509,10 @@ Press ENTER <span class="keyword">or</span> <span class="keyword">type</span> co
 <div class="sect2">
 <h3 id="failed-to-load"><a class="anchor" href="#failed-to-load"></a><a class="link" href="#failed-to-load">15.1. Startup Errors</a></h3>
 <div class="paragraph">
-<p>Sometimes <code>shadow-cljs</code> can fail to start properly. The errors are often very confusing and hard to identify. Most commonly this is caused by a few dependency conflicts on some of the important dependencies. When using just <code>shadow-cljs.edn</code> to manage your <code>:dependencies</code> it will provide a few extra checks to protect against these kinds of errors but when using <code>deps.edn</code> or <code>project.clj</code> these protections cannot be done so these errors happen more often when using those tools.</p>
+<p>時々 <code>shadow-cljs</code> が正しく起動できないことがあります。このエラーは非常に混乱していて識別するのが難しいことがよくあります。最も一般的には重要な依存関係のいくつかに依存関係の競合があることが原因です。 <code>shadow-cljs.edn</code> を使って <code>:dependencies</code> を管理しているときは、これらの種類のエラーから保護するためにいくつかの余分なチェックを提供しますが、<code>deps.edn</code> や <code>project.clj</code> を使っているときはこれらの保護ができないので、これらのツールを使っているときにこの類のエラーが起こることが多くなります。</p>
 </div>
 <div class="paragraph">
-<p>Generally the important dependencies to watch out for are</p>
+<p>一般的に気を付けるべき重要な依存関係は</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6531,10 +6531,10 @@ Press ENTER <span class="keyword">or</span> <span class="keyword">type</span> co
 </ul>
 </div>
 <div class="paragraph">
-<p>Each <code>shadow-cljs</code> version is only tested with one particular combination of versions and it is recommended to stick with that version set for best compatibility. It might work when using different versions but if you encounter any kind of weird issues consider fixing your dependency versions first.</p>
+<p>それぞれの <code>shadow-cljs</code> バージョンは特定の組み合わせでしかテストされていないので、最高の互換性を得るためにはそのバージョンに固執することをお勧めします。異なるバージョンを使っていても動作するかもしれませんが、何か奇妙な問題が発生した場合は、まず依存関係のあるバージョンを修正することを検討してください。</p>
 </div>
 <div class="paragraph">
-<p>You can find the required dependencies for each version on clojars:</p>
+<p>各バージョンに必要な依存関係は clojars で確認できます。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6544,30 +6544,30 @@ Press ENTER <span class="keyword">or</span> <span class="keyword">type</span> co
 </ul>
 </div>
 <div class="paragraph">
-<p>The way to diagnose these issues vary by tool, so please refer to the appropriate section for further info.</p>
+<p>これらの問題の診断方法はツールによって異なりますので、詳細については適切なセクションを参照してください。</p>
 </div>
 <div class="paragraph">
-<p>Generally if you want to be sure you can just declare the matching dependency versions directly together with your chosen <code>shadow-cljs</code> version but that means you must also update those versions whenever you upgrade <code>shadow-cljs</code>. Correctly identifying where unwanted dependencies may be more work but will make future upgrades easier.</p>
+<p>一般的に確実にしたい場合は、マッチする依存関係のバージョンを選択した <code>shadow-cljs</code> のバージョンと一緒に直接宣言すればよいのですが、これは <code>shadow-cljs</code> をアップグレードするときには常にそれらのバージョンも更新しなければならないことを意味しています。不要な依存関係がどこにあるのかを正しく特定することはより多くの作業になりますが、将来のアップグレードをより簡単にすることができます。</p>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> will likely always be on the very latest version for all the listed dependencies above so if you need to stick with an older dependency you might need to stick with an older shadow-cljs version as well.</p>
+<p><code>shadow-cljs</code> は上記に挙げた依存関係のすべてにおいて常に最新のバージョンである可能性が高いので、古い依存関係を維持する必要がある場合は古い shadow-cljs のバージョンを維持する必要があるかもしれません。</p>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> is very often several versions ahead on the <code>com.google.javascript/closure-compiler-unshaded</code> version it uses, so if you are depending on the version <code>org.clojure/clojurescript</code> normally supplies that might cause issues. Make sure the <code>thheller/shadow-cljs</code> version is picked over the version preferred by <code>org.clojure/clojurescript</code>.</p>
+<p><code>shadow-cljs</code> は <code>com.google.javascript/closure-compiler-unshaded</code> のバージョンよりも数バージョン先にあることが多いので <code>org.clojure/clojurescript</code> が通常提供しているバージョンに依存している場合、問題が発生する可能性があります。 <code>thheller/shadow-cljs</code> のバージョンが <code>org.clojure/clojurescript</code> が好むバージョンよりも選択されていることを確認してください。</p>
 </div>
 <div class="paragraph">
-<p>If you want to make your live easier just use <code>shadow-cljs.edn</code> to manage your dependencies if you can. It is much less likely to have these problems or will at least warn you directly.</p>
+<p>もしあなたの暮らしを楽にしたいのであれば、できれば <code>shadow-cljs.edn</code> を使って依存関係を管理してください。その方が問題が発生しにくいですし、少なくとも直接警告を出してくれます。</p>
 </div>
 <div class="paragraph">
-<p>If you have ensured that you are getting all the correct versions but things still go wrong please open a <a href="https://github.com/thheller/shadow-cljs/issues">Github Issue</a> with a full problem description including your full dependency list.</p>
+<p>すべてのバージョンが正しいことを確認しているにもかかわらずうまくいかない場合は、 <a href="https://github.com/thheller/shadow-cljs/issues">Github Issue</a> を開いて依存関係のリストを含めた問題の詳細を説明してください。</p>
 </div>
 <div class="sect3">
 <h4 id="_deps_edn_tools_deps"><a class="anchor" href="#_deps_edn_tools_deps"></a><a class="link" href="#_deps_edn_tools_deps">15.1.1. deps.edn / tools.deps</a></h4>
 <div class="paragraph">
-<p>When using <code>deps.edn</code> to manage your dependencies via the <a href="#tools-deps">:deps</a> key in <code>shadow-cljs.edn</code> it is recommended to use the <code>clj</code> tool directly for further diagnosis. First you need to check which aliases you are applying via <code>shadow-cljs.edn</code>. So if you are setting <code>:deps {:aliases [:dev :cljs]}</code> you&#8217;ll need to specify these aliases when running further commands.</p>
+<p><code>deps.edn</code> を使って <code>shadow-cljs.edn</code> の <a href="#tools-deps">:deps</a> キーで依存関係を管理する場合、さらなる診断のためには <code>clj</code> ツールを直接使うことをお勧めします。まず <code>shadow-cljs.edn</code> でどの別名を適用しているかを確認する必要があります。そのため <code>:deps {:aliases [:dev :cljs]}</code> を設定している場合は、コマンドを実行する際にこれらの別名を指定する必要があります。</p>
 </div>
 <div class="paragraph">
-<p>First of all you should ensure that all dependencies directly declared in <code>deps.edn</code> have the expected version. Sometimes transitive dependencies can cause the inclusion of problematic versions. You can list all dependencies via:</p>
+<p>まず第一に <code>deps.edn</code> で直接宣言された依存関係がすべて期待されたバージョンを持っていることを確認する必要があります。時々、移行的な依存関係が問題のあるバージョンを含む原因になることがあります。すべての依存関係をリストアップするには:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing all active dependencies</div>
@@ -6576,16 +6576,16 @@ Press ENTER <span class="keyword">or</span> <span class="keyword">type</span> co
 </div>
 </div>
 <div class="paragraph">
-<p>This will list all the dependencies. Tracking this down is a bit manual but you&#8217;ll need to verify that you get the correct versions for the dependencies mentioned above.</p>
+<p>これはすべての依存関係をリストアップします。これを追跡するのは少し手動ですが、上記の依存関係が正しいバージョンであることを確認する必要があります。</p>
 </div>
 <div class="paragraph">
-<p>Please refer to the official <a href="https://clojure.org/reference/deps_and_cli">tools.deps</a> documentation for further information.</p>
+<p>詳しくは公式の <a href="https://clojure.org/reference/deps_and_cli">tools.deps</a> のドキュメントを参照してください。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_project_clj_leiningen"><a class="anchor" href="#_project_clj_leiningen"></a><a class="link" href="#_project_clj_leiningen">15.1.2. project.clj / Leiningen</a></h4>
 <div class="paragraph">
-<p>When using <code>project.clj</code> to manage you dependencies you&#8217;ll need to specify your configured <code>:lein</code> profiles from <code>shadow-cljs.edn</code> when using <code>lein</code> directly to diagnose the problem. For example <code>:lein {:profiles "+cljs"}</code> would require <code>lein with-profiles +cljs</code> for every command.</p>
+<p><code>project.clj</code> を使って依存関係を管理する場合、問題を診断するために <code>lein</code> を直接使う場合は <code>shadow-cljs.edn</code> から <code>:lein</code> の設定されたプロファイルを指定する必要があります。例えば <code>:lein {:profiles "+cljs"}</code> の場合 <code>lein with-profiles +cljs</code> をコマンドごとに指定する必要があります。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example listing of deps</div>
@@ -6598,17 +6598,17 @@ $ lein with-profiles +cljs deps <span class="symbol">:tree</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This will usually list all the current conflicts at the top and provide suggestions with the dependency tree at the bottom. The suggestions aren&#8217;t always fully accurate so don&#8217;t get mislead and don&#8217;t add exclusions to the <code>thheller/shadow-cljs</code> artifact.</p>
+<p>これは通常、一番上に現在のすべての競合がリストアップされ、一番下に依存関係ツリーの提案が表示されます。提案は常に完全に正確とは限らないので、誤解を招かないようにし <code>thheller/shadow-cljs</code> アーティファクトに除外を追加しないようにしてください。</p>
 </div>
 <div class="paragraph">
-<p>Please refer to the <a href="https://leiningen.org/">Leiningen</a> documentation for more information.</p>
+<p>詳細は <a href="https://leiningen.org/">Leiningen</a> のドキュメントを参照してください。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="repl-troubleshooting"><a class="anchor" href="#repl-troubleshooting"></a><a class="link" href="#repl-troubleshooting">15.2. REPL</a></h3>
 <div class="paragraph">
-<p>Getting a CLJS REPL working can sometimes be tricky and a lot can go wrong since all the moving parts can be quite complicated. This guide hopes to address the most common issues that people run into and how to fix them.</p>
+<p>CLJS REPLを動作させるには、時にトリッキーなことがあり、すべての可動部品が非常に複雑であるため、多くのことがうまくいかないことがあります。このガイドでは、人々が遭遇する最も一般的な問題とその解決方法について説明します。</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -6618,52 +6618,52 @@ $ lein with-profiles +cljs deps <span class="symbol">:tree</span></code></pre>
 <div class="sect3">
 <h4 id="cljs-repl-anatomy"><a class="anchor" href="#cljs-repl-anatomy"></a><a class="link" href="#cljs-repl-anatomy">15.2.1. Anatomy of the CLJS REPL</a></h4>
 <div class="paragraph">
-<p>A REPL in Clojure does exactly what the name implies: Read one form, Eval it, Print the result, Loop to do it again.</p>
+<p>ClojureのREPLはその名の通りのことをします。一つのフォームを読んで、それを評価して、結果を印刷して、ループして再び実行します。</p>
 </div>
 <div class="paragraph">
-<p>In ClojureScript however things are a bit more complicated since compilation happens on the JVM but the results are eval&#8217;d in a JavaScript runtime. There are a couple more steps that need to be done due in order to "emulate" the plain REPL experience. Although things are implemented a bit differently in <code>shadow-cljs</code> over regular CLJS the basic principles remain the same.</p>
+<p>しかし、ClojureScriptでは、コンパイルはJVM上で行われますが、結果はJavaScriptランタイムで評価されるので、物事はもう少し複雑です。プレインのREPLの経験を &#34;Emmulate &#34;するためには、さらにいくつかのステップが必要です。 `shadow-cljs`では通常のCLJSとは少し実装が異なりますが基本的な原則は変わりません。</p>
 </div>
 <div class="paragraph">
-<p>First you&#8217;ll need a REPL client. This could just be the CLI (eg. <code>shadow-cljs cljs-repl app</code>) or your Editor connected via <code>nREPL</code>. The Client will always talk directly to the <code>shadow-cljs</code> server and it&#8217;ll handle the rest. From the Client side it still looks like a regular REPL but there are a few more steps happening in the background.</p>
+<p>最初にREPLクライアントが必要です。これはCLI(例: <code>shadow-cljs cljs-repl app</code>)か <code>nREPL</code> を介して接続されたエディタです。クライアントは常に <code>shadow-cljs</code> サーバに直接話しかけるので、あとはそれが処理します。クライアント側からは通常のREPLのように見えますが、バックグラウンドでいくつかのステップがあります。</p>
 </div>
 <div class="paragraph">
-<p>1) Read: It all starts with reading a singular CLJS form from a given InputStream. That is either a blocking read directly from <code>stdin</code> or read from a string in case of <code>nREPL</code>. A Stream of characters are turned into actual datastructures, <code>"(+ 1 2)"</code> (a string) becomes <code>(+ 1 2)</code> (a list).</p>
+<p>1) Read: すべては与えられたInputStreamからCLJSフォームを読み込むことから始まります。これは <code>stdin</code> から直接ブロッキングで読み込むか、 <code>nREPL</code> の場合は文字列から読み込むかのどちらかです。文字列のストリームは実際のデータ構造に変換され、<code>"(+ 1 2)"</code> (文字列)は <code>(+ 1 2)</code> (リスト)になります。</p>
 </div>
 <div class="paragraph">
-<p>2) Compile: That form is then compiled on the <code>shadow-cljs</code> JVM side and transformed to a set of instructions.</p>
+<p>2) Compile: そのフォームは <code>shadow-cljs</code> JVM側でコンパイルされ命令セットに変換されます。</p>
 </div>
 <div class="paragraph">
-<p>3) Transfer Out: Those instructions are transferred to a connected JavaScript runtime. This could be a Browser or a <code>node</code> process.</p>
+<p>3) Transfer Out: これらの命令は接続されたJavaScriptランタイムに転送されます。これはブラウザや <code>node</code> プロセスかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>4) Eval: The connected runtime will take the received instructions and <code>eval</code> them.</p>
+<p>4) Eval: 接続されたランタイムは受信した命令を受け取り <code>eval</code> します。</p>
 </div>
 <div class="paragraph">
-<p>5) Print: The <code>eval</code> result is printed as a String in the JS runtime.</p>
+<p>5) Print: JSランタイムでは <code>eval</code> の結果が文字列として出力されます。</p>
 </div>
 <div class="paragraph">
-<p>6) Transfer Back: The printed result is transferred back to the <code>shadow-cljs</code> JVM side.</p>
+<p>6) Transfer Back: 印刷された結果は <code>shadow-cljs</code> JVM側に転送されます。</p>
 </div>
 <div class="paragraph">
-<p>7) Reply: The JVM side will forward the received results back to initial caller and the result is printed to the proper OutputStream (or sent as a nREPL message).</p>
+<p>7) Reply: JVM側は、受信した結果を最初の呼び出し元に転送し、その結果を適切なOutputStreamに出力します（またはnREPLメッセージとして送信します）</p>
 </div>
 <div class="paragraph">
-<p>8) Loop: Repeat from 1).</p>
+<p>8) Loop: 1)から繰り返します。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_javascript_runtimes"><a class="anchor" href="#_javascript_runtimes"></a><a class="link" href="#_javascript_runtimes">15.2.2. JavaScript Runtimes</a></h4>
 <div class="paragraph">
-<p>The <code>shadow-cljs</code> JVM side of things will require one running <code>watch</code> for a given build which will handle all the related REPL commands as well. It uses a dedicated thread and manages all the given events that can happen during development (eg. REPL input, changing files, etc).</p>
+<p><code>shadow-cljs</code> JVM側では関連するすべてのREPLコマンドを扱うビルド用に <code>watch</code> を実行している必要があります。これは専用のスレッドを使用し、開発中に発生する可能性のあるすべてのイベント(例: REPL入力、ファイルの変更など)を管理します。</p>
 </div>
 <div class="paragraph">
-<p>The compiled JS code however must also be loaded by a JS runtime (eg. Browser or <code>node</code> process) and that JS runtime must connect back to the running <code>shadow-cljs</code> process. Most <code>:target</code> configurations will have the necessary code added by default and should just connect automatically. How that connect is happening is dependent on the runtime but usually it is using a WebSocket to connect to the running <code>shadow-cljs</code> <a href="#http">HTTP server</a>.</p>
+<p>しかし、コンパイルされたJSコードはJSランタイム(ブラウザや <code>node</code> プロセスなど)によってロードされなければならず、そのJSランタイムは実行中の <code>shadow-cljs</code> プロセスに接続しなければなりません。ほとんどの <code>:target</code> の設定では必要なコードがデフォルトで追加されており、自動的に接続されます。どのように接続するかはランタイムに依存しますが、通常はWebSocketを使って実行中の <code>shadow-cljs</code> <a href="#http">HTTP server</a> に接続します。</p>
 </div>
 <div class="paragraph">
-<p>Once connected the REPL is ready to use. Note that reloading the JS runtime (eg. manual browser page reload) will wipe out all REPL state of the runtime but some of the compiler side state will remain until the <code>watch</code> is also restarted.</p>
+<p>接続されると、REPLは使用する準備ができています。JSランタイムをリロードすると(ブラウザのページを手動でリロードするなど)、ランタイムのREPLの状態はすべて消去されますがコンパイラ側の状態の一部は <code>watch</code> が再起動されるまで残りますので注意してください。</p>
 </div>
 <div class="paragraph">
-<p>It is possible for more than one JS runtime to connect to the <code>watch</code> process. <code>shadow-cljs</code> by default picks the first JS runtime that connected as the <code>eval</code> target. If you open a given <code>:browser</code> build in multiple Browsers only the first one will be used to <code>eval</code> code. Or you could be opening a <code>:react-native</code> app in iOS and Android next to each other during development. Only one runtime can eval and if that disconnects the next one takes over based on the time it connected.</p>
+<p>複数のJSランタイムが <code>watch</code> プロセスに接続することも可能です。デフォルトでは <code>shadow-cljs</code> は最初に接続した JS ランタイムを <code>eval</code> ターゲットとして選択します。与えられた <code>:browser</code> ビルドを複数のブラウザで開いた場合、最初のブラウザのみが <code>eval</code> コードに使われます。あるいは、開発中に iOS と Android で <code>:react-native</code> アプリを隣り合わせで開いているかもしれません。1つのランタイムだけがevalできるので、もしそれが切断された場合は、接続した時間に基づいて次のランタイムが引き継ぐことができます。</p>
 </div>
 </div>
 <div class="sect3">
@@ -6676,27 +6676,27 @@ $ lein with-profiles +cljs deps <span class="symbol">:tree</span></code></pre>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>This error message just means that no JS runtime (eg. Browser) has connected to the <code>shadow-cljs</code> server. Your REPL client has successfully connected to the <code>shadow-cljs</code> server but as explained above we still need a JS runtime to actually <code>eval</code> anything.</p>
+<p>このエラーメッセージは、JS ランタイム (例えばブラウザ) が <code>shadow-cljs</code> サーバに接続していないことを意味しています。REPLクライアントは <code>shadow-cljs</code> サーバに正常に接続しましたが、上で説明したように、実際に何かを <code>eval</code> するにはまだJSランタイムが必要です。</p>
 </div>
 <div class="paragraph">
-<p>Regular <code>shadow-cljs</code> builds do not manage any JS runtime of their own so you are responsible for running them.</p>
+<p>通常の <code>shadow-cljs</code> ビルドは独自の JS ランタイムを管理していないので、あなたが責任を持って実行してください。</p>
 </div>
 <div class="sect4">
 <h5 id="repl-trouble-browser"><a class="anchor" href="#repl-trouble-browser"></a><a class="link" href="#repl-trouble-browser">:target :browser</a></h5>
 <div class="paragraph">
-<p>For <a href="#target-browser"><code>:target :browser</code></a> builds the <code>watch</code> process will have compiled the given code to a configured <code>:output-dir</code> (defaults to <code>public/js</code>). The generated <code>.js</code> must be loaded in a browser. Once loaded the Browser Console should show a <code>WebSocket connected</code> message. If you are using any kind of custom HTTP servers or have over-eager firewalls blocking the connections you might need to set some additional configuration (eg. via <a href="#proxy-support">:devtools-url</a>). The goal is to be able to connect to the <a href="#http">primary HTTP server</a>.</p>
+<p><a href="#target-browser"><code>:target :browser</code></a> のビルドでは <code>watch</code> プロセスは指定されたコードを設定された <code>:output-dir</code> (デフォルトは <code>public/js</code>) にコンパイルします。生成された <code>.js</code> はブラウザで読み込まなければなりません。ロードされると、ブラウザコンソールに <code>WebSocket connected</code> のメッセージが表示されるはずです。カスタムの HTTP サーバを使用していたり、過度に熱心なファイアウォールが接続をブロックしている場合は、追加の設定が必要になるかもしれません (例: <a href="#proxy-support">:devtools-url</a>)。目標は <a href="#http">primary HTTP server</a> に接続できるようにすることです。</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="repl-trouble-node"><a class="anchor" href="#repl-trouble-node"></a><a class="link" href="#repl-trouble-node">:target :node-script, :node-library</a></h5>
 <div class="paragraph">
-<p>These targets will have produced a <code>.js</code> file that are intended to run in a <code>node</code> process. Given the variety of options however you&#8217;ll need to run them yourself. For example a <code>:node-script</code> you&#8217;d run via <code>node the-script.js</code> and on startup it&#8217;ll try to connect to the <code>shadow-cljs</code> server. You should see a <code>WebSocket connected</code> message on startup. The output is designed to only run on the machine they were compiled on, don&#8217;t copy <code>watch</code> output to other machines.</p>
+<p>これらのターゲットは <code>node</code> プロセスで実行することを意図した <code>.js</code> ファイルを生成します。しかしさまざまなオプションがあるため自分で実行する必要があります。例えば <code>:node-script</code> は <code>node-script.js</code> で実行し、起動時に <code>shadow-cljs</code> サーバに接続しようとします。起動時に <code>WebSocket connected</code> というメッセージが表示されるはずです。出力はコンパイルされたマシン上でのみ動作するように設計されているので <code>watch</code> の出力を他のマシンにコピーしないようにしてください。</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="repl-trouble-react-native"><a class="anchor" href="#repl-trouble-react-native"></a><a class="link" href="#repl-trouble-react-native">:target :react-native</a></h5>
 <div class="paragraph">
-<p>The generated <code>&lt;:output-dir&gt;/index.js</code> file needs to be added to your <code>react-native</code> app and then loaded on an actual device or emulator. On startup it will also attempt to connect to the <code>shadow-cljs</code> server. You can check the log output via <code>react-native log-android|log-ios</code> and should show a <code>WebSocket connected</code> message once the app is running. If you see a websocket related error on startup instead it may have failed to connect to the shadow-cljs process. This can happen when the IP detection picked an incorrect IP. You can check which IP was used via <code>shadow-cljs watch app --verbose</code> and override it via <code>shadow-cljs watch app --config-merge '{:local-ip "1.2.3.4"}'</code>.</p>
+<p>生成された <code>&lt;:output-dir&gt;/index.js</code> ファイルを <code>react-native</code> アプリに追加し、実際のデバイスやエミュレータにロードする必要があります。起動時には <code>shadow-cljs</code> サーバへの接続も試みます。 <code>react-native log-android|log-ios</code> でログ出力を確認することができ、アプリが実行されると <code>WebSocket connected</code> というメッセージが表示されるはずです。起動時にWebsocket関連のエラーが表示される場合は、shadow-cljsプロセスへの接続に失敗した可能性があります。これは、IP検出が間違ったIPを選択した場合に発生する可能性があります。どのIPが使われたかは <code>shadow-cljs watch app --verbose</code> で確認し、 <code>shadow-cljs watch app --config-merge '{:local-ip "1.2.3.4"}'</code> で上書きすることができます。</p>
 </div>
 </div>
 </div>
@@ -6707,15 +6707,15 @@ $ lein with-profiles +cljs deps <span class="symbol">:tree</span></code></pre>
 <h2 id="publish"><a class="anchor" href="#publish"></a><a class="link" href="#publish">16. Publishing Libraries</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ClojureScript libraries are published to <code>maven</code> repositories just like Clojure. Most commonly they are published to <a href="https://clojars.org/">Clojars</a> but all other standard maven repositories work too.</p>
+<p>ClojureScript ライブラリは Clojure と同様に <code>maven</code> リポジトリに公開されています。最も一般的には <a href="https://clojars.org/">Clojars</a> に公開されていますが、他の標準的な maven リポジトリでも動作します。</p>
 </div>
 <div class="paragraph">
-<p><code>shadow-cljs</code> itself does not have direct support for publishing but since ClojureScript libraries are just uncompiled source files published in a JAR (basically just a ZIP compressed file) any common tool that is able to publish to maven will work. (eg. <code>mvn</code>, <code>gradle</code>, <code>lein</code>, etc). No extra compilation or other steps are required to publish. The ClojureScript compiler and therefore shadow-cljs is not involved at all.</p>
+<p><code>shadow-cljs</code> 自体はパブリッシュを直接サポートしていませんが、ClojureScriptライブラリはコンパイルされていないソースファイルをJAR(基本的にはZIP圧縮ファイル)で公開しているだけなので、mavenにパブリッシュできる一般的なツールであればどんなものでも動作します。(例: <code>mvn</code>, <code>gradle</code>, <code>lein</code> など)。パブリッシュするために余分なコンパイルや他のステップは必要ありません。ClojureScriptコンパイラとそのためのshadow-cljsは全く関与していません。</p>
 </div>
 <div class="sect2">
 <h3 id="publish-lein"><a class="anchor" href="#publish-lein"></a><a class="link" href="#publish-lein">16.1. Leiningen</a></h3>
 <div class="paragraph">
-<p>There are a variety of options to publish libraries and I currently recommend <a href="https://leiningen.org/">Leiningen</a>. The setup is very straightforward and doesn&#8217;t require much configuration at all.</p>
+<p>ライブラリを公開するには様々なオプションがありますが、私が現在推奨しているのは <a href="https://leiningen.org/">Leiningen</a> です。セットアップは非常に簡単で、設定は全く必要ありません。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -6724,13 +6724,13 @@ $ lein with-profiles +cljs deps <span class="symbol">:tree</span></code></pre>
 <div class="title">Important</div>
 </td>
 <td class="content">
-This does not mean that you have to use Leiningen during development of the library itself. It is recommended to just use Leiningen for publishing but use <code>shadow-cljs</code> normally otherwise. You&#8217;ll only need to copy the actual <code>:dependencies</code> definition once you publish. Remember to keep development related dependencies out though.
+これはライブラリ自体の開発中にLeiningenを使わなければならないということではありません。パブリッシュにはLeiningenを使うだけで、それ以外の場合は通常通り <code>shadow-cljs</code> を使うことをお勧めします。パブリッシュ時に実際の <code>:dependencies</code> 定義をコピーするだけで済みます。ただし、開発に関連した依存関係は除外しておくことを忘れないでください。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Assuming you are already using the recommended project structure where all your primary sources are located in <code>src/main</code> you can publish with a very simple <code>project.clj</code>.</p>
+<p>すでに推奨されているプロジェクト構造を使用していると仮定すると、すべてのプライマリソースが <code>src/main</code> に配置されており、非常にシンプルな <code>project.clj</code> でパブリッシュすることができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6738,12 +6738,12 @@ This does not mean that you have to use Leiningen during development of the libr
   <span class="symbol">:description</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Does cool stuff</span><span class="delimiter">&quot;</span></span>
   <span class="symbol">:url</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">https://the.inter.net/wherever</span><span class="delimiter">&quot;</span></span>
 
-  <span class="comment">;; this is optional, add what you want or remove it</span>
+  <span class="comment">;; これはオプションで、必要なものを追加するか削除します</span>
   <span class="symbol">:license</span> {<span class="symbol">:name</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Eclipse Public License</span><span class="delimiter">&quot;</span></span>
             <span class="symbol">:url</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.eclipse.org/legal/epl-v10.html</span><span class="delimiter">&quot;</span></span>}
 
   <span class="symbol">:dependencies</span>
-  <span class="comment">;; always use &quot;provided&quot; for Clojure(Script)</span>
+  <span class="comment">;; Clojure(Script)では、必ず&quot;provided&quot;を使います</span>
   [[org.clojure/clojurescript <span class="string"><span class="delimiter">&quot;</span><span class="content">1.10.520</span><span class="delimiter">&quot;</span></span> <span class="symbol">:scope</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">provided</span><span class="delimiter">&quot;</span></span>]
    [some.other/library <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>]
 
@@ -6752,12 +6752,12 @@ This does not mean that you have to use Leiningen during development of the libr
 </div>
 </div>
 <div class="paragraph">
-<p>This will generate the required <code>pom.xml</code> and put all sources from <code>src/main</code> into the published <code>.jar</code> file. All you need to run is <code>lein deploy clojars</code> to publish it. When doing this for the first time you&#8217;ll first need to setup proper authentication. Please refer to the official  <a href="https://github.com/technomancy/leiningen/blob/stable/doc/DEPLOY.md">Leiningen</a> and <a href="https://github.com/clojars/clojars-web/wiki/Tutorial">Clojars</a> documentation on how to set that up.</p>
+<p>これは必要な <code>pom.xml</code> を生成し <code>src/main</code> からのすべてのソースを公開された <code>.jar</code> ファイルに入れます。これを公開するために必要なのは <code>lein deploy clojars</code> を実行することだけです。初めてこの作業を行う際には、まず適切な認証を設定する必要があります。設定方法は公式の <a href="https://github.com/technomancy/leiningen/blob/stable/doc/DEPLOY.md">Leiningen</a> や <a href="https://github.com/clojars/clojars-web/wiki/Tutorial">Clojars</a> のドキュメントを参照してください。</p>
 </div>
 <div class="sect3">
 <h4 id="_disable_jar_signing"><a class="anchor" href="#_disable_jar_signing"></a><a class="link" href="#_disable_jar_signing">16.1.1. Disable JAR Signing</a></h4>
 <div class="paragraph">
-<p>Leiningen defaults to signing libraries via GPG before publishing which is a good default but given that this can be a hassle to setup and not many people are actually verifying the signatures you can disable that step via adding a simple <code>:repositories</code> config to the <code>project.clj</code>.</p>
+<p>Leiningenのデフォルトでは、公開する前にGPG経由でライブラリに署名するのが良いデフォルトですが、これはセットアップが面倒で、実際に署名を検証する人が多くないことを考えると、<code>project.clj</code> にシンプルな <code>:repositories</code> の設定を追加することで、そのステップを無効にすることができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6773,10 +6773,10 @@ This does not mean that you have to use Leiningen during development of the libr
 <div class="sect3">
 <h4 id="_keep_your_jar_clean"><a class="anchor" href="#_keep_your_jar_clean"></a><a class="link" href="#_keep_your_jar_clean">16.1.2. Keep your JAR clean</a></h4>
 <div class="paragraph">
-<p>If you write tests or user other development related code for your library make sure to keep them in <code>src/dev</code> or <code>src/test</code> to avoid publishing them together with the library.</p>
+<p>ライブラリのためにテストやユーザなどの開発関連のコードを書く場合は、ライブラリと一緒に公開しないように <code>src/dev</code> または <code>src/test</code> に入れておいてください。</p>
 </div>
 <div class="paragraph">
-<p>Also avoid generating output to <code>resources/*</code> since Leiningen and other tools may include those files into the <code>.jar</code> which may cause problems for downstream users. Your <code>.jar</code> should ONLY contains the actual source files, no compiled code at all.</p>
+<p>また <code>resources/*</code> への出力は避けてください。Leiningenや他のツールがそれらのファイルを <code>.jar</code> に含めている可能性があり、下流のユーザに問題を引き起こす可能性があります。あなたの <code>.jar</code> には実際のソースファイルのみが含まれ、コンパイルされたコードは一切含まれていません。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -6785,7 +6785,7 @@ This does not mean that you have to use Leiningen during development of the libr
 <div class="title">Important</div>
 </td>
 <td class="content">
-You can and should verify that everything is clean by running <code>lein jar</code> and inspecting the files that end up in it via <code>jar -tvf target/library-1.0.0.jar</code>.
+すべてがクリーンであることを確認するには <code>lein jar</code> を実行し、 <code>jar -tvf target/library-1.0.0.jar</code> でその中にあるファイルを検査します。
 </td>
 </tr>
 </table>
@@ -6795,10 +6795,10 @@ You can and should verify that everything is clean by running <code>lein jar</co
 <div class="sect2">
 <h3 id="publish-deps-cljs"><a class="anchor" href="#publish-deps-cljs"></a><a class="link" href="#publish-deps-cljs">16.2. Declaring JS dependencies</a></h3>
 <div class="paragraph">
-<p>Please note that currently only <code>shadow-cljs</code> has a clean automatic interop story with <code>npm</code>. That may represent a problem for users of your libraries using other tools. You may want to consider providing a CLJSJS fallback and/or publishing extra documentation for <code>webpack</code> related workflows.</p>
+<p>現在 <code>shadow-cljs</code> だけが <code>npm</code> とのクリーンな自動相互接続ストーリーを持っていることに注意してください。これは他のツールを使っているライブラリのユーザにとっては問題かもしれません。CLJSJSフォールバックの提供や <code>webpack</code> 関連のワークフローのための追加ドキュメントの公開を検討してみてはいかがでしょうか。</p>
 </div>
 <div class="paragraph">
-<p>You can declare <code>npm</code> dependencies directly by including a <code>deps.cljs</code> with <code>:npm-deps</code> in your project (eg. <code>src/main/deps.cljs</code>).</p>
+<p>依存関係を直接宣言するには <code>deps.cljs</code> に <code>:npm-deps</code> を付けてプロジェクトに追加します (例: <code>src/main/deps.cljs</code>)</p>
 </div>
 <div class="listingblock">
 <div class="title">Example src/main/deps.cljs</div>
@@ -6807,19 +6807,19 @@ You can and should verify that everything is clean by running <code>lein jar</co
 </div>
 </div>
 <div class="paragraph">
-<p>You can also provide extra <code>:foreign-libs</code> definitions here. They won&#8217;t affect <code>shadow-cljs</code> but might help other tools.</p>
+<p>ここに <code>:foreign-libs</code> の定義を追加することもできます。これらは <code>shadow-cljs</code> には影響しませんが、他のツールの助けになるかもしれません。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_to_do_when_things_don_t_work"><a class="anchor" href="#_what_to_do_when_things_don_t_work"></a><a class="link" href="#_what_to_do_when_things_don_t_work">17. What to do when things don’t work?</a></h2>
+<h2 id="_what_to_do_when_things_don_t_work"><a class="anchor" href="#_what_to_do_when_things_don_t_work"></a><a class="link" href="#_what_to_do_when_things_don_t_work">17. うまくいかない時の対処法は？</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since the JS world is still evolving rapidly and not everyone is using the same way to write and distribute code there are some things <code>shadow-cljs</code> cannot work around automatically. These can usually be solved with custom <code>:resolve</code> configs, but there may also be bugs or oversights.</p>
+<p>JS の世界はまだ急速に進化しており、誰もが同じ方法でコードを書いて配布しているわけではないので <code>shadow-cljs</code> が自動的に回避できないことがいくつかあります。これらは通常カスタムの <code>:resolve</code> 設定で解決できますが、バグや見落としがあるかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>If you cannot resolve such an issue with the instructions in this chapter, then try asking on the <a href="https://clojurians.slack.com/messages/C6N245JGG"><code>#shadow-cljs</code> Slack channel</a>.</p>
+<p>この章の指示でこのような問題を解決できない場合は <a href="https://clojurians.slack.com/messages/C6N245JGG"><code>#shadow-cljs</code> Slackチャンネル</a> で質問してみてください。</p>
 </div>
 </div>
 </div>
@@ -6829,7 +6829,7 @@ You can and should verify that everything is clean by running <code>lein jar</co
 <div class="sect2">
 <h3 id="_patching_libraries"><a class="anchor" href="#_patching_libraries"></a><a class="link" href="#_patching_libraries">18.1. Patching Libraries</a></h3>
 <div class="paragraph">
-<p>The <code>shadow-cljs</code> compiler ensures that things on your source paths are compiled first, overriding files from JARs. This means that you can copy a source file from a library, patch it, and include it in your own source directory.</p>
+<p><code>shadow-cljs</code> コンパイラは、ソースパス上のものが最初にコンパイルされ、JARからのファイルを上書きすることを保証します。これは、ライブラリからソースファイルをコピーしてパッチを当て、自分のソースディレクトリにインクルードすることができることを意味します。</p>
 </div>
 <div class="paragraph">
 <p>これは、プロジェクトをクローンしてそのセットアップやビルドなどを理解しなくても、(たとえ <code>shadow-cljs</code> 自体であっても！)修正をテストアウトするのに便利な方法です。</p>

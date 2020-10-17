@@ -4994,10 +4994,10 @@ msgid "Startup Errors"
 msgstr ""
 
 msgid "Sometimes `shadow-cljs` can fail to start properly. The errors are often very confusing and hard to identify. Most commonly this is caused by a few dependency conflicts on some of the important dependencies. When using just `shadow-cljs.edn` to manage your `:dependencies` it will provide a few extra checks to protect against these kinds of errors but when using `deps.edn` or `project.clj` these protections cannot be done so these errors happen more often when using those tools."
-msgstr ""
+msgstr "時々 `shadow-cljs` が正しく起動できないことがあります。このエラーは非常に混乱していて識別するのが難しいことがよくあります。最も一般的には重要な依存関係のいくつかに依存関係の競合があることが原因です。 `shadow-cljs.edn` を使って `:dependencies` を管理しているときは、これらの種類のエラーから保護するためにいくつかの余分なチェックを提供しますが、`deps.edn` や `project.clj` を使っているときはこれらの保護ができないので、これらのツールを使っているときにこの類のエラーが起こることが多くなります。"
 
 msgid "Generally the important dependencies to watch out for are"
-msgstr ""
+msgstr "一般的に気を付けるべき重要な依存関係は"
 
 msgid "org.clojure/clojure"
 msgstr ""
@@ -5012,40 +5012,40 @@ msgid "com.google.javascript/closure-compiler-unshaded"
 msgstr ""
 
 msgid "Each `shadow-cljs` version is only tested with one particular combination of versions and it is recommended to stick with that version set for best compatibility. It might work when using different versions but if you encounter any kind of weird issues consider fixing your dependency versions first."
-msgstr ""
+msgstr "それぞれの `shadow-cljs` バージョンは特定の組み合わせでしかテストされていないので、最高の互換性を得るためにはそのバージョンに固執することをお勧めします。異なるバージョンを使っていても動作するかもしれませんが、何か奇妙な問題が発生した場合は、まず依存関係のあるバージョンを修正することを検討してください。"
 
 msgid "You can find the required dependencies for each version on clojars:"
-msgstr ""
+msgstr "各バージョンに必要な依存関係は clojars で確認できます。"
 
 msgid "https://clojars.org/thheller/shadow-cljs"
 msgstr ""
 
 msgid "The way to diagnose these issues vary by tool, so please refer to the appropriate section for further info."
-msgstr ""
+msgstr "これらの問題の診断方法はツールによって異なりますので、詳細については適切なセクションを参照してください。"
 
 msgid "Generally if you want to be sure you can just declare the matching dependency versions directly together with your chosen `shadow-cljs` version but that means you must also update those versions whenever you upgrade `shadow-cljs`. Correctly identifying where unwanted dependencies may be more work but will make future upgrades easier."
-msgstr ""
+msgstr "一般的に確実にしたい場合は、マッチする依存関係のバージョンを選択した `shadow-cljs` のバージョンと一緒に直接宣言すればよいのですが、これは `shadow-cljs` をアップグレードするときには常にそれらのバージョンも更新しなければならないことを意味しています。不要な依存関係がどこにあるのかを正しく特定することはより多くの作業になりますが、将来のアップグレードをより簡単にすることができます。"
 
 msgid "`shadow-cljs` will likely always be on the very latest version for all the listed dependencies above so if you need to stick with an older dependency you might need to stick with an older shadow-cljs version as well."
-msgstr ""
+msgstr "`shadow-cljs` は上記に挙げた依存関係のすべてにおいて常に最新のバージョンである可能性が高いので、古い依存関係を維持する必要がある場合は古い shadow-cljs のバージョンを維持する必要があるかもしれません。"
 
 msgid "`shadow-cljs` is very often several versions ahead on the `com.google.javascript/closure-compiler-unshaded` version it uses, so if you are depending on the version `org.clojure/clojurescript` normally supplies that might cause issues. Make sure the `thheller/shadow-cljs` version is picked over the version preferred by `org.clojure/clojurescript`."
-msgstr ""
+msgstr "`shadow-cljs` は `com.google.javascript/closure-compiler-unshaded` のバージョンよりも数バージョン先にあることが多いので `org.clojure/clojurescript` が通常提供しているバージョンに依存している場合、問題が発生する可能性があります。 `thheller/shadow-cljs` のバージョンが `org.clojure/clojurescript` が好むバージョンよりも選択されていることを確認してください。"
 
 msgid "If you want to make your live easier just use `shadow-cljs.edn` to manage your dependencies if you can. It is much less likely to have these problems or will at least warn you directly."
-msgstr ""
+msgstr "もしあなたの暮らしを楽にしたいのであれば、できれば `shadow-cljs.edn` を使って依存関係を管理してください。その方が問題が発生しにくいですし、少なくとも直接警告を出してくれます。"
 
 msgid "If you have ensured that you are getting all the correct versions but things still go wrong please open a https://github.com/thheller/shadow-cljs/issues[Github Issue] with a full problem description including your full dependency list."
-msgstr ""
+msgstr "すべてのバージョンが正しいことを確認しているにもかかわらずうまくいかない場合は、 https://github.com/thheller/shadow-cljs/issues[Github Issue] を開いて依存関係のリストを含めた問題の詳細を説明してください。"
 
 msgid "deps.edn / tools.deps"
 msgstr ""
 
 msgid "When using `deps.edn` to manage your dependencies via the <<tools-deps, :deps>> key in `shadow-cljs.edn` it is recommended to use the `clj` tool directly for further diagnosis. First you need to check which aliases you are applying via `shadow-cljs.edn`. So if you are setting `:deps {:aliases [:dev :cljs]}` you'll need to specify these aliases when running further commands."
-msgstr ""
+msgstr "`deps.edn` を使って `shadow-cljs.edn` の <<tools-deps, :deps>> キーで依存関係を管理する場合、さらなる診断のためには `clj` ツールを直接使うことをお勧めします。まず `shadow-cljs.edn` でどの別名を適用しているかを確認する必要があります。そのため `:deps {:aliases [:dev :cljs]}` を設定している場合は、コマンドを実行する際にこれらの別名を指定する必要があります。"
 
 msgid "First of all you should ensure that all dependencies directly declared in `deps.edn` have the expected version. Sometimes transitive dependencies can cause the inclusion of problematic versions. You can list all dependencies via:"
-msgstr ""
+msgstr "まず第一に `deps.edn` で直接宣言された依存関係がすべて期待されたバージョンを持っていることを確認する必要があります。時々、移行的な依存関係が問題のあるバージョンを含む原因になることがあります。すべての依存関係をリストアップするには:"
 
 msgid "Listing all active dependencies"
 msgstr ""
@@ -5054,16 +5054,16 @@ msgid "$ clj -A:dev:cljs -Stree"
 msgstr ""
 
 msgid "This will list all the dependencies. Tracking this down is a bit manual but you'll need to verify that you get the correct versions for the dependencies mentioned above."
-msgstr ""
+msgstr "これはすべての依存関係をリストアップします。これを追跡するのは少し手動ですが、上記の依存関係が正しいバージョンであることを確認する必要があります。"
 
 msgid "Please refer to the official https://clojure.org/reference/deps_and_cli[tools.deps] documentation for further information."
-msgstr ""
+msgstr "詳しくは公式の https://clojure.org/reference/deps_and_cli[tools.deps] のドキュメントを参照してください。"
 
 msgid "project.clj / Leiningen"
 msgstr ""
 
 msgid "When using `project.clj` to manage you dependencies you'll need to specify your configured `:lein` profiles from `shadow-cljs.edn` when using `lein` directly to diagnose the problem. For example `:lein {:profiles \"+cljs\"}` would require `lein with-profiles +cljs` for every command."
-msgstr ""
+msgstr "`project.clj` を使って依存関係を管理する場合、問題を診断するために `lein` を直接使う場合は `shadow-cljs.edn` から `:lein` の設定されたプロファイルを指定する必要があります。例えば `:lein {:profiles \"+cljs\"}` の場合 `lein with-profiles +cljs` をコマンドごとに指定する必要があります。"
 
 msgid "Example listing of deps"
 msgstr ""
@@ -5077,64 +5077,64 @@ msgid ""
 msgstr ""
 
 msgid "This will usually list all the current conflicts at the top and provide suggestions with the dependency tree at the bottom. The suggestions aren't always fully accurate so don't get mislead and don't add exclusions to the `thheller/shadow-cljs` artifact."
-msgstr ""
+msgstr "これは通常、一番上に現在のすべての競合がリストアップされ、一番下に依存関係ツリーの提案が表示されます。提案は常に完全に正確とは限らないので、誤解を招かないようにし `thheller/shadow-cljs` アーティファクトに除外を追加しないようにしてください。"
 
 msgid "Please refer to the https://leiningen.org/[Leiningen] documentation for more information."
-msgstr ""
+msgstr "詳細は https://leiningen.org/[Leiningen] のドキュメントを参照してください。"
 
 msgid "Getting a CLJS REPL working can sometimes be tricky and a lot can go wrong since all the moving parts can be quite complicated. This guide hopes to address the most common issues that people run into and how to fix them."
-msgstr ""
+msgstr "CLJS REPLを動作させるには、時にトリッキーなことがあり、すべての可動部品が非常に複雑であるため、多くのことがうまくいかないことがあります。このガイドでは、人々が遭遇する最も一般的な問題とその解決方法について説明します。"
 
 msgid "Anatomy of the CLJS REPL"
 msgstr ""
 
 msgid "A REPL in Clojure does exactly what the name implies: Read one form, Eval it, Print the result, Loop to do it again."
-msgstr ""
+msgstr "ClojureのREPLはその名の通りのことをします。一つのフォームを読んで、それを評価して、結果を印刷して、ループして再び実行します。"
 
 msgid "In ClojureScript however things are a bit more complicated since compilation happens on the JVM but the results are eval'd in a JavaScript runtime. There are a couple more steps that need to be done due in order to \"emulate\" the plain REPL experience. Although things are implemented a bit differently in `shadow-cljs` over regular CLJS the basic principles remain the same."
-msgstr ""
+msgstr "しかし、ClojureScriptでは、コンパイルはJVM上で行われますが、結果はJavaScriptランタイムで評価されるので、物事はもう少し複雑です。プレインのREPLの経験を &#34;Emmulate &#34;するためには、さらにいくつかのステップが必要です。 `shadow-cljs`では通常のCLJSとは少し実装が異なりますが基本的な原則は変わりません。"
 
 msgid "First you'll need a REPL client. This could just be the CLI (eg. `shadow-cljs cljs-repl app`) or your Editor connected via `nREPL`. The Client will always talk directly to the `shadow-cljs` server and it'll handle the rest. From the Client side it still looks like a regular REPL but there are a few more steps happening in the background."
-msgstr ""
+msgstr "最初にREPLクライアントが必要です。これはCLI(例: `shadow-cljs cljs-repl app`)か `nREPL` を介して接続されたエディタです。クライアントは常に `shadow-cljs` サーバに直接話しかけるので、あとはそれが処理します。クライアント側からは通常のREPLのように見えますが、バックグラウンドでいくつかのステップがあります。"
 
 msgid "1) Read: It all starts with reading a singular CLJS form from a given InputStream. That is either a blocking read directly from `stdin` or read from a string in case of `nREPL`. A Stream of characters are turned into actual datastructures, `\"(+ 1 2)\"` (a string) becomes `(+ 1 2)` (a list)."
-msgstr ""
+msgstr "1) Read: すべては与えられたInputStreamからCLJSフォームを読み込むことから始まります。これは `stdin` から直接ブロッキングで読み込むか、 `nREPL` の場合は文字列から読み込むかのどちらかです。文字列のストリームは実際のデータ構造に変換され、`\"(+ 1 2)\"` (文字列)は `(+ 1 2)` (リスト)になります。"
 
 msgid "2) Compile: That form is then compiled on the `shadow-cljs` JVM side and transformed to a set of instructions."
-msgstr ""
+msgstr "2) Compile: そのフォームは `shadow-cljs` JVM側でコンパイルされ命令セットに変換されます。"
 
 msgid "3) Transfer Out: Those instructions are transferred to a connected JavaScript runtime. This could be a Browser or a `node` process."
-msgstr ""
+msgstr "3) Transfer Out: これらの命令は接続されたJavaScriptランタイムに転送されます。これはブラウザや `node` プロセスかもしれません。"
 
 msgid "4) Eval: The connected runtime will take the received instructions and `eval` them."
-msgstr ""
+msgstr "4) Eval: 接続されたランタイムは受信した命令を受け取り `eval` します。"
 
 msgid "5) Print: The `eval` result is printed as a String in the JS runtime."
-msgstr ""
+msgstr "5) Print: JSランタイムでは `eval` の結果が文字列として出力されます。"
 
 msgid "6) Transfer Back: The printed result is transferred back to the `shadow-cljs` JVM side."
-msgstr ""
+msgstr "6) Transfer Back: 印刷された結果は `shadow-cljs` JVM側に転送されます。"
 
 msgid "7) Reply: The JVM side will forward the received results back to initial caller and the result is printed to the proper OutputStream (or sent as a nREPL message)."
-msgstr ""
+msgstr "7) Reply: JVM側は、受信した結果を最初の呼び出し元に転送し、その結果を適切なOutputStreamに出力します（またはnREPLメッセージとして送信します）"
 
 msgid "8) Loop: Repeat from 1)."
-msgstr ""
+msgstr "8) Loop: 1)から繰り返します。"
 
 msgid "JavaScript Runtimes"
 msgstr ""
 
 msgid "The `shadow-cljs` JVM side of things will require one running `watch` for a given build which will handle all the related REPL commands as well. It uses a dedicated thread and manages all the given events that can happen during development (eg. REPL input, changing files, etc)."
-msgstr ""
+msgstr "`shadow-cljs` JVM側では関連するすべてのREPLコマンドを扱うビルド用に `watch` を実行している必要があります。これは専用のスレッドを使用し、開発中に発生する可能性のあるすべてのイベント(例: REPL入力、ファイルの変更など)を管理します。"
 
 msgid "The compiled JS code however must also be loaded by a JS runtime (eg. Browser or `node` process) and that JS runtime must connect back to the running `shadow-cljs` process. Most `:target` configurations will have the necessary code added by default and should just connect automatically. How that connect is happening is dependent on the runtime but usually it is using a WebSocket to connect to the running `shadow-cljs` <<http, HTTP server>>."
-msgstr ""
+msgstr "しかし、コンパイルされたJSコードはJSランタイム(ブラウザや `node` プロセスなど)によってロードされなければならず、そのJSランタイムは実行中の `shadow-cljs` プロセスに接続しなければなりません。ほとんどの `:target` の設定では必要なコードがデフォルトで追加されており、自動的に接続されます。どのように接続するかはランタイムに依存しますが、通常はWebSocketを使って実行中の `shadow-cljs` <<http, HTTP server>> に接続します。"
 
 msgid "Once connected the REPL is ready to use. Note that reloading the JS runtime (eg. manual browser page reload) will wipe out all REPL state of the runtime but some of the compiler side state will remain until the `watch` is also restarted."
-msgstr ""
+msgstr "接続されると、REPLは使用する準備ができています。JSランタイムをリロードすると(ブラウザのページを手動でリロードするなど)、ランタイムのREPLの状態はすべて消去されますがコンパイラ側の状態の一部は `watch` が再起動されるまで残りますので注意してください。"
 
 msgid "It is possible for more than one JS runtime to connect to the `watch` process. `shadow-cljs` by default picks the first JS runtime that connected as the `eval` target. If you open a given `:browser` build in multiple Browsers only the first one will be used to `eval` code. Or you could be opening a `:react-native` app in iOS and Android next to each other during development. Only one runtime can eval and if that disconnects the next one takes over based on the time it connected."
-msgstr ""
+msgstr "複数のJSランタイムが `watch` プロセスに接続することも可能です。デフォルトでは `shadow-cljs` は最初に接続した JS ランタイムを `eval` ターゲットとして選択します。与えられた `:browser` ビルドを複数のブラウザで開いた場合、最初のブラウザのみが `eval` コードに使われます。あるいは、開発中に iOS と Android で `:react-native` アプリを隣り合わせで開いているかもしれません。1つのランタイムだけがevalできるので、もしそれが切断された場合は、接続した時間に基づいて次のランタイムが引き継ぐことができます。"
 
 msgid "Missing JS runtime"
 msgstr ""
@@ -5143,46 +5143,46 @@ msgid "No application has connected to the REPL server. Make sure your JS enviro
 msgstr ""
 
 msgid "This error message just means that no JS runtime (eg. Browser) has connected to the `shadow-cljs` server. Your REPL client has successfully connected to the `shadow-cljs` server but as explained above we still need a JS runtime to actually `eval` anything."
-msgstr ""
+msgstr "このエラーメッセージは、JS ランタイム (例えばブラウザ) が `shadow-cljs` サーバに接続していないことを意味しています。REPLクライアントは `shadow-cljs` サーバに正常に接続しましたが、上で説明したように、実際に何かを `eval` するにはまだJSランタイムが必要です。"
 
 msgid "Regular `shadow-cljs` builds do not manage any JS runtime of their own so you are responsible for running them."
-msgstr ""
+msgstr "通常の `shadow-cljs` ビルドは独自の JS ランタイムを管理していないので、あなたが責任を持って実行してください。"
 
 msgid ":target :browser"
 msgstr ""
 
 msgid "For <<target-browser, `:target :browser`>> builds the `watch` process will have compiled the given code to a configured `:output-dir` (defaults to `public/js`). The generated `.js` must be loaded in a browser. Once loaded the Browser Console should show a `WebSocket connected` message. If you are using any kind of custom HTTP servers or have over-eager firewalls blocking the connections you might need to set some additional configuration (eg. via <<proxy-support, :devtools-url>>). The goal is to be able to connect to the <<http, primary HTTP server>>."
-msgstr ""
+msgstr "<<target-browser, `:target :browser`>> のビルドでは `watch` プロセスは指定されたコードを設定された `:output-dir` (デフォルトは `public/js`) にコンパイルします。生成された `.js` はブラウザで読み込まなければなりません。ロードされると、ブラウザコンソールに `WebSocket connected` のメッセージが表示されるはずです。カスタムの HTTP サーバを使用していたり、過度に熱心なファイアウォールが接続をブロックしている場合は、追加の設定が必要になるかもしれません (例: <<proxy-support, :devtools-url>>)。目標は <<http, primary HTTP server>> に接続できるようにすることです。"
 
 msgid ":target :node-script, :node-library"
 msgstr ""
 
 msgid "These targets will have produced a `.js` file that are intended to run in a `node` process. Given the variety of options however you'll need to run them yourself. For example a `:node-script` you'd run via `node the-script.js` and on startup it'll try to connect to the `shadow-cljs` server. You should see a `WebSocket connected` message on startup. The output is designed to only run on the machine they were compiled on, don't copy `watch` output to other machines."
-msgstr ""
+msgstr "これらのターゲットは `node` プロセスで実行することを意図した `.js` ファイルを生成します。しかしさまざまなオプションがあるため自分で実行する必要があります。例えば `:node-script` は `node-script.js` で実行し、起動時に `shadow-cljs` サーバに接続しようとします。起動時に `WebSocket connected` というメッセージが表示されるはずです。出力はコンパイルされたマシン上でのみ動作するように設計されているので `watch` の出力を他のマシンにコピーしないようにしてください。"
 
 msgid ":target :react-native"
 msgstr ""
 
 msgid "The generated `<:output-dir>/index.js` file needs to be added to your `react-native` app and then loaded on an actual device or emulator. On startup it will also attempt to connect to the `shadow-cljs` server. You can check the log output via `react-native log-android|log-ios` and should show a `WebSocket connected` message once the app is running. If you see a websocket related error on startup instead it may have failed to connect to the shadow-cljs process. This can happen when the IP detection picked an incorrect IP. You can check which IP was used via `shadow-cljs watch app --verbose` and override it via `shadow-cljs watch app --config-merge '{:local-ip \"1.2.3.4\"}'`."
-msgstr ""
+msgstr "生成された `<:output-dir>/index.js` ファイルを `react-native` アプリに追加し、実際のデバイスやエミュレータにロードする必要があります。起動時には `shadow-cljs` サーバへの接続も試みます。 `react-native log-android|log-ios` でログ出力を確認することができ、アプリが実行されると `WebSocket connected` というメッセージが表示されるはずです。起動時にWebsocket関連のエラーが表示される場合は、shadow-cljsプロセスへの接続に失敗した可能性があります。これは、IP検出が間違ったIPを選択した場合に発生する可能性があります。どのIPが使われたかは `shadow-cljs watch app --verbose` で確認し、 `shadow-cljs watch app --config-merge '{:local-ip \"1.2.3.4\"}'` で上書きすることができます。"
 
 msgid "Publishing Libraries"
 msgstr ""
 
 msgid "ClojureScript libraries are published to `maven` repositories just like Clojure. Most commonly they are published to https://clojars.org/[Clojars] but all other standard maven repositories work too."
-msgstr ""
+msgstr "ClojureScript ライブラリは Clojure と同様に `maven` リポジトリに公開されています。最も一般的には https://clojars.org/[Clojars] に公開されていますが、他の標準的な maven リポジトリでも動作します。"
 
 msgid "`shadow-cljs` itself does not have direct support for publishing but since ClojureScript libraries are just uncompiled source files published in a JAR (basically just a ZIP compressed file) any common tool that is able to publish to maven will work. (eg. `mvn`, `gradle`, `lein`, etc). No extra compilation or other steps are required to publish. The ClojureScript compiler and therefore shadow-cljs is not involved at all."
-msgstr ""
+msgstr "`shadow-cljs` 自体はパブリッシュを直接サポートしていませんが、ClojureScriptライブラリはコンパイルされていないソースファイルをJAR(基本的にはZIP圧縮ファイル)で公開しているだけなので、mavenにパブリッシュできる一般的なツールであればどんなものでも動作します。(例: `mvn`, `gradle`, `lein` など)。パブリッシュするために余分なコンパイルや他のステップは必要ありません。ClojureScriptコンパイラとそのためのshadow-cljsは全く関与していません。"
 
 msgid "There are a variety of options to publish libraries and I currently recommend https://leiningen.org/[Leiningen]. The setup is very straightforward and doesn't require much configuration at all."
-msgstr ""
+msgstr "ライブラリを公開するには様々なオプションがありますが、私が現在推奨しているのは https://leiningen.org/[Leiningen] です。セットアップは非常に簡単で、設定は全く必要ありません。"
 
 msgid "This does not mean that you have to use Leiningen during development of the library itself. It is recommended to just use Leiningen for publishing but use `shadow-cljs` normally otherwise. You'll only need to copy the actual `:dependencies` definition once you publish. Remember to keep development related dependencies out though."
-msgstr ""
+msgstr "これはライブラリ自体の開発中にLeiningenを使わなければならないということではありません。パブリッシュにはLeiningenを使うだけで、それ以外の場合は通常通り `shadow-cljs` を使うことをお勧めします。パブリッシュ時に実際の `:dependencies` 定義をコピーするだけで済みます。ただし、開発に関連した依存関係は除外しておくことを忘れないでください。"
 
 msgid "Assuming you are already using the recommended project structure where all your primary sources are located in `src/main` you can publish with a very simple `project.clj`."
-msgstr ""
+msgstr "すでに推奨されているプロジェクト構造を使用していると仮定すると、すべてのプライマリソースが `src/main` に配置されており、非常にシンプルな `project.clj` でパブリッシュすることができます。"
 
 msgid ""
 "(defproject your.cool/library \"1.0.0\"\n"
@@ -5201,15 +5201,30 @@ msgid ""
 "  :source-paths\n"
 "  [\"src/main\"])"
 msgstr ""
+"(defproject your.cool/library \"1.0.0\"\n"
+"  :description \"Does cool stuff\"\n"
+"  :url \"https://the.inter.net/wherever\"\n"
+"\n"
+"  ;; これはオプションで、必要なものを追加するか削除します\n"
+"  :license {:name \"Eclipse Public License\"\n"
+"            :url \"http://www.eclipse.org/legal/epl-v10.html\"}\n"
+"\n"
+"  :dependencies\n"
+"  ;; Clojure(Script)では、必ず\"provided\"を使います\n"
+"  [[org.clojure/clojurescript \"1.10.520\" :scope \"provided\"]\n"
+"   [some.other/library \"1.0.0\"]\n"
+"\n"
+"  :source-paths\n"
+"  [\"src/main\"])"
 
 msgid "This will generate the required `pom.xml` and put all sources from `src/main` into the published `.jar` file. All you need to run is `lein deploy clojars` to publish it. When doing this for the first time you'll first need to setup proper authentication. Please refer to the official  https://github.com/technomancy/leiningen/blob/stable/doc/DEPLOY.md[Leiningen] and https://github.com/clojars/clojars-web/wiki/Tutorial[Clojars] documentation on how to set that up."
-msgstr ""
+msgstr "これは必要な `pom.xml` を生成し `src/main` からのすべてのソースを公開された `.jar` ファイルに入れます。これを公開するために必要なのは `lein deploy clojars` を実行することだけです。初めてこの作業を行う際には、まず適切な認証を設定する必要があります。設定方法は公式の https://github.com/technomancy/leiningen/blob/stable/doc/DEPLOY.md[Leiningen] や https://github.com/clojars/clojars-web/wiki/Tutorial[Clojars] のドキュメントを参照してください。"
 
 msgid "Disable JAR Signing"
 msgstr ""
 
 msgid "Leiningen defaults to signing libraries via GPG before publishing which is a good default but given that this can be a hassle to setup and not many people are actually verifying the signatures you can disable that step via adding a simple `:repositories` config to the `project.clj`."
-msgstr ""
+msgstr "Leiningenのデフォルトでは、公開する前にGPG経由でライブラリに署名するのが良いデフォルトですが、これはセットアップが面倒で、実際に署名を検証する人が多くないことを考えると、`project.clj` にシンプルな `:repositories` の設定を追加することで、そのステップを無効にすることができます。"
 
 msgid ""
 "(defproject your.cool/library \"1.0.0\"\n"
@@ -5224,22 +5239,22 @@ msgid "Keep your JAR clean"
 msgstr ""
 
 msgid "If you write tests or user other development related code for your library make sure to keep them in `src/dev` or `src/test` to avoid publishing them together with the library."
-msgstr ""
+msgstr "ライブラリのためにテストやユーザなどの開発関連のコードを書く場合は、ライブラリと一緒に公開しないように `src/dev` または `src/test` に入れておいてください。"
 
 msgid "Also avoid generating output to `resources/*` since Leiningen and other tools may include those files into the `.jar` which may cause problems for downstream users. Your `.jar` should ONLY contains the actual source files, no compiled code at all."
-msgstr ""
+msgstr "また `resources/*` への出力は避けてください。Leiningenや他のツールがそれらのファイルを `.jar` に含めている可能性があり、下流のユーザに問題を引き起こす可能性があります。あなたの `.jar` には実際のソースファイルのみが含まれ、コンパイルされたコードは一切含まれていません。"
 
 msgid "You can and should verify that everything is clean by running `lein jar` and inspecting the files that end up in it via `jar -tvf target/library-1.0.0.jar`."
-msgstr ""
+msgstr "すべてがクリーンであることを確認するには `lein jar` を実行し、 `jar -tvf target/library-1.0.0.jar` でその中にあるファイルを検査します。"
 
 msgid "Declaring JS dependencies"
 msgstr ""
 
 msgid "Please note that currently only `shadow-cljs` has a clean automatic interop story with `npm`. That may represent a problem for users of your libraries using other tools. You may want to consider providing a CLJSJS fallback and/or publishing extra documentation for `webpack` related workflows."
-msgstr ""
+msgstr "現在 `shadow-cljs` だけが `npm` とのクリーンな自動相互接続ストーリーを持っていることに注意してください。これは他のツールを使っているライブラリのユーザにとっては問題かもしれません。CLJSJSフォールバックの提供や `webpack` 関連のワークフローのための追加ドキュメントの公開を検討してみてはいかがでしょうか。"
 
 msgid "You can declare `npm` dependencies directly by including a `deps.cljs` with `:npm-deps` in your project (eg. `src/main/deps.cljs`)."
-msgstr ""
+msgstr "依存関係を直接宣言するには `deps.cljs` に `:npm-deps` を付けてプロジェクトに追加します (例: `src/main/deps.cljs`)"
 
 msgid "Example src/main/deps.cljs"
 msgstr ""
@@ -5248,16 +5263,16 @@ msgid "{:npm-deps {\"the-thing\" \"1.0.0\"}}"
 msgstr ""
 
 msgid "You can also provide extra `:foreign-libs` definitions here. They won't affect `shadow-cljs` but might help other tools."
-msgstr ""
+msgstr "ここに `:foreign-libs` の定義を追加することもできます。これらは `shadow-cljs` には影響しませんが、他のツールの助けになるかもしれません。"
 
 msgid "What to do when things don’t work?"
-msgstr ""
+msgstr "うまくいかない時の対処法は？"
 
 msgid "Since the JS world is still evolving rapidly and not everyone is using the same way to write and distribute code there are some things `shadow-cljs` cannot work around automatically. These can usually be solved with custom `:resolve` configs, but there may also be bugs or oversights."
-msgstr ""
+msgstr "JS の世界はまだ急速に進化しており、誰もが同じ方法でコードを書いて配布しているわけではないので `shadow-cljs` が自動的に回避できないことがいくつかあります。これらは通常カスタムの `:resolve` 設定で解決できますが、バグや見落としがあるかもしれません。"
 
 msgid "If you cannot resolve such an issue with the instructions in this chapter, then try asking on the https://clojurians.slack.com/messages/C6N245JGG[`#shadow-cljs` Slack channel]."
-msgstr ""
+msgstr "この章の指示でこのような問題を解決できない場合は https://clojurians.slack.com/messages/C6N245JGG[`#shadow-cljs` Slackチャンネル] で質問してみてください。"
 
 msgid "Hacking"
 msgstr ""
@@ -5266,7 +5281,7 @@ msgid "Patching Libraries"
 msgstr ""
 
 msgid "The `shadow-cljs` compiler ensures that things on your source paths are compiled first, overriding files from JARs. This means that you can copy a source file from a library, patch it, and include it in your own source directory."
-msgstr ""
+msgstr "`shadow-cljs` コンパイラは、ソースパス上のものが最初にコンパイルされ、JARからのファイルを上書きすることを保証します。これは、ライブラリからソースファイルをコピーしてパッチを当て、自分のソースディレクトリにインクルードすることができることを意味します。"
 
 msgid "Shadow CLJS User&#8217;s Guide"
 msgstr ""
