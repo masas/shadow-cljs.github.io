@@ -936,7 +936,7 @@ msgid "User Configuration"
 msgstr ""
 
 msgid "Most configuration will be done in the projects themselves via `shadow-cljs.edn` but some config may be user-dependent. Tools like https://docs.cider.mx[CIDER] may require the additional `cider-nrepl` dependency which would be useless for a different team member using Cursive when adding that dependency via `shadow-cljs.edn`."
-msgstr "ほとんどの設定はプロジェクト自身で `shadow-cljs.edn` を使って行いますが、いくつかの設定はユーザに依存することがあります。https://docs.cider.mx[CIDER] のようなツールは `shadow-cljs.edn` で依存関係を追加しても Cursive を使っている別のチームメンバーには意味がないので、追加の `cider-nrepl` 依存関係を必要とするかもしれません。"
+msgstr "ほとんどの設定はプロジェクト自身で `shadow-cljs.edn` を使って行いますが、いくつかの設定はユーザに依存することがあります。 https://docs.cider.mx[CIDER] のようなツールは `shadow-cljs.edn` で依存関係を追加しても Cursive を使っている別のチームメンバーには意味がないので、追加の `cider-nrepl` 依存関係を必要とするかもしれません。"
 
 msgid "A restricted set of config options can be added to `~/.shadow-cljs/config.edn` which will then apply to all projects built on this users machine."
 msgstr "制限された設定オプションのセットを `~/.shadow-cljs/config.edn` に追加することができ、このユーザのマシンでビルドされたすべてのプロジェクトに適用されます。"
@@ -4664,7 +4664,7 @@ msgid "Emacs / CIDER"
 msgstr ""
 
 msgid "This section is written for CIDER version 0.20.0 and above. Ensure your Emacs environment has this version of the `cider` package or later. Refer to the link:https://docs.cider.mx[CIDER documentation] for full installation details."
-msgstr "このセクションは CIDER バージョン 0.20.0 以降向けに書かれています。お使いのEmacs環境にこのバージョンの `cider` パッケージ以降があることを確認してください。インストールの詳細については、 https://docs.cider.mx[CIDER documentation] を参照してください。"
+msgstr "このセクションは CIDER バージョン 0.20.0 以降向けに書かれています。お使いのEmacs環境にこのバージョンの `cider` パッケージ以降があることを確認してください。インストールの詳細については https://docs.cider.mx[CIDER documentation] を参照してください。"
 
 msgid "Launch the ClojureScript REPL"
 msgstr "ClojureScript REPLを起動します。"
