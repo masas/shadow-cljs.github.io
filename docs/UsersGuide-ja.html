@@ -1250,7 +1250,7 @@ $ shadow-cljs restart</code></pre>
 <div class="title">Important</div>
 </td>
 <td class="content">
-<code>shadow-cljs</code> を起動したり、ビルドをコンパイルしようとしたときに、奇妙な Java Stackstraces が発生する場合、依存関係の競合があるかもしれません。shadow-cljs` が <code>org.clojure/clojurescript</code> と <code>closure-compiler</code> のバージョンにマッチした状態で使われていることが非常に重要です。必要なバージョンは <code>lein deps :tree</code> で確認でき、https://clojars.org/thheller/shadow-cljs[clojars] (右側) にリストアップされています。
+<code>shadow-cljs</code> を起動したり、ビルドをコンパイルしようとしたときに、奇妙な Java Stackstraces が発生する場合、依存関係の競合があるかもしれません。<code>shadow-cljs</code> が <code>org.clojure/clojurescript</code> と <code>closure-compiler</code> のバージョンにマッチした状態で使われていることが非常に重要です。必要なバージョンは <code>lein deps :tree</code> で確認でき、https://clojars.org/thheller/shadow-cljs[clojars] (右側) にリストアップされています。
 </td>
 </tr>
 </table>
@@ -2123,7 +2123,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect3">
 <h4 id="http"><a class="anchor" href="#http"></a><a class="link" href="#http">5.4.4. Primary HTTP(S)</a></h4>
 <div class="paragraph">
-<p>shadow-cljs` サーバはプライマリ HTTP サーバを一つ起動します。これはホットリロードとREPLクライアントに使われるUIとウェブソケットを提供するために使われます。デフォルトではポート9630を listen します。もしそのポートが使用中であれば、1つずつインクリメントして、開いているポートが見つかるまで再試行します。</p>
+<p><code>shadow-cljs</code> サーバはプライマリ HTTP サーバを一つ起動します。これはホットリロードとREPLクライアントに使われるUIとウェブソケットを提供するために使われます。デフォルトではポート9630を listen します。もしそのポートが使用中であれば、1つずつインクリメントして、開いているポートが見つかるまで再試行します。</p>
 </div>
 <div class="listingblock">
 <div class="title">使用ポートを示す起動メッセージ</div>
@@ -3259,7 +3259,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p>追加の設定データを <code>--config-merge {:some "data"}</code> コマンドラインオプションで渡すことができます。CLIから追加されたデータは <code>shadow-cljs.edn</code> ファイルからのデータを上書きします。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example shadow-cljs.edn` config</div>
+<div class="title"><code>shadow-cljs.edn</code> コンフィグの例</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3303,7 +3303,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p>環境変数を使って <code>shadow-cljs.edn</code> の設定値を設定することは可能ですが、代わりに <code>--config-merge</code> を使うことを検討してください。どうしても環境変数を使わなければならない場合は <code>#shadow/env "FOO"</code> リーダータグで設定することができます。もっと短い <code>#env</code> を使うこともできます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example shadow-cljs.edn` config</div>
+<div class="title"><code>shadow-cljs.edn</code> コンフィグの例</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -3353,7 +3353,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <p>コンフィギュレーションのマージ順序は <code>:build-defaults</code> &#8594; <code>:target-defaults</code> &#8594; 実際のビルドコンフィグ &#8594; 追加コンフィグの順で上書きされます。</p>
 </div>
 <div class="listingblock">
-<div class="title">Example shadow-cljs.edn` config</div>
+<div class="title"><code>shadow-cljs.edn</code> コンフィグの例</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:build-defaults</span>
@@ -4693,7 +4693,7 @@ hello
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Example shadow-cljs.edn` config</div>
+<div class="title"><code>shadow-cljs.edn</code> コンフィグの例</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{<span class="keyword">..</span><span class="keyword">.</span>
  <span class="symbol">:builds</span>
@@ -4752,7 +4752,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 <p>デフォルトの <code>:ns-regexp</code> は <code>"-test$"</code> なので、最初のテストは以下のようになります:</p>
 </div>
 <div class="listingblock">
-<div class="title">File: `src/test/demo/app_test.cljs'</div>
+<div class="title">File: <code>src/test/demo/app_test.cljs</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">ns</span> <span class="namespace">demo.app-test</span>
   (<span class="symbol">:require</span> [cljs.test <span class="symbol">:refer</span> (deftest is)]))
@@ -5603,7 +5603,7 @@ $ babel src/js --out-dir src/gen --watch</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>babel`自体は `src/js/.babelrc</code> で設定します。公式の <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">JSXの例</a> を参照してください。</p>
+<p><code>babel</code> 自体は <code>src/js/.babelrc</code> で設定します。公式の <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">JSXの例</a> を参照してください。</p>
 </div>
 <div class="listingblock">
 <div class="title">JSX minimal .babelrc</div>
@@ -5649,7 +5649,7 @@ cljs.array_map(<span class="keyword">keyword</span>(<span class="string"><span c
 <div class="title">Tip</div>
 </td>
 <td class="content">
-接頭辞 <code>goog:</code> は現在のところ ES6 ファイルでしか動作しません。require("goog:cljs.core")` は動作しません。
+接頭辞 <code>goog:</code> は現在のところ ES6 ファイルでしか動作しません。<code>require("goog:cljs.core")</code> は動作しません。
 </td>
 </tr>
 </table>

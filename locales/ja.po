@@ -391,7 +391,7 @@ msgid "When using `project.clj` to manage your `:dependencies` you must manually
 msgstr "`project.clj` を使って `:dependencies` を管理する場合、手動で https://clojars.org/thheller/shadow-cljs[thheller/shadow-cljs] アーティファクトを `:dependencies` (直接またはプロファイル) に含めなければなりません。"
 
 msgid "When you are running into weird Java Stackstraces when starting `shadow-cljs` or trying compile builds you may have a dependency conflict. It is very important that `shadow-cljs` is used with proper matching `org.clojure/clojurescript` and `closure-compiler` versions. You can check via `lein deps :tree` and the required versions are listed on https://clojars.org/thheller/shadow-cljs[clojars] (on the right side)."
-msgstr "`shadow-cljs` を起動したり、ビルドをコンパイルしようとしたときに、奇妙な Java Stackstraces が発生する場合、依存関係の競合があるかもしれません。shadow-cljs` が `org.clojure/clojurescript` と `closure-compiler` のバージョンにマッチした状態で使われていることが非常に重要です。必要なバージョンは `lein deps :tree` で確認でき、https://clojars.org/thheller/shadow-cljs[clojars] (右側) にリストアップされています。"
+msgstr "`shadow-cljs` を起動したり、ビルドをコンパイルしようとしたときに、奇妙な Java Stackstraces が発生する場合、依存関係の競合があるかもしれません。`shadow-cljs` が `org.clojure/clojurescript` と `closure-compiler` のバージョンにマッチした状態で使われていることが非常に重要です。必要なバージョンは `lein deps :tree` で確認でき、https://clojars.org/thheller/shadow-cljs[clojars] (右側) にリストアップされています。"
 
 msgid "Running Tasks Directly From Leiningen"
 msgstr "Leiningenから直接タスクを実行する"
@@ -1122,7 +1122,7 @@ msgid "Primary HTTP(S)"
 msgstr ""
 
 msgid "The `shadow-cljs` server starts one primary HTTP server. It is used to serve the UI and websockets used for Hot Reload and REPL clients. By default it listens on Port 9630. If that Port is in use it will increment by one and attempt again until an open Port is found."
-msgstr "shadow-cljs` サーバはプライマリ HTTP サーバを一つ起動します。これはホットリロードとREPLクライアントに使われるUIとウェブソケットを提供するために使われます。デフォルトではポート9630を listen します。もしそのポートが使用中であれば、1つずつインクリメントして、開いているポートが見つかるまで再試行します。"
+msgstr "`shadow-cljs` サーバはプライマリ HTTP サーバを一つ起動します。これはホットリロードとREPLクライアントに使われるUIとウェブソケットを提供するために使われます。デフォルトではポート9630を listen します。もしそのポートが使用中であれば、1つずつインクリメントして、開いているポートが見つかるまで再試行します。"
 
 msgid "Startup message indicating the Port used"
 msgstr "使用ポートを示す起動メッセージ"
@@ -2183,7 +2183,7 @@ msgid "You can pass additional config data via the `--config-merge {:some \"data
 msgstr "追加の設定データを `--config-merge {:some \"data\"}` コマンドラインオプションで渡すことができます。CLIから追加されたデータは `shadow-cljs.edn` ファイルからのデータを上書きします。"
 
 msgid "Example <code>shadow-cljs.edn</code> config"
-msgstr "Example shadow-cljs.edn` config"
+msgstr "`shadow-cljs.edn` コンフィグの例"
 
 msgid ""
 "{...\n"
@@ -3463,7 +3463,7 @@ msgid "The default `:ns-regexp` is `\"-test$\"`, so your first test could look l
 msgstr "デフォルトの `:ns-regexp` は `\"-test$\"` なので、最初のテストは以下のようになります:"
 
 msgid "File: <code>src/test/demo/app_test.cljs</code>"
-msgstr "File: `src/test/demo/app_test.cljs'"
+msgstr "File: `src/test/demo/app_test.cljs`"
 
 msgid ""
 "(ns demo.app-test\n"
@@ -4224,7 +4224,7 @@ msgid ""
 msgstr ""
 
 msgid "`babel` itself is configured via the `src/js/.babelrc`. See the official https://babeljs.io/docs/plugins/transform-react-jsx/[example for JSX]."
-msgstr "`babel`自体は `src/js/.babelrc` で設定します。公式の https://babeljs.io/docs/plugins/transform-react-jsx/[JSXの例] を参照してください。"
+msgstr "`babel` 自体は `src/js/.babelrc` で設定します。公式の https://babeljs.io/docs/plugins/transform-react-jsx/[JSXの例] を参照してください。"
 
 msgid "JSX minimal .babelrc"
 msgstr ""
@@ -4255,7 +4255,7 @@ msgid ""
 msgstr ""
 
 msgid "The `goog:` prefix currently only works for ES6 file. `require(\"goog:cljs.core\")` does not work."
-msgstr "接頭辞 `goog:` は現在のところ ES6 ファイルでしか動作しません。require(\"goog:cljs.core\")` は動作しません。"
+msgstr "接頭辞 `goog:` は現在のところ ES6 ファイルでしか動作しません。`require(\"goog:cljs.core\")` は動作しません。"
 
 msgid "Migrating cljsjs.*"
 msgstr ""
