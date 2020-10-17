@@ -881,14 +881,14 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect3">
 <h4 id="_release_mode"><a class="anchor" href="#_release_mode"></a><a class="link" href="#_release_mode">1.2.2. Release Mode</a></h4>
 <div class="paragraph">
-<p>`release`ビルドを作成すると、開発に関連するすべてのコードが削除され、最終的にClosure Compilerでコードが変換されます。これはJavaScript用の最適化コンパイラで、コード全体のサイズを大幅に削減します。</p>
+<p><code>release</code> ビルドを作成すると、開発に関連するすべてのコードが削除され、最終的にClosure Compilerでコードが変換されます。これはJavaScript用の最適化コンパイラで、コード全体のサイズを大幅に削減します。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_important_concepts"><a class="anchor" href="#_important_concepts"></a><a class="link" href="#_important_concepts">1.3. Important Concepts</a></h3>
 <div class="paragraph">
-<p>`shadow-cljs`を使うときには、いくつかの重要な概念を理解しておく必要があります。これらの概念は、すべてのものがどのように組み合わされ、ツールがあなたのコードでどのように動作するかを理解するために不可欠なものです。</p>
+<p><code>shadow-cljs</code> を使うときには、いくつかの重要な概念を理解しておく必要があります。これらの概念は、すべてのものがどのように組み合わされ、ツールがあなたのコードでどのように動作するかを理解するために不可欠なものです。</p>
 </div>
 <div class="sect3">
 <h4 id="_the_classpath"><a class="anchor" href="#_the_classpath"></a><a class="link" href="#_the_classpath">1.3.1. The Classpath</a></h4>
@@ -898,7 +898,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>設定の`:source-paths`エントリで管理されるローカルファイルシステムディレクトリ。</p>
+<p>設定の <code>:source-paths</code> エントリで管理されるローカルファイルシステムディレクトリ。</p>
 </li>
 <li>
 <p>または、Clojure(Script)やJVMライブラリを表す <code>.jar</code> ファイル。これらは多くのファイルを含む圧縮されたアーカイブです(基本的にはただの <code>.zip</code> ファイル)。これらは <code>:dependencies</code> によって追加されます。</p>
@@ -1034,7 +1034,7 @@ project.clj
 </ul>
 </div>
 <div class="paragraph">
-<p>プロジェクトディレクトリに`package.json`が必要です。もしまだない場合は、npm init -yを実行することで作成できます。
+<p>プロジェクトディレクトリに <code>package.json</code> が必要です。もしまだない場合は、npm init -yを実行することで作成できます。
 またプロジェクトディレクトリがない場合は</p>
 </div>
 <div class="listingblock">
@@ -1089,7 +1089,7 @@ project.clj
 <h2 id="_usage"><a class="anchor" href="#_usage"></a><a class="link" href="#_usage">3. Usage</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>`shadow-cljs`は様々な方法で使うことができますが、一般的なワークフローは同じです。</p>
+<p><code>shadow-cljs</code> は様々な方法で使うことができますが、一般的なワークフローは同じです。</p>
 </div>
 <div class="paragraph">
 <p>開発中にはビルドを一度コンパイルするか <code>watch</code> ワーカーを実行してソースファイルの変更を監視し、自動的に再コンパイルするかを選択することができます。 <a href="#devtools">enabled</a> の場合 <code>watch</code> ワーカーはコードをホットリロードして REPL を提供します。開発中は、開発者の経験と高速なフィードバックサイクルに焦点を当てています。開発コードは決して公開されるべきではありません。</p>
@@ -1387,7 +1387,7 @@ $ shadow-cljs restart</code></pre>
 <div class="sect2">
 <h3 id="clj-run"><a class="anchor" href="#clj-run"></a><a class="link" href="#clj-run">3.3. Running Clojure Code</a></h3>
 <div class="paragraph">
-<p>コマンドラインから特定のClojure関数を呼び出すために`shadow-cljs` CLIを使うことができます。これは、特定のタスクの前後にコードを実行したい場合に便利です。例えば <code>release</code> ビルドの出力をリモートサーバに <code>rsync</code> したいとします。</p>
+<p>コマンドラインから特定のClojure関数を呼び出すために <code>shadow-cljs</code> CLIを使うことができます。これは、特定のタスクの前後にコードを実行したい場合に便利です。例えば <code>release</code> ビルドの出力をリモートサーバに <code>rsync</code> したいとします。</p>
 </div>
 <div class="listingblock">
 <div class="title">Example Clojure Namespace in <code>src/my/build.clj</code></div>
@@ -2196,7 +2196,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 </div>
 </div>
 <div class="paragraph">
-<p><code>:dev-http</code> は <code>port-number</code> から <code>config</code> へのマップを期待しています。config`は最も一般的なシナリオのためのいくつかのショートカットをサポートしています。</p>
+<p><code>:dev-http</code> は <code>port-number</code> から <code>config</code> へのマップを期待しています。 <code>config</code> は最も一般的なシナリオのためのいくつかのショートカットをサポートしています。</p>
 </div>
 <div class="listingblock">
 <div class="title">Serve directory from filesystem root</div>
@@ -2724,7 +2724,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect3">
 <h4 id="compile-stages"><a class="anchor" href="#compile-stages"></a><a class="link" href="#compile-stages">6.3.1. Compilation Stages</a></h4>
 <div class="paragraph">
-<p>`:build-hooks``が使用できるステージは下記の通りです。</p>
+<p><code>:build-hooks</code> が使用できるステージは下記の通りです。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3151,7 +3151,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="title">Caution</div>
 </td>
 <td class="content">
-この機能は <code>shadow-cljs</code> でのみ動作します。ClojureScriptプロジェクトによって公式に <a href="https://dev.clojure.org/jira/browse/CLJS-2396">rejected</a> されました。CLJSではまだ問題なくコンパイルできますが、公式ブランチ(`:cljs`など)でしか動作しません。いつかは <a href="https://groups.google.com/d/msg/clojure-dev/8YJJM8lJuQs/hR5_vUZPCQAJ">supported</a> になるかもしれませんが、今のところはそうではありません。
+この機能は <code>shadow-cljs</code> でのみ動作します。ClojureScriptプロジェクトによって公式に <a href="https://dev.clojure.org/jira/browse/CLJS-2396">rejected</a> されました。CLJSではまだ問題なくコンパイルできますが、公式ブランチ(<code>:cljs</code> など)でしか動作しません。いつかは <a href="https://groups.google.com/d/msg/clojure-dev/8YJJM8lJuQs/hR5_vUZPCQAJ">supported</a> になるかもしれませんが、今のところはそうではありません。
 </td>
 </tr>
 </table>
@@ -4223,7 +4223,7 @@ CLJS REPLを使用する前に、<a href="#embedded">embedded server</a>を手�
 <div class="sect2">
 <h3 id="_react_native"><a class="anchor" href="#_react_native"></a><a class="link" href="#_react_native">8.1. React Native</a></h3>
 <div class="paragraph">
-<p><code>react-native`を使うには2つの方法があり、ネイティブコードやライブラリを使えるプレーンな `react-native</code> と <a href="https://expo.io/">expo</a> でラップされたもの(後述)です。上記のすべてのステップを踏めば、プレーンな <code>react-native</code> で shadow-cljs を使い始めることができます。この例のリポジトリを参照してください:</p>
+<p><code>react-native</code> を使うには2つの方法があり、ネイティブコードやライブラリを使えるプレーンな <code>react-native</code> と <a href="https://expo.io/">expo</a> でラップされたもの(後述)です。上記のすべてのステップを踏めば、プレーンな <code>react-native</code> で shadow-cljs を使い始めることができます。この例のリポジトリを参照してください:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4829,7 +4829,7 @@ ns.bar()<span class="comment">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>ターゲット <code>:node-test</code> はテストファイルを生成するだけです。 `node`を経由して実行することができます。</p>
+<p>ターゲット <code>:node-test</code> はテストファイルを生成するだけです。 <code>node</code> を経由して実行することができます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4927,7 +4927,7 @@ $ shadow-cljs compile test &amp;&amp; node out/node-tests.js</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>これは単に <code>init</code>, <code>start</code>, <code>stop</code> メソッドを持っているだけです。init`は起動時に一度だけ呼び出され <code>stop</code> はコードがリロードされる前に呼び出され <code>start</code> はすべてのコードがリロードされた後に呼び出されます。</p>
+<p>これは単に <code>init</code>, <code>start</code>, <code>stop</code> メソッドを持っているだけです。 <code>init</code> は起動時に一度だけ呼び出され <code>stop</code> はコードがリロードされる前に呼び出され <code>start</code> はすべてのコードがリロードされた後に呼び出されます。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -6304,7 +6304,7 @@ cljs.repl&gt;</code></pre>
 <div class="sect3">
 <h4 id="_connecting_calva_to_the_repls"><a class="anchor" href="#_connecting_calva_to_the_repls"></a><a class="link" href="#_connecting_calva_to_the_repls">14.5.2. Connecting Calva to the REPLs</a></h4>
 <div class="paragraph">
-<p>これが完了したら、シャドウアプリを起動します。(`app`の代わりに何でもいいからビルドしてください):</p>
+<p>これが完了したら、シャドウアプリを起動します。(<code>app</code> の代わりに何でもいいからビルドしてください):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6621,7 +6621,7 @@ $ lein with-profiles +cljs deps <span class="symbol">:tree</span></code></pre>
 <p>ClojureのREPLはその名の通りのことをします。一つのフォームを読んで、それを評価して、結果を印刷して、ループして再び実行します。</p>
 </div>
 <div class="paragraph">
-<p>しかし、ClojureScriptでは、コンパイルはJVM上で行われますが、結果はJavaScriptランタイムで評価されるので、物事はもう少し複雑です。プレインのREPLの経験を &#34;Emmulate &#34;するためには、さらにいくつかのステップが必要です。 `shadow-cljs`では通常のCLJSとは少し実装が異なりますが基本的な原則は変わりません。</p>
+<p>しかし、ClojureScriptでは、コンパイルはJVM上で行われますが、結果はJavaScriptランタイムで評価されるので、物事はもう少し複雑です。プレインのREPLの経験を &#34;Emmulate &#34;するためには、さらにいくつかのステップが必要です。 <code>shadow-cljs</code> では通常のCLJSとは少し実装が異なりますが基本的な原則は変わりません。</p>
 </div>
 <div class="paragraph">
 <p>最初にREPLクライアントが必要です。これはCLI(例: <code>shadow-cljs cljs-repl app</code>)か <code>nREPL</code> を介して接続されたエディタです。クライアントは常に <code>shadow-cljs</code> サーバに直接話しかけるので、あとはそれが処理します。クライアント側からは通常のREPLのように見えますが、バックグラウンドでいくつかのステップがあります。</p>
