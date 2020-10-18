@@ -3075,7 +3075,7 @@ msgid "`expo` requires that a React Component is registered on startup which can
 msgstr "これは手動で行うこともできますが `shadow.expo/render-root` 関数を使用することで行うこともでき、代わりにReact Elementのインスタンスがレンダリングを開始することを直接期待できます。"
 
 msgid "From the Reagent <a href=\"https://github.com/thheller/reagent-expo/blob/2c73ed0513a8f5050b250c0c7e53b9ae7543cee9/src/main/test/app.cljs#L34-L40\">example</a>"
-msgstr "From the Reagent <a href=\"https://github.com/thheller/reagent-expo/blob/2c73ed0513a8f5050b250c0c7e53b9ae7543cee9/src/main/test/app.cljs#L34-L40\">example</a>"
+msgstr "From the Reagent https://github.com/thheller/reagent-expo/blob/2c73ed0513a8f5050b250c0c7e53b9ae7543cee9/src/main/test/app.cljs#L34-L40[example]"
 
 msgid ""
 "(defn start\n"
