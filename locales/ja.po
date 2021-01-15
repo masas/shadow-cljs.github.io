@@ -3088,7 +3088,7 @@ msgid ""
 msgstr ""
 
 msgid "`init` is called once on startup. Since the example doesn't need to do any special setup it just calls `start` directly. `start` will be called repeatedly when `watch` is running each time after the code changes were reloaded. The `reagent.core/as-element` function can be used to generate the required React Element from the reagent hiccup markup."
-msgstr "`init` は起動時に一度だけ呼び出されます。この例では特別な設定をする必要がないので `start` を直接呼び出すだけです。 `start` は `watch` が実行されているときには、コードの変更がリロードされた後、毎回繰り返し呼び出されます。 `reagent.core/as-element` 関数は、試薬のHiccup markupから必要なReact要素を生成するために利用できます。"
+msgstr "`init` は起動時に一度だけ呼び出されます。この例では特別な設定をする必要がないので `start` を直接呼び出すだけです。 `start` は `watch` が実行されているときには、コードの変更がリロードされた後、毎回繰り返し呼び出されます。 `reagent.core/as-element` 関数は、ReagentのHiccup markupから必要なReact要素を生成するために利用できます。"
 
 msgid "Targeting node.js"
 msgstr ""
